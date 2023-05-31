@@ -18,13 +18,11 @@ class DetailsProductBloc
       final amount =
           state.getAmountFromExtra(event.extra.uuid).getOrElse(() => 0);
 
-      final hasLimit = event.extra.limit > 0;
-
       emit(state.copyWith(extrasAmountByModifier: {
         ...state.extrasAmountByModifier,
         event.extra.uuid: min(
             amount + 1,
-            hasLimit
+            event.extra.hasLimit
                 ? min(event.extra.limit, event.maximumQuantity)
                 : event.maximumQuantity),
       }));

@@ -37,6 +37,14 @@ class ChooseForAmount with _$ChooseForAmount {
           ? const CaseMinMax.zeroToMax()
           : const CaseMinMax.minDiferentToMax();
 
+  bool isValid(int currentAmount) {
+    return caseMinMax.when(
+      minDiferentToMax: () => currentAmount >= minimumQuantity,
+      minEqualsToMax: () => currentAmount == minimumQuantity,
+      zeroToMax: () => currentAmount <= maximumQuantity,
+    );
+  }
+
   factory ChooseForAmount.fromJson(Map<String, dynamic> json) =>
       _$ChooseForAmountFromJson(json);
 }
@@ -49,6 +57,10 @@ class ExtraFood with _$ExtraFood {
     required int limit,
     @Default('') String uuid,
   }) = _ExtraFood;
+
+  const ExtraFood._();
+
+  bool get hasLimit => limit > 0;
 
   factory ExtraFood.fromJson(Map<String, dynamic> json) =>
       _$ExtraFoodFromJson(json);
@@ -104,6 +116,14 @@ class MultipleSelection with _$MultipleSelection {
       : minimumLimit == 0
           ? const CaseMinMax.zeroToMax()
           : const CaseMinMax.minDiferentToMax();
+
+  bool isValid(int currentAmount) {
+    return caseMinMax.when(
+      minDiferentToMax: () => currentAmount >= minimumLimit,
+      minEqualsToMax: () => currentAmount == minimumLimit,
+      zeroToMax: () => currentAmount <= maximumLimit,
+    );
+  }
 
   factory MultipleSelection.fromJson(Map<String, dynamic> json) =>
       _$MultipleSelectionFromJson(json);

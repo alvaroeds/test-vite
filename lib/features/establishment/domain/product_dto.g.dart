@@ -14,6 +14,7 @@ _$_ProductDto _$$_ProductDtoFromJson(Map<String, dynamic> json) =>
       discount: (json['discount'] as num).toDouble(),
       price: (json['price'] as num).toDouble(),
       uuid: json['uuid'] as String? ?? '',
+      dateOnAdd: json['dateOnAdd'] as int? ?? 0,
       images: (json['images'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
@@ -40,6 +41,7 @@ Map<String, dynamic> _$$_ProductDtoToJson(_$_ProductDto instance) =>
       'discount': instance.discount,
       'price': instance.price,
       'uuid': instance.uuid,
+      'dateOnAdd': instance.dateOnAdd,
       'images': instance.images,
       'chooseForAmountUuids': instance.chooseForAmountUuids,
       'oneSelectionUuids': instance.oneSelectionUuids,

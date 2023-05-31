@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pedido_listo_web/presentation/app/bloc/cart_cache_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/bloc/establishment_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/home/cubit/tab_home_cubit.dart';
 import 'package:pedido_listo_web/presentation/establishment/home/home_view.dart';
@@ -7,15 +8,18 @@ import 'package:pedido_listo_web/presentation/establishment/home/widgets/widgets
 import 'package:pedido_listo_web/presentation/widgets/loading_view.dart';
 
 class EstablishmentBlocPage extends StatelessWidget {
-  const EstablishmentBlocPage({super.key});
+  const EstablishmentBlocPage({super.key, this.idUrl});
+  final String? idUrl;
 
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<EstablishmentBloc>();
     return BlocBuilder<EstablishmentBloc, EstablishmentState>(
       builder: (context, state) {
-        return _DisposeWrapper(
-          () => bloc.add(const EstablishmentEvent.closed()),
+        return CycleWrapper(
+          onDispose: () => bloc.add(const EstablishmentEvent.closed()),
+          onInit: () =>
+              context.read<AppCacheBloc>().add(AppCacheEvent.loadCart(idUrl)),
           child: state.when(
             hasData: (establishment) => BlocProvider(
               create: (context) => TabHomeCubit(),
@@ -27,7 +31,9 @@ class EstablishmentBlocPage extends StatelessWidget {
                   establishment: establishment,
                   //  initialIndex: state.index,
                 ),
-                floatingActionButton: const ButtonCart(),
+                floatingActionButton: ButtonCart(
+                  idUrl: establishment.idUrl,
+                ),
                 floatingActionButtonLocation:
                     FloatingActionButtonLocation.centerFloat,
               ),
@@ -47,19 +53,27 @@ class EstablishmentBlocPage extends StatelessWidget {
       );
 }
 
-class _DisposeWrapper extends StatefulWidget {
-  final VoidCallback onDispose;
+class CycleWrapper extends StatefulWidget {
+  final VoidCallback? onDispose;
+  final VoidCallback? onInit;
   final Widget child;
-  const _DisposeWrapper(this.onDispose, {required this.child});
+  const CycleWrapper(
+      {required this.child, super.key, this.onDispose, this.onInit});
 
   @override
-  State<_DisposeWrapper> createState() => __DisposeWrapperState();
+  State<CycleWrapper> createState() => _CycleWrapperState();
 }
 
-class __DisposeWrapperState extends State<_DisposeWrapper> {
+class _CycleWrapperState extends State<CycleWrapper> {
+  @override
+  void initState() {
+    widget.onInit?.call();
+    super.initState();
+  }
+
   @override
   void dispose() {
-    widget.onDispose();
+    widget.onDispose?.call();
     super.dispose();
   }
 

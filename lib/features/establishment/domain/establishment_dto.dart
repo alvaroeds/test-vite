@@ -20,11 +20,11 @@ class EstablishmentDto with _$EstablishmentDto {
     @Default('') String description,
     @JsonKey(name: 'social_network')
     @Default([])
-        List<SocialNetworkDto> socialNetwork,
+    List<SocialNetworkDto> socialNetwork,
     @Default(Modifiers()) Modifiers modifiers,
     @JsonKey(name: EstablishmentDto.CategoriesField)
     @Default([])
-        List<CategoriesDto> categories,
+    List<CategoriesDto> categories,
   }) = _EstablishmentDto;
 
   const EstablishmentDto._();

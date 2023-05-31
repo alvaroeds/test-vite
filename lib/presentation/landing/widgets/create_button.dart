@@ -10,7 +10,7 @@ class CreateButton extends StatelessWidget {
       width: 154,
       height: 56,
       child: ElevatedButton(
-        onPressed: () => {}, 
+          onPressed: () => {},
           style: ElevatedButton.styleFrom(
             backgroundColor: context.currentTheme.primaryColor,
           ),
@@ -20,4 +20,4 @@ class CreateButton extends StatelessWidget {
           )),
     );
   }
-}  
+}

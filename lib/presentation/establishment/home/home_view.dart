@@ -112,9 +112,13 @@ class _HomeViewState extends State<HomeView>
                         bottom: index == categories.length - 1 ? 100 : 0),
                     child: ListSection(
                       onTapProduct: (uuid) {
-                        context.go(
-                          '/${widget.establishment.idUrl}/${RouterProduct.firtsPath}/$uuid',
-                          //   params: {RouterEstablishment.firtsParam: uuid},
+                        context.goNamed(
+                          RouterProduct.name,
+                          pathParameters: {
+                            RouterEstablishment.firtsPath:
+                                widget.establishment.idUrl,
+                            RouterProduct.uuidPath: uuid,
+                          },
                         );
                       },
                       category: categories[selectIndex],

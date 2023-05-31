@@ -573,12 +573,13 @@ class __$$_ExtraFoodCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ExtraFood implements _ExtraFood {
+class _$_ExtraFood extends _ExtraFood {
   const _$_ExtraFood(
       {required this.name,
       required this.price,
       required this.limit,
-      this.uuid = ''});
+      this.uuid = ''})
+      : super._();
 
   factory _$_ExtraFood.fromJson(Map<String, dynamic> json) =>
       _$$_ExtraFoodFromJson(json);
@@ -627,12 +628,13 @@ class _$_ExtraFood implements _ExtraFood {
   }
 }
 
-abstract class _ExtraFood implements ExtraFood {
+abstract class _ExtraFood extends ExtraFood {
   const factory _ExtraFood(
       {required final String name,
       required final double price,
       required final int limit,
       final String uuid}) = _$_ExtraFood;
+  const _ExtraFood._() : super._();
 
   factory _ExtraFood.fromJson(Map<String, dynamic> json) =
       _$_ExtraFood.fromJson;

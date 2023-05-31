@@ -14,34 +14,34 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ShopppingCarDto _$ShopppingCarDtoFromJson(Map<String, dynamic> json) {
-  return _ShopppingCarDto.fromJson(json);
+ShoppingCartDto _$ShoppingCartDtoFromJson(Map<String, dynamic> json) {
+  return _ShoppingCartDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ShopppingCarDto {
+mixin _$ShoppingCartDto {
   String get uuid => throw _privateConstructorUsedError;
-  List<ItemCar> get items => throw _privateConstructorUsedError;
+  List<ItemCart> get items => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ShopppingCarDtoCopyWith<ShopppingCarDto> get copyWith =>
+  $ShoppingCartDtoCopyWith<ShoppingCartDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ShopppingCarDtoCopyWith<$Res> {
-  factory $ShopppingCarDtoCopyWith(
-          ShopppingCarDto value, $Res Function(ShopppingCarDto) then) =
-      _$ShopppingCarDtoCopyWithImpl<$Res, ShopppingCarDto>;
+abstract class $ShoppingCartDtoCopyWith<$Res> {
+  factory $ShoppingCartDtoCopyWith(
+          ShoppingCartDto value, $Res Function(ShoppingCartDto) then) =
+      _$ShoppingCartDtoCopyWithImpl<$Res, ShoppingCartDto>;
   @useResult
-  $Res call({String uuid, List<ItemCar> items});
+  $Res call({String uuid, List<ItemCart> items});
 }
 
 /// @nodoc
-class _$ShopppingCarDtoCopyWithImpl<$Res, $Val extends ShopppingCarDto>
-    implements $ShopppingCarDtoCopyWith<$Res> {
-  _$ShopppingCarDtoCopyWithImpl(this._value, this._then);
+class _$ShoppingCartDtoCopyWithImpl<$Res, $Val extends ShoppingCartDto>
+    implements $ShoppingCartDtoCopyWith<$Res> {
+  _$ShoppingCartDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -62,28 +62,28 @@ class _$ShopppingCarDtoCopyWithImpl<$Res, $Val extends ShopppingCarDto>
       items: null == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<ItemCar>,
+              as List<ItemCart>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_ShopppingCarDtoCopyWith<$Res>
-    implements $ShopppingCarDtoCopyWith<$Res> {
-  factory _$$_ShopppingCarDtoCopyWith(
-          _$_ShopppingCarDto value, $Res Function(_$_ShopppingCarDto) then) =
-      __$$_ShopppingCarDtoCopyWithImpl<$Res>;
+abstract class _$$_ShoppingCartDtoCopyWith<$Res>
+    implements $ShoppingCartDtoCopyWith<$Res> {
+  factory _$$_ShoppingCartDtoCopyWith(
+          _$_ShoppingCartDto value, $Res Function(_$_ShoppingCartDto) then) =
+      __$$_ShoppingCartDtoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String uuid, List<ItemCar> items});
+  $Res call({String uuid, List<ItemCart> items});
 }
 
 /// @nodoc
-class __$$_ShopppingCarDtoCopyWithImpl<$Res>
-    extends _$ShopppingCarDtoCopyWithImpl<$Res, _$_ShopppingCarDto>
-    implements _$$_ShopppingCarDtoCopyWith<$Res> {
-  __$$_ShopppingCarDtoCopyWithImpl(
-      _$_ShopppingCarDto _value, $Res Function(_$_ShopppingCarDto) _then)
+class __$$_ShoppingCartDtoCopyWithImpl<$Res>
+    extends _$ShoppingCartDtoCopyWithImpl<$Res, _$_ShoppingCartDto>
+    implements _$$_ShoppingCartDtoCopyWith<$Res> {
+  __$$_ShoppingCartDtoCopyWithImpl(
+      _$_ShoppingCartDto _value, $Res Function(_$_ShoppingCartDto) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_ShopppingCarDtoCopyWithImpl<$Res>
     Object? uuid = null,
     Object? items = null,
   }) {
-    return _then(_$_ShopppingCarDto(
+    return _then(_$_ShoppingCartDto(
       uuid: null == uuid
           ? _value.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
@@ -100,26 +100,28 @@ class __$$_ShopppingCarDtoCopyWithImpl<$Res>
       items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<ItemCar>,
+              as List<ItemCart>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_ShopppingCarDto implements _ShopppingCarDto {
-  _$_ShopppingCarDto({required this.uuid, final List<ItemCar> items = const []})
-      : _items = items;
+class _$_ShoppingCartDto extends _ShoppingCartDto {
+  _$_ShoppingCartDto(
+      {required this.uuid, final List<ItemCart> items = const []})
+      : _items = items,
+        super._();
 
-  factory _$_ShopppingCarDto.fromJson(Map<String, dynamic> json) =>
-      _$$_ShopppingCarDtoFromJson(json);
+  factory _$_ShoppingCartDto.fromJson(Map<String, dynamic> json) =>
+      _$$_ShoppingCartDtoFromJson(json);
 
   @override
   final String uuid;
-  final List<ItemCar> _items;
+  final List<ItemCart> _items;
   @override
   @JsonKey()
-  List<ItemCar> get items {
+  List<ItemCart> get items {
     if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_items);
@@ -127,14 +129,14 @@ class _$_ShopppingCarDto implements _ShopppingCarDto {
 
   @override
   String toString() {
-    return 'ShopppingCarDto(uuid: $uuid, items: $items)';
+    return 'ShoppingCartDto(uuid: $uuid, items: $items)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ShopppingCarDto &&
+            other is _$_ShoppingCartDto &&
             (identical(other.uuid, uuid) || other.uuid == uuid) &&
             const DeepCollectionEquality().equals(other._items, _items));
   }
@@ -147,67 +149,79 @@ class _$_ShopppingCarDto implements _ShopppingCarDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ShopppingCarDtoCopyWith<_$_ShopppingCarDto> get copyWith =>
-      __$$_ShopppingCarDtoCopyWithImpl<_$_ShopppingCarDto>(this, _$identity);
+  _$$_ShoppingCartDtoCopyWith<_$_ShoppingCartDto> get copyWith =>
+      __$$_ShoppingCartDtoCopyWithImpl<_$_ShoppingCartDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ShopppingCarDtoToJson(
+    return _$$_ShoppingCartDtoToJson(
       this,
     );
   }
 }
 
-abstract class _ShopppingCarDto implements ShopppingCarDto {
-  factory _ShopppingCarDto(
+abstract class _ShoppingCartDto extends ShoppingCartDto {
+  factory _ShoppingCartDto(
       {required final String uuid,
-      final List<ItemCar> items}) = _$_ShopppingCarDto;
+      final List<ItemCart> items}) = _$_ShoppingCartDto;
+  _ShoppingCartDto._() : super._();
 
-  factory _ShopppingCarDto.fromJson(Map<String, dynamic> json) =
-      _$_ShopppingCarDto.fromJson;
+  factory _ShoppingCartDto.fromJson(Map<String, dynamic> json) =
+      _$_ShoppingCartDto.fromJson;
 
   @override
   String get uuid;
   @override
-  List<ItemCar> get items;
+  List<ItemCart> get items;
   @override
   @JsonKey(ignore: true)
-  _$$_ShopppingCarDtoCopyWith<_$_ShopppingCarDto> get copyWith =>
+  _$$_ShoppingCartDtoCopyWith<_$_ShoppingCartDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-ItemCar _$ItemCarFromJson(Map<String, dynamic> json) {
+ItemCart _$ItemCartFromJson(Map<String, dynamic> json) {
   return _ItemCar.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ItemCar {
-  String get uuidProduct => throw _privateConstructorUsedError;
+mixin _$ItemCart {
+  ProductDto get product => throw _privateConstructorUsedError;
+  String get uuid => throw _privateConstructorUsedError;
   int get amount => throw _privateConstructorUsedError;
-  List<String> get uuidsExtras => throw _privateConstructorUsedError;
-  List<String> get uuidsOptionsFood => throw _privateConstructorUsedError;
+  String get comment => throw _privateConstructorUsedError;
+  List<AmountExtraFood> get extrasFood => throw _privateConstructorUsedError;
+  List<AmountOptionFood> get optionsFoodOneSelection =>
+      throw _privateConstructorUsedError;
+  List<AmountOptionFood> get optionsFoodForMultiple =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ItemCarCopyWith<ItemCar> get copyWith => throw _privateConstructorUsedError;
+  $ItemCartCopyWith<ItemCart> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ItemCarCopyWith<$Res> {
-  factory $ItemCarCopyWith(ItemCar value, $Res Function(ItemCar) then) =
-      _$ItemCarCopyWithImpl<$Res, ItemCar>;
+abstract class $ItemCartCopyWith<$Res> {
+  factory $ItemCartCopyWith(ItemCart value, $Res Function(ItemCart) then) =
+      _$ItemCartCopyWithImpl<$Res, ItemCart>;
   @useResult
   $Res call(
-      {String uuidProduct,
+      {ProductDto product,
+      String uuid,
       int amount,
-      List<String> uuidsExtras,
-      List<String> uuidsOptionsFood});
+      String comment,
+      List<AmountExtraFood> extrasFood,
+      List<AmountOptionFood> optionsFoodOneSelection,
+      List<AmountOptionFood> optionsFoodForMultiple});
+
+  $ProductDtoCopyWith<$Res> get product;
 }
 
 /// @nodoc
-class _$ItemCarCopyWithImpl<$Res, $Val extends ItemCar>
-    implements $ItemCarCopyWith<$Res> {
-  _$ItemCarCopyWithImpl(this._value, this._then);
+class _$ItemCartCopyWithImpl<$Res, $Val extends ItemCart>
+    implements $ItemCartCopyWith<$Res> {
+  _$ItemCartCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -217,49 +231,78 @@ class _$ItemCarCopyWithImpl<$Res, $Val extends ItemCar>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? uuidProduct = null,
+    Object? product = null,
+    Object? uuid = null,
     Object? amount = null,
-    Object? uuidsExtras = null,
-    Object? uuidsOptionsFood = null,
+    Object? comment = null,
+    Object? extrasFood = null,
+    Object? optionsFoodOneSelection = null,
+    Object? optionsFoodForMultiple = null,
   }) {
     return _then(_value.copyWith(
-      uuidProduct: null == uuidProduct
-          ? _value.uuidProduct
-          : uuidProduct // ignore: cast_nullable_to_non_nullable
+      product: null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as ProductDto,
+      uuid: null == uuid
+          ? _value.uuid
+          : uuid // ignore: cast_nullable_to_non_nullable
               as String,
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as int,
-      uuidsExtras: null == uuidsExtras
-          ? _value.uuidsExtras
-          : uuidsExtras // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      uuidsOptionsFood: null == uuidsOptionsFood
-          ? _value.uuidsOptionsFood
-          : uuidsOptionsFood // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      comment: null == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String,
+      extrasFood: null == extrasFood
+          ? _value.extrasFood
+          : extrasFood // ignore: cast_nullable_to_non_nullable
+              as List<AmountExtraFood>,
+      optionsFoodOneSelection: null == optionsFoodOneSelection
+          ? _value.optionsFoodOneSelection
+          : optionsFoodOneSelection // ignore: cast_nullable_to_non_nullable
+              as List<AmountOptionFood>,
+      optionsFoodForMultiple: null == optionsFoodForMultiple
+          ? _value.optionsFoodForMultiple
+          : optionsFoodForMultiple // ignore: cast_nullable_to_non_nullable
+              as List<AmountOptionFood>,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductDtoCopyWith<$Res> get product {
+    return $ProductDtoCopyWith<$Res>(_value.product, (value) {
+      return _then(_value.copyWith(product: value) as $Val);
+    });
   }
 }
 
 /// @nodoc
-abstract class _$$_ItemCarCopyWith<$Res> implements $ItemCarCopyWith<$Res> {
+abstract class _$$_ItemCarCopyWith<$Res> implements $ItemCartCopyWith<$Res> {
   factory _$$_ItemCarCopyWith(
           _$_ItemCar value, $Res Function(_$_ItemCar) then) =
       __$$_ItemCarCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String uuidProduct,
+      {ProductDto product,
+      String uuid,
       int amount,
-      List<String> uuidsExtras,
-      List<String> uuidsOptionsFood});
+      String comment,
+      List<AmountExtraFood> extrasFood,
+      List<AmountOptionFood> optionsFoodOneSelection,
+      List<AmountOptionFood> optionsFoodForMultiple});
+
+  @override
+  $ProductDtoCopyWith<$Res> get product;
 }
 
 /// @nodoc
 class __$$_ItemCarCopyWithImpl<$Res>
-    extends _$ItemCarCopyWithImpl<$Res, _$_ItemCar>
+    extends _$ItemCartCopyWithImpl<$Res, _$_ItemCar>
     implements _$$_ItemCarCopyWith<$Res> {
   __$$_ItemCarCopyWithImpl(_$_ItemCar _value, $Res Function(_$_ItemCar) _then)
       : super(_value, _then);
@@ -267,72 +310,107 @@ class __$$_ItemCarCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? uuidProduct = null,
+    Object? product = null,
+    Object? uuid = null,
     Object? amount = null,
-    Object? uuidsExtras = null,
-    Object? uuidsOptionsFood = null,
+    Object? comment = null,
+    Object? extrasFood = null,
+    Object? optionsFoodOneSelection = null,
+    Object? optionsFoodForMultiple = null,
   }) {
     return _then(_$_ItemCar(
-      uuidProduct: null == uuidProduct
-          ? _value.uuidProduct
-          : uuidProduct // ignore: cast_nullable_to_non_nullable
+      product: null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as ProductDto,
+      uuid: null == uuid
+          ? _value.uuid
+          : uuid // ignore: cast_nullable_to_non_nullable
               as String,
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as int,
-      uuidsExtras: null == uuidsExtras
-          ? _value._uuidsExtras
-          : uuidsExtras // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      uuidsOptionsFood: null == uuidsOptionsFood
-          ? _value._uuidsOptionsFood
-          : uuidsOptionsFood // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      comment: null == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String,
+      extrasFood: null == extrasFood
+          ? _value._extrasFood
+          : extrasFood // ignore: cast_nullable_to_non_nullable
+              as List<AmountExtraFood>,
+      optionsFoodOneSelection: null == optionsFoodOneSelection
+          ? _value._optionsFoodOneSelection
+          : optionsFoodOneSelection // ignore: cast_nullable_to_non_nullable
+              as List<AmountOptionFood>,
+      optionsFoodForMultiple: null == optionsFoodForMultiple
+          ? _value._optionsFoodForMultiple
+          : optionsFoodForMultiple // ignore: cast_nullable_to_non_nullable
+              as List<AmountOptionFood>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_ItemCar implements _ItemCar {
+class _$_ItemCar extends _ItemCar {
   const _$_ItemCar(
-      {required this.uuidProduct,
+      {required this.product,
+      required this.uuid,
       required this.amount,
-      final List<String> uuidsExtras = const [],
-      final List<String> uuidsOptionsFood = const []})
-      : _uuidsExtras = uuidsExtras,
-        _uuidsOptionsFood = uuidsOptionsFood;
+      this.comment = '',
+      final List<AmountExtraFood> extrasFood = const [],
+      final List<AmountOptionFood> optionsFoodOneSelection = const [],
+      final List<AmountOptionFood> optionsFoodForMultiple = const []})
+      : _extrasFood = extrasFood,
+        _optionsFoodOneSelection = optionsFoodOneSelection,
+        _optionsFoodForMultiple = optionsFoodForMultiple,
+        super._();
 
   factory _$_ItemCar.fromJson(Map<String, dynamic> json) =>
       _$$_ItemCarFromJson(json);
 
   @override
-  final String uuidProduct;
+  final ProductDto product;
+  @override
+  final String uuid;
   @override
   final int amount;
-  final List<String> _uuidsExtras;
   @override
   @JsonKey()
-  List<String> get uuidsExtras {
-    if (_uuidsExtras is EqualUnmodifiableListView) return _uuidsExtras;
+  final String comment;
+  final List<AmountExtraFood> _extrasFood;
+  @override
+  @JsonKey()
+  List<AmountExtraFood> get extrasFood {
+    if (_extrasFood is EqualUnmodifiableListView) return _extrasFood;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_uuidsExtras);
+    return EqualUnmodifiableListView(_extrasFood);
   }
 
-  final List<String> _uuidsOptionsFood;
+  final List<AmountOptionFood> _optionsFoodOneSelection;
   @override
   @JsonKey()
-  List<String> get uuidsOptionsFood {
-    if (_uuidsOptionsFood is EqualUnmodifiableListView)
-      return _uuidsOptionsFood;
+  List<AmountOptionFood> get optionsFoodOneSelection {
+    if (_optionsFoodOneSelection is EqualUnmodifiableListView)
+      return _optionsFoodOneSelection;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_uuidsOptionsFood);
+    return EqualUnmodifiableListView(_optionsFoodOneSelection);
+  }
+
+  final List<AmountOptionFood> _optionsFoodForMultiple;
+  @override
+  @JsonKey()
+  List<AmountOptionFood> get optionsFoodForMultiple {
+    if (_optionsFoodForMultiple is EqualUnmodifiableListView)
+      return _optionsFoodForMultiple;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_optionsFoodForMultiple);
   }
 
   @override
   String toString() {
-    return 'ItemCar(uuidProduct: $uuidProduct, amount: $amount, uuidsExtras: $uuidsExtras, uuidsOptionsFood: $uuidsOptionsFood)';
+    return 'ItemCart(product: $product, uuid: $uuid, amount: $amount, comment: $comment, extrasFood: $extrasFood, optionsFoodOneSelection: $optionsFoodOneSelection, optionsFoodForMultiple: $optionsFoodForMultiple)';
   }
 
   @override
@@ -340,23 +418,29 @@ class _$_ItemCar implements _ItemCar {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ItemCar &&
-            (identical(other.uuidProduct, uuidProduct) ||
-                other.uuidProduct == uuidProduct) &&
+            (identical(other.product, product) || other.product == product) &&
+            (identical(other.uuid, uuid) || other.uuid == uuid) &&
             (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.comment, comment) || other.comment == comment) &&
             const DeepCollectionEquality()
-                .equals(other._uuidsExtras, _uuidsExtras) &&
-            const DeepCollectionEquality()
-                .equals(other._uuidsOptionsFood, _uuidsOptionsFood));
+                .equals(other._extrasFood, _extrasFood) &&
+            const DeepCollectionEquality().equals(
+                other._optionsFoodOneSelection, _optionsFoodOneSelection) &&
+            const DeepCollectionEquality().equals(
+                other._optionsFoodForMultiple, _optionsFoodForMultiple));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      uuidProduct,
+      product,
+      uuid,
       amount,
-      const DeepCollectionEquality().hash(_uuidsExtras),
-      const DeepCollectionEquality().hash(_uuidsOptionsFood));
+      comment,
+      const DeepCollectionEquality().hash(_extrasFood),
+      const DeepCollectionEquality().hash(_optionsFoodOneSelection),
+      const DeepCollectionEquality().hash(_optionsFoodForMultiple));
 
   @JsonKey(ignore: true)
   @override
@@ -372,25 +456,398 @@ class _$_ItemCar implements _ItemCar {
   }
 }
 
-abstract class _ItemCar implements ItemCar {
+abstract class _ItemCar extends ItemCart {
   const factory _ItemCar(
-      {required final String uuidProduct,
+      {required final ProductDto product,
+      required final String uuid,
       required final int amount,
-      final List<String> uuidsExtras,
-      final List<String> uuidsOptionsFood}) = _$_ItemCar;
+      final String comment,
+      final List<AmountExtraFood> extrasFood,
+      final List<AmountOptionFood> optionsFoodOneSelection,
+      final List<AmountOptionFood> optionsFoodForMultiple}) = _$_ItemCar;
+  const _ItemCar._() : super._();
 
   factory _ItemCar.fromJson(Map<String, dynamic> json) = _$_ItemCar.fromJson;
 
   @override
-  String get uuidProduct;
+  ProductDto get product;
+  @override
+  String get uuid;
   @override
   int get amount;
   @override
-  List<String> get uuidsExtras;
+  String get comment;
   @override
-  List<String> get uuidsOptionsFood;
+  List<AmountExtraFood> get extrasFood;
+  @override
+  List<AmountOptionFood> get optionsFoodOneSelection;
+  @override
+  List<AmountOptionFood> get optionsFoodForMultiple;
   @override
   @JsonKey(ignore: true)
   _$$_ItemCarCopyWith<_$_ItemCar> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+AmountExtraFood _$AmountExtraFoodFromJson(Map<String, dynamic> json) {
+  return _AmountExtraFood.fromJson(json);
+}
+
+/// @nodoc
+mixin _$AmountExtraFood {
+  ExtraFood get extraFood => throw _privateConstructorUsedError;
+  String get uuidModifier => throw _privateConstructorUsedError;
+  int get amount => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $AmountExtraFoodCopyWith<AmountExtraFood> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AmountExtraFoodCopyWith<$Res> {
+  factory $AmountExtraFoodCopyWith(
+          AmountExtraFood value, $Res Function(AmountExtraFood) then) =
+      _$AmountExtraFoodCopyWithImpl<$Res, AmountExtraFood>;
+  @useResult
+  $Res call({ExtraFood extraFood, String uuidModifier, int amount});
+
+  $ExtraFoodCopyWith<$Res> get extraFood;
+}
+
+/// @nodoc
+class _$AmountExtraFoodCopyWithImpl<$Res, $Val extends AmountExtraFood>
+    implements $AmountExtraFoodCopyWith<$Res> {
+  _$AmountExtraFoodCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? extraFood = null,
+    Object? uuidModifier = null,
+    Object? amount = null,
+  }) {
+    return _then(_value.copyWith(
+      extraFood: null == extraFood
+          ? _value.extraFood
+          : extraFood // ignore: cast_nullable_to_non_nullable
+              as ExtraFood,
+      uuidModifier: null == uuidModifier
+          ? _value.uuidModifier
+          : uuidModifier // ignore: cast_nullable_to_non_nullable
+              as String,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ExtraFoodCopyWith<$Res> get extraFood {
+    return $ExtraFoodCopyWith<$Res>(_value.extraFood, (value) {
+      return _then(_value.copyWith(extraFood: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_AmountExtraFoodCopyWith<$Res>
+    implements $AmountExtraFoodCopyWith<$Res> {
+  factory _$$_AmountExtraFoodCopyWith(
+          _$_AmountExtraFood value, $Res Function(_$_AmountExtraFood) then) =
+      __$$_AmountExtraFoodCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({ExtraFood extraFood, String uuidModifier, int amount});
+
+  @override
+  $ExtraFoodCopyWith<$Res> get extraFood;
+}
+
+/// @nodoc
+class __$$_AmountExtraFoodCopyWithImpl<$Res>
+    extends _$AmountExtraFoodCopyWithImpl<$Res, _$_AmountExtraFood>
+    implements _$$_AmountExtraFoodCopyWith<$Res> {
+  __$$_AmountExtraFoodCopyWithImpl(
+      _$_AmountExtraFood _value, $Res Function(_$_AmountExtraFood) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? extraFood = null,
+    Object? uuidModifier = null,
+    Object? amount = null,
+  }) {
+    return _then(_$_AmountExtraFood(
+      extraFood: null == extraFood
+          ? _value.extraFood
+          : extraFood // ignore: cast_nullable_to_non_nullable
+              as ExtraFood,
+      uuidModifier: null == uuidModifier
+          ? _value.uuidModifier
+          : uuidModifier // ignore: cast_nullable_to_non_nullable
+              as String,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_AmountExtraFood extends _AmountExtraFood {
+  const _$_AmountExtraFood(
+      {required this.extraFood,
+      required this.uuidModifier,
+      required this.amount})
+      : super._();
+
+  factory _$_AmountExtraFood.fromJson(Map<String, dynamic> json) =>
+      _$$_AmountExtraFoodFromJson(json);
+
+  @override
+  final ExtraFood extraFood;
+  @override
+  final String uuidModifier;
+  @override
+  final int amount;
+
+  @override
+  String toString() {
+    return 'AmountExtraFood(extraFood: $extraFood, uuidModifier: $uuidModifier, amount: $amount)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AmountExtraFood &&
+            (identical(other.extraFood, extraFood) ||
+                other.extraFood == extraFood) &&
+            (identical(other.uuidModifier, uuidModifier) ||
+                other.uuidModifier == uuidModifier) &&
+            (identical(other.amount, amount) || other.amount == amount));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, extraFood, uuidModifier, amount);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AmountExtraFoodCopyWith<_$_AmountExtraFood> get copyWith =>
+      __$$_AmountExtraFoodCopyWithImpl<_$_AmountExtraFood>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_AmountExtraFoodToJson(
+      this,
+    );
+  }
+}
+
+abstract class _AmountExtraFood extends AmountExtraFood {
+  const factory _AmountExtraFood(
+      {required final ExtraFood extraFood,
+      required final String uuidModifier,
+      required final int amount}) = _$_AmountExtraFood;
+  const _AmountExtraFood._() : super._();
+
+  factory _AmountExtraFood.fromJson(Map<String, dynamic> json) =
+      _$_AmountExtraFood.fromJson;
+
+  @override
+  ExtraFood get extraFood;
+  @override
+  String get uuidModifier;
+  @override
+  int get amount;
+  @override
+  @JsonKey(ignore: true)
+  _$$_AmountExtraFoodCopyWith<_$_AmountExtraFood> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+AmountOptionFood _$AmountOptionFoodFromJson(Map<String, dynamic> json) {
+  return _AmountOptionFood.fromJson(json);
+}
+
+/// @nodoc
+mixin _$AmountOptionFood {
+  OptionFood get optionFood => throw _privateConstructorUsedError;
+  String get uuidModifier => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $AmountOptionFoodCopyWith<AmountOptionFood> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AmountOptionFoodCopyWith<$Res> {
+  factory $AmountOptionFoodCopyWith(
+          AmountOptionFood value, $Res Function(AmountOptionFood) then) =
+      _$AmountOptionFoodCopyWithImpl<$Res, AmountOptionFood>;
+  @useResult
+  $Res call({OptionFood optionFood, String uuidModifier});
+
+  $OptionFoodCopyWith<$Res> get optionFood;
+}
+
+/// @nodoc
+class _$AmountOptionFoodCopyWithImpl<$Res, $Val extends AmountOptionFood>
+    implements $AmountOptionFoodCopyWith<$Res> {
+  _$AmountOptionFoodCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? optionFood = null,
+    Object? uuidModifier = null,
+  }) {
+    return _then(_value.copyWith(
+      optionFood: null == optionFood
+          ? _value.optionFood
+          : optionFood // ignore: cast_nullable_to_non_nullable
+              as OptionFood,
+      uuidModifier: null == uuidModifier
+          ? _value.uuidModifier
+          : uuidModifier // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $OptionFoodCopyWith<$Res> get optionFood {
+    return $OptionFoodCopyWith<$Res>(_value.optionFood, (value) {
+      return _then(_value.copyWith(optionFood: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_AmountOptionFoodCopyWith<$Res>
+    implements $AmountOptionFoodCopyWith<$Res> {
+  factory _$$_AmountOptionFoodCopyWith(
+          _$_AmountOptionFood value, $Res Function(_$_AmountOptionFood) then) =
+      __$$_AmountOptionFoodCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({OptionFood optionFood, String uuidModifier});
+
+  @override
+  $OptionFoodCopyWith<$Res> get optionFood;
+}
+
+/// @nodoc
+class __$$_AmountOptionFoodCopyWithImpl<$Res>
+    extends _$AmountOptionFoodCopyWithImpl<$Res, _$_AmountOptionFood>
+    implements _$$_AmountOptionFoodCopyWith<$Res> {
+  __$$_AmountOptionFoodCopyWithImpl(
+      _$_AmountOptionFood _value, $Res Function(_$_AmountOptionFood) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? optionFood = null,
+    Object? uuidModifier = null,
+  }) {
+    return _then(_$_AmountOptionFood(
+      optionFood: null == optionFood
+          ? _value.optionFood
+          : optionFood // ignore: cast_nullable_to_non_nullable
+              as OptionFood,
+      uuidModifier: null == uuidModifier
+          ? _value.uuidModifier
+          : uuidModifier // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_AmountOptionFood extends _AmountOptionFood {
+  const _$_AmountOptionFood(
+      {required this.optionFood, required this.uuidModifier})
+      : super._();
+
+  factory _$_AmountOptionFood.fromJson(Map<String, dynamic> json) =>
+      _$$_AmountOptionFoodFromJson(json);
+
+  @override
+  final OptionFood optionFood;
+  @override
+  final String uuidModifier;
+
+  @override
+  String toString() {
+    return 'AmountOptionFood(optionFood: $optionFood, uuidModifier: $uuidModifier)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AmountOptionFood &&
+            (identical(other.optionFood, optionFood) ||
+                other.optionFood == optionFood) &&
+            (identical(other.uuidModifier, uuidModifier) ||
+                other.uuidModifier == uuidModifier));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, optionFood, uuidModifier);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AmountOptionFoodCopyWith<_$_AmountOptionFood> get copyWith =>
+      __$$_AmountOptionFoodCopyWithImpl<_$_AmountOptionFood>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_AmountOptionFoodToJson(
+      this,
+    );
+  }
+}
+
+abstract class _AmountOptionFood extends AmountOptionFood {
+  const factory _AmountOptionFood(
+      {required final OptionFood optionFood,
+      required final String uuidModifier}) = _$_AmountOptionFood;
+  const _AmountOptionFood._() : super._();
+
+  factory _AmountOptionFood.fromJson(Map<String, dynamic> json) =
+      _$_AmountOptionFood.fromJson;
+
+  @override
+  OptionFood get optionFood;
+  @override
+  String get uuidModifier;
+  @override
+  @JsonKey(ignore: true)
+  _$$_AmountOptionFoodCopyWith<_$_AmountOptionFood> get copyWith =>
       throw _privateConstructorUsedError;
 }
