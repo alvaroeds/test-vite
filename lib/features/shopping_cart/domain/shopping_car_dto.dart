@@ -37,6 +37,16 @@ class ItemCart with _$ItemCart {
 
   const ItemCart._();
 
+  bool get isModifiersEmpty =>
+      extrasFood.isEmpty &&
+      optionsFoodOneSelection.isEmpty &&
+      optionsFoodForMultiple.isEmpty;
+
+  int get totalModifiers =>
+      extrasFood.length +
+      optionsFoodOneSelection.length +
+      optionsFoodForMultiple.length;
+
   double get totalCost =>
       (product.priceWithDiscount +
           extrasFood.fold(0,

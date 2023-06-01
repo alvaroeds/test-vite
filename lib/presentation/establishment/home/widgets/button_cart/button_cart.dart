@@ -51,7 +51,8 @@ class ButtonCart extends StatelessWidget {
                       color: Colors.white,
                     ),
                     const SizedBox(width: 15),
-                    Text('${cart.totalItem} Productos',
+                    Text(
+                        '${cart.items.length} Producto${cart.items.length == 1 ? '' : 's'}',
                         style: GoogleFonts.manrope(
                           fontWeight: FontWeight.w700,
                           fontSize: 16,

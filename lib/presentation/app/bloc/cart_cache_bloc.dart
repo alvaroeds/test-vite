@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
@@ -7,16 +6,20 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pedido_listo_web/features/establishment/domain/modifiers.dart';
 import 'package:pedido_listo_web/features/establishment/domain/product_dto.dart';
 import 'package:pedido_listo_web/features/shared/core/uuid.dart';
-import 'package:pedido_listo_web/features/shopping_car/domain/shopping_car_dto.dart';
+import 'package:pedido_listo_web/features/shopping_cart/application/load_cart.dart';
+import 'package:pedido_listo_web/features/shopping_cart/application/save_cart.dart';
+import 'package:pedido_listo_web/features/shopping_cart/domain/shopping_car_dto.dart';
 import 'package:pedido_listo_web/presentation/establishment/details_product/bloc/details_product_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 part 'cart_cache_event.dart';
 part 'cart_cache_state.dart';
 part 'cart_cache_bloc.freezed.dart';
 
 class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
-  AppCacheBloc() : super(const AppCacheState()) {
+  final LoadCartUseCase _loadCartUseCase;
+  final SaveCartUseCase _saveCartUseCase;
+  AppCacheBloc(this._loadCartUseCase, this._saveCartUseCase)
+      : super(const AppCacheState()) {
     on<_CreateItem>(_createItem);
     on<_UpdateCart>(_updateCart);
     on<_ClearCart>(_clearCart);
@@ -26,26 +29,16 @@ class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
   FutureOr<void> _loadCart(_LoadCart event, Emitter<AppCacheState> emit) async {
     if (event.urlId == null) return;
 
-    final prefs = await SharedPreferences.getInstance();
+    if (state.cartCache.containsKey(event.urlId)) return;
 
-    final dataString = prefs.getString(event.urlId!);
-
-    if (dataString == null) {
-      emit(state.copyWith(cartCache: {
-        ...state.cartCache,
-        event.urlId!: ShoppingCartDto(uuid: event.urlId!)
-      }));
-      return;
-    }
-
-    final data = json.decode(dataString);
-
-    final shoppingCartDto =
-        ShoppingCartDto.fromJson(data as Map<String, dynamic>);
+    final result = await _loadCartUseCase.execute(event.urlId!);
 
     emit(state.copyWith(cartCache: {
       ...state.cartCache,
-      shoppingCartDto.uuid: shoppingCartDto
+      event.urlId!: result.fold(
+        () => ShoppingCartDto(uuid: event.urlId!),
+        (shoppingCartDto) => shoppingCartDto,
+      )
     }));
   }
 
@@ -103,10 +96,8 @@ class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
       ...state.cartCache,
       event.establishmentUuid: shoppingCartDto
     }));
-    final prefs = await SharedPreferences.getInstance();
 
-    await prefs.setString(
-        shoppingCartDto.uuid, json.encode(shoppingCartDto.toJson()));
+    await _saveCartUseCase.execute(shoppingCartDto);
   }
 
   FutureOr<void> _updateCart(
@@ -116,10 +107,7 @@ class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
       event.shoppingCartDto.uuid: event.shoppingCartDto
     }));
 
-    final prefs = await SharedPreferences.getInstance();
-
-    await prefs.setString(event.shoppingCartDto.uuid,
-        json.encode(event.shoppingCartDto.toJson()));
+    await _saveCartUseCase.execute(event.shoppingCartDto);
   }
 
   FutureOr<void> _clearCart(_ClearCart event, Emitter<AppCacheState> emit) {}

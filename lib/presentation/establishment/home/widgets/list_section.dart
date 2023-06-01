@@ -24,7 +24,7 @@ class ListSection extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(14, 10, 0, 10),
               child: Text(category.name,
-                  style: context.defaultSubtitle?.getStyle(
+                  style: context.headline4?.getStyle(
                     size: 20,
                   )),
             ),

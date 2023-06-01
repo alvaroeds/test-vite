@@ -5,6 +5,8 @@ class CustomTag extends StatelessWidget {
     required this.child,
     required this.primaryColor,
     required this.secondaryColor,
+    this.widthBorder = 1.5,
+    this.widthTag,
     this.padding,
     super.key,
   });
@@ -13,11 +15,13 @@ class CustomTag extends StatelessWidget {
   final EdgeInsets? padding;
   final Color primaryColor;
   final Color secondaryColor;
+  final double? widthTag;
+  final double widthBorder;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
+      width: widthTag,
       decoration: _decoration(),
       alignment: Alignment.center,
       padding:
@@ -28,7 +32,7 @@ class CustomTag extends StatelessWidget {
 
   BoxDecoration _decoration() => BoxDecoration(
         color: secondaryColor,
-        border: Border.all(color: primaryColor, width: 1.5),
+        border: Border.all(color: primaryColor, width: widthBorder),
         borderRadius: BorderRadius.circular(5),
       );
 }

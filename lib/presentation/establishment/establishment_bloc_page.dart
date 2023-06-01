@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pedido_listo_web/presentation/app/bloc/cart_cache_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/bloc/establishment_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/home/cubit/tab_home_cubit.dart';
 import 'package:pedido_listo_web/presentation/establishment/home/home_view.dart';
@@ -17,9 +16,10 @@ class EstablishmentBlocPage extends StatelessWidget {
     return BlocBuilder<EstablishmentBloc, EstablishmentState>(
       builder: (context, state) {
         return CycleWrapper(
+          // key: Key(idUrl.toString()),
           onDispose: () => bloc.add(const EstablishmentEvent.closed()),
-          onInit: () =>
-              context.read<AppCacheBloc>().add(AppCacheEvent.loadCart(idUrl)),
+          /*  onInit: () =>
+              context.read<AppCacheBloc>().add(AppCacheEvent.loadCart(idUrl)), */
           child: state.when(
             hasData: (establishment) => BlocProvider(
               create: (context) => TabHomeCubit(),

@@ -18,21 +18,21 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ShoppingCartEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() clearCart,
     required TResult Function(String uuid) addAmount,
     required TResult Function(String uuid) removeAmount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? clearCart,
     TResult? Function(String uuid)? addAmount,
     TResult? Function(String uuid)? removeAmount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? clearCart,
     TResult Function(String uuid)? addAmount,
     TResult Function(String uuid)? removeAmount,
     required TResult orElse(),
@@ -40,21 +40,21 @@ mixin _$ShoppingCartEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_ClearCart value) clearCart,
     required TResult Function(_AddAmount value) addAmount,
     required TResult Function(_RemoveAmount value) removeAmount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_ClearCart value)? clearCart,
     TResult? Function(_AddAmount value)? addAmount,
     TResult? Function(_RemoveAmount value)? removeAmount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_ClearCart value)? clearCart,
     TResult Function(_AddAmount value)? addAmount,
     TResult Function(_RemoveAmount value)? removeAmount,
     required TResult orElse(),
@@ -81,34 +81,35 @@ class _$ShoppingCartEventCopyWithImpl<$Res, $Val extends ShoppingCartEvent>
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$_ClearCartCopyWith<$Res> {
+  factory _$$_ClearCartCopyWith(
+          _$_ClearCart value, $Res Function(_$_ClearCart) then) =
+      __$$_ClearCartCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$ShoppingCartEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$_ClearCartCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res, _$_ClearCart>
+    implements _$$_ClearCartCopyWith<$Res> {
+  __$$_ClearCartCopyWithImpl(
+      _$_ClearCart _value, $Res Function(_$_ClearCart) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$_ClearCart implements _ClearCart {
+  const _$_ClearCart();
 
   @override
   String toString() {
-    return 'ShoppingCartEvent.started()';
+    return 'ShoppingCartEvent.clearCart()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$_ClearCart);
   }
 
   @override
@@ -117,33 +118,33 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() clearCart,
     required TResult Function(String uuid) addAmount,
     required TResult Function(String uuid) removeAmount,
   }) {
-    return started();
+    return clearCart();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? clearCart,
     TResult? Function(String uuid)? addAmount,
     TResult? Function(String uuid)? removeAmount,
   }) {
-    return started?.call();
+    return clearCart?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? clearCart,
     TResult Function(String uuid)? addAmount,
     TResult Function(String uuid)? removeAmount,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (clearCart != null) {
+      return clearCart();
     }
     return orElse();
   }
@@ -151,40 +152,40 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_ClearCart value) clearCart,
     required TResult Function(_AddAmount value) addAmount,
     required TResult Function(_RemoveAmount value) removeAmount,
   }) {
-    return started(this);
+    return clearCart(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_ClearCart value)? clearCart,
     TResult? Function(_AddAmount value)? addAmount,
     TResult? Function(_RemoveAmount value)? removeAmount,
   }) {
-    return started?.call(this);
+    return clearCart?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_ClearCart value)? clearCart,
     TResult Function(_AddAmount value)? addAmount,
     TResult Function(_RemoveAmount value)? removeAmount,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (clearCart != null) {
+      return clearCart(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements ShoppingCartEvent {
-  const factory _Started() = _$_Started;
+abstract class _ClearCart implements ShoppingCartEvent {
+  const factory _ClearCart() = _$_ClearCart;
 }
 
 /// @nodoc
@@ -251,7 +252,7 @@ class _$_AddAmount implements _AddAmount {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() clearCart,
     required TResult Function(String uuid) addAmount,
     required TResult Function(String uuid) removeAmount,
   }) {
@@ -261,7 +262,7 @@ class _$_AddAmount implements _AddAmount {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? clearCart,
     TResult? Function(String uuid)? addAmount,
     TResult? Function(String uuid)? removeAmount,
   }) {
@@ -271,7 +272,7 @@ class _$_AddAmount implements _AddAmount {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? clearCart,
     TResult Function(String uuid)? addAmount,
     TResult Function(String uuid)? removeAmount,
     required TResult orElse(),
@@ -285,7 +286,7 @@ class _$_AddAmount implements _AddAmount {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_ClearCart value) clearCart,
     required TResult Function(_AddAmount value) addAmount,
     required TResult Function(_RemoveAmount value) removeAmount,
   }) {
@@ -295,7 +296,7 @@ class _$_AddAmount implements _AddAmount {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_ClearCart value)? clearCart,
     TResult? Function(_AddAmount value)? addAmount,
     TResult? Function(_RemoveAmount value)? removeAmount,
   }) {
@@ -305,7 +306,7 @@ class _$_AddAmount implements _AddAmount {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_ClearCart value)? clearCart,
     TResult Function(_AddAmount value)? addAmount,
     TResult Function(_RemoveAmount value)? removeAmount,
     required TResult orElse(),
@@ -390,7 +391,7 @@ class _$_RemoveAmount implements _RemoveAmount {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() clearCart,
     required TResult Function(String uuid) addAmount,
     required TResult Function(String uuid) removeAmount,
   }) {
@@ -400,7 +401,7 @@ class _$_RemoveAmount implements _RemoveAmount {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? clearCart,
     TResult? Function(String uuid)? addAmount,
     TResult? Function(String uuid)? removeAmount,
   }) {
@@ -410,7 +411,7 @@ class _$_RemoveAmount implements _RemoveAmount {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? clearCart,
     TResult Function(String uuid)? addAmount,
     TResult Function(String uuid)? removeAmount,
     required TResult orElse(),
@@ -424,7 +425,7 @@ class _$_RemoveAmount implements _RemoveAmount {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_ClearCart value) clearCart,
     required TResult Function(_AddAmount value) addAmount,
     required TResult Function(_RemoveAmount value) removeAmount,
   }) {
@@ -434,7 +435,7 @@ class _$_RemoveAmount implements _RemoveAmount {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_ClearCart value)? clearCart,
     TResult? Function(_AddAmount value)? addAmount,
     TResult? Function(_RemoveAmount value)? removeAmount,
   }) {
@@ -444,7 +445,7 @@ class _$_RemoveAmount implements _RemoveAmount {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_ClearCart value)? clearCart,
     TResult Function(_AddAmount value)? addAmount,
     TResult Function(_RemoveAmount value)? removeAmount,
     required TResult orElse(),

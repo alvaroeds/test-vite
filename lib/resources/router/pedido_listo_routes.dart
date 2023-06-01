@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pedido_listo_web/const/resource.dart';
+import 'package:pedido_listo_web/presentation/app/bloc/cart_cache_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/bloc/establishment_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/details_product/details_product_bloc_page.dart';
 import 'package:pedido_listo_web/presentation/establishment/establishment_bloc_page.dart';
@@ -25,6 +26,7 @@ class RouterEstablishment {
     pageBuilder: (context, state) {
       final idUrl = state.pathParameters[firtsPath];
       context.read<EstablishmentBloc>().add(EstablishmentEvent.started(idUrl));
+      context.read<AppCacheBloc>().add(AppCacheEvent.loadCart(idUrl));
       return ConfigRouter.fadeRoute(
           child: EstablishmentBlocPage(idUrl: idUrl), state: state);
     },

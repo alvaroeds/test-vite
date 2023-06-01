@@ -4,7 +4,7 @@ import 'package:pedido_listo_web/presentation/app/bloc/cart_cache_bloc.dart';
 import 'package:pedido_listo_web/presentation/shopping_cart/bloc/shopping_car_bloc.dart';
 import 'package:pedido_listo_web/presentation/shopping_cart/views/empty_cart_view.dart';
 import 'package:pedido_listo_web/presentation/shopping_cart/views/some_cart_view.dart';
-import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
+import 'package:pedido_listo_web/presentation/shopping_cart/widgets/scaffold_cart.dart';
 
 class ShoppingCartBlocPage extends StatelessWidget {
   final String? urlId;
@@ -23,32 +23,10 @@ class ShoppingCartBlocPage extends StatelessWidget {
         }
 
         return BlocProvider(
+          key: Key(cartCache.uuid),
           create: (context) => ShoppingCartBloc(cartCache),
-          child: Scaffold(
-            appBar: AppBar(
-              centerTitle: true,
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('Canasta'),
-                  BlocSelector<ShoppingCartBloc, ShoppingCartState, String>(
-                    selector: (state) {
-                      return state.shoppingCart.items.length.toString();
-                    },
-                    builder: (context, amount) {
-                      return Text(amount);
-                    },
-                  )
-                ],
-              ),
-              leading: IconButton(
-                  onPressed: () => Navigator.pop(context),
-                  icon: Icon(
-                    Icons.arrow_back_ios_new,
-                    color: context.primaryColor,
-                  )),
-            ),
-            body: BlocConsumer<ShoppingCartBloc, ShoppingCartState>(
+          child: ScaffoldCart(
+            child: BlocConsumer<ShoppingCartBloc, ShoppingCartState>(
               listener: (context, state) {
                 context
                     .read<AppCacheBloc>()
