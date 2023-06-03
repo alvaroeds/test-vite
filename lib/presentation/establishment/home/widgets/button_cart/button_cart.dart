@@ -52,7 +52,7 @@ class ButtonCart extends StatelessWidget {
                     ),
                     const SizedBox(width: 15),
                     Text(
-                        '${cart.items.length} Producto${cart.items.length == 1 ? '' : 's'}',
+                        '${cart.totalItem} Producto${cart.items.length == 1 ? '' : 's'}',
                         style: GoogleFonts.manrope(
                           fontWeight: FontWeight.w700,
                           fontSize: 16,

@@ -56,6 +56,9 @@ class ConfigRouter {
               context
                   .read<EstablishmentBloc>()
                   .add(EstablishmentEvent.started(hostParts.first));
+              context
+                  .read<EstablishmentBloc>()
+                  .add(EstablishmentEvent.started(hostParts.first));
               return ConfigRouter.fadeRoute(
                   child: const EstablishmentBlocPage(), state: state);
             }

@@ -23,7 +23,7 @@ class MultipleSelectionSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
       child: BlocBuilder<DetailsProductBloc, DetailsProductState>(
         buildWhen: (previous, current) =>
             current.getCurrentAmountFromMultiple(multipleSelection) !=
@@ -49,6 +49,9 @@ class MultipleSelectionSection extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               Wrap(
+                  runSpacing: 15,
+                  spacing: 15,
+                  alignment: WrapAlignment.center,
                   children: multipleSelection.options
                       .map((option) => MultipleSelectionCard(
                             optionFood: option,

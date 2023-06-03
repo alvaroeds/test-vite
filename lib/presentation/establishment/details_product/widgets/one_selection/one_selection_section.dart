@@ -16,7 +16,7 @@ class OneSelectionSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
       child: BlocBuilder<DetailsProductBloc, DetailsProductState>(
         buildWhen: (previous, current) =>
             current.getOptionSelectedFromModifier(oneSelection.uuid) !=
@@ -38,6 +38,9 @@ class OneSelectionSection extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               Wrap(
+                spacing: 15,
+                runSpacing: 15,
+                alignment: WrapAlignment.center,
                 children: oneSelection.options
                     .map((option) => OneSelectionCard(
                           optionFood: option,

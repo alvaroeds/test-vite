@@ -20,18 +20,13 @@ class CustomOptionInfo extends StatelessWidget {
       children: [
         Text(
           name,
-          style: context.currentStyle.headlineMedium?.getStyle(
-            color:
-                isDisabled ? const Color(0xffA5A3A9) : const Color(0xff40454D),
-            weight: FontWeight.w700,
-            size: 14,
-          ),
+          style: context.getModifierContent(isDisabled: isDisabled)?.getStyle(
+                weight: FontWeight.bold,
+              ),
         ),
         Text(
           '+${price.formattedPrice}',
-          style: context.currentStyle.bodySmall?.getStyle(
-            color: isDisabled ? const Color(0xffA5A3A9) : null,
-          ),
+          style: context.getModifierContent(isDisabled: isDisabled),
         ),
       ],
     );

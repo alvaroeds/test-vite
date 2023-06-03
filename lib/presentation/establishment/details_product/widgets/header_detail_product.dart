@@ -56,7 +56,7 @@ class DelegateDetailProductHeader extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => maxHeight;
+  double get maxExtent => maxHeight * 0.75;
 
   @override
   double get minExtent => minHeight;

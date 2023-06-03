@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:pedido_listo_web/resources/utils/fonts.dart';
 
 const _selectedColor = Color(0xff00AC69);
 
@@ -26,17 +26,14 @@ class CategoryDrawerOption extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              name,
-              style: GoogleFonts.inter(
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
-                color: isSelected ? _selectedColor : const Color(0xff1D252C),
-              ),
-            ),
+            Text(name,
+                style: context.interBold2Title?.copyWith(
+                  fontSize: 14,
+                  color: isSelected ? _selectedColor : null,
+                )),
             Text(
               '$productsLength Productos',
-              style: GoogleFonts.inter(
+              style: context.headline4?.copyWith(
                 fontSize: 12,
                 fontWeight: FontWeight.w400,
                 color: isSelected ? _selectedColor : const Color(0xff878F9B),

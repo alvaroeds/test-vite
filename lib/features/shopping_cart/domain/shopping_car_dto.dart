@@ -47,15 +47,19 @@ class ItemCart with _$ItemCart {
       optionsFoodOneSelection.length +
       optionsFoodForMultiple.length;
 
-  double get totalCost =>
-      (product.priceWithDiscount +
-          extrasFood.fold(0,
-              (previousValue, element) => previousValue + element.totalCost) +
-          optionsFoodOneSelection.fold(0,
-              (previousValue, element) => previousValue + element.totalCost) +
-          optionsFoodForMultiple.fold(0,
-              (previousValue, element) => previousValue + element.totalCost)) *
-      amount;
+  double get totalCostWithDiscount =>
+      (product.priceWithDiscount + modifiersTotalCost) * amount;
+
+  double get totalCost => (product.price + modifiersTotalCost) * amount;
+
+  double get modifiersTotalCost =>
+      extrasFood.fold<double>(
+          0, (previousValue, element) => previousValue + element.totalCost) +
+      optionsFoodOneSelection.fold(
+          0, (previousValue, element) => previousValue + element.totalCost) +
+      optionsFoodForMultiple.fold(
+          0, (previousValue, element) => previousValue + element.totalCost);
+
   factory ItemCart.fromJson(Map<String, dynamic> json) =>
       _$ItemCartFromJson(json);
 }

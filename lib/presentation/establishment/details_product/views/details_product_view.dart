@@ -55,11 +55,7 @@ class DetailsProductView extends StatelessWidget {
                                   oneSelections, multipleSelections) +
                               product.priceWithDiscount) *
                           state.productQuantity,
-                      onPressed: (context) {
-                        final bloc = context.read<DetailsProductBloc>();
-
-                        _addToCard(context, bloc.state);
-                      },
+                      onPressed: _addToCard,
                     );
                   },
                 ),
@@ -71,7 +67,8 @@ class DetailsProductView extends StatelessWidget {
     );
   }
 
-  void _addToCard(BuildContext context, DetailsProductState state) {
+  void _addToCard(BuildContext context) {
+    final state = context.read<DetailsProductBloc>().state;
     final isReadyChoosesForAmount = choosesForAmount.every((element) {
       final currentAmount = state.getCurrentAmountFromModifier(element);
       return element.isValid(currentAmount);
@@ -86,13 +83,18 @@ class DetailsProductView extends StatelessWidget {
       return element.isValid(currentAmount);
     });
 
+    if (state.comment.length > 100) {
+      return showSnackBar(
+          'El comentario no puede tener más de 100 caracteres', context,
+          icon: Icons.chat);
+    }
+
     if (!isReadyChoosesForAmount ||
         !isReadyOneSelections ||
         !isReadyMultipleSelections) {
-      showSnackBar('Debes seleccionar todas las opciones', context,
+      return showSnackBar(
+          'Debes seleccionar las opciones obligatorias', context,
           icon: Icons.error);
-
-      return;
     }
     context.read<EstablishmentBloc>().state.whenOrNull(
       hasData: (establishment) {

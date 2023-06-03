@@ -17,7 +17,7 @@ class ItemCardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
         width: double.maxFinite,
         constraints: const BoxConstraints(minHeight: 150),
         decoration: const BoxDecoration(
@@ -43,7 +43,7 @@ class ItemCardView extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 16),
+            const SizedBox(width: 14),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,7 +81,7 @@ class ItemCardView extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            item.product.priceWithDiscount.formattedPrice,
+                            item.totalCostWithDiscount.formattedPrice,
                             style: GoogleFonts.manrope(
                               fontSize: 14,
                               color: context.currentTheme.primaryColor,
@@ -91,7 +91,7 @@ class ItemCardView extends StatelessWidget {
                           if (item.product.discount > 0) ...[
                             const SizedBox(width: 10),
                             Text(
-                              item.product.price.formattedPrice,
+                              item.totalCost.formattedPrice,
                               style: GoogleFonts.manrope(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
@@ -102,8 +102,8 @@ class ItemCardView extends StatelessWidget {
                         ],
                       ),
                       Container(
-                        constraints:
-                            const BoxConstraints(minWidth: 80, maxHeight: 30),
+                        constraints: const BoxConstraints(
+                            minWidth: 87 * 1.15, maxHeight: 29 * 1.15),
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: const Color(0xffC3C7CD),
@@ -162,11 +162,10 @@ class IconButtonDelete extends StatelessWidget {
         customBorder: const CircleBorder(),
         child: Container(
           margin: const EdgeInsets.all(4),
-          height: 20,
           child: const Center(
             child: Icon(
               Icons.delete,
-              size: 20,
+              size: 24,
               color: Color(0xffA5ABB4),
             ),
           ),
@@ -186,7 +185,6 @@ class IconButtonAmount extends StatelessWidget {
       customBorder: const CircleBorder(),
       child: Container(
         margin: const EdgeInsets.all(4),
-        width: 20,
         decoration: BoxDecoration(
           border: Border.all(
             width: 2,
@@ -196,7 +194,7 @@ class IconButtonAmount extends StatelessWidget {
         ),
         child: Icon(
           icon,
-          size: 16,
+          size: 20,
           color: context.primaryColor,
         ),
       ),
@@ -262,12 +260,15 @@ class _CommentNoteState extends State<CommentNote> {
           ),
         );
     Widget getButton() => TextButton(
-          onPressed: () {
-            setState(() {
-              isExpanded = !isExpanded;
-            });
-          },
-          child: isExpanded ? const Text('Leer Menos') : const Text('Leer Más'),
+          onPressed: () => setState(() => isExpanded = !isExpanded),
+          child: Text(
+            isExpanded ? 'Leer Menos' : 'Leer Más',
+            style: context.defaultButton?.copyWith(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+              color: context.primaryColor,
+            ),
+          ),
         );
 
     return isExpanded
@@ -289,7 +290,7 @@ class _CommentNoteState extends State<CommentNote> {
               isMultiline = textPainter.width >= constraints.maxWidth;
             }
             return Row(children: [
-              Expanded(
+              Flexible(
                 child: getText(),
               ),
               if (isMultiline) getButton()

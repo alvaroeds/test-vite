@@ -65,7 +65,7 @@ class DetailsProductBloc
       }));
     });
     on<_ChangeComment>((event, emit) {
-      emit(state.copyWith(comment: event.comment));
+      emit(state.copyWith(comment: event.comment.trim()));
     });
     on<_IncreaseProductQuantity>((event, emit) {
       emit(state.copyWith(productQuantity: state.productQuantity + 1));

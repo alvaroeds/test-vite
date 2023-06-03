@@ -9,12 +9,15 @@ class ThemeApp {
         displayLarge: GoogleFonts.poppins().getStyle(weight: FontWeight.bold),
         //? title category
         displayMedium: GoogleFonts.poppins().getStyle(weight: FontWeight.bold),
+
+        bodyMedium: GoogleFonts.nunitoSans(),
         //? title products.
         displaySmall:
             GoogleFonts.manrope().getStyle(color: const Color(0xff717171)),
         //? title menu option dashboard.
         headlineMedium:
             GoogleFonts.inter().getStyle(color: const Color(0xff717171)),
+
         //? description of product.
         bodySmall: GoogleFonts.manrope(),
       );

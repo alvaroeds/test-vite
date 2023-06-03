@@ -90,9 +90,7 @@ class _Tab extends StatelessWidget {
       height: 30,
       child: Text(
         name,
-        style: context.defaultButton?.getStyle(
-          color: colorDefault,
-        ),
+        style: context.interBold1Title?.getStyle(size: 16, color: colorDefault),
       ),
     );
   }

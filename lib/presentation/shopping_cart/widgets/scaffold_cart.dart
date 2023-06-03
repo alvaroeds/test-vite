@@ -49,7 +49,7 @@ class TitteCart extends StatelessWidget {
         ),
         BlocSelector<ShoppingCartBloc, ShoppingCartState, String>(
           selector: (state) {
-            return state.shoppingCart.items.length.toString();
+            return state.shoppingCart.totalItem.toString();
           },
           builder: (context, amount) {
             if (amount == '0') return const SizedBox.shrink();

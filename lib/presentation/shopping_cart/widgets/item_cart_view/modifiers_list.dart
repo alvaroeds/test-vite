@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pedido_listo_web/features/shopping_cart/domain/shopping_car_dto.dart';
+import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
+import 'package:pedido_listo_web/resources/utils/fonts.dart';
 
 class ModifierList extends StatefulWidget {
   final ItemCart item;
@@ -51,7 +53,11 @@ class _ModifierListState extends State<ModifierList> {
               },
               child: Text(
                 isExpanded ? 'Ver Menos' : 'Ver Más',
-                style: const TextStyle(fontSize: 14),
+                style: context.defaultButton?.copyWith(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: context.primaryColor,
+                ),
               ))
       ],
     );

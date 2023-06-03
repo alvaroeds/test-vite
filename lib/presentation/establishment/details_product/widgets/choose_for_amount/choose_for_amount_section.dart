@@ -22,7 +22,7 @@ class ChooseForAmountSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(24, 0, 24, 20),
+      padding: const EdgeInsets.fromLTRB(24, 0, 24, 15),
       child: BlocBuilder<DetailsProductBloc, DetailsProductState>(
         buildWhen: (previous, current) =>
             current.getCurrentAmountFromModifier(chooseForAmount) !=
