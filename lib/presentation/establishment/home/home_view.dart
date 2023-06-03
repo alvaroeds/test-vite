@@ -111,6 +111,7 @@ class _HomeViewState extends State<HomeView>
                     padding: EdgeInsets.only(
                         bottom: index == categories.length - 1 ? 100 : 0),
                     child: ListSection(
+                      uuidUrl: widget.establishment.idUrl,
                       onTapProduct: (uuid) {
                         context.goNamed(
                           RouterProduct.name,

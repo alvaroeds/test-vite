@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pedido_listo_web/features/establishment/domain/product_dto.dart';
+import 'package:pedido_listo_web/presentation/app/bloc/cart_cache_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/home/widgets/product_card/product_card.dart';
 import 'package:pedido_listo_web/resources/utils/extensions.dart';
 
@@ -7,10 +9,12 @@ class ListSection extends StatelessWidget {
   const ListSection({
     required this.category,
     required this.onTapProduct,
+    required this.uuidUrl,
     super.key,
   });
 
   final CategoriesDto category;
+  final String uuidUrl;
   final void Function(String uuid) onTapProduct;
 
   @override
@@ -30,12 +34,19 @@ class ListSection extends StatelessWidget {
                       weight: FontWeight.bold)),
             ),
             Wrap(
-              children: List.generate(
-                  category.products.length,
-                  (i) => ProductCard(
-                        onTap: () => onTapProduct(category.products[i].uuid),
-                        product: category.products[i],
-                      )),
+              children: List.generate(category.products.length, (i) {
+                final product = category.products[i];
+                return BlocSelector<AppCacheBloc, AppCacheState, int>(
+                  selector: (state) => state.getAmountProduct(product, uuidUrl),
+                  builder: (context, amount) {
+                    return ProductCard(
+                      amount: amount,
+                      onTap: () => onTapProduct(product.uuid),
+                      product: product,
+                    );
+                  },
+                );
+              }),
             )
           ],
         ));

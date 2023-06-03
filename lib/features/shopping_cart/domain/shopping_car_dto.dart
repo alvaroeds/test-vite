@@ -17,7 +17,9 @@ class ShoppingCartDto with _$ShoppingCartDto {
       items.fold(0, (previousValue, element) => previousValue + element.amount);
 
   double get totalCost => items.fold(
-      0, (previousValue, element) => previousValue + element.totalCost);
+      0,
+      (previousValue, element) =>
+          previousValue + element.totalCostWithDiscount);
 
   factory ShoppingCartDto.fromJson(Map<String, dynamic> json) =>
       _$ShoppingCartDtoFromJson(json);

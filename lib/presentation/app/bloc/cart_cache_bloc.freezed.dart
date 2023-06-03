@@ -1117,10 +1117,11 @@ class __$$_CartCacheStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CartCacheState implements _CartCacheState {
+class _$_CartCacheState extends _CartCacheState {
   const _$_CartCacheState(
       {final Map<String, ShoppingCartDto> cartCache = const {}})
-      : _cartCache = cartCache;
+      : _cartCache = cartCache,
+        super._();
 
   final Map<String, ShoppingCartDto> _cartCache;
   @override
@@ -1156,9 +1157,10 @@ class _$_CartCacheState implements _CartCacheState {
       __$$_CartCacheStateCopyWithImpl<_$_CartCacheState>(this, _$identity);
 }
 
-abstract class _CartCacheState implements AppCacheState {
+abstract class _CartCacheState extends AppCacheState {
   const factory _CartCacheState(
       {final Map<String, ShoppingCartDto> cartCache}) = _$_CartCacheState;
+  const _CartCacheState._() : super._();
 
   @override
   Map<String, ShoppingCartDto> get cartCache;

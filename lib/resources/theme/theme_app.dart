@@ -24,7 +24,7 @@ class ThemeApp {
 
   //* ThemeData Light
   static ThemeData get light => ThemeData.light().copyWith(
-        useMaterial3: true,
+        useMaterial3: false,
         textTheme: textThemeLight,
         primaryColor: ColorsApp.primaryColorLight,
         scaffoldBackgroundColor: ColorsApp.primaryBackgroundLight,

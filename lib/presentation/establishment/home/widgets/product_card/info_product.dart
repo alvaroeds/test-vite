@@ -8,9 +8,10 @@ import 'package:pedido_listo_web/features/establishment/domain/product_dto.dart'
 class InfoProduct extends StatelessWidget {
   const InfoProduct({
     required this.product,
+    required this.amount,
     super.key,
   });
-
+  final int amount;
   final ProductDto product;
 
   @override
@@ -35,21 +36,22 @@ class InfoProduct extends StatelessWidget {
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (true) ...[
+            if (amount > 0) ...[
               Container(
                 decoration: BoxDecoration(
                     color: const Color(0xff00AC69),
                     borderRadius: BorderRadius.circular(7)),
-                padding: const EdgeInsets.symmetric(horizontal: 11),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 11, vertical: 1),
                 alignment: Alignment.topCenter,
-                child: Text('1',
+                child: Text(amount.toString(),
                     style: GoogleFonts.manrope(
                       color: Colors.white,
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
                     )),
               ),
-              const SizedBox(width: 2),
+              const SizedBox(width: 4),
             ],
             Text(product.name,
                 style: GoogleFonts.manrope(

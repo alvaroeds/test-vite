@@ -9,11 +9,13 @@ const _borderRadius = 25.0;
 class ProductCard extends StatelessWidget {
   const ProductCard({
     required this.product,
+    required this.amount,
     required this.onTap,
     super.key,
   });
 
   final ProductDto product;
+  final int amount;
   final VoidCallback onTap;
 
   @override
@@ -47,7 +49,7 @@ class ProductCard extends StatelessWidget {
                   children: [
                     Expanded(
                       flex: 4,
-                      child: InfoProduct(product: product),
+                      child: InfoProduct(product: product, amount: amount),
                     ),
                     const SizedBox(width: 12),
                     Align(child: ImageProduct(images: product.images)),

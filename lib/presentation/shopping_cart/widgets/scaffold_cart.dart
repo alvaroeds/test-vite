@@ -16,6 +16,8 @@ class ScaffoldCart extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 80,
         centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.white,
         actions: const [ButtonClear()],
         title: const TitteCart(),
         leading: IconButton(
@@ -83,7 +85,7 @@ class ButtonClear extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(right: 20),
+      margin: const EdgeInsets.all(20),
       decoration: BoxDecoration(
           color: Colors.white,
           boxShadow: const [
@@ -95,9 +97,7 @@ class ButtonClear extends StatelessWidget {
           ],
           borderRadius: BorderRadius.circular(10)),
       child: BlocSelector<ShoppingCartBloc, ShoppingCartState, bool>(
-        selector: (state) {
-          return state.shoppingCart.items.isEmpty;
-        },
+        selector: (state) => state.shoppingCart.items.isEmpty,
         builder: (context, isEmpty) {
           const color = Color(0xFFC3C7CD);
           return IconButton(
