@@ -24,16 +24,21 @@ class ThemeApp {
 
   //* ThemeData Light
   static ThemeData get light => ThemeData.light().copyWith(
-        useMaterial3: false,
-        textTheme: textThemeLight,
-        primaryColor: ColorsApp.primaryColorLight,
-        scaffoldBackgroundColor: ColorsApp.primaryBackgroundLight,
-        colorScheme: const ColorScheme.light().copyWith(
-          primary: ColorsApp.primaryColorLight,
-        ),
+      useMaterial3: true,
+      textTheme: textThemeLight,
+      primaryColor: ColorsApp.primaryColorLight,
+      scaffoldBackgroundColor: ColorsApp.primaryBackgroundLight,
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: ColorsApp.primaryColorLight,
+        //? primary color
+        primary: ColorsApp.primaryColorLight,
 
-        // colorScheme: ColorScheme.fromSeed(
-        //   seedColor: ColorsApp.primaryColorLight,
-        // ),
+        //? secondary color
+        secondary: ColorsApp.primaryBackgroundLight,
+      )
+
+/*         colorScheme: ColorScheme.fromSeed(
+          seedColor: ColorsApp.primaryColorLight,
+        ), */
       );
 }

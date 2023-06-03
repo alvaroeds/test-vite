@@ -1,13 +1,7 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pedido_listo_web/presentation/app/bloc/cart_cache_bloc.dart';
-import 'package:pedido_listo_web/presentation/establishment/bloc/establishment_bloc.dart';
-import 'package:pedido_listo_web/presentation/establishment/establishment_bloc_page.dart';
-import 'package:pedido_listo_web/presentation/landing/landing_screen.dart';
 import 'package:pedido_listo_web/resources/router/pedido_listo_routes.dart';
-
-import 'package:universal_html/html.dart' as html;
 
 class ConfigRouter {
   final GoRouter goRouter;
@@ -15,17 +9,31 @@ class ConfigRouter {
   ConfigRouter._(this.goRouter);
 
   factory ConfigRouter.test() => ConfigRouter._(
-        getGoRouter(
-          routes: <GoRoute>[
-            RouterEstablishment.goRoute,
+        ConfigRouter.getGoRouter(
+          routes: [
+            RouterHome.getGoRoute(
+              routes: [
+                RouterEstablishment.getGoRoute(routes: [
+                  RouterProduct.goRoute,
+                  RouterCart.goRoute,
+                ]),
+              ],
+            )
           ],
         ),
       );
 
   factory ConfigRouter.dev() => ConfigRouter._(
-        getGoRouter(
-          routes: <GoRoute>[
-            RouterEstablishment.goRoute,
+        ConfigRouter.getGoRouter(
+          routes: [
+            RouterHome.getGoRoute(
+              routes: [
+                RouterEstablishment.getGoRoute(routes: [
+                  RouterProduct.goRoute,
+                  RouterCart.goRoute,
+                ]),
+              ],
+            )
           ],
         ),
       );
@@ -38,36 +46,8 @@ class ConfigRouter {
     //* remove hash
     return GoRouter(
       refreshListenable: changeNotifier,
-      initialLocation: '/',
-      routes: <GoRoute>[
-        /*  GoRoute(
-          path: '/${RouterEstablishment.firtsPath}',
-          redirect: (context, state) => '/',
-        ), */
-        GoRoute(
-          path: '/',
-          builder: (context, GoRouterState state) => const LandingScreen(),
-          // builder: (context, GoRouterState state) => const HomeReduxPage(),
-          routes: routes,
-          pageBuilder: (context, state) {
-            final uri = Uri.parse(html.window.location.href);
-            final hostParts = uri.host.split('.');
-
-            if (hostParts.length > 2) {
-              context
-                  .read<AppCacheBloc>()
-                  .add(AppCacheEvent.loadCart(hostParts.first));
-              context
-                  .read<EstablishmentBloc>()
-                  .add(EstablishmentEvent.started(hostParts.first));
-              return ConfigRouter.fadeRoute(
-                  child: const EstablishmentBlocPage(), state: state);
-            }
-
-            return fadeRoute(state: state, child: const LandingScreen());
-          },
-        ),
-      ],
+      initialLocation: RouterHome.firtsPath,
+      routes: routes,
     );
   }
 
@@ -81,5 +61,17 @@ class ConfigRouter {
         child: child,
       ),
     );
+  }
+}
+
+extension SubDomain on Uri {
+  bool get _hasSubDomain =>
+      host.split('.').length > 2 && int.tryParse(host.split('.').first) == null;
+
+  Option<String> get subDomain {
+    if (_hasSubDomain) {
+      return some(host.split('.').first);
+    }
+    return none();
   }
 }

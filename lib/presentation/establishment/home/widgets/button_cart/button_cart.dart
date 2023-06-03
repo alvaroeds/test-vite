@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pedido_listo_web/presentation/app/bloc/cart_cache_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/bloc/establishment_bloc.dart';
 import 'package:pedido_listo_web/resources/router/pedido_listo_routes.dart';
+import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
 import 'package:pedido_listo_web/resources/utils/format_price.dart';
 
 class ButtonCart extends StatelessWidget {
@@ -27,7 +28,7 @@ class ButtonCart extends StatelessWidget {
           }
           return Material(
             shape: const StadiumBorder(),
-            color: const Color(0xff00AC69),
+            color: context.primaryColor,
             child: InkWell(
               onTap: () {
                 final bloc = context.read<EstablishmentBloc>();

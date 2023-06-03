@@ -103,13 +103,15 @@ class ItemCardView extends StatelessWidget {
                       ),
                       Container(
                         constraints: const BoxConstraints(
-                            minWidth: 87 * 1.15, maxHeight: 29 * 1.15),
+                            minWidth: 87, maxHeight: 29 * 1.2),
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: const Color(0xffC3C7CD),
                           ),
                           borderRadius: BorderRadius.circular(50),
                         ),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 5, vertical: 4),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -126,7 +128,7 @@ class ItemCardView extends StatelessWidget {
                               alignment: Alignment.center,
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 6),
-                              constraints: const BoxConstraints(minWidth: 25),
+                              constraints: const BoxConstraints(minWidth: 20),
                               child: Text(
                                 item.amount.toString(),
                                 style: GoogleFonts.manrope(
@@ -160,15 +162,10 @@ class IconButtonDelete extends StatelessWidget {
     return InkWell(
         onTap: onTap,
         customBorder: const CircleBorder(),
-        child: Container(
-          margin: const EdgeInsets.all(4),
-          child: const Center(
-            child: Icon(
-              Icons.delete,
-              size: 24,
-              color: Color(0xffA5ABB4),
-            ),
-          ),
+        child: const Icon(
+          Icons.delete,
+          size: 24,
+          color: Color(0xffA5ABB4),
         ));
   }
 }
@@ -183,21 +180,24 @@ class IconButtonAmount extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       customBorder: const CircleBorder(),
-      child: Container(
-        margin: const EdgeInsets.all(4),
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: 2,
+      child: LayoutBuilder(builder: (context, constraints) {
+        return Container(
+          height: constraints.maxHeight,
+          width: constraints.maxHeight,
+          decoration: BoxDecoration(
+            border: Border.all(
+              width: 2,
+              color: context.primaryColor,
+            ),
+            shape: BoxShape.circle,
+          ),
+          child: Icon(
+            icon,
+            size: 16,
             color: context.primaryColor,
           ),
-          shape: BoxShape.circle,
-        ),
-        child: Icon(
-          icon,
-          size: 20,
-          color: context.primaryColor,
-        ),
-      ),
+        );
+      }),
     );
   }
 }

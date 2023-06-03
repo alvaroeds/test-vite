@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pedido_listo_web/presentation/shopping_cart/bloc/shopping_car_bloc.dart';
+import 'package:pedido_listo_web/presentation/shopping_cart/widgets/alert_dialog_clear.dart';
 import 'package:pedido_listo_web/presentation/shopping_cart/widgets/footer_cart.dart';
 import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
 
@@ -85,7 +86,7 @@ class ButtonClear extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(20),
+      margin: const EdgeInsets.only(right: 20),
       decoration: BoxDecoration(
           color: Colors.white,
           boxShadow: const [
@@ -102,7 +103,8 @@ class ButtonClear extends StatelessWidget {
           const color = Color(0xFFC3C7CD);
           return IconButton(
             padding: EdgeInsets.zero,
-            onPressed: isEmpty ? null : () => showAlertDialogClear(context),
+            onPressed:
+                isEmpty ? null : () => AlertDialogClearCart.show(context),
             icon: Icon(
               Icons.delete,
               size: 26,
@@ -111,109 +113,6 @@ class ButtonClear extends StatelessWidget {
           );
         },
       ),
-    );
-  }
-
-  void showAlertDialogClear(BuildContext context) {
-    // set up the AlertDialog
-    final alert = AlertDialog(
-      contentPadding: EdgeInsets.zero,
-      content: Container(
-        width: 400,
-        padding: const EdgeInsets.symmetric(vertical: 30),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              '¿Estás seguro de que\n deseas vaciar tu canasta?',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.inter(
-                textStyle: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xff1D252C),
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Spacer(flex: 3),
-                SizedBox(
-                  width: 140,
-                  height: 46,
-                  child: OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      side: BorderSide(
-                        color: context.primaryColor,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                    child: Text(
-                      'Cancelar',
-                      style: GoogleFonts.poppins(
-                        textStyle: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: context.primaryColor,
-                        ),
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ),
-                const Spacer(),
-                SizedBox(
-                  width: 140,
-                  height: 46,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: context.primaryColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                    child: Text(
-                      'Aceptar',
-                      style: GoogleFonts.poppins(
-                        textStyle: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    onPressed: () {
-                      context
-                          .read<ShoppingCartBloc>()
-                          .add(const ShoppingCartEvent.clearCart());
-                      Navigator.pop(context);
-                    },
-                  ),
-                ),
-                const Spacer(flex: 3),
-              ],
-            )
-          ],
-        ),
-      ),
-    );
-
-    // show the dialog
-    showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
     );
   }
 }

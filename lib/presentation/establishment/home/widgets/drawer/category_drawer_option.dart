@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pedido_listo_web/resources/theme/colors_app.dart';
 import 'package:pedido_listo_web/resources/utils/fonts.dart';
 
-const _selectedColor = Color(0xff00AC69);
+const _selectedColor = ColorsApp.primaryColorLight;
 
 class CategoryDrawerOption extends StatelessWidget {
   const CategoryDrawerOption({

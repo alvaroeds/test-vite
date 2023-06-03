@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pedido_listo_web/features/establishment/domain/modifiers.dart';
@@ -10,6 +11,7 @@ import 'package:pedido_listo_web/features/shopping_cart/application/load_cart.da
 import 'package:pedido_listo_web/features/shopping_cart/application/save_cart.dart';
 import 'package:pedido_listo_web/features/shopping_cart/domain/shopping_car_dto.dart';
 import 'package:pedido_listo_web/presentation/establishment/details_product/bloc/details_product_bloc.dart';
+import 'package:rxdart/rxdart.dart';
 
 part 'cart_cache_event.dart';
 part 'cart_cache_state.dart';
@@ -21,7 +23,10 @@ class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
   AppCacheBloc(this._loadCartUseCase, this._saveCartUseCase)
       : super(const AppCacheState()) {
     on<_CreateItem>(_createItem);
-    on<_UpdateCart>(_updateCart);
+    on<_UpdateCart>(_updateCart, transformer: (events, mappper) {
+      return restartable<_UpdateCart>().call(
+          events.debounceTime(const Duration(milliseconds: 1200)), mappper);
+    });
     on<_ClearCart>(_clearCart);
     on<_LoadCart>(_loadCart);
   }

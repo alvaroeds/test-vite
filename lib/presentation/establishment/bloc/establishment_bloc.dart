@@ -15,6 +15,7 @@ class EstablishmentBloc extends Bloc<EstablishmentEvent, EstablishmentState> {
   EstablishmentBloc(this.repository) : super(const _Initial()) {
     on<EstablishmentEvent>(
       (event, emit) async {
+        emit(const EstablishmentState.initial());
         if (event is _Started) {
           await emit.forEach(
             repository.getEstablishment(event.name),
@@ -25,8 +26,6 @@ class EstablishmentBloc extends Bloc<EstablishmentEvent, EstablishmentState> {
               );
             },
           );
-        } else {
-          emit(const EstablishmentState.initial());
         }
       },
       transformer: restartable(),

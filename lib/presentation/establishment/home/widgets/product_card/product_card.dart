@@ -21,8 +21,11 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cardWidth = context.screenWidth - _horizontalpadding;
-    final width =
-        context.getDouble(double.infinity, cardWidth / 2, cardWidth / 3);
+    final width = context.getDouble(
+      double.infinity,
+      cardWidth / 2,
+      cardWidth / 3,
+    );
 
     return InkWell(
       onTap: onTap,

@@ -7,6 +7,7 @@ import 'package:pedido_listo_web/presentation/establishment/bloc/establishment_b
 import 'package:pedido_listo_web/presentation/establishment/details_product/bloc/details_product_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/details_product/widgets/widgets.dart';
 import 'package:pedido_listo_web/presentation/landing/widgets/show_snack_bar.dart';
+import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
 
 class DetailsProductView extends StatelessWidget {
   const DetailsProductView({
@@ -109,5 +110,7 @@ class DetailsProductView extends StatelessWidget {
       },
     );
     Navigator.of(context).pop();
+    showSnackBar('Se añadió con éxito al carrito', context,
+        icon: Icons.fastfood, color: context.primaryColor);
   }
 }

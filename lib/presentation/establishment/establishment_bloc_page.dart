@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pedido_listo_web/presentation/establishment/bloc/establishment_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/home/cubit/tab_home_cubit.dart';
 import 'package:pedido_listo_web/presentation/establishment/home/home_view.dart';
 import 'package:pedido_listo_web/presentation/establishment/home/widgets/widgets.dart';
 import 'package:pedido_listo_web/presentation/widgets/loading_view.dart';
+import 'package:pedido_listo_web/resources/router/pedido_listo_routes.dart';
 
 class EstablishmentBlocPage extends StatelessWidget {
   const EstablishmentBlocPage({super.key, this.idUrl});
@@ -13,14 +15,21 @@ class EstablishmentBlocPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<EstablishmentBloc>();
-    return BlocBuilder<EstablishmentBloc, EstablishmentState>(
+    return BlocConsumer<EstablishmentBloc, EstablishmentState>(
+      listenWhen: (previous, state) {
+        return state.maybeWhen(isError: (_) => true, orElse: () => false);
+      },
+      listener: (context, state) {
+        // Si no encuentra lo regresa
+        state.whenOrNull(isError: (_) => context.goNamed(RouterHome.name));
+      },
       builder: (context, state) {
         return CycleWrapper(
           // key: Key(idUrl.toString()),
           onDispose: () => bloc.add(const EstablishmentEvent.closed()),
           /*  onInit: () =>
               context.read<AppCacheBloc>().add(AppCacheEvent.loadCart(idUrl)), */
-          child: state.when(
+          child: state.maybeWhen(
             hasData: (establishment) => BlocProvider(
               create: (context) => TabHomeCubit(),
               child: Scaffold(
@@ -38,8 +47,7 @@ class EstablishmentBlocPage extends StatelessWidget {
                     FloatingActionButtonLocation.centerFloat,
               ),
             ),
-            initial: () => child(const LoadingView()),
-            isError: (_) => child(Text(404.toString())),
+            orElse: () => child(const LoadingView()),
           ),
         );
       },

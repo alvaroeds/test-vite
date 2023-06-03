@@ -38,16 +38,16 @@ const _maxBottonImageMargin = 45.0;
 //* for Title and description
 const _minLeftTitleMargin = 127.0;
 const _maxLeftTitleMargin = 136.0;
-const _minRightTitleMargin = 80.0;
-const _maxRightTitleMargin = 136.0;
+const _minRightTitleMargin = 10.0;
+const _maxRightTitleMargin = 20.0;
 const _minTitleTopMargin = 33.0;
 const _maxTitleTopMargin = 83.0;
 
 //* for Social buttons
-const _minTopSocialsMargin = 46.5;
+/* const _minTopSocialsMargin = 46.5;
 const _maxTopSocialsMargin = 44.0;
 const _minRightSocialsMargin = 26.5;
-const _maxRightSocialsMargin = 49.0;
+const _maxRightSocialsMargin = 49.0; */
 
 class DelegateEstablishmentHeaders extends SliverPersistentHeaderDelegate {
   DelegateEstablishmentHeaders({
@@ -59,7 +59,7 @@ class DelegateEstablishmentHeaders extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    final percent = shrinkOffset / maxExtent;
+    final percent = (shrinkOffset / 100).clamp(0.0, 1.0);
 
     final imageTopMargin =
         lerpDouble(_maxTopImageMargin, _minTopImageMargin, percent);
@@ -75,10 +75,10 @@ class DelegateEstablishmentHeaders extends SliverPersistentHeaderDelegate {
     final titleRightMargin =
         lerpDouble(_minRightTitleMargin, _maxRightTitleMargin, percent);
 
-    final socialsTopMargin =
+    /*   final socialsTopMargin =
         lerpDouble(_maxTopSocialsMargin, _minTopSocialsMargin, percent);
     final socialsRightMargin =
-        lerpDouble(_maxRightSocialsMargin, _minRightSocialsMargin, percent);
+        lerpDouble(_maxRightSocialsMargin, _minRightSocialsMargin, percent); */
 
     return Stack(
       children: [
@@ -102,13 +102,13 @@ class DelegateEstablishmentHeaders extends SliverPersistentHeaderDelegate {
             percent: percent,
           ),
         ),
-        Positioned(
+        /*  Positioned(
           top: socialsTopMargin,
           right: socialsRightMargin,
           child: SocialLinkers(
             socialNetworks: establishment.socialNetwork,
           ),
-        )
+        ) */
       ],
     );
   }

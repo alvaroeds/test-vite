@@ -26,7 +26,7 @@ class DrawerEstablishment extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                padding: const EdgeInsets.fromLTRB(14, 0, 34, 0),
+                padding: const EdgeInsets.fromLTRB(14, 0, 24, 0),
                 height: 80,
                 alignment: Alignment.center,
                 child: Row(
@@ -42,7 +42,12 @@ class DrawerEstablishment extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    const Icon(Icons.close, color: _blackColor),
+                    IconButton(
+                        icon: const Icon(Icons.close),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        color: _blackColor),
                   ],
                 ),
               ),

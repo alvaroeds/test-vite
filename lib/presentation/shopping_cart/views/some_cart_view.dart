@@ -23,6 +23,7 @@ class SomeCartView extends StatelessWidget {
           return const EmptyCartView();
         }
         return ListView(
+          physics: const ClampingScrollPhysics(),
           children: shoppingCart.items.map(
             (item) {
               return ItemCardView(

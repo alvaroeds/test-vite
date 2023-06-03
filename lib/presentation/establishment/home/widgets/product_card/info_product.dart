@@ -4,6 +4,7 @@ import 'package:pedido_listo_web/presentation/establishment/home/widgets/product
 import 'package:pedido_listo_web/presentation/establishment/home/widgets/product_card/popular_tag.dart';
 
 import 'package:pedido_listo_web/features/establishment/domain/product_dto.dart';
+import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
 
 class InfoProduct extends StatelessWidget {
   const InfoProduct({
@@ -39,7 +40,7 @@ class InfoProduct extends StatelessWidget {
             if (amount > 0) ...[
               Container(
                 decoration: BoxDecoration(
-                    color: const Color(0xff00AC69),
+                    color: context.primaryColor,
                     borderRadius: BorderRadius.circular(7)),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 11, vertical: 1),
