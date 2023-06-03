@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pedido_listo_web/presentation/app/bloc/cart_cache_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/bloc/establishment_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/establishment_bloc_page.dart';
 import 'package:pedido_listo_web/presentation/landing/landing_screen.dart';
@@ -54,8 +55,8 @@ class ConfigRouter {
 
             if (hostParts.length > 2) {
               context
-                  .read<EstablishmentBloc>()
-                  .add(EstablishmentEvent.started(hostParts.first));
+                  .read<AppCacheBloc>()
+                  .add(AppCacheEvent.loadCart(hostParts.first));
               context
                   .read<EstablishmentBloc>()
                   .add(EstablishmentEvent.started(hostParts.first));
