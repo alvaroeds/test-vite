@@ -9,10 +9,9 @@ class CommentBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 75,
       child: TextField(
         minLines: 1,
-        maxLines: 100,
+        maxLines: 6,
         onChanged: (value) {
           context
               .read<DetailsProductBloc>()
@@ -30,6 +29,40 @@ class CommentBox extends StatelessWidget {
               size: 14,
             )),
       ),
+    );
+  }
+}
+
+class CommentLength extends StatelessWidget {
+  const CommentLength({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocSelector<DetailsProductBloc, DetailsProductState, int>(
+      selector: (state) {
+        return state.comment.length;
+      },
+      builder: (context, length) {
+        final textStyle = context.headline4?.copyWith(
+          color: const Color(0xff40454D),
+          fontWeight: FontWeight.w400,
+          fontSize: 14,
+        );
+
+        return Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text('$length',
+                  style: textStyle?.copyWith(
+                    color: length > 100 ? Colors.red : null,
+                  )),
+              Text('/100', style: textStyle),
+            ],
+          ),
+        );
+      },
     );
   }
 }

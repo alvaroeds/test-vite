@@ -9,28 +9,36 @@ class ThemeApp {
         displayLarge: GoogleFonts.poppins().getStyle(weight: FontWeight.bold),
         //? title category
         displayMedium: GoogleFonts.poppins().getStyle(weight: FontWeight.bold),
+
+        bodyMedium: GoogleFonts.nunitoSans(),
         //? title products.
         displaySmall:
             GoogleFonts.manrope().getStyle(color: const Color(0xff717171)),
         //? title menu option dashboard.
         headlineMedium:
             GoogleFonts.inter().getStyle(color: const Color(0xff717171)),
+
         //? description of product.
         bodySmall: GoogleFonts.manrope(),
       );
 
   //* ThemeData Light
   static ThemeData get light => ThemeData.light().copyWith(
-        useMaterial3: true,
-        textTheme: textThemeLight,
-        primaryColor: ColorsApp.primaryColorLight,
-        scaffoldBackgroundColor: ColorsApp.primaryBackgroundLight,
-        colorScheme: const ColorScheme.light().copyWith(
-          primary: ColorsApp.primaryColorLight,
-        ),
+      useMaterial3: true,
+      textTheme: textThemeLight,
+      primaryColor: ColorsApp.primaryColorLight,
+      scaffoldBackgroundColor: ColorsApp.primaryBackgroundLight,
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: ColorsApp.primaryColorLight,
+        //? primary color
+        primary: ColorsApp.primaryColorLight,
 
-        // colorScheme: ColorScheme.fromSeed(
-        //   seedColor: ColorsApp.primaryColorLight,
-        // ),
+        //? secondary color
+        secondary: ColorsApp.primaryBackgroundLight,
+      )
+
+/*         colorScheme: ColorScheme.fromSeed(
+          seedColor: ColorsApp.primaryColorLight,
+        ), */
       );
 }

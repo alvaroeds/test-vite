@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pedido_listo_web/features/establishment/domain/product_dto.dart';
+import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
 import 'package:pedido_listo_web/resources/utils/extensions.dart';
 
 class CustomTabbar extends StatelessWidget {
@@ -32,7 +33,7 @@ class CustomTabbar extends StatelessWidget {
                   padding: EdgeInsets.zero,
                   isScrollable: true,
                   controller: controller,
-                  indicatorColor: context.currentTheme.primaryColor,
+                  indicatorColor: context.primaryColor,
                   labelColor: Colors.black,
                   unselectedLabelColor: Colors.black,
                   indicatorSize: TabBarIndicatorSize.label,
@@ -83,16 +84,13 @@ class _Tab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorDefault =
-        selected ? context.currentTheme.primaryColor : Colors.black;
+    final colorDefault = selected ? context.primaryColor : Colors.black;
 
     return Tab(
       height: 30,
       child: Text(
         name,
-        style: context.defaultButton?.getStyle(
-          color: colorDefault,
-        ),
+        style: context.interBold1Title?.getStyle(size: 16, color: colorDefault),
       ),
     );
   }

@@ -26,6 +26,7 @@ mixin _$ProductDto {
   double get discount => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
   String get uuid => throw _privateConstructorUsedError;
+  int get dateOnAdd => throw _privateConstructorUsedError;
   List<String> get images => throw _privateConstructorUsedError;
   List<String> get chooseForAmountUuids => throw _privateConstructorUsedError;
   List<String> get oneSelectionUuids => throw _privateConstructorUsedError;
@@ -50,6 +51,7 @@ abstract class $ProductDtoCopyWith<$Res> {
       double discount,
       double price,
       String uuid,
+      int dateOnAdd,
       List<String> images,
       List<String> chooseForAmountUuids,
       List<String> oneSelectionUuids,
@@ -75,6 +77,7 @@ class _$ProductDtoCopyWithImpl<$Res, $Val extends ProductDto>
     Object? discount = null,
     Object? price = null,
     Object? uuid = null,
+    Object? dateOnAdd = null,
     Object? images = null,
     Object? chooseForAmountUuids = null,
     Object? oneSelectionUuids = null,
@@ -105,6 +108,10 @@ class _$ProductDtoCopyWithImpl<$Res, $Val extends ProductDto>
           ? _value.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
               as String,
+      dateOnAdd: null == dateOnAdd
+          ? _value.dateOnAdd
+          : dateOnAdd // ignore: cast_nullable_to_non_nullable
+              as int,
       images: null == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
@@ -140,6 +147,7 @@ abstract class _$$_ProductDtoCopyWith<$Res>
       double discount,
       double price,
       String uuid,
+      int dateOnAdd,
       List<String> images,
       List<String> chooseForAmountUuids,
       List<String> oneSelectionUuids,
@@ -163,6 +171,7 @@ class __$$_ProductDtoCopyWithImpl<$Res>
     Object? discount = null,
     Object? price = null,
     Object? uuid = null,
+    Object? dateOnAdd = null,
     Object? images = null,
     Object? chooseForAmountUuids = null,
     Object? oneSelectionUuids = null,
@@ -193,6 +202,10 @@ class __$$_ProductDtoCopyWithImpl<$Res>
           ? _value.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
               as String,
+      dateOnAdd: null == dateOnAdd
+          ? _value.dateOnAdd
+          : dateOnAdd // ignore: cast_nullable_to_non_nullable
+              as int,
       images: null == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
@@ -223,6 +236,7 @@ class _$_ProductDto extends _ProductDto {
       required this.discount,
       required this.price,
       this.uuid = '',
+      this.dateOnAdd = 0,
       final List<String> images = const [],
       final List<String> chooseForAmountUuids = const [],
       final List<String> oneSelectionUuids = const [],
@@ -249,6 +263,9 @@ class _$_ProductDto extends _ProductDto {
   @override
   @JsonKey()
   final String uuid;
+  @override
+  @JsonKey()
+  final int dateOnAdd;
   final List<String> _images;
   @override
   @JsonKey()
@@ -290,7 +307,7 @@ class _$_ProductDto extends _ProductDto {
 
   @override
   String toString() {
-    return 'ProductDto(description: $description, name: $name, state: $state, discount: $discount, price: $price, uuid: $uuid, images: $images, chooseForAmountUuids: $chooseForAmountUuids, oneSelectionUuids: $oneSelectionUuids, multipleSelectionUuids: $multipleSelectionUuids)';
+    return 'ProductDto(description: $description, name: $name, state: $state, discount: $discount, price: $price, uuid: $uuid, dateOnAdd: $dateOnAdd, images: $images, chooseForAmountUuids: $chooseForAmountUuids, oneSelectionUuids: $oneSelectionUuids, multipleSelectionUuids: $multipleSelectionUuids)';
   }
 
   @override
@@ -306,6 +323,8 @@ class _$_ProductDto extends _ProductDto {
                 other.discount == discount) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.uuid, uuid) || other.uuid == uuid) &&
+            (identical(other.dateOnAdd, dateOnAdd) ||
+                other.dateOnAdd == dateOnAdd) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             const DeepCollectionEquality()
                 .equals(other._chooseForAmountUuids, _chooseForAmountUuids) &&
@@ -325,6 +344,7 @@ class _$_ProductDto extends _ProductDto {
       discount,
       price,
       uuid,
+      dateOnAdd,
       const DeepCollectionEquality().hash(_images),
       const DeepCollectionEquality().hash(_chooseForAmountUuids),
       const DeepCollectionEquality().hash(_oneSelectionUuids),
@@ -352,6 +372,7 @@ abstract class _ProductDto extends ProductDto {
       required final double discount,
       required final double price,
       final String uuid,
+      final int dateOnAdd,
       final List<String> images,
       final List<String> chooseForAmountUuids,
       final List<String> oneSelectionUuids,
@@ -373,6 +394,8 @@ abstract class _ProductDto extends ProductDto {
   double get price;
   @override
   String get uuid;
+  @override
+  int get dateOnAdd;
   @override
   List<String> get images;
   @override
@@ -517,7 +540,7 @@ class _$_CategoriesDto extends _CategoriesDto {
       required this.state,
       this.uuid = '',
       @JsonKey(name: CategoriesDto.ProductField)
-          final List<ProductDto> products = const []})
+      final List<ProductDto> products = const []})
       : _products = products,
         super._();
 
@@ -581,7 +604,7 @@ abstract class _CategoriesDto extends CategoriesDto {
       required final String state,
       final String uuid,
       @JsonKey(name: CategoriesDto.ProductField)
-          final List<ProductDto> products}) = _$_CategoriesDto;
+      final List<ProductDto> products}) = _$_CategoriesDto;
   const _CategoriesDto._() : super._();
 
   factory _CategoriesDto.fromJson(Map<String, dynamic> json) =

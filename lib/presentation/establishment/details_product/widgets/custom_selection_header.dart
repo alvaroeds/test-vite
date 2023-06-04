@@ -27,11 +27,7 @@ class CustomSelectionHeader extends StatelessWidget {
             children: [
               Text(
                 name,
-                style: context.defaultTitle?.getStyle(
-                  color: const Color(0xff40454D),
-                  weight: FontWeight.w700,
-                  size: 18,
-                ),
+                style: context.interBold2Title?.getStyle(size: 18),
               ),
               Text(
                 description,

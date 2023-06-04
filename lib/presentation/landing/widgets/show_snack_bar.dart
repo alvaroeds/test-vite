@@ -1,6 +1,7 @@
 import 'package:flash/flash.dart';
 import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:pedido_listo_web/resources/utils/extensions.dart';
 
 void showSnackBar(
   String message,
@@ -16,6 +17,7 @@ void showSnackBar(
       return FlashBar(
         controller: controller, behavior: FlashBehavior.floating,
         // brightness: Brightness.dark,b
+        position: FlashPosition.top,
         backgroundColor: backgroundColor,
         dismissDirections: const [FlashDismissDirection.startToEnd],
         // horizontalDismissDirection: HorizontalDismissDirection.startToEnd,
@@ -29,10 +31,10 @@ void showSnackBar(
         reverseAnimationCurve: Curves.slowMiddle,
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         content: Text(message,
-            style: const TextStyle(
+            style: context.interBold1Title?.copyWith(
               color: Colors.white,
               fontSize: 16,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.bold,
             )),
         icon: Padding(
           padding: const EdgeInsets.only(left: 8),

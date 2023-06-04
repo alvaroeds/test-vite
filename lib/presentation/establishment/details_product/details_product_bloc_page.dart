@@ -31,7 +31,7 @@ class DetailsProductPage extends StatelessWidget {
               context.goNamed(
                 RouterEstablishment.name,
                 pathParameters: {
-                  RouterEstablishment.firtsParam: establishment.idUrl
+                  RouterEstablishment.firtsPath: establishment.idUrl
                 },
               );
             },

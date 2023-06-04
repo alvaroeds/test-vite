@@ -22,7 +22,23 @@ extension Fonts on BuildContext {
   TextStyle? get defaultTitle => currentStyle.displayLarge;
 
   TextStyle? get defaultSubtitle => currentStyle.displayMedium;
+  TextStyle? getModifierContent({bool isDisabled = false}) =>
+      currentStyle.bodyMedium?.copyWith(
+          color: isDisabled ? const Color(0xffA5A3A9) : const Color(0xff40454D),
+          fontSize: 14,
+          fontWeight: FontWeight.w400);
+
   TextStyle? get headline4 => currentStyle.headlineMedium;
+
+  TextStyle? get interBold1Title => currentStyle.headlineMedium?.copyWith(
+        fontWeight: FontWeight.bold,
+        color: const Color(0xff1D252C),
+      );
+
+  TextStyle? get interBold2Title => currentStyle.headlineMedium?.copyWith(
+        fontWeight: FontWeight.bold,
+        color: const Color(0xff40454D),
+      );
 
   TextStyle? get defaultButton => currentStyle.bodySmall;
 

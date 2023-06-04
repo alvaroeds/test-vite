@@ -22,7 +22,7 @@ class ChooseForAmountSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(24, 0, 24, 20),
+      padding: const EdgeInsets.fromLTRB(24, 0, 24, 15),
       child: BlocBuilder<DetailsProductBloc, DetailsProductState>(
         buildWhen: (previous, current) =>
             current.getCurrentAmountFromModifier(chooseForAmount) !=
@@ -45,7 +45,8 @@ class ChooseForAmountSection extends StatelessWidget {
                         'Selecciona hasta $_maximumQuantity opciones'),
                 isRequired: chooseForAmount.isRequired,
                 isReady: currentAmount >= max(_minimumQuantity, 1) &&
-                    currentAmount <= _maximumQuantity,
+                    currentAmount <= _maximumQuantity &&
+                    _minimumQuantity != 0,
               ),
               const SizedBox(height: 30),
               Wrap(

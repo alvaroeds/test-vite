@@ -107,20 +107,22 @@ class _HomeViewState extends State<HomeView>
                     delegate: SliverChildBuilderDelegate((context, index) {
                   final selectIndex =
                       currentIndex == 0 ? index : currentIndex - 1;
-                  return Padding(
-                    padding: EdgeInsets.only(
-                        bottom: index == categories.length - 1 ? 100 : 0),
-                    child: ListSection(
-                      onTapProduct: (uuid) {
-                        context.go(
-                          '/${widget.establishment.idUrl}/${RouterProduct.firtsPath}/$uuid',
-                          //   params: {RouterEstablishment.firtsParam: uuid},
-                        );
-                      },
-                      category: categories[selectIndex],
-                    ),
+                  return ListSection(
+                    idUrl: widget.establishment.idUrl,
+                    onTapProduct: (uuid) {
+                      context.goNamed(
+                        RouterProduct.name,
+                        pathParameters: {
+                          RouterEstablishment.firtsPath:
+                              widget.establishment.idUrl,
+                          RouterProduct.uuidPath: uuid,
+                        },
+                      );
+                    },
+                    category: categories[selectIndex],
                   );
                 }, childCount: currentIndex == 0 ? categories.length : 1)),
+                const SliverToBoxAdapter(child: SizedBox(height: 60))
               ],
               const SliverFooter()
             ],

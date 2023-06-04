@@ -14,6 +14,7 @@ class ProductDto with _$ProductDto {
     required double discount,
     required double price,
     @Default('') String uuid,
+    @Default(0) int dateOnAdd,
     @Default([]) List<String> images,
     @Default([]) List<String> chooseForAmountUuids,
     @Default([]) List<String> oneSelectionUuids,
@@ -58,7 +59,7 @@ class CategoriesDto with _$CategoriesDto {
     @Default('') String uuid,
     @JsonKey(name: CategoriesDto.ProductField)
     @Default([])
-        List<ProductDto> products,
+    List<ProductDto> products,
   }) = _CategoriesDto;
 
   const CategoriesDto._();

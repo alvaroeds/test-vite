@@ -15,7 +15,7 @@ class BackgroundProductImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = Color.lerp(
-        Colors.black.withOpacity(.2), Colors.black.withOpacity(.6), percent);
+        Colors.black.withOpacity(.2), Colors.black.withOpacity(.4), percent);
     return Stack(
       children: [
         const Positioned.fill(child: ColoredBox(color: Colors.black)),
@@ -37,7 +37,7 @@ class BackgroundProductImage extends StatelessWidget {
           end: Alignment.bottomCenter,
           colors: [
             color ?? Colors.black.withOpacity(.5),
-            Colors.black,
+            const Color.fromRGBO(0, 0, 0, 0.6),
           ],
         ),
       );

@@ -9,18 +9,23 @@ const _borderRadius = 25.0;
 class ProductCard extends StatelessWidget {
   const ProductCard({
     required this.product,
+    required this.amount,
     required this.onTap,
     super.key,
   });
 
   final ProductDto product;
+  final int amount;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     final cardWidth = context.screenWidth - _horizontalpadding;
-    final width =
-        context.getDouble(double.infinity, cardWidth / 2, cardWidth / 3);
+    final width = context.getDouble(
+      double.infinity,
+      cardWidth / 2,
+      cardWidth / 3,
+    );
 
     return InkWell(
       onTap: onTap,
@@ -47,7 +52,7 @@ class ProductCard extends StatelessWidget {
                   children: [
                     Expanded(
                       flex: 4,
-                      child: InfoProduct(product: product),
+                      child: InfoProduct(product: product, amount: amount),
                     ),
                     const SizedBox(width: 12),
                     Align(child: ImageProduct(images: product.images)),

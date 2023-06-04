@@ -1,22 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pedido_listo_web/presentation/establishment/bloc/establishment_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/home/cubit/tab_home_cubit.dart';
 import 'package:pedido_listo_web/presentation/establishment/home/home_view.dart';
 import 'package:pedido_listo_web/presentation/establishment/home/widgets/widgets.dart';
 import 'package:pedido_listo_web/presentation/widgets/loading_view.dart';
+import 'package:pedido_listo_web/resources/router/pedido_listo_routes.dart';
 
 class EstablishmentBlocPage extends StatelessWidget {
-  const EstablishmentBlocPage({super.key});
+  const EstablishmentBlocPage({super.key, this.idUrl});
+  final String? idUrl;
 
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<EstablishmentBloc>();
-    return BlocBuilder<EstablishmentBloc, EstablishmentState>(
+    return BlocConsumer<EstablishmentBloc, EstablishmentState>(
+      listenWhen: (previous, state) {
+        return state.maybeWhen(isError: (_) => true, orElse: () => false);
+      },
+      listener: (context, state) {
+        // Si no encuentra lo regresa
+        state.whenOrNull(isError: (_) => context.goNamed(RouterHome.name));
+      },
       builder: (context, state) {
-        return _DisposeWrapper(
-          () => bloc.add(const EstablishmentEvent.closed()),
-          child: state.when(
+        return CycleWrapper(
+          // key: Key(idUrl.toString()),
+          onDispose: () => bloc.add(const EstablishmentEvent.closed()),
+          /*  onInit: () =>
+              context.read<AppCacheBloc>().add(AppCacheEvent.loadCart(idUrl)), */
+          child: state.maybeWhen(
             hasData: (establishment) => BlocProvider(
               create: (context) => TabHomeCubit(),
               child: Scaffold(
@@ -27,13 +40,14 @@ class EstablishmentBlocPage extends StatelessWidget {
                   establishment: establishment,
                   //  initialIndex: state.index,
                 ),
-                floatingActionButton: const ButtonCart(),
+                floatingActionButton: ButtonCart(
+                  idUrl: establishment.idUrl,
+                ),
                 floatingActionButtonLocation:
                     FloatingActionButtonLocation.centerFloat,
               ),
             ),
-            initial: () => child(const LoadingView()),
-            isError: (_) => child(Text(404.toString())),
+            orElse: () => child(const LoadingView()),
           ),
         );
       },
@@ -47,19 +61,27 @@ class EstablishmentBlocPage extends StatelessWidget {
       );
 }
 
-class _DisposeWrapper extends StatefulWidget {
-  final VoidCallback onDispose;
+class CycleWrapper extends StatefulWidget {
+  final VoidCallback? onDispose;
+  final VoidCallback? onInit;
   final Widget child;
-  const _DisposeWrapper(this.onDispose, {required this.child});
+  const CycleWrapper(
+      {required this.child, super.key, this.onDispose, this.onInit});
 
   @override
-  State<_DisposeWrapper> createState() => __DisposeWrapperState();
+  State<CycleWrapper> createState() => _CycleWrapperState();
 }
 
-class __DisposeWrapperState extends State<_DisposeWrapper> {
+class _CycleWrapperState extends State<CycleWrapper> {
+  @override
+  void initState() {
+    widget.onInit?.call();
+    super.initState();
+  }
+
   @override
   void dispose() {
-    widget.onDispose();
+    widget.onDispose?.call();
     super.dispose();
   }
 

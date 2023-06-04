@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pedido_listo_web/features/establishment/domain/product_dto.dart';
 import 'package:pedido_listo_web/presentation/establishment/details_product/widgets/widgets.dart';
 import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
+import 'package:pedido_listo_web/resources/utils/fonts.dart';
 
 class DetailProductInfo extends StatelessWidget {
   const DetailProductInfo({
@@ -15,7 +16,7 @@ class DetailProductInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(24, 0, 24, 30),
+      padding: const EdgeInsets.fromLTRB(24, 0, 24, 15),
       color: context.backgroundColor,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -26,11 +27,7 @@ class DetailProductInfo extends StatelessWidget {
               Expanded(
                   child: Text(
                 product.name,
-                style: GoogleFonts.inter(
-                  fontWeight: FontWeight.w800,
-                  fontSize: 30,
-                  color: const Color(0xff40454D),
-                ),
+                style: context.interBold2Title?.copyWith(fontSize: 30),
               )),
               const SizedBox(width: 6),
               if (product.discount > 0)
