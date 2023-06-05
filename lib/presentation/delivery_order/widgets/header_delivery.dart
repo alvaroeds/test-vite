@@ -62,7 +62,6 @@ class AppBarDelivery extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size(double.maxFinite, 80);
 }
 
-
 /* class ButtonClear extends StatelessWidget {
   const ButtonClear({super.key});
 
