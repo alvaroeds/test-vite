@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pedido_listo_web/presentation/delivery_order/bloc/delivery_order_bloc.dart';
@@ -5,6 +7,7 @@ import 'package:pedido_listo_web/presentation/delivery_order/widgets/forms/deliv
 import 'package:pedido_listo_web/presentation/delivery_order/widgets/cards/take_away_card.dart';
 import 'package:pedido_listo_web/presentation/widgets/buttons/elevated_button_app.dart';
 import 'package:pedido_listo_web/presentation/widgets/buttons/outline_button_app.dart';
+import 'package:pedido_listo_web/resources/utils/fonts.dart';
 
 class FormServicesType extends StatelessWidget {
   const FormServicesType({super.key});
@@ -16,17 +19,23 @@ class FormServicesType extends StatelessWidget {
       builder: (context, service) {
         return Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.all(32),
-              child: Text('Tipo de servicio'),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Text(
+                'Tipo de servicio',
+                style: context.interBold1Title
+                    ?.copyWith(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
             ),
+            const SizedBox(height: 20),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 _ServicesTab(
                     isSelected: service.isTakeaway,
                     name: 'Para llevar',
                     service: const Service.takeaway()),
+                const SizedBox(width: 10),
                 _ServicesTab(
                     isSelected: service.isDelivery,
                     name: 'Delivery',
@@ -58,16 +67,27 @@ class _ServicesTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width * 0.42;
+    final buttonWidth = min(width, 188.5);
     void onSelect() => context
         .read<DeliveryOrderBloc>()
         .add(DeliveryOrderEvent.updateService(service));
     return isSelected
         ? ElevatedButtonApp(
             title: name,
+            width: buttonWidth,
+            height: 50,
+            style: context.interBold2Title
+                ?.copyWith(fontSize: 20, color: Colors.white),
             onPressed: onSelect,
           )
         : OutlineButtonApp(
             title: name,
+            width: buttonWidth,
+            borderWith: 02,
+            height: 50,
+            primaryColor: Colors.black,
+            style: context.interBold2Title?.copyWith(fontSize: 20),
             onPressed: onSelect,
           );
   }

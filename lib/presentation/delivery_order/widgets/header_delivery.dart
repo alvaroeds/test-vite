@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
 import 'package:pedido_listo_web/resources/utils/fonts.dart';
 
 class TitteDelivery extends StatelessWidget {
@@ -19,6 +20,48 @@ class TitteDelivery extends StatelessWidget {
     );
   }
 }
+
+class AppBarDelivery extends StatelessWidget implements PreferredSizeWidget {
+  final VoidCallback? onPressed;
+  const AppBarDelivery({super.key, this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 80,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF6B7380).withOpacity(0.1),
+            blurRadius: 24,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 30),
+            child: IconButton(
+                onPressed: onPressed,
+                icon: Icon(
+                  Icons.arrow_back_ios_new,
+                  color: context.primaryColor,
+                )),
+          ),
+          const TitteDelivery(),
+          const SizedBox(width: 60)
+        ],
+      ),
+    );
+  }
+
+  @override
+  Size get preferredSize => const Size(double.maxFinite, 80);
+}
+
 
 /* class ButtonClear extends StatelessWidget {
   const ButtonClear({super.key});

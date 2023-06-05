@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pedido_listo_web/presentation/delivery_order/bloc/delivery_order_bloc.dart';
 
 import 'package:pedido_listo_web/presentation/delivery_order/widgets/cards/mixin_style.dart';
+import 'package:pedido_listo_web/resources/utils/extensions.dart';
 
 class TakeawayCard extends StatelessWidget with CardStyle {
   const TakeawayCard({super.key});
@@ -16,8 +17,21 @@ class TakeawayCard extends StatelessWidget with CardStyle {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Dirección de recojo'),
-            Text(bloc.establishmentDto.localDirection),
+            Text('Dirección de recojo',
+                style: context.currentStyle.bodyMedium
+                    ?.copyWith(fontWeight: FontWeight.bold, fontSize: 16)),
+            const SizedBox(height: 18),
+            Row(
+              children: [
+                const Icon(Icons.store_outlined, size: 30),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(bloc.establishmentDto.localDirection,
+                      style: context.currentStyle.bodyMedium?.copyWith(
+                          fontWeight: FontWeight.bold, fontSize: 14)),
+                ),
+              ],
+            ),
           ],
         ));
   }

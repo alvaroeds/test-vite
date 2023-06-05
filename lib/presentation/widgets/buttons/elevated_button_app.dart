@@ -6,11 +6,13 @@ class ElevatedButtonApp extends StatelessWidget {
   final double? width;
   final double? height;
   final String title;
+  final TextStyle? style;
   final void Function()? onPressed;
   const ElevatedButtonApp(
       {required this.title,
       this.width,
       this.height,
+      this.style,
       super.key,
       this.onPressed});
 
@@ -29,13 +31,14 @@ class ElevatedButtonApp extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           title,
-          style: GoogleFonts.poppins(
-            textStyle: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
+          style: style ??
+              GoogleFonts.poppins(
+                textStyle: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
         ),
       ),
     );

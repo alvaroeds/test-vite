@@ -40,7 +40,7 @@ class FooterDelivery extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         onPressed: () => _confirmOrder(context),
         label: Text(
-          'Confirmar',
+          'HACER PEDIDO',
           style: GoogleFonts.inter(
               textStyle: const TextStyle(
             fontSize: 20,

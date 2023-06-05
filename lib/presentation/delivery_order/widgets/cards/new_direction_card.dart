@@ -6,6 +6,7 @@ import 'package:pedido_listo_web/presentation/delivery_order/bloc/delivery_order
 import 'package:pedido_listo_web/presentation/delivery_order/widgets/inputs/input_address_field.dart';
 
 import 'package:pedido_listo_web/presentation/delivery_order/widgets/cards/mixin_style.dart';
+import 'package:pedido_listo_web/resources/utils/fonts.dart';
 
 class NewDirectionCard extends StatelessWidget with CardStyle {
   const NewDirectionCard({super.key});
@@ -22,11 +23,16 @@ class NewDirectionCard extends StatelessWidget with CardStyle {
       child: Container(
           padding: cardPadding,
           decoration: cardStyle,
-          child: const Column(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Ingrese una dirección de envío'),
-              InputAddressField(),
+              Text(
+                'Ingrese una dirección de envío',
+                style: context.currentStyle.bodyMedium
+                    ?.copyWith(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 18),
+              const InputAddressField(),
             ],
           )),
     );

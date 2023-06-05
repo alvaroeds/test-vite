@@ -11,8 +11,10 @@ class DataView extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.all(16),
       children: const [
-        Text('Informacion de contacto'),
+        SizedBox(height: 20),
+        TitleFormContact(),
         FormContactUser(),
+        SizedBox(height: 20),
         FormServicesType(),
         SizedBox(height: 64),
         FooterDelivery()

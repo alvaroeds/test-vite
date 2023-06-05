@@ -6,6 +6,7 @@ import 'package:pedido_listo_web/presentation/delivery_order/bloc/delivery_order
 import 'package:pedido_listo_web/presentation/delivery_order/widgets/cards/addresses_card.dart';
 import 'package:pedido_listo_web/presentation/delivery_order/widgets/cards/new_direction_card.dart';
 import 'package:pedido_listo_web/presentation/delivery_order/widgets/inputs/input_address_field.dart';
+import 'package:pedido_listo_web/resources/utils/fonts.dart';
 
 class DeliverySection extends StatelessWidget {
   const DeliverySection({super.key});
@@ -21,10 +22,17 @@ class DeliverySection extends StatelessWidget {
         return state.fold(
           NewDirectionCard.new,
           (addressSelected) => Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AddressCard(addressSelected: addressSelected),
               const SizedBox(height: 20),
-              const Text('O Ingrese una nueva dirección'),
+              Text(
+                ' O Ingrese una nueva dirección',
+                style: context.currentStyle.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 10),
               InputAddressField(
                 key: Key(addressSelected.uuid),
               ),
