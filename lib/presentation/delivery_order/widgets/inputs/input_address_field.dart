@@ -9,6 +9,12 @@ class InputAddressField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       key: key,
+      maxLength: 150,
+      textCapitalization: TextCapitalization.sentences,
+      decoration: const InputDecoration(
+        counterText: '',
+        hintText: 'Ingrese su dirección acá',
+      ),
       onSubmitted: (value) {
         context.read<AppCacheBloc>().add(AppCacheEvent.createAddress(value));
       },

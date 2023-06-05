@@ -25,6 +25,12 @@ class FormContactUser extends StatelessWidget {
           const SizedBox(height: 20),
           const Text('Nombre'),
           TextFormField(
+            maxLength: 100,
+            textCapitalization: TextCapitalization.words,
+            decoration: const InputDecoration(
+                hintStyle: TextStyle(color: Color(0xff3e1e3e6)),
+                hintText: 'Ingrese su nombre acá',
+                counterText: ''),
             initialValue: bloc.state.contactName,
             onChanged: (value) =>
                 bloc.add(DeliveryOrderEvent.updateName(value)),
@@ -32,6 +38,11 @@ class FormContactUser extends StatelessWidget {
           const SizedBox(height: 26),
           const Text('Número de telefono'),
           TextFormField(
+            maxLength: 14,
+            decoration: const InputDecoration(
+                hintStyle: TextStyle(color: Color(0xff3e1e3e6)),
+                hintText: '+59-9-256-5333',
+                counterText: ''),
             initialValue: bloc.state.contactPhone,
             onChanged: (value) =>
                 bloc.add(DeliveryOrderEvent.updatePhone(value)),

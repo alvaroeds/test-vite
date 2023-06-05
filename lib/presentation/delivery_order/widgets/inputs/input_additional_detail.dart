@@ -11,6 +11,12 @@ class InputAdditionalDetail extends StatelessWidget {
     return TextFormField(
       key: key,
       initialValue: initValue,
+      maxLength: 100,
+      textCapitalization: TextCapitalization.sentences,
+      decoration: const InputDecoration(
+        counterText: '',
+        hintText: 'N° depto, casa, referencia',
+      ),
       onChanged: (value) {
         context
             .read<DeliveryOrderBloc>()
