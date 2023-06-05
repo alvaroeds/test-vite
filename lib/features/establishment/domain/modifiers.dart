@@ -23,7 +23,7 @@ class ChooseForAmount with _$ChooseForAmount {
     required int maximumQuantity,
     @Default(0) int minimumQuantity,
     @Default('') String uuid,
-    @Default('Elige tu extra') String name,
+    @Default('') String name,
     @Default([]) List<ExtraFood> extras,
   }) = _ChooseForAmount;
 

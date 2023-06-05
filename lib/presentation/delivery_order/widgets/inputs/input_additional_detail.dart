@@ -9,6 +9,10 @@ class InputAdditionalDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const borderStyle = OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFD1D5DB)),
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+    );
     return TextFormField(
       key: key,
       initialValue: initValue,
@@ -17,14 +21,8 @@ class InputAdditionalDetail extends StatelessWidget {
       decoration: InputDecoration(
         filled: true,
         contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-        border: const OutlineInputBorder(
-          borderSide: BorderSide(color: Color(0xFFD1D5DB)),
-          borderRadius: BorderRadius.all(Radius.circular(8)),
-        ),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Color(0xFFD1D5DB)),
-          borderRadius: BorderRadius.all(Radius.circular(8)),
-        ),
+        border: borderStyle,
+        enabledBorder: borderStyle,
         fillColor: const Color(0xFFF9FAFB),
         counterText: '',
         hintStyle: context.interBold1Title?.copyWith(

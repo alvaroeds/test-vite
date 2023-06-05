@@ -34,7 +34,7 @@ _$_ChooseForAmount _$$_ChooseForAmountFromJson(Map<String, dynamic> json) =>
       maximumQuantity: json['maximumQuantity'] as int,
       minimumQuantity: json['minimumQuantity'] as int? ?? 0,
       uuid: json['uuid'] as String? ?? '',
-      name: json['name'] as String? ?? 'Elige tu extra',
+      name: json['name'] as String? ?? '',
       extras: (json['extras'] as List<dynamic>?)
               ?.map((e) => ExtraFood.fromJson(e as Map<String, dynamic>))
               .toList() ??

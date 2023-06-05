@@ -11,6 +11,7 @@ class InputPhoneField extends StatelessWidget {
     final bloc = context.read<DeliveryOrderBloc>();
     return _BaseInputField(
       initValue: bloc.state.contactName,
+      keyboardType: TextInputType.phone,
       hintText: '+59-9-256-5333',
       onChanged: (value) => bloc.add(DeliveryOrderEvent.updatePhone(value)),
       title: 'Número Telefónico',
@@ -37,17 +38,23 @@ class _BaseInputField extends StatelessWidget {
   final String initValue;
   final String hintText;
   final String title;
-
+  final TextInputType? keyboardType;
   final void Function(String)? onChanged;
 
-  const _BaseInputField(
-      {required this.initValue,
-      required this.hintText,
-      required this.title,
-      required this.onChanged});
+  const _BaseInputField({
+    required this.initValue,
+    required this.hintText,
+    required this.title,
+    required this.onChanged,
+    this.keyboardType,
+  });
 
   @override
   Widget build(BuildContext context) {
+    const borderStyle = OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFE8E8EA)),
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+    );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -59,20 +66,13 @@ class _BaseInputField extends StatelessWidget {
         ),
         TextFormField(
           maxLength: 14,
-
-          keyboardType: TextInputType.phone, //E8E8EA
+          keyboardType: keyboardType,
           decoration: InputDecoration(
               filled: true,
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              border: const OutlineInputBorder(
-                borderSide: BorderSide(color: Color(0xFFE8E8EA)),
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-              ),
-              enabledBorder: const OutlineInputBorder(
-                borderSide: BorderSide(color: Color(0xFFE8E8EA)),
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-              ),
+              border: borderStyle,
+              enabledBorder: borderStyle,
               fillColor: Colors.white,
               hintStyle: const TextStyle(
                 color: Color.fromRGBO(225, 227, 230, 0.953),

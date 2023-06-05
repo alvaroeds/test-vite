@@ -8,6 +8,10 @@ class InputAddressField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const borderStyle = OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFFE8E8EA)),
+      borderRadius: BorderRadius.all(Radius.circular(18)),
+    );
     return SizedBox(
       height: 56,
       child: TextField(
@@ -19,14 +23,8 @@ class InputAddressField extends StatelessWidget {
           isDense: false,
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 64, vertical: 20),
-          border: const OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0xFFE8E8EA)),
-            borderRadius: BorderRadius.all(Radius.circular(18)),
-          ),
-          enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0xFFE8E8EA)),
-            borderRadius: BorderRadius.all(Radius.circular(18)),
-          ),
+          border: borderStyle,
+          enabledBorder: borderStyle,
           fillColor: const Color.fromRGBO(255, 255, 255, 1),
           counterText: '',
           hintStyle: context.currentStyle.bodyMedium?.copyWith(

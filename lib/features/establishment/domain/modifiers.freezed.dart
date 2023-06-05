@@ -366,7 +366,7 @@ class _$_ChooseForAmount extends _ChooseForAmount {
       {required this.maximumQuantity,
       this.minimumQuantity = 0,
       this.uuid = '',
-      this.name = 'Elige tu extra',
+      this.name = '',
       final List<ExtraFood> extras = const []})
       : _extras = extras,
         super._();
