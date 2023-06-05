@@ -88,7 +88,7 @@ Cambio: [CAMBIO]
 💲 *Costos*
 Costo de los productos: ${cart.totalCost}$deliveryCost
 
-*Total a pagar: ${cart.totalCost + establishment.deliveryCost}*
+*Total a pagar: ${cart.totalCost + (address.isNone() ? 0.0 : establishment.deliveryCost)}*
 
 \u{1F4DD} *Pedido*
 

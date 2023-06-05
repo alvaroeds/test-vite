@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pedido_listo_web/presentation/shopping_cart/widgets/footer_cart.dart';
 import 'package:pedido_listo_web/presentation/shopping_cart/widgets/header_cart.dart';
-import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
+import 'package:pedido_listo_web/presentation/widgets/app_bar_wrapper.dart';
 
 class ScaffoldCart extends StatelessWidget {
   final Widget child;
@@ -12,21 +12,27 @@ class ScaffoldCart extends StatelessWidget {
     return Scaffold(
       body: child,
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        toolbarHeight: 80,
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: Colors.white,
-        actions: const [ButtonClear()],
-        title: const TitteCart(),
-        leading: IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: Icon(
-              Icons.arrow_back_ios_new,
-              color: context.primaryColor,
-            )),
+      appBar: AppBarCart(
+        onPressedBack: () => Navigator.pop(context),
       ),
       bottomNavigationBar: const FooterCart(),
     );
   }
+}
+
+class AppBarCart extends StatelessWidget implements PreferredSizeWidget {
+  final VoidCallback? onPressedBack;
+  const AppBarCart({super.key, this.onPressedBack});
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBarWrapper(
+      title: const TitteCart(),
+      action: const ButtonClear(),
+      onPressedBack: onPressedBack,
+    );
+  }
+
+  @override
+  Size get preferredSize => const Size(double.maxFinite, 80);
 }

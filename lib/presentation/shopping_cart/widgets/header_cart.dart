@@ -29,6 +29,7 @@ class TitteCart extends StatelessWidget {
 
             return Container(
               constraints: const BoxConstraints(minWidth: 31),
+              height: 31,
               margin: const EdgeInsets.only(left: 14),
               alignment: Alignment.center,
               decoration: BoxDecoration(

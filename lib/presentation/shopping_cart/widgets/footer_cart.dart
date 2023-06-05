@@ -20,7 +20,16 @@ class FooterCart extends StatelessWidget {
         return Container(
           height: 84,
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-          color: Colors.white,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0xFF6B7380).withOpacity(0.1),
+                blurRadius: 24,
+                offset: const Offset(0, -4),
+              ),
+            ],
+          ),
           child: Row(
             children: [
               if (totalCost == 0)

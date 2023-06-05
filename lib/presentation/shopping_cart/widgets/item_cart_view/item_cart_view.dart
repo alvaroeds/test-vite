@@ -21,7 +21,7 @@ class ItemCardView extends StatelessWidget {
         width: double.maxFinite,
         constraints: const BoxConstraints(minHeight: 150),
         decoration: const BoxDecoration(
-          border: Border(top: BorderSide(color: Color(0xFFE1E3E6))),
+          border: Border(bottom: BorderSide(color: Color(0xFFE1E3E6))),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
