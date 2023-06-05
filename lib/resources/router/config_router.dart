@@ -31,6 +31,7 @@ class ConfigRouter {
                 RouterEstablishment.getGoRoute(routes: [
                   RouterProduct.goRoute,
                   RouterCart.goRoute,
+                  RouterDeleveryOrder.goRoute,
                 ]),
               ],
             )

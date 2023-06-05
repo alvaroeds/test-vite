@@ -6,22 +6,29 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pedido_listo_web/features/establishment/domain/modifiers.dart';
 import 'package:pedido_listo_web/features/establishment/domain/product_dto.dart';
-import 'package:pedido_listo_web/features/shared/core/uuid.dart';
 import 'package:pedido_listo_web/features/shopping_cart/application/load_cart.dart';
 import 'package:pedido_listo_web/features/shopping_cart/application/save_cart.dart';
 import 'package:pedido_listo_web/features/shopping_cart/domain/shopping_car_dto.dart';
+import 'package:pedido_listo_web/features/user/application/save_user.dart';
+import 'package:pedido_listo_web/features/user/domain/dto/address_dto.dart';
+import 'package:pedido_listo_web/features/user/domain/dto/user_dto.dart';
 import 'package:pedido_listo_web/presentation/establishment/details_product/bloc/details_product_bloc.dart';
 import 'package:rxdart/rxdart.dart';
 
-part 'cart_cache_event.dart';
-part 'cart_cache_state.dart';
-part 'cart_cache_bloc.freezed.dart';
+part 'app_cache_event.dart';
+part 'app_cache_state.dart';
+part 'app_cache_bloc.freezed.dart';
 
 class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
   final LoadCartUseCase _loadCartUseCase;
   final SaveCartUseCase _saveCartUseCase;
-  AppCacheBloc(this._loadCartUseCase, this._saveCartUseCase)
-      : super(const AppCacheState()) {
+  final SaveUserUseCase _saveUserUseCase;
+  AppCacheBloc(
+    UserDto userDto,
+    this._loadCartUseCase,
+    this._saveCartUseCase,
+    this._saveUserUseCase,
+  ) : super(AppCacheState(user: userDto)) {
     on<_CreateItem>(_createItem);
     on<_UpdateCart>(_updateCart, transformer: (events, mappper) {
       return restartable<_UpdateCart>().call(
@@ -29,6 +36,11 @@ class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
     });
     on<_ClearCart>(_clearCart);
     on<_LoadCart>(_loadCart);
+    on<_SaveUser>(_saveUser, transformer: (events, mappper) {
+      return restartable<_SaveUser>().call(
+          events.debounceTime(const Duration(milliseconds: 1200)), mappper);
+    });
+    on<_CreateAddress>(_createAddress);
   }
 
   FutureOr<void> _loadCart(_LoadCart event, Emitter<AppCacheState> emit) async {
@@ -56,8 +68,10 @@ class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
       comment: event.detail.comment,
       extrasFood: event.choosesForAmount
           .map((modifier) => modifier.extras
-              .where((extra) =>
-                  event.detail.extrasAmountByModifier[extra.uuid] != null)
+              .where((extra) {
+                final amount = event.detail.extrasAmountByModifier[extra.uuid];
+                return amount != null && amount > 0;
+              })
               .map((extra) => AmountExtraFood(
                   amount: event.detail.extrasAmountByModifier[extra.uuid]!,
                   uuidModifier: modifier.uuid,
@@ -116,4 +130,28 @@ class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
   }
 
   FutureOr<void> _clearCart(_ClearCart event, Emitter<AppCacheState> emit) {}
+
+  FutureOr<void> _saveUser(_SaveUser event, Emitter<AppCacheState> emit) {
+    final user = state.user.copyWith(name: event.name, phone: event.phone);
+
+    emit(state.copyWith(user: user));
+
+    _saveUserUseCase.execute(user);
+  }
+
+  FutureOr<void> _createAddress(
+    _CreateAddress event,
+    Emitter<AppCacheState> emit,
+  ) {
+    final address = AddressDto.create(event.address);
+
+    final user = state.user.copyWith(addresses: [
+      ...state.user.addresses,
+      address,
+    ]);
+
+    emit(state.copyWith(user: user));
+
+    _saveUserUseCase.execute(user);
+  }
 }

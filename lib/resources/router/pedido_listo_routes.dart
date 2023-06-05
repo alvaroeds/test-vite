@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pedido_listo_web/const/resource.dart';
-import 'package:pedido_listo_web/presentation/app/bloc/cart_cache_bloc.dart';
+import 'package:pedido_listo_web/presentation/app/bloc/app_cache_bloc.dart';
+import 'package:pedido_listo_web/presentation/delivery_order/delivery_order_bloc_page.dart';
 import 'package:pedido_listo_web/presentation/establishment/bloc/establishment_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/details_product/details_product_bloc_page.dart';
 import 'package:pedido_listo_web/presentation/establishment/establishment_bloc_page.dart';
@@ -105,6 +106,38 @@ class RouterCart {
 
       return ConfigRouter.fadeRoute(
         child: ShoppingCartBlocPage(urlId: urlId),
+        state: state,
+      );
+    },
+  );
+}
+
+class RouterDeleveryOrder {
+  static const name = 'deleveryOrder';
+  static const firtsPath = 'pedido';
+
+  static final goRoute = GoRoute(
+    name: name,
+    path: firtsPath,
+    redirect: (context, state) {
+      final pathBack =
+          '/${state.pathParameters[RouterEstablishment.firtsPath]}/${RouterCart.firtsPath}';
+      final cart = context
+          .read<AppCacheBloc>()
+          .state
+          .cartCache[state.pathParameters[RouterEstablishment.firtsPath]];
+
+      if (cart == null) return null;
+
+      final isCartEmpty = cart.totalItem == 0;
+
+      return isCartEmpty ? pathBack : null;
+    },
+    pageBuilder: (context, state) {
+      final urlId = state.pathParameters[RouterEstablishment.firtsPath];
+
+      return ConfigRouter.fadeRoute(
+        child: DeleveryDataBlocpage(urlId: urlId!),
         state: state,
       );
     },

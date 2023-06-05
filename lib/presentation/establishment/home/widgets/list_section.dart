@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pedido_listo_web/features/establishment/domain/product_dto.dart';
-import 'package:pedido_listo_web/presentation/app/bloc/cart_cache_bloc.dart';
+import 'package:pedido_listo_web/presentation/app/bloc/app_cache_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/home/widgets/product_card/product_card.dart';
 import 'package:pedido_listo_web/resources/utils/extensions.dart';
 

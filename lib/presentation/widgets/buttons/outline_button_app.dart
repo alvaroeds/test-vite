@@ -3,14 +3,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
 
 class OutlineButtonApp extends StatelessWidget {
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final void Function()? onPressed;
   final String title;
   const OutlineButtonApp(
-      {required this.width,
-      required this.height,
-      required this.title,
+      {required this.title,
+      this.width,
+      this.height,
       super.key,
       this.onPressed});
 

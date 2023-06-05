@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pedido_listo_web/presentation/app/bloc/cart_cache_bloc.dart';
+import 'package:pedido_listo_web/presentation/app/bloc/app_cache_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/bloc/establishment_bloc.dart';
 import 'package:pedido_listo_web/resources/router/pedido_listo_routes.dart';
 import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';

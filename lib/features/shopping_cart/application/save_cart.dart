@@ -3,7 +3,7 @@ import 'package:pedido_listo_web/features/shopping_cart/domain/i_cart_repository
 import 'package:pedido_listo_web/features/shopping_cart/domain/shopping_car_dto.dart';
 
 class SaveCartUseCase {
-  final ICartRepository _cartRepository;
+  final InterfaceCartRepository _cartRepository;
 
   SaveCartUseCase(this._cartRepository);
 

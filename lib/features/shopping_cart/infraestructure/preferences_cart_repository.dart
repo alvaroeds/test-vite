@@ -5,15 +5,15 @@ import 'package:pedido_listo_web/features/shopping_cart/domain/i_cart_repository
 import 'package:pedido_listo_web/features/shopping_cart/domain/shopping_car_dto.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class PreferencesCartRepository implements ICartRepository {
+class PreferencesCartRepository implements InterfaceCartRepository {
   final SharedPreferences sharedPreferences;
 
-  PreferencesCartRepository._(this.sharedPreferences);
+  PreferencesCartRepository(this.sharedPreferences);
 
-  static Future<PreferencesCartRepository> instance() async {
+/*   static Future<PreferencesCartRepository> instance() async {
     final sharedPreferences = await SharedPreferences.getInstance();
     return PreferencesCartRepository._(sharedPreferences);
-  }
+  } */
 
   @override
   Future<Option<ShoppingCartDto>> loadCart(String uuid) async {

@@ -1,10 +1,11 @@
-part of 'cart_cache_bloc.dart';
+part of 'app_cache_bloc.dart';
 
 @freezed
 class AppCacheState with _$AppCacheState {
   const factory AppCacheState({
+    required UserDto user,
     @Default({}) Map<String, ShoppingCartDto> cartCache,
-  }) = _CartCacheState;
+  }) = _AppCacheState;
 
   const AppCacheState._();
 

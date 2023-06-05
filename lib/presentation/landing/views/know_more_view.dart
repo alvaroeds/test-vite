@@ -77,8 +77,8 @@ class KnowMoreViewState extends State<KnowMoreView> {
                   Align(
                     alignment: Alignment.centerRight,
                     child: SizedBox(
-                      height: 58,
-                      width: context.getDouble(110, 120, 130),
+                      height: 60,
+                      width: context.getDouble(120, 130, 140),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: context.currentTheme.primaryColor,

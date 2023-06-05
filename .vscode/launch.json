@@ -26,6 +26,7 @@
         "staging",
         "--target",
         "lib/main_staging.dart",
+        "--web-renderer canvaskit",
         "-d",
         "chrome",
         "--web-port",

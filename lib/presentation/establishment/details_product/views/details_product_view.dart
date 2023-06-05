@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pedido_listo_web/features/establishment/domain/modifiers.dart';
 import 'package:pedido_listo_web/features/establishment/domain/product_dto.dart';
-import 'package:pedido_listo_web/presentation/app/bloc/cart_cache_bloc.dart';
+import 'package:pedido_listo_web/presentation/app/bloc/app_cache_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/bloc/establishment_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/details_product/bloc/details_product_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/details_product/widgets/widgets.dart';

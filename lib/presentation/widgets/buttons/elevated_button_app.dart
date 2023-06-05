@@ -3,14 +3,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
 
 class ElevatedButtonApp extends StatelessWidget {
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final String title;
   final void Function()? onPressed;
   const ElevatedButtonApp(
-      {required this.width,
-      required this.height,
-      required this.title,
+      {required this.title,
+      this.width,
+      this.height,
       super.key,
       this.onPressed});
 

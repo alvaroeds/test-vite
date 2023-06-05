@@ -52,6 +52,8 @@ class ItemCart with _$ItemCart {
   double get totalCostWithDiscount =>
       (product.priceWithDiscount + modifiersTotalCost) * amount;
 
+  double get totalCostForUnit => product.price + modifiersTotalCost;
+
   double get totalCost => (product.price + modifiersTotalCost) * amount;
 
   double get modifiersTotalCost =>

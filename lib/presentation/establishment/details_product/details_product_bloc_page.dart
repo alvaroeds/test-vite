@@ -15,8 +15,8 @@ class DetailsProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocConsumer<EstablishmentBloc, EstablishmentState>(
+    return SafeArea(
+      child: BlocConsumer<EstablishmentBloc, EstablishmentState>(
         listenWhen: (previous, state) {
           final notFounded = state.maybeWhen(
             hasData: (establishment) => !establishment.hasProduct(uuid),
