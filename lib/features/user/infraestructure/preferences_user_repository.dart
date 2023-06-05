@@ -10,10 +10,7 @@ class PreferencesUserRepository implements InterfaceUserRepository {
   PreferencesUserRepository(this.sharedPreferences);
 
   @override
-  Future<void> deleteUser() {
-    // TODO: implement deleteUser
-    throw UnimplementedError();
-  }
+  Future<void> deleteUser() async {}
 
   static const USER_KEY = 'user_98';
 
