@@ -34,13 +34,13 @@ class MakeOrderUseCase {
 
       final extrasFood = item.extrasFood.isEmpty
           ? ''
-          : '\n    ${item.extrasFood.map((topic) => '${topic.amount} ${topic.extraFood.name} S/. ${topic.extraFood.price}').join('\n')}';
+          : '\n${item.extrasFood.map((topic) => '    - ${topic.amount} ${topic.extraFood.name} S/. ${topic.extraFood.price}').join('\n')}';
       final optionsFoodOneSelection = item.optionsFoodOneSelection.isEmpty
           ? ''
-          : '\n    ${item.optionsFoodOneSelection.map((topic) => '${topic.optionFood.name} S/. ${topic.optionFood.price}').join('\n')}';
+          : '\n${item.optionsFoodOneSelection.map((topic) => '    - 1 ${topic.optionFood.name} S/. ${topic.optionFood.price}').join('\n')}';
       final optionsFoodForMultiple = item.optionsFoodForMultiple.isEmpty
           ? ''
-          : '\n    ${item.optionsFoodForMultiple.map((topic) => '${topic.optionFood.name} S/. ${topic.optionFood.price}').join('\n')}';
+          : '\n${item.optionsFoodForMultiple.map((topic) => '    - 1 ${topic.optionFood.name} S/. ${topic.optionFood.price}').join('\n')}';
       return '''
     ${item.amount} ${item.product.name} S/. ${item.totalCostForUnit} c/u
     Precio unitario: S/. ${item.product.price}$comment$extrasFood$optionsFoodOneSelection$optionsFoodForMultiple
@@ -48,7 +48,7 @@ class MakeOrderUseCase {
     }).join('\n');
 
     final plantilla = '''
-😅 Hola! Me gustaría realizar un pedido.
+👋 Hola! Me gustaría realizar un pedido.
 Vengo de $host
 🗓️ $fechaDePedido ⏰ $horaDePedido
 

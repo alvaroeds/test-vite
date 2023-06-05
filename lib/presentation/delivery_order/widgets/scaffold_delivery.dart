@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pedido_listo_web/presentation/delivery_order/widgets/footer_delivery.dart';
 import 'package:pedido_listo_web/presentation/delivery_order/widgets/header_delivery.dart';
 import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
 
@@ -12,8 +11,7 @@ class ScaffoldDelivery extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: child,
-      floatingActionButton: const FooterDelivery(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+
       appBar: AppBar(
         toolbarHeight: 80,
         elevation: 0,
