@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,10 +11,11 @@ import 'package:pedido_listo_web/presentation/widgets/loading_view.dart';
 import 'package:pedido_listo_web/resources/router/pedido_listo_routes.dart';
 
 class EstablishmentBlocPage extends StatelessWidget {
-  const EstablishmentBlocPage({required this.subDomain, super.key, this.idUrl});
+  const EstablishmentBlocPage(
+      {required this.subDomainIsNone, super.key, this.idUrl});
 
   final String? idUrl;
-  final Option<String> subDomain;
+  final bool subDomainIsNone;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class EstablishmentBlocPage extends StatelessWidget {
         return CycleWrapper(
           // key: Key(idUrl.toString()),
           onDispose: () {
-            if (!kIsWeb || subDomain.isNone()) {
+            if (!kIsWeb || subDomainIsNone) {
               bloc.add(EstablishmentEvent.closeStream());
             }
           },

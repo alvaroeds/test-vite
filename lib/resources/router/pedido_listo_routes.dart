@@ -37,7 +37,7 @@ class RouterEstablishment {
   static const firtsPath = 'name';
   // static const firtsPath = 'local';
   static GoRoute getGoRoute({
-    required Option<String> subDomain,
+    required Option<String?> subDomain,
     List<RouteBase> routes = const <RouteBase>[],
   }) {
     return GoRoute(
@@ -51,16 +51,17 @@ class RouterEstablishment {
       },
       routes: routes,
       pageBuilder: (context, state) {
-        final idUrl = subDomain.fold(
-            () => state.pathParameters[RouterEstablishment.firtsPath],
-            (a) => a);
+        final idUrl = subDomain.getOrElse(state.idUrl);
+
         context
             .read<EstablishmentBloc>()
             .add(EstablishmentEvent.started(idUrl));
 
         context.read<AppCacheBloc>().add(AppCacheEvent.loadCart(idUrl));
+
         return ConfigRouter.fadeRoute(
-            child: EstablishmentBlocPage(subDomain: subDomain, idUrl: idUrl),
+            child: EstablishmentBlocPage(
+                subDomainIsNone: subDomain.isNone(), idUrl: idUrl),
             state: state);
       },
     );
@@ -73,17 +74,17 @@ class RouterProduct {
   static const firtsPath = 'producto';
 
   static GoRoute getGoRoute({
-    required Option<String> subDomain,
+    required Option<String?> subDomain,
     List<RouteBase> routes = const <RouteBase>[],
   }) =>
       GoRoute(
         name: name,
         path: '$firtsPath/:$uuidPath',
         redirect: (context, state) {
-          final urlId = subDomain.fold(
-              () => state.pathParameters[RouterEstablishment.firtsPath],
-              (a) => a);
+          final urlId = subDomain.fold(state.idUrl, (_) => '');
+
           final pathBack = '/$urlId';
+
           return context.read<EstablishmentBloc>().state.whenOrNull(
               hasData: (establishment) => establishment
                   .hasProduct(state.pathParameters[uuidPath])
@@ -102,16 +103,14 @@ class RouterCart {
   static const firtsPath = 'carrito';
 
   static GoRoute getGoRoute({
-    required Option<String> subDomain,
+    required Option<String?> subDomain,
     List<RouteBase> routes = const <RouteBase>[],
   }) =>
       GoRoute(
         name: name,
         path: firtsPath,
         pageBuilder: (context, state) {
-          final urlId = subDomain.fold(
-              () => state.pathParameters[RouterEstablishment.firtsPath],
-              (a) => a);
+          final urlId = subDomain.getOrElse(state.idUrl);
 
           return ConfigRouter.fadeRoute(
             child: ShoppingCartBlocPage(urlId: urlId),
@@ -126,29 +125,25 @@ class RouterDeleveryOrder {
   static const firtsPath = 'pedido';
 
   static GoRoute getGoRoute({
-    required Option<String> subDomain,
+    required Option<String?> subDomain,
     List<RouteBase> routes = const <RouteBase>[],
   }) =>
       GoRoute(
         name: name,
         path: firtsPath,
         redirect: (context, state) {
-          final urlId = subDomain.fold(
-              () => state.pathParameters[RouterEstablishment.firtsPath],
-              (a) => a);
-          final pathBack = '/$urlId/${RouterCart.firtsPath}';
+          final urlId = subDomain.getOrElse(state.idUrl);
+
           final cart = context.read<AppCacheBloc>().state.cartCache[urlId];
 
           if (cart == null) return null;
 
-          final isCartEmpty = cart.totalItem == 0;
-
-          return isCartEmpty ? pathBack : null;
+          final pathBack =
+              '${subDomain.isSome() ? '' : '/$urlId'}/${RouterCart.firtsPath}';
+          return cart.isItemsEmpty ? pathBack : null;
         },
         pageBuilder: (context, state) {
-          final urlId = subDomain.fold(
-              () => state.pathParameters[RouterEstablishment.firtsPath],
-              (a) => a);
+          final urlId = subDomain.getOrElse(state.idUrl);
 
           return ConfigRouter.fadeRoute(
             child: DeleveryDataBlocpage(urlId: urlId!),
@@ -156,6 +151,10 @@ class RouterDeleveryOrder {
           );
         },
       );
+}
+
+extension RouterEstablishmentExtension on GoRouterState {
+  String? idUrl() => pathParameters[RouterEstablishment.firtsPath];
 }
 
 class FirtsLoadingApp extends StatelessWidget {
