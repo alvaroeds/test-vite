@@ -1,3 +1,5 @@
+import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -5,15 +7,15 @@ import 'package:pedido_listo_web/presentation/establishment/bloc/establishment_b
 import 'package:pedido_listo_web/presentation/establishment/home/cubit/tab_home_cubit.dart';
 import 'package:pedido_listo_web/presentation/establishment/home/home_view.dart';
 import 'package:pedido_listo_web/presentation/establishment/home/widgets/widgets.dart';
+import 'package:pedido_listo_web/presentation/widgets/cycle_wrapper_bloc.dart';
 import 'package:pedido_listo_web/presentation/widgets/loading_view.dart';
-import 'package:pedido_listo_web/resources/router/config_router.dart';
 import 'package:pedido_listo_web/resources/router/pedido_listo_routes.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:universal_html/html.dart' as html;
 
 class EstablishmentBlocPage extends StatelessWidget {
-  const EstablishmentBlocPage({super.key, this.idUrl});
+  const EstablishmentBlocPage({required this.subDomain, super.key, this.idUrl});
+
   final String? idUrl;
+  final Option<String> subDomain;
 
   @override
   Widget build(BuildContext context) {
@@ -24,21 +26,16 @@ class EstablishmentBlocPage extends StatelessWidget {
       },
       listener: (context, state) {
         // Si no encuentra lo regresa
-
-        state.whenOrNull(isError: (_) {
-          final currentUri = Uri.parse(html.window.location.href);
-          currentUri.subDomain.fold(() {
-            context.goNamed(RouterHome.name);
-          }, (subdomain) {
-            final newUri = currentUri.host.replaceFirst('$subdomain.', '');
-            return launchUrl(Uri.parse('https://$newUri'));
-          });
-        });
+        state.whenOrNull(isError: (_) => context.goNamed(RouterHome.name));
       },
       builder: (context, state) {
         return CycleWrapper(
           // key: Key(idUrl.toString()),
-          onDispose: () => bloc.add(EstablishmentEvent.closeStream()),
+          onDispose: () {
+            if (!kIsWeb || subDomain.isNone()) {
+              bloc.add(EstablishmentEvent.closeStream());
+            }
+          },
 
           /*  onInit: () =>
               context.read<AppCacheBloc>().add(AppCacheEvent.loadCart(idUrl)), */
@@ -72,34 +69,4 @@ class EstablishmentBlocPage extends StatelessWidget {
           child: t,
         ),
       );
-}
-
-class CycleWrapper extends StatefulWidget {
-  final VoidCallback? onDispose;
-  final VoidCallback? onInit;
-  final Widget child;
-  const CycleWrapper(
-      {required this.child, super.key, this.onDispose, this.onInit});
-
-  @override
-  State<CycleWrapper> createState() => _CycleWrapperState();
-}
-
-class _CycleWrapperState extends State<CycleWrapper> {
-  @override
-  void initState() {
-    widget.onInit?.call();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    widget.onDispose?.call();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return widget.child;
-  }
 }

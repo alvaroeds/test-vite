@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -14,21 +13,18 @@ import 'package:pedido_listo_web/presentation/shopping_cart/shopping_cart_bloc_p
 import 'package:pedido_listo_web/resources/router/config_router.dart';
 import 'package:pedido_listo_web/resources/utils/extensions.dart';
 
-import 'package:universal_html/html.dart' as html;
-
 class RouterHome {
   static const name = 'home';
-  static const firtsPath = '/';
-  static GoRoute getGoRoute({List<RouteBase> routes = const <RouteBase>[]}) {
+  static const firtsPath = '/home';
+  static GoRoute getGoRoute({
+    required Option<String> subDomain,
+    List<RouteBase> routes = const <RouteBase>[],
+  }) {
     return GoRoute(
       name: name,
-      path: firtsPath,
+      path: subDomain.isNone() ? '/' : firtsPath,
       routes: routes,
       pageBuilder: (context, state) {
-        final subDomain = kIsWeb
-            ? Uri.parse(html.window.location.href).subDomain
-            : const None<String>();
-
         return subDomain.fold(
           () => ConfigRouter.fadeRoute(
               state: state, child: const LandingScreen()),
@@ -38,7 +34,11 @@ class RouterHome {
                 .read<EstablishmentBloc>()
                 .add(EstablishmentEvent.started(idUrl));
             return ConfigRouter.fadeRoute(
-                child: EstablishmentBlocPage(idUrl: idUrl), state: state);
+                child: EstablishmentBlocPage(
+                  idUrl: idUrl,
+                  subDomain: subDomain,
+                ),
+                state: state);
           },
         );
       },
@@ -50,10 +50,13 @@ class RouterEstablishment {
   static const name = 'establishment';
   static const firtsPath = 'name';
   // static const firtsPath = 'local';
-  static GoRoute getGoRoute({List<RouteBase> routes = const <RouteBase>[]}) {
+  static GoRoute getGoRoute({
+    required Option<String> subDomain,
+    List<RouteBase> routes = const <RouteBase>[],
+  }) {
     return GoRoute(
       name: name,
-      path: ':$firtsPath',
+      path: subDomain.isSome() ? '/' : ':$firtsPath',
       redirect: (context, state) {
         return context
             .read<EstablishmentBloc>()
@@ -62,14 +65,21 @@ class RouterEstablishment {
       },
       routes: routes,
       pageBuilder: (context, state) {
-        final idUrl = state.pathParameters[firtsPath];
-        context
-            .read<EstablishmentBloc>()
-            .add(EstablishmentEvent.started(idUrl));
+        final idUrl = subDomain.getOrElse(
+          () {
+            final idUrl = state.pathParameters[firtsPath];
+            context
+                .read<EstablishmentBloc>()
+                .add(EstablishmentEvent.started(idUrl));
 
-        context.read<AppCacheBloc>().add(AppCacheEvent.loadCart(idUrl));
+            context.read<AppCacheBloc>().add(AppCacheEvent.loadCart(idUrl));
+
+            return idUrl.toString();
+          },
+        );
         return ConfigRouter.fadeRoute(
-            child: EstablishmentBlocPage(idUrl: idUrl), state: state);
+            child: EstablishmentBlocPage(subDomain: subDomain, idUrl: idUrl),
+            state: state);
       },
     );
   }
