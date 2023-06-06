@@ -5,18 +5,20 @@ class LoadingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        const SizedBox(
-          height: 200,
-          width: 200,
-          child: CircularProgressIndicator(),
-        ),
-        Center(
-          child: Image.asset('assets/logo.png', height: 75, width: 75),
-        ),
-      ],
+    return Scaffold(
+      body: Stack(
+        alignment: Alignment.center,
+        children: [
+          const SizedBox(
+            height: 200,
+            width: 200,
+            child: CircularProgressIndicator(),
+          ),
+          Center(
+            child: Image.asset('assets/logo.png', height: 75, width: 75),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -7,18 +7,9 @@ import 'package:pedido_listo_web/features/shopping_cart/domain/shopping_car_dto.
 import 'package:intl/intl.dart';
 
 extension DateFormats on DateTime {
-  String get dateFormat {
-    /*  final day = this.day.toString().padLeft(2, '0');
-    final month = this.month.toString().padLeft(2, '0');
-    final year = this.year.toString().padLeft(2, '0');
-    return '$day/$month/$year'; */
+  String get dateFormat => DateFormat('dd/MM/yyyy').format(this);
 
-    return DateFormat('dd/MM/yyyy').format(this);
-  }
-
-  String get timeFormat {
-    return DateFormat('hh:mm a').format(this).toLowerCase();
-  }
+  String get timeFormat => DateFormat('hh:mm a').format(this).toLowerCase();
 }
 
 class MakeOrderUseCase {
@@ -31,7 +22,7 @@ class MakeOrderUseCase {
     required String additionalDetail,
   }) async {
     final uri = Uri.parse(html.window.location.href);
-    final baseUrl = '${uri.scheme}://${uri.host}';
+    final baseUrl = uri.host;
     final currentDate = DateTime.now();
     final horaDePedido = currentDate.timeFormat;
     final fechaDePedido = currentDate.dateFormat;
@@ -42,12 +33,12 @@ class MakeOrderUseCase {
     );
     final deliveryCost = address.fold(
       () => '',
-      (_) => '\nCosto de entrega: ${establishment.deliveryCost}\n',
+      (_) => '\nCosto de entrega: ${establishment.deliveryCost}',
     );
     final contactDirection = address.fold(
       () => '',
       (address) =>
-          '\nDirección: $address${additionalDetail.isEmpty ? '' : '\n$additionalDetail'}\n',
+          '\nDirección: $address${additionalDetail.isEmpty ? '' : '\n$additionalDetail'}',
     );
 
     final itemsDetail = cart.items.map((item) {
@@ -94,6 +85,7 @@ Costo de los productos: ${cart.totalCost}$deliveryCost
 
 $itemsDetail
 \u{261D} Por favor, envía este mensaje. ¡Te atenderemos enseguida!''';
+
     final url = Uri.parse(
         'https://wa.me/${establishment.whatsappNumber}?text=$plantilla');
     await launchUrl(url);

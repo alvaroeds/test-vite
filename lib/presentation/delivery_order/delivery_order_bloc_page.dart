@@ -29,7 +29,7 @@ class DeleveryDataBlocpage extends StatelessWidget {
       builder: (context, cacheState) {
         final shoppingCart = cacheState.cartCache[urlId];
 
-        if (shoppingCart == null) return const _ScaffoldLoading();
+        if (shoppingCart == null) return const LoadingView();
 
         return BlocBuilder<EstablishmentBloc, EstablishmentState>(
           builder: (context, state) {
@@ -47,19 +47,10 @@ class DeleveryDataBlocpage extends StatelessWidget {
                     ),
                   );
                 },
-                orElse: _ScaffoldLoading.new);
+                orElse: LoadingView.new);
           },
         );
       },
     );
-  }
-}
-
-class _ScaffoldLoading extends StatelessWidget {
-  const _ScaffoldLoading();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(body: LoadingView());
   }
 }
