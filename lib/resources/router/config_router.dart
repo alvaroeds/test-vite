@@ -13,7 +13,6 @@ class ConfigRouter {
 
   factory ConfigRouter.test() => ConfigRouter._(
         ConfigRouter.getGoRouter(
-          hasSubDomain: false,
           routes: [
             RouterHome.getGoRoute(
               subDomain: const None(),
@@ -38,7 +37,6 @@ class ConfigRouter {
 
     return ConfigRouter._(
       ConfigRouter.getGoRouter(
-        hasSubDomain: subDomain.isSome(),
         routes: [
           if (subDomain.isSome())
             RouterEstablishment.getGoRoute(subDomain: subDomain, routes: [
@@ -63,7 +61,6 @@ class ConfigRouter {
   }
 
   static GoRouter getGoRouter({
-    required bool hasSubDomain,
     List<GoRoute> routes = const <GoRoute>[],
     ChangeNotifier? changeNotifier,
   }) {
@@ -71,7 +68,7 @@ class ConfigRouter {
     //* remove hash
     return GoRouter(
       refreshListenable: changeNotifier,
-      initialLocation: hasSubDomain ? '/' : RouterHome.firtsPath,
+      initialLocation: '/',
       routes: routes,
     );
   }
