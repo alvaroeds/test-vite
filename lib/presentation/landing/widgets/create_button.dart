@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:pedido_listo_web/resources/router/pedido_listo_routes.dart';
 import 'package:pedido_listo_web/resources/utils/extensions.dart';
 
 class CreateButton extends StatelessWidget {
@@ -10,7 +12,10 @@ class CreateButton extends StatelessWidget {
       width: 154,
       height: 56,
       child: ElevatedButton(
-          onPressed: () => {},
+          onPressed: () {
+            context.goNamed(RouterEstablishment.name,
+                pathParameters: {RouterEstablishment.firtsPath: 'lojusto'});
+          },
           style: ElevatedButton.styleFrom(
             backgroundColor: context.currentTheme.primaryColor,
           ),

@@ -9,13 +9,15 @@ class ScaffoldCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: child,
-      backgroundColor: Colors.white,
-      appBar: AppBarCart(
-        onPressedBack: () => Navigator.pop(context),
+    return SafeArea(
+      child: Scaffold(
+        body: child,
+        backgroundColor: Colors.white,
+        appBar: AppBarCart(
+          onPressedBack: () => Navigator.pop(context),
+        ),
+        bottomNavigationBar: const FooterCart(),
       ),
-      bottomNavigationBar: const FooterCart(),
     );
   }
 }

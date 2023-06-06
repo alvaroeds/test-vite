@@ -10,7 +10,7 @@ class InputPhoneField extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.read<DeliveryOrderBloc>();
     return _BaseInputField(
-      initValue: bloc.state.contactName,
+      initValue: bloc.state.contactPhone,
       keyboardType: TextInputType.phone,
       hintText: '+59-9-256-5333',
       onChanged: (value) => bloc.add(DeliveryOrderEvent.updatePhone(value)),
@@ -26,7 +26,7 @@ class InputNameField extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.read<DeliveryOrderBloc>();
     return _BaseInputField(
-      initValue: bloc.state.contactPhone,
+      initValue: bloc.state.contactName,
       hintText: 'Ingrese su nombre acá',
       onChanged: (value) => bloc.add(DeliveryOrderEvent.updateName(value)),
       title: 'Nombre',
@@ -66,6 +66,7 @@ class _BaseInputField extends StatelessWidget {
         ),
         TextFormField(
           maxLength: 14,
+          textCapitalization: TextCapitalization.words,
           keyboardType: keyboardType,
           decoration: InputDecoration(
               filled: true,

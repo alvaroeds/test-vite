@@ -61,71 +61,73 @@ class _HomeViewState extends State<HomeView>
       },
       builder: (context, state) {
         final currentIndex = state.index;
-        return DecoratedBox(
-          decoration: const BoxDecoration(
-              // gradient: LinearGradient(
-              //     begin: Alignment.topCenter,
-              //     end: Alignment.bottomCenter,
-              //     colors: [
-              //       Colors.transparent,
-              //       context.currentTheme.scaffoldBackgroundColor,
-              //     ],
-              //     stops: const [
-              //       0.4,
-              //       0.4,
-              //     ]),
-              ),
-          child: CustomScrollView(
-            slivers: [
-              EstablishmentHeader(establishment: widget.establishment),
-              if (isEstablishedEmpty) ...[
-                const SliverFillRemaining(
-                    hasScrollBody: false,
-                    child: Center(
-                        child: Text(
-                      'Aún estamos preparando\ntodo para ti 😁.',
-                      textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                    ))),
-              ] else ...[
-                SliverPersistentHeader(
-                    pinned: true,
-                    delegate: MyPersistenHeader(
-                      child: CustomTabbar(
-                        controller: tabController,
-                        categories: categories,
-                        currentTab: state.index,
-                        onTap: (index) {
-                          context
-                              .read<TabHomeCubit>()
-                              .changeIndex(currentIndex == index ? 0 : index);
-                        },
-                      ),
-                    )),
-                SliverList(
-                    delegate: SliverChildBuilderDelegate((context, index) {
-                  final selectIndex =
-                      currentIndex == 0 ? index : currentIndex - 1;
-                  return ListSection(
-                    idUrl: widget.establishment.idUrl,
-                    onTapProduct: (uuid) {
-                      context.goNamed(
-                        RouterProduct.name,
-                        pathParameters: {
-                          RouterEstablishment.firtsPath:
-                              widget.establishment.idUrl,
-                          RouterProduct.uuidPath: uuid,
-                        },
-                      );
-                    },
-                    category: categories[selectIndex],
-                  );
-                }, childCount: currentIndex == 0 ? categories.length : 1)),
-                const SliverToBoxAdapter(child: SizedBox(height: 60))
+        return SafeArea(
+          child: DecoratedBox(
+            decoration: const BoxDecoration(
+                // gradient: LinearGradient(
+                //     begin: Alignment.topCenter,
+                //     end: Alignment.bottomCenter,
+                //     colors: [
+                //       Colors.transparent,
+                //       context.currentTheme.scaffoldBackgroundColor,
+                //     ],
+                //     stops: const [
+                //       0.4,
+                //       0.4,
+                //     ]),
+                ),
+            child: CustomScrollView(
+              slivers: [
+                EstablishmentHeader(establishment: widget.establishment),
+                if (isEstablishedEmpty) ...[
+                  const SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Center(
+                          child: Text(
+                        'Aún estamos preparando\ntodo para ti 😁.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w500),
+                      ))),
+                ] else ...[
+                  SliverPersistentHeader(
+                      pinned: true,
+                      delegate: MyPersistenHeader(
+                        child: CustomTabbar(
+                          controller: tabController,
+                          categories: categories,
+                          currentTab: state.index,
+                          onTap: (index) {
+                            context
+                                .read<TabHomeCubit>()
+                                .changeIndex(currentIndex == index ? 0 : index);
+                          },
+                        ),
+                      )),
+                  SliverList(
+                      delegate: SliverChildBuilderDelegate((context, index) {
+                    final selectIndex =
+                        currentIndex == 0 ? index : currentIndex - 1;
+                    return ListSection(
+                      idUrl: widget.establishment.idUrl,
+                      onTapProduct: (uuid) {
+                        context.goNamed(
+                          RouterProduct.name,
+                          pathParameters: {
+                            RouterEstablishment.firtsPath:
+                                widget.establishment.idUrl,
+                            RouterProduct.uuidPath: uuid,
+                          },
+                        );
+                      },
+                      category: categories[selectIndex],
+                    );
+                  }, childCount: currentIndex == 0 ? categories.length : 1)),
+                  const SliverToBoxAdapter(child: SizedBox(height: 60))
+                ],
+                const SliverFooter()
               ],
-              const SliverFooter()
-            ],
+            ),
           ),
         );
       },

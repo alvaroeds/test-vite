@@ -71,7 +71,13 @@ extension SubDomain on Uri {
 
   Option<String> get subDomain {
     if (_hasSubDomain) {
-      return some(host.split('.').first);
+      final domain = host.split('.').first;
+
+      if (domain == 'pedido-listo') return none();
+
+      if (domain == 'www') return none();
+
+      return some(domain);
     }
     return none();
   }

@@ -30,9 +30,9 @@
         "-d",
         "chrome",
         "--web-port",
-        "8000"
-        /*   
-        "--web-hostname",
+        "8008"
+
+        /*         "--web-hostname",
         "192.168.1.15" */
       ]
     },

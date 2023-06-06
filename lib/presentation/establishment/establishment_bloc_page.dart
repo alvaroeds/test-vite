@@ -6,7 +6,10 @@ import 'package:pedido_listo_web/presentation/establishment/home/cubit/tab_home_
 import 'package:pedido_listo_web/presentation/establishment/home/home_view.dart';
 import 'package:pedido_listo_web/presentation/establishment/home/widgets/widgets.dart';
 import 'package:pedido_listo_web/presentation/widgets/loading_view.dart';
+import 'package:pedido_listo_web/resources/router/config_router.dart';
 import 'package:pedido_listo_web/resources/router/pedido_listo_routes.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:universal_html/html.dart' as html;
 
 class EstablishmentBlocPage extends StatelessWidget {
   const EstablishmentBlocPage({super.key, this.idUrl});
@@ -21,7 +24,13 @@ class EstablishmentBlocPage extends StatelessWidget {
       },
       listener: (context, state) {
         // Si no encuentra lo regresa
-        state.whenOrNull(isError: (_) => context.goNamed(RouterHome.name));
+        final currentUri = Uri.parse(html.window.location.href);
+        currentUri.subDomain.fold(
+            () => state.whenOrNull(
+                isError: (_) => context.goNamed(RouterHome.name)), (subdomain) {
+          final newUri = currentUri.host.replaceFirst('$subdomain.', '');
+          return launchUrl(Uri.parse(currentUri.scheme + newUri));
+        });
       },
       builder: (context, state) {
         return CycleWrapper(

@@ -8,11 +8,19 @@ class ScaffoldDelivery extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: child,
-      backgroundColor: Colors.white,
-      appBar: AppBarDelivery(onPressed: onPressed),
-      //  bottomNavigationBar: const FooterCart(),
+    return WillPopScope(
+      onWillPop: () async {
+        onPressed?.call();
+        return true;
+      },
+      child: SafeArea(
+        child: Scaffold(
+          body: child,
+          backgroundColor: Colors.white,
+          appBar: AppBarDelivery(onPressed: onPressed),
+          //  bottomNavigationBar: const FooterCart(),
+        ),
+      ),
     );
   }
 }

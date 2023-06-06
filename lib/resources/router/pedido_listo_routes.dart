@@ -34,7 +34,7 @@ class RouterHome {
                 .read<EstablishmentBloc>()
                 .add(EstablishmentEvent.started(urlId));
             return ConfigRouter.fadeRoute(
-                child: const EstablishmentBlocPage(), state: state);
+                child: const LandingScreen(), state: state);
           },
         );
       },
