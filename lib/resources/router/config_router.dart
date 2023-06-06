@@ -33,7 +33,7 @@ class ConfigRouter {
   factory ConfigRouter.dev() {
     final subDomain = kIsWeb
         ? Uri.parse(html.window.location.href).subDomain
-        : const None<String>();
+        : const None<String?>();
 
     return ConfigRouter._(
       ConfigRouter.getGoRouter(
@@ -90,7 +90,7 @@ extension SubDomain on Uri {
   bool get _hasSubDomain =>
       host.split('.').length > 2 && int.tryParse(host.split('.').first) == null;
 
-  Option<String> get subDomain {
+  Option<String?> get subDomain {
     if (_hasSubDomain) {
       final domain = host.split('.').first;
 

@@ -17,7 +17,7 @@ class RouterHome {
   static const name = 'home';
   static const firtsPath = '/home';
   static GoRoute getGoRoute({
-    required Option<String> subDomain,
+    required Option<String?> subDomain,
     List<RouteBase> routes = const <RouteBase>[],
   }) {
     return GoRoute(
