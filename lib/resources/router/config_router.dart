@@ -22,7 +22,7 @@ class ConfigRouter {
                     routes: [
                       RouterProduct.getGoRoute(subDomain: const None()),
                       RouterCart.getGoRoute(subDomain: const None()),
-                      RouterCart.getGoRoute(subDomain: const None()),
+                      RouterDeleveryOrder.getGoRoute(subDomain: const None()),
                     ]),
               ],
             )
@@ -42,7 +42,7 @@ class ConfigRouter {
             RouterEstablishment.getGoRoute(subDomain: subDomain, routes: [
               RouterProduct.getGoRoute(subDomain: subDomain),
               RouterCart.getGoRoute(subDomain: subDomain),
-              RouterCart.getGoRoute(subDomain: subDomain),
+              RouterDeleveryOrder.getGoRoute(subDomain: subDomain),
             ]),
           RouterHome.getGoRoute(
             subDomain: subDomain,
@@ -51,7 +51,7 @@ class ConfigRouter {
                 RouterEstablishment.getGoRoute(subDomain: subDomain, routes: [
                   RouterProduct.getGoRoute(subDomain: subDomain),
                   RouterCart.getGoRoute(subDomain: subDomain),
-                  RouterCart.getGoRoute(subDomain: subDomain),
+                  RouterDeleveryOrder.getGoRoute(subDomain: subDomain),
                 ]),
             ],
           ),
