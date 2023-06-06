@@ -24,12 +24,15 @@ class EstablishmentBlocPage extends StatelessWidget {
       },
       listener: (context, state) {
         // Si no encuentra lo regresa
-        final currentUri = Uri.parse(html.window.location.href);
-        currentUri.subDomain.fold(
-            () => state.whenOrNull(
-                isError: (_) => context.goNamed(RouterHome.name)), (subdomain) {
-          final newUri = currentUri.host.replaceFirst('$subdomain.', '');
-          return launchUrl(Uri.parse(currentUri.scheme + newUri));
+
+        state.whenOrNull(isError: (_) {
+          final currentUri = Uri.parse(html.window.location.href);
+          currentUri.subDomain.fold(() {
+            context.goNamed(RouterHome.name);
+          }, (subdomain) {
+            final newUri = currentUri.host.replaceFirst('$subdomain.', '');
+            return launchUrl(Uri.parse(currentUri.scheme + newUri));
+          });
         });
       },
       builder: (context, state) {
