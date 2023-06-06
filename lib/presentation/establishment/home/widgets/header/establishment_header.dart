@@ -98,7 +98,8 @@ class DelegateEstablishmentHeaders extends SliverPersistentHeaderDelegate {
           left: titleLeftMargin,
           right: titleRightMargin,
           child: NameCompanyInfo(
-            establishment: establishment,
+            description: establishment.description,
+            name: establishment.name,
             percent: percent,
           ),
         ),

@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:pedido_listo_web/features/establishment/domain/establishment_dto.dart';
 import 'package:pedido_listo_web/resources/utils/extensions.dart';
 
 const _maxTitleSize = 32.0;
@@ -11,12 +10,14 @@ const _minSubTitleSize = 12.0;
 
 class NameCompanyInfo extends StatelessWidget {
   const NameCompanyInfo({
-    required this.establishment,
+    required this.name,
+    required this.description,
     required this.percent,
     super.key,
   });
 
-  final EstablishmentDto establishment;
+  final String name;
+  final String description;
   final double percent;
 
   @override
@@ -31,7 +32,7 @@ class NameCompanyInfo extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          establishment.name,
+          name,
           style: context.defaultTitle?.getStyle(
             size: titleSize,
             color: Colors.white,
@@ -39,7 +40,7 @@ class NameCompanyInfo extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         Text(
-          establishment.description,
+          description,
           style: context.defaultSubtitle?.getStyle(
             size: subtitleSize,
             color: Colors.white,

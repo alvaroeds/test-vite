@@ -7,4 +7,9 @@ class EstablishmentState with _$EstablishmentState {
       _Data;
   const factory EstablishmentState.isError(GlobalFailure<dynamic> failure) =
       _Error;
+
+  const EstablishmentState._();
+
+  bool get isInitial => this is _Initial;
+  bool get hasData => this is _Data;
 }

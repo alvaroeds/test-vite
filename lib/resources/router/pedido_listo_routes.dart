@@ -1,3 +1,5 @@
+import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -23,7 +25,9 @@ class RouterHome {
       path: firtsPath,
       routes: routes,
       pageBuilder: (context, state) {
-        final subDomain = Uri.parse(html.window.location.href).subDomain;
+        final subDomain = kIsWeb
+            ? Uri.parse(html.window.location.href).subDomain
+            : const None<String>();
 
         return subDomain.fold(
           () => ConfigRouter.fadeRoute(
@@ -62,6 +66,7 @@ class RouterEstablishment {
         context
             .read<EstablishmentBloc>()
             .add(EstablishmentEvent.started(idUrl));
+
         context.read<AppCacheBloc>().add(AppCacheEvent.loadCart(idUrl));
         return ConfigRouter.fadeRoute(
             child: EstablishmentBlocPage(idUrl: idUrl), state: state);

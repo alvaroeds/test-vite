@@ -43,7 +43,7 @@ class ItemCardView extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 14),
+            const SizedBox(width: 10),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -89,7 +89,7 @@ class ItemCardView extends StatelessWidget {
                             ),
                           ),
                           if (item.product.discount > 0) ...[
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 6),
                             Text(
                               item.totalCost.formattedPrice,
                               style: GoogleFonts.manrope(

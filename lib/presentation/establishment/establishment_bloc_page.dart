@@ -38,7 +38,8 @@ class EstablishmentBlocPage extends StatelessWidget {
       builder: (context, state) {
         return CycleWrapper(
           // key: Key(idUrl.toString()),
-          onDispose: () => bloc.add(const EstablishmentEvent.closed()),
+          onDispose: () => bloc.add(EstablishmentEvent.closeStream()),
+
           /*  onInit: () =>
               context.read<AppCacheBloc>().add(AppCacheEvent.loadCart(idUrl)), */
           child: state.maybeWhen(

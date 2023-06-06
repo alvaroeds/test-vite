@@ -11,7 +11,7 @@ class ScaffoldDelivery extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async {
         onPressed?.call();
-        return true;
+        return false;
       },
       child: SafeArea(
         child: Scaffold(
