@@ -21,8 +21,30 @@ class TitleFormContact extends StatelessWidget {
   }
 }
 
-class FormContactUser extends StatelessWidget {
+class FormContactUser extends StatefulWidget {
   const FormContactUser({super.key});
+
+  @override
+  State<FormContactUser> createState() => _FormContactUserState();
+}
+
+class _FormContactUserState extends State<FormContactUser> {
+  late FocusNode _focusNode1;
+  late FocusNode _focusNode2;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode1 = FocusNode();
+    _focusNode2 = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _focusNode1.dispose();
+    _focusNode2.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +57,24 @@ class FormContactUser extends StatelessWidget {
                 name: state.contactName,
                 phone: state.contactPhone,
               )),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20),
-          InputNameField(),
-          SizedBox(height: 26),
-          InputPhoneField(),
+          const SizedBox(height: 20),
+          InputNameField(
+            focusNode: _focusNode1,
+            onFieldSubmitted: (p0) {
+              _focusNode1.unfocus();
+              FocusScope.of(context).requestFocus(_focusNode2);
+            },
+          ),
+          const SizedBox(height: 26),
+          InputPhoneField(
+            focusNode: _focusNode2,
+            onFieldSubmitted: (p0) {
+              _focusNode2.unfocus();
+            },
+          ),
         ],
       ),
     );

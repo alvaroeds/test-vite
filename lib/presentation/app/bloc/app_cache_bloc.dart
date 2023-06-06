@@ -142,7 +142,9 @@ class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
   FutureOr<void> _createAddress(
     _CreateAddress event,
     Emitter<AppCacheState> emit,
-  ) {
+  ) async {
+    if (event.address.isEmpty) return;
+
     final address = AddressDto.create(event.address);
 
     final user = state.user.copyWith(addresses: [
@@ -152,6 +154,6 @@ class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
 
     emit(state.copyWith(user: user));
 
-    _saveUserUseCase.execute(user);
+    return _saveUserUseCase.execute(user);
   }
 }

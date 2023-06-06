@@ -18,6 +18,7 @@ class InputAddressField extends StatelessWidget {
         key: key,
         maxLength: 150,
         textCapitalization: TextCapitalization.sentences,
+        textInputAction: TextInputAction.done,
         decoration: InputDecoration(
           filled: true,
           isDense: false,

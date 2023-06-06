@@ -4,12 +4,17 @@ import 'package:pedido_listo_web/presentation/delivery_order/bloc/delivery_order
 import 'package:pedido_listo_web/resources/utils/fonts.dart';
 
 class InputPhoneField extends StatelessWidget {
-  const InputPhoneField({super.key});
+  final FocusNode? focusNode;
+  final void Function(String) onFieldSubmitted;
+  const InputPhoneField(
+      {required this.onFieldSubmitted, super.key, this.focusNode});
 
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<DeliveryOrderBloc>();
     return _BaseInputField(
+      onFieldSubmitted: onFieldSubmitted,
+      focusNode: focusNode,
       initValue: bloc.state.contactPhone,
       keyboardType: TextInputType.phone,
       hintText: '+59-9-256-5333',
@@ -20,12 +25,17 @@ class InputPhoneField extends StatelessWidget {
 }
 
 class InputNameField extends StatelessWidget {
-  const InputNameField({super.key});
+  final FocusNode? focusNode;
+  final void Function(String) onFieldSubmitted;
+  const InputNameField(
+      {required this.onFieldSubmitted, super.key, this.focusNode});
 
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<DeliveryOrderBloc>();
     return _BaseInputField(
+      onFieldSubmitted: onFieldSubmitted,
+      focusNode: focusNode,
       initValue: bloc.state.contactName,
       hintText: 'Ingrese su nombre acá',
       onChanged: (value) => bloc.add(DeliveryOrderEvent.updateName(value)),
@@ -39,12 +49,16 @@ class _BaseInputField extends StatelessWidget {
   final String hintText;
   final String title;
   final TextInputType? keyboardType;
+  final FocusNode? focusNode;
   final void Function(String)? onChanged;
+  final void Function(String)? onFieldSubmitted;
 
   const _BaseInputField({
     required this.initValue,
+    required this.focusNode,
     required this.hintText,
     required this.title,
+    required this.onFieldSubmitted,
     required this.onChanged,
     this.keyboardType,
   });
@@ -65,8 +79,11 @@ class _BaseInputField extends StatelessWidget {
                   ?.copyWith(fontWeight: FontWeight.bold)),
         ),
         TextFormField(
+          focusNode: focusNode,
           maxLength: 14,
+          onFieldSubmitted: onFieldSubmitted,
           textCapitalization: TextCapitalization.words,
+          textInputAction: TextInputAction.next,
           keyboardType: keyboardType,
           decoration: InputDecoration(
               filled: true,

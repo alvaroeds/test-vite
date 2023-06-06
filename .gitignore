@@ -126,3 +126,5 @@ app.*.map.json
 !.idea/runConfigurations/
 
 android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+
