@@ -21,8 +21,9 @@ class ConfigRouter {
                 RouterEstablishment.getGoRoute(
                     subDomain: const None(),
                     routes: [
-                      RouterProduct.goRoute,
-                      RouterCart.goRoute,
+                      RouterProduct.getGoRoute(subDomain: const None()),
+                      RouterCart.getGoRoute(subDomain: const None()),
+                      RouterCart.getGoRoute(subDomain: const None()),
                     ]),
               ],
             )
@@ -39,23 +40,23 @@ class ConfigRouter {
       ConfigRouter.getGoRouter(
         hasSubDomain: subDomain.isSome(),
         routes: [
+          if (subDomain.isSome())
+            RouterEstablishment.getGoRoute(subDomain: subDomain, routes: [
+              RouterProduct.getGoRoute(subDomain: subDomain),
+              RouterCart.getGoRoute(subDomain: subDomain),
+              RouterCart.getGoRoute(subDomain: subDomain),
+            ]),
           RouterHome.getGoRoute(
             subDomain: subDomain,
             routes: [
               if (subDomain.isNone())
                 RouterEstablishment.getGoRoute(subDomain: subDomain, routes: [
-                  RouterProduct.goRoute,
-                  RouterCart.goRoute,
-                  RouterDeleveryOrder.goRoute,
+                  RouterProduct.getGoRoute(subDomain: subDomain),
+                  RouterCart.getGoRoute(subDomain: subDomain),
+                  RouterCart.getGoRoute(subDomain: subDomain),
                 ]),
             ],
           ),
-          if (subDomain.isSome())
-            RouterEstablishment.getGoRoute(subDomain: subDomain, routes: [
-              RouterProduct.goRoute,
-              RouterCart.goRoute,
-              RouterDeleveryOrder.goRoute,
-            ])
         ],
       ),
     );

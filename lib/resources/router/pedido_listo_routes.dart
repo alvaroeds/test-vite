@@ -90,73 +90,90 @@ class RouterProduct {
   static const uuidPath = 'uuid';
   static const firtsPath = 'producto';
 
-  static final goRoute = GoRoute(
-    name: name,
-    path: '$firtsPath/:$uuidPath',
-    redirect: (context, state) {
-      final pathBack =
-          '/${state.pathParameters[RouterEstablishment.firtsPath]}';
-      return context.read<EstablishmentBloc>().state.whenOrNull(
-          hasData: (establishment) => establishment
-              .hasProduct(state.pathParameters[uuidPath])
-              .whenOrNull(isFalse: () => pathBack));
-    },
-    pageBuilder: (context, state) {
-      return ConfigRouter.fadeRoute(
-          child: DetailsProductPage(uuid: state.pathParameters[uuidPath]!),
-          state: state);
-    },
-  );
+  static GoRoute getGoRoute({
+    required Option<String> subDomain,
+    List<RouteBase> routes = const <RouteBase>[],
+  }) =>
+      GoRoute(
+        name: name,
+        path: '$firtsPath/:$uuidPath',
+        redirect: (context, state) {
+          final urlId = subDomain.fold(
+              () => state.pathParameters[RouterEstablishment.firtsPath],
+              (a) => a);
+          final pathBack = '/$urlId';
+          return context.read<EstablishmentBloc>().state.whenOrNull(
+              hasData: (establishment) => establishment
+                  .hasProduct(state.pathParameters[uuidPath])
+                  .whenOrNull(isFalse: () => pathBack));
+        },
+        pageBuilder: (context, state) {
+          return ConfigRouter.fadeRoute(
+              child: DetailsProductPage(uuid: state.pathParameters[uuidPath]!),
+              state: state);
+        },
+      );
 }
 
 class RouterCart {
   static const name = 'cart';
   static const firtsPath = 'carrito';
 
-  static final goRoute = GoRoute(
-    name: name,
-    path: firtsPath,
-    pageBuilder: (context, state) {
-      final urlId = state.pathParameters[RouterEstablishment.firtsPath];
+  static GoRoute getGoRoute({
+    required Option<String> subDomain,
+    List<RouteBase> routes = const <RouteBase>[],
+  }) =>
+      GoRoute(
+        name: name,
+        path: firtsPath,
+        pageBuilder: (context, state) {
+          final urlId = subDomain.fold(
+              () => state.pathParameters[RouterEstablishment.firtsPath],
+              (a) => a);
 
-      return ConfigRouter.fadeRoute(
-        child: ShoppingCartBlocPage(urlId: urlId),
-        state: state,
+          return ConfigRouter.fadeRoute(
+            child: ShoppingCartBlocPage(urlId: urlId),
+            state: state,
+          );
+        },
       );
-    },
-  );
 }
 
 class RouterDeleveryOrder {
   static const name = 'deleveryOrder';
   static const firtsPath = 'pedido';
 
-  static final goRoute = GoRoute(
-    name: name,
-    path: firtsPath,
-    redirect: (context, state) {
-      final pathBack =
-          '/${state.pathParameters[RouterEstablishment.firtsPath]}/${RouterCart.firtsPath}';
-      final cart = context
-          .read<AppCacheBloc>()
-          .state
-          .cartCache[state.pathParameters[RouterEstablishment.firtsPath]];
+  static GoRoute getGoRoute({
+    required Option<String> subDomain,
+    List<RouteBase> routes = const <RouteBase>[],
+  }) =>
+      GoRoute(
+        name: name,
+        path: firtsPath,
+        redirect: (context, state) {
+          final urlId = subDomain.fold(
+              () => state.pathParameters[RouterEstablishment.firtsPath],
+              (a) => a);
+          final pathBack = '/$urlId/${RouterCart.firtsPath}';
+          final cart = context.read<AppCacheBloc>().state.cartCache[urlId];
 
-      if (cart == null) return null;
+          if (cart == null) return null;
 
-      final isCartEmpty = cart.totalItem == 0;
+          final isCartEmpty = cart.totalItem == 0;
 
-      return isCartEmpty ? pathBack : null;
-    },
-    pageBuilder: (context, state) {
-      final urlId = state.pathParameters[RouterEstablishment.firtsPath];
+          return isCartEmpty ? pathBack : null;
+        },
+        pageBuilder: (context, state) {
+          final urlId = subDomain.fold(
+              () => state.pathParameters[RouterEstablishment.firtsPath],
+              (a) => a);
 
-      return ConfigRouter.fadeRoute(
-        child: DeleveryDataBlocpage(urlId: urlId!),
-        state: state,
+          return ConfigRouter.fadeRoute(
+            child: DeleveryDataBlocpage(urlId: urlId!),
+            state: state,
+          );
+        },
       );
-    },
-  );
 }
 
 class FirtsLoadingApp extends StatelessWidget {
