@@ -28,13 +28,13 @@ class RouterHome {
         return subDomain.fold(
           () => ConfigRouter.fadeRoute(
               state: state, child: const LandingScreen()),
-          (urlId) {
-            context.read<AppCacheBloc>().add(AppCacheEvent.loadCart(urlId));
+          (idUrl) {
+            context.read<AppCacheBloc>().add(AppCacheEvent.loadCart(idUrl));
             context
                 .read<EstablishmentBloc>()
-                .add(EstablishmentEvent.started(urlId));
+                .add(EstablishmentEvent.started(idUrl));
             return ConfigRouter.fadeRoute(
-                child: const LandingScreen(), state: state);
+                child: EstablishmentBlocPage(idUrl: idUrl), state: state);
           },
         );
       },

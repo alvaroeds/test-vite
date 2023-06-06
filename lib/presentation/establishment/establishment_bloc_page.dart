@@ -31,7 +31,7 @@ class EstablishmentBlocPage extends StatelessWidget {
             context.goNamed(RouterHome.name);
           }, (subdomain) {
             final newUri = currentUri.host.replaceFirst('$subdomain.', '');
-            return launchUrl(Uri.parse(currentUri.scheme + newUri));
+            return launchUrl(Uri.parse('https://$newUri'));
           });
         });
       },
