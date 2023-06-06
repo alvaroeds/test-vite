@@ -25,22 +25,8 @@ class RouterHome {
       path: subDomain.isNone() ? '/' : firtsPath,
       routes: routes,
       pageBuilder: (context, state) {
-        return subDomain.fold(
-          () => ConfigRouter.fadeRoute(
-              state: state, child: const LandingScreen()),
-          (idUrl) {
-            context.read<AppCacheBloc>().add(AppCacheEvent.loadCart(idUrl));
-            context
-                .read<EstablishmentBloc>()
-                .add(EstablishmentEvent.started(idUrl));
-            return ConfigRouter.fadeRoute(
-                child: EstablishmentBlocPage(
-                  idUrl: idUrl,
-                  subDomain: subDomain,
-                ),
-                state: state);
-          },
-        );
+        return ConfigRouter.fadeRoute(
+            state: state, child: const LandingScreen());
       },
     );
   }
@@ -65,18 +51,14 @@ class RouterEstablishment {
       },
       routes: routes,
       pageBuilder: (context, state) {
-        final idUrl = subDomain.getOrElse(
-          () {
-            final idUrl = state.pathParameters[firtsPath];
-            context
-                .read<EstablishmentBloc>()
-                .add(EstablishmentEvent.started(idUrl));
+        final idUrl = subDomain.fold(
+            () => state.pathParameters[RouterEstablishment.firtsPath],
+            (a) => a);
+        context
+            .read<EstablishmentBloc>()
+            .add(EstablishmentEvent.started(idUrl));
 
-            context.read<AppCacheBloc>().add(AppCacheEvent.loadCart(idUrl));
-
-            return idUrl.toString();
-          },
-        );
+        context.read<AppCacheBloc>().add(AppCacheEvent.loadCart(idUrl));
         return ConfigRouter.fadeRoute(
             child: EstablishmentBlocPage(subDomain: subDomain, idUrl: idUrl),
             state: state);
