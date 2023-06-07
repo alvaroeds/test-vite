@@ -31,7 +31,7 @@ class FirestoreEstablishmentRepository implements IEstablishmentRepository {
       return right(establishment.copyWith(categories: newCategories));
     }).onErrorReturnWith(
       (error, stackTrace) =>
-          left(GlobalFailure.fromException(error, stackTrace)),
+          left(GlobalFailure.fromException(error, stackTrace, true)),
     );
   }
 }

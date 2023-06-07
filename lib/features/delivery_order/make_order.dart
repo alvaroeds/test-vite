@@ -43,6 +43,9 @@ class MakeOrderUseCase {
           '\nDirección: $address${additionalDetail.isEmpty ? '' : '\n$additionalDetail'}',
     );
 
+    final finalTotalCost =
+        cart.totalCost + (address.isNone() ? 0.0 : establishment.deliveryCost);
+
     final itemsDetail = cart.items.map((item) {
       final comment = item.comment.trim().isEmpty
           ? ''
@@ -65,7 +68,7 @@ class MakeOrderUseCase {
 
     final changeText = cash == 0
         ? ''
-        : '\n\nMonto a recibir: ${cash.toStringAsFixed(2)}\nCambio: ${(cash - (cart.totalCost + (address.isNone() ? 0.0 : establishment.deliveryCost))).toStringAsFixed(2)}}';
+        : '\n\nMonto a recibir: ${cash.toStringAsFixed(2)}\nCambio: ${(cash - finalTotalCost).toStringAsFixed(2)}';
 
     final plantilla = '''
 \u{1F44B} Hola! Me gustaría realizar un pedido.
@@ -82,7 +85,7 @@ Teléfono: $contactPhone$contactDirection
 💲 *Costos*
 Costo de los productos: ${cart.totalCost.toStringAsFixed(2)}$deliveryCost
 
-*Total a pagar: ${(cart.totalCost + (address.isNone() ? 0.0 : establishment.deliveryCost)).toStringAsFixed(2)}*
+*Total a pagar: ${finalTotalCost.toStringAsFixed(2)}*
 
 \u{1F4DD} *Pedido*
 

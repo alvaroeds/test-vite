@@ -13,28 +13,28 @@ class DataView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<DeliveryOrderBloc>();
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
 
-        context
-            .read<DeliveryOrderBloc>()
-            .add(const DeliveryOrderEvent.closeSelectable());
+        bloc.add(const DeliveryOrderEvent.closeSelectable());
       },
       child: ListView(
         padding: const EdgeInsets.all(16),
-        children: const [
-          SizedBox(height: 20),
-          TitleFormContact(),
-          FormContactUser(),
-          SizedBox(height: 10),
-          FormServicesType(),
-          TotalPriceCard(),
-          MethodPayCards(),
-          SizedBox(height: 64),
-          PrivacityText(),
-          SizedBox(height: 20),
-          FooterDelivery()
+        children: [
+          const SizedBox(height: 20),
+          const TitleFormContact(),
+          const FormContactUser(),
+          const SizedBox(height: 10),
+          const FormServicesType(),
+          const TotalPriceCard(),
+          if (bloc.establishmentDto.paymentMethods.isNotEmpty)
+            const MethodPayCards(),
+          const SizedBox(height: 64),
+          const PrivacityText(),
+          const SizedBox(height: 20),
+          const FooterDelivery()
         ],
       ),
     );

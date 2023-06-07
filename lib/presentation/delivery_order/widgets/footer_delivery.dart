@@ -25,7 +25,8 @@ class FooterDelivery extends StatelessWidget {
     if (bloc.state.service.isDelivery && bloc.state.address.isNone()) {
       return showError('Seleccione o ingrese una dirección');
     }
-    if (bloc.state.paymentMethod.method.isNone()) {
+    if (bloc.state.paymentMethod.method.isNone() &&
+        bloc.establishmentDto.paymentMethods.isNotEmpty) {
       return showError('Seleccione un método de pago');
     }
     if (bloc.state.paymentMethod.isCash) {

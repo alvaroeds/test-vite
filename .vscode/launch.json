@@ -26,11 +26,11 @@
         "staging",
         "--target",
         "lib/main_staging.dart",
-        "--web-renderer html",
+        "--web-renderer canvaskit",
         "-d",
         "chrome",
         "--web-port",
-        "8020"
+        "8030"
       ]
     },
     {
