@@ -18,8 +18,9 @@ class _TotalPriceCardState extends State<TotalPriceCard> with CardStyle {
   bool isShowDeatails = false;
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
+    return Container(
         decoration: cardStyle,
+        margin: cardMargin,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

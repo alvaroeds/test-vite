@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pedido_listo_web/presentation/delivery_order/bloc/delivery_order_bloc.dart';
 import 'package:pedido_listo_web/presentation/delivery_order/widgets/cards/method_pay_card.dart';
 import 'package:pedido_listo_web/presentation/delivery_order/widgets/cards/total_price_card.dart';
 import 'package:pedido_listo_web/presentation/delivery_order/widgets/footer_delivery.dart';
@@ -11,23 +13,30 @@ class DataView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.all(16),
-      children: const [
-        SizedBox(height: 20),
-        TitleFormContact(),
-        FormContactUser(),
-        SizedBox(height: 20),
-        FormServicesType(),
-        SizedBox(height: 20),
-        TotalPriceCard(),
-        SizedBox(height: 20),
-        MethodPayCards(),
-        SizedBox(height: 64),
-        PrivacityText(),
-        SizedBox(height: 20),
-        FooterDelivery()
-      ],
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+
+        context
+            .read<DeliveryOrderBloc>()
+            .add(const DeliveryOrderEvent.closeSelectable());
+      },
+      child: ListView(
+        padding: const EdgeInsets.all(16),
+        children: const [
+          SizedBox(height: 20),
+          TitleFormContact(),
+          FormContactUser(),
+          SizedBox(height: 10),
+          FormServicesType(),
+          TotalPriceCard(),
+          MethodPayCards(),
+          SizedBox(height: 64),
+          PrivacityText(),
+          SizedBox(height: 20),
+          FooterDelivery()
+        ],
+      ),
     );
   }
 }

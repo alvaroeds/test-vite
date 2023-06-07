@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pedido_listo_web/features/user/domain/dto/address_dto.dart';
 import 'package:pedido_listo_web/presentation/delivery_order/bloc/delivery_order_bloc.dart';
-import 'package:pedido_listo_web/presentation/delivery_order/widgets/cards/addresses_card.dart';
-import 'package:pedido_listo_web/presentation/delivery_order/widgets/cards/new_direction_card.dart';
+import 'package:pedido_listo_web/presentation/delivery_order/widgets/cards/list_addresses_card.dart';
+import 'package:pedido_listo_web/presentation/delivery_order/widgets/cards/create_address_card.dart';
 import 'package:pedido_listo_web/presentation/delivery_order/widgets/inputs/input_address_field.dart';
 import 'package:pedido_listo_web/resources/utils/fonts.dart';
 
@@ -20,7 +20,7 @@ class DeliverySection extends StatelessWidget {
       },
       builder: (context, state) {
         return state.fold(
-          NewDirectionCard.new,
+          CreateAddressCard.new,
           (addressSelected) => Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -36,6 +36,7 @@ class DeliverySection extends StatelessWidget {
               InputAddressField(
                 key: Key(addressSelected.uuid),
               ),
+              const SizedBox(height: 10),
             ],
           ),
         );

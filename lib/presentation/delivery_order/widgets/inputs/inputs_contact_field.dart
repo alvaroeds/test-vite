@@ -16,6 +16,7 @@ class InputPhoneField extends StatelessWidget {
       onFieldSubmitted: onFieldSubmitted,
       focusNode: focusNode,
       initValue: bloc.state.contactPhone,
+      maxLength: 15,
       keyboardType: TextInputType.phone,
       hintText: '+59-9-256-5333',
       onChanged: (value) => bloc.add(DeliveryOrderEvent.updatePhone(value)),
@@ -36,6 +37,7 @@ class InputNameField extends StatelessWidget {
     return _BaseInputField(
       onFieldSubmitted: onFieldSubmitted,
       focusNode: focusNode,
+      maxLength: 50,
       initValue: bloc.state.contactName,
       hintText: 'Ingrese su nombre acá',
       onChanged: (value) => bloc.add(DeliveryOrderEvent.updateName(value)),
@@ -52,9 +54,11 @@ class _BaseInputField extends StatelessWidget {
   final FocusNode? focusNode;
   final void Function(String)? onChanged;
   final void Function(String)? onFieldSubmitted;
+  final int maxLength;
 
   const _BaseInputField({
     required this.initValue,
+    required this.maxLength,
     required this.focusNode,
     required this.hintText,
     required this.title,
@@ -79,8 +83,10 @@ class _BaseInputField extends StatelessWidget {
                   ?.copyWith(fontWeight: FontWeight.bold)),
         ),
         TextFormField(
+          initialValue: initValue,
+          onChanged: onChanged,
           focusNode: focusNode,
-          maxLength: 14,
+          maxLength: maxLength,
           onFieldSubmitted: onFieldSubmitted,
           textCapitalization: TextCapitalization.words,
           textInputAction: TextInputAction.next,
@@ -98,8 +104,6 @@ class _BaseInputField extends StatelessWidget {
               ),
               hintText: hintText,
               counterText: ''),
-          initialValue: initValue,
-          onChanged: onChanged,
         ),
       ],
     );

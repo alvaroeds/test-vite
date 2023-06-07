@@ -14,6 +14,7 @@ class MockEstablishmentRepository implements IEstablishmentRepository {
     return Stream.periodic(
       const Duration(seconds: 2),
       (number) => EstablishmentDto(
+          paymentMethodsTypes: [],
           name: '$name $number',
           bannerUrl:
               'https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA12wCqT.img?w=1920&h=1080&m=4&q=99',

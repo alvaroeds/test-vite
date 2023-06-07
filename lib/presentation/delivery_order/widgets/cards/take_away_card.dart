@@ -14,6 +14,7 @@ class TakeawayCard extends StatelessWidget with CardStyle {
     final bloc = context.read<DeliveryOrderBloc>();
     return Container(
         padding: cardPadding,
+        margin: cardMargin,
         decoration: cardStyle,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,7 +28,7 @@ class TakeawayCard extends StatelessWidget with CardStyle {
                 R.ASSETS_SVG_SHOP_SVG.toSvg(),
                 const SizedBox(width: 12),
                 Expanded(
-                  child: Text(bloc.establishmentDto.localDirection,
+                  child: SelectableText(bloc.establishmentDto.localDirection,
                       style: context.currentStyle.bodyMedium?.copyWith(
                           fontWeight: FontWeight.bold, fontSize: 14)),
                 ),

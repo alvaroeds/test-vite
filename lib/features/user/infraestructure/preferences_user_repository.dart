@@ -12,7 +12,7 @@ class PreferencesUserRepository implements InterfaceUserRepository {
   @override
   Future<void> deleteUser() async {}
 
-  static const USER_KEY = 'user_97';
+  static const USER_KEY = 'user_95';
 
   @override
   Future<UserDto> getUser() async {

@@ -14,4 +14,12 @@ class DeliveryOrderEvent with _$DeliveryOrderEvent {
       _UpdateService;
 
   const factory DeliveryOrderEvent.createOrder() = _CreateOrder;
+
+  const factory DeliveryOrderEvent.closeSelectable() = _CloseSelectable;
+  const factory DeliveryOrderEvent.changeSelectable() = _ChangeSelectable;
+
+  const factory DeliveryOrderEvent.updatePaymentMethod(
+      Payment payment, String namePayment) = _UpdatePaymentMethod;
+
+  const factory DeliveryOrderEvent.updateCash(String cash) = _UpdateCash;
 }

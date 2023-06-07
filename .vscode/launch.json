@@ -26,11 +26,11 @@
         "staging",
         "--target",
         "lib/main_staging.dart",
-        "--web-renderer canvaskit",
+        "--web-renderer html",
         "-d",
         "chrome",
         "--web-port",
-        "8010"
+        "8020"
       ]
     },
     {
@@ -48,7 +48,6 @@
         "chrome",
         "--web-port",
         "8010",
-
         "--web-hostname",
         "192.168.1.15"
       ]

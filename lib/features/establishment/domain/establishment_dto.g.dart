@@ -13,6 +13,10 @@ _$_EstablishmentDto _$$_EstablishmentDtoFromJson(Map<String, dynamic> json) =>
       idUrl: json['id_url'] as String,
       bannerUrl: json['banner_url'] as String,
       profileImage: json['profile_image'] as String,
+      paymentMethodsTypes: (json['payment_methods'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
       deliveryCost: (json['delevery_cost'] as num?)?.toDouble() ?? 0,
       localDirection: json['local_direction'] as String? ?? '',
       whatsappNumber: json['whatsapp_number'] as String? ?? '',
@@ -37,6 +41,7 @@ Map<String, dynamic> _$$_EstablishmentDtoToJson(_$_EstablishmentDto instance) =>
       'id_url': instance.idUrl,
       'banner_url': instance.bannerUrl,
       'profile_image': instance.profileImage,
+      'payment_methods': instance.paymentMethodsTypes,
       'delevery_cost': instance.deliveryCost,
       'local_direction': instance.localDirection,
       'whatsapp_number': instance.whatsappNumber,

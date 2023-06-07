@@ -20,6 +20,8 @@ class MakeOrderUseCase {
     required String contactPhone,
     required Option<String> address,
     required String additionalDetail,
+    required String paymentMethod,
+    required double cash,
   }) async {
     final uri = Uri.parse(html.window.location.href);
     final baseUrl = uri.host;
@@ -61,6 +63,10 @@ class MakeOrderUseCase {
    ''';
     }).join('\n');
 
+    final changeText = cash == 0
+        ? ''
+        : '\n\nMonto a recibir: ${cash.toStringAsFixed(2)}\nCambio: ${(cash - (cart.totalCost + (address.isNone() ? 0.0 : establishment.deliveryCost))).toStringAsFixed(2)}}';
+
     final plantilla = '''
 \u{1F44B} Hola! Me gustaría realizar un pedido.
 Vengo de $baseUrl
@@ -71,15 +77,12 @@ Vengo de $baseUrl
 Nombre: $contactName
 Teléfono: $contactPhone$contactDirection
 
-*Método de pago: [METODO_PAGO]*
-
-Monto a recibir: [MONTO_RECIBIR]
-Cambio: [CAMBIO]
+*Método de pago: $paymentMethod*$changeText
 
 💲 *Costos*
-Costo de los productos: ${cart.totalCost}$deliveryCost
+Costo de los productos: ${cart.totalCost.toStringAsFixed(2)}$deliveryCost
 
-*Total a pagar: ${cart.totalCost + (address.isNone() ? 0.0 : establishment.deliveryCost)}*
+*Total a pagar: ${(cart.totalCost + (address.isNone() ? 0.0 : establishment.deliveryCost)).toStringAsFixed(2)}*
 
 \u{1F4DD} *Pedido*
 

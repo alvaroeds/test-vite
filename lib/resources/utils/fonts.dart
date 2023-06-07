@@ -36,7 +36,6 @@ extension Fonts on BuildContext {
       );
 
   TextStyle? get interBold2Title => currentStyle.headlineMedium?.copyWith(
-        fontWeight: FontWeight.bold,
         color: const Color(0xff40454D),
       );
 

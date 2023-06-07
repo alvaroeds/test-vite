@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:pedido_listo_web/features/delivery_order/domain/payment.dart';
 import 'package:pedido_listo_web/features/establishment/domain/modifiers.dart';
 import 'package:pedido_listo_web/features/establishment/domain/network_dto.dart';
 import 'package:pedido_listo_web/features/establishment/domain/product_dto.dart';
@@ -17,6 +18,8 @@ class EstablishmentDto with _$EstablishmentDto {
     @JsonKey(name: 'id_url') required String idUrl,
     @JsonKey(name: 'banner_url') required String bannerUrl,
     @JsonKey(name: 'profile_image') required String profileImage,
+    @JsonKey(name: 'payment_methods', defaultValue: <String>[])
+    required List<String> paymentMethodsTypes,
     @JsonKey(name: 'delevery_cost') @Default(0) double deliveryCost,
     @JsonKey(name: 'local_direction') @Default('') String localDirection,
     @JsonKey(name: 'whatsapp_number') @Default('') String whatsappNumber,
@@ -31,6 +34,9 @@ class EstablishmentDto with _$EstablishmentDto {
   }) = _EstablishmentDto;
 
   const EstablishmentDto._();
+
+  List<Payment> get paymentMethods =>
+      paymentMethodsTypes.map(Payment.fromString).toList();
 
   bool hasProduct(String? uuid) {
     return categories
@@ -51,6 +57,7 @@ class EstablishmentDto with _$EstablishmentDto {
       _$EstablishmentDtoFromJson(json);
 
   factory EstablishmentDto.newDto(String name) => EstablishmentDto(
+      paymentMethodsTypes: [],
       bannerUrl:
           'https://ops-dra.agcstorage.link/v0/pedido-listo-storage-0kurd/fondo_default.jpg',
       name: name.trim(),

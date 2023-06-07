@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:pedido_listo_web/features/delivery_order/domain/payment.dart';
 import 'package:pedido_listo_web/features/delivery_order/make_order.dart';
 import 'package:pedido_listo_web/features/establishment/domain/establishment_dto.dart';
 import 'package:pedido_listo_web/features/shopping_cart/domain/shopping_car_dto.dart';
@@ -24,6 +25,7 @@ class DeliveryOrderBloc extends Bloc<DeliveryOrderEvent, DeliveryOrderState> {
   }) : super(DeliveryOrderState(
           contactName: userDto.name,
           contactPhone: userDto.phone,
+          paymentMethod: PaymentMethod.initial(),
           address: optionOf(userDto.addresses.firstOrNull),
         )) {
     on<_UpdateName>(_updateContactName);
@@ -32,6 +34,28 @@ class DeliveryOrderBloc extends Bloc<DeliveryOrderEvent, DeliveryOrderState> {
     on<_UpdateAddress>(_updateAddress);
     on<_CreateOrder>(_createOrder);
     on<_UpdateAdditionalDetail>(_updateAdditionalDetail);
+    on<_UpdatePaymentMethod>(_updatePaymentMethod);
+    on<_ChangeSelectable>(_changeSelectable);
+    on<_CloseSelectable>(_closeSelectable);
+    on<_UpdateCash>(_updateCash);
+  }
+
+  FutureOr<void> _changeSelectable(
+      _ChangeSelectable event, Emitter<DeliveryOrderState> emit) {
+    emit(state.copyWith(isSelectableExpanded: !state.isSelectableExpanded));
+  }
+
+  FutureOr<void> _closeSelectable(
+      _CloseSelectable event, Emitter<DeliveryOrderState> emit) {
+    emit(state.copyWith(isSelectableExpanded: false));
+  }
+
+  FutureOr<void> _updatePaymentMethod(
+      _UpdatePaymentMethod event, Emitter<DeliveryOrderState> emit) {
+    emit(state.copyWith(
+        isSelectableExpanded: false,
+        paymentMethod: state.paymentMethod.copyWith(
+            method: some(event.payment), paymentMethod: event.namePayment)));
   }
 
   FutureOr<void> _updateContactPhone(
@@ -77,11 +101,20 @@ class DeliveryOrderBloc extends Bloc<DeliveryOrderEvent, DeliveryOrderState> {
     MakeOrderUseCase.execute(shoppingCartDto, establishmentDto,
         contactName: state.contactName,
         contactPhone: state.contactPhone,
+        paymentMethod: state.paymentMethod.paymentMethod,
+        cash: state.paymentMethod.isCash ? state.paymentMethod.cash : 0,
         address: state.service.isTakeaway
             ? none()
             : state.address.map((a) => a.reference),
         additionalDetail: state.additionalDetail[
                 state.address.map((a) => a.uuid).getOrElse(() => '')] ??
             '');
+  }
+
+  FutureOr<void> _updateCash(
+      _UpdateCash event, Emitter<DeliveryOrderState> emit) {
+    emit(state.copyWith(
+        paymentMethod: state.paymentMethod
+            .copyWith(cash: double.tryParse(event.cash) ?? 0, isInit: false)));
   }
 }

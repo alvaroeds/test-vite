@@ -24,6 +24,11 @@ mixin _$DeliveryOrderEvent {
     required TResult Function(AddressDto? address) updateAddress,
     required TResult Function(Service service) updateService,
     required TResult Function() createOrder,
+    required TResult Function() closeSelectable,
+    required TResult Function() changeSelectable,
+    required TResult Function(Payment payment, String namePayment)
+        updatePaymentMethod,
+    required TResult Function(String cash) updateCash,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +39,10 @@ mixin _$DeliveryOrderEvent {
     TResult? Function(AddressDto? address)? updateAddress,
     TResult? Function(Service service)? updateService,
     TResult? Function()? createOrder,
+    TResult? Function()? closeSelectable,
+    TResult? Function()? changeSelectable,
+    TResult? Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult? Function(String cash)? updateCash,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +53,10 @@ mixin _$DeliveryOrderEvent {
     TResult Function(AddressDto? address)? updateAddress,
     TResult Function(Service service)? updateService,
     TResult Function()? createOrder,
+    TResult Function()? closeSelectable,
+    TResult Function()? changeSelectable,
+    TResult Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult Function(String cash)? updateCash,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +69,10 @@ mixin _$DeliveryOrderEvent {
     required TResult Function(_UpdateAddress value) updateAddress,
     required TResult Function(_UpdateService value) updateService,
     required TResult Function(_CreateOrder value) createOrder,
+    required TResult Function(_CloseSelectable value) closeSelectable,
+    required TResult Function(_ChangeSelectable value) changeSelectable,
+    required TResult Function(_UpdatePaymentMethod value) updatePaymentMethod,
+    required TResult Function(_UpdateCash value) updateCash,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,6 +83,10 @@ mixin _$DeliveryOrderEvent {
     TResult? Function(_UpdateAddress value)? updateAddress,
     TResult? Function(_UpdateService value)? updateService,
     TResult? Function(_CreateOrder value)? createOrder,
+    TResult? Function(_CloseSelectable value)? closeSelectable,
+    TResult? Function(_ChangeSelectable value)? changeSelectable,
+    TResult? Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult? Function(_UpdateCash value)? updateCash,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -76,6 +97,10 @@ mixin _$DeliveryOrderEvent {
     TResult Function(_UpdateAddress value)? updateAddress,
     TResult Function(_UpdateService value)? updateService,
     TResult Function(_CreateOrder value)? createOrder,
+    TResult Function(_CloseSelectable value)? closeSelectable,
+    TResult Function(_ChangeSelectable value)? changeSelectable,
+    TResult Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult Function(_UpdateCash value)? updateCash,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -170,6 +195,11 @@ class _$_UpdateName implements _UpdateName {
     required TResult Function(AddressDto? address) updateAddress,
     required TResult Function(Service service) updateService,
     required TResult Function() createOrder,
+    required TResult Function() closeSelectable,
+    required TResult Function() changeSelectable,
+    required TResult Function(Payment payment, String namePayment)
+        updatePaymentMethod,
+    required TResult Function(String cash) updateCash,
   }) {
     return updateName(contactName);
   }
@@ -183,6 +213,10 @@ class _$_UpdateName implements _UpdateName {
     TResult? Function(AddressDto? address)? updateAddress,
     TResult? Function(Service service)? updateService,
     TResult? Function()? createOrder,
+    TResult? Function()? closeSelectable,
+    TResult? Function()? changeSelectable,
+    TResult? Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult? Function(String cash)? updateCash,
   }) {
     return updateName?.call(contactName);
   }
@@ -196,6 +230,10 @@ class _$_UpdateName implements _UpdateName {
     TResult Function(AddressDto? address)? updateAddress,
     TResult Function(Service service)? updateService,
     TResult Function()? createOrder,
+    TResult Function()? closeSelectable,
+    TResult Function()? changeSelectable,
+    TResult Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult Function(String cash)? updateCash,
     required TResult orElse(),
   }) {
     if (updateName != null) {
@@ -214,6 +252,10 @@ class _$_UpdateName implements _UpdateName {
     required TResult Function(_UpdateAddress value) updateAddress,
     required TResult Function(_UpdateService value) updateService,
     required TResult Function(_CreateOrder value) createOrder,
+    required TResult Function(_CloseSelectable value) closeSelectable,
+    required TResult Function(_ChangeSelectable value) changeSelectable,
+    required TResult Function(_UpdatePaymentMethod value) updatePaymentMethod,
+    required TResult Function(_UpdateCash value) updateCash,
   }) {
     return updateName(this);
   }
@@ -227,6 +269,10 @@ class _$_UpdateName implements _UpdateName {
     TResult? Function(_UpdateAddress value)? updateAddress,
     TResult? Function(_UpdateService value)? updateService,
     TResult? Function(_CreateOrder value)? createOrder,
+    TResult? Function(_CloseSelectable value)? closeSelectable,
+    TResult? Function(_ChangeSelectable value)? changeSelectable,
+    TResult? Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult? Function(_UpdateCash value)? updateCash,
   }) {
     return updateName?.call(this);
   }
@@ -240,6 +286,10 @@ class _$_UpdateName implements _UpdateName {
     TResult Function(_UpdateAddress value)? updateAddress,
     TResult Function(_UpdateService value)? updateService,
     TResult Function(_CreateOrder value)? createOrder,
+    TResult Function(_CloseSelectable value)? closeSelectable,
+    TResult Function(_ChangeSelectable value)? changeSelectable,
+    TResult Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult Function(_UpdateCash value)? updateCash,
     required TResult orElse(),
   }) {
     if (updateName != null) {
@@ -329,6 +379,11 @@ class _$_UpdatePhone implements _UpdatePhone {
     required TResult Function(AddressDto? address) updateAddress,
     required TResult Function(Service service) updateService,
     required TResult Function() createOrder,
+    required TResult Function() closeSelectable,
+    required TResult Function() changeSelectable,
+    required TResult Function(Payment payment, String namePayment)
+        updatePaymentMethod,
+    required TResult Function(String cash) updateCash,
   }) {
     return updatePhone(contactPhone);
   }
@@ -342,6 +397,10 @@ class _$_UpdatePhone implements _UpdatePhone {
     TResult? Function(AddressDto? address)? updateAddress,
     TResult? Function(Service service)? updateService,
     TResult? Function()? createOrder,
+    TResult? Function()? closeSelectable,
+    TResult? Function()? changeSelectable,
+    TResult? Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult? Function(String cash)? updateCash,
   }) {
     return updatePhone?.call(contactPhone);
   }
@@ -355,6 +414,10 @@ class _$_UpdatePhone implements _UpdatePhone {
     TResult Function(AddressDto? address)? updateAddress,
     TResult Function(Service service)? updateService,
     TResult Function()? createOrder,
+    TResult Function()? closeSelectable,
+    TResult Function()? changeSelectable,
+    TResult Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult Function(String cash)? updateCash,
     required TResult orElse(),
   }) {
     if (updatePhone != null) {
@@ -373,6 +436,10 @@ class _$_UpdatePhone implements _UpdatePhone {
     required TResult Function(_UpdateAddress value) updateAddress,
     required TResult Function(_UpdateService value) updateService,
     required TResult Function(_CreateOrder value) createOrder,
+    required TResult Function(_CloseSelectable value) closeSelectable,
+    required TResult Function(_ChangeSelectable value) changeSelectable,
+    required TResult Function(_UpdatePaymentMethod value) updatePaymentMethod,
+    required TResult Function(_UpdateCash value) updateCash,
   }) {
     return updatePhone(this);
   }
@@ -386,6 +453,10 @@ class _$_UpdatePhone implements _UpdatePhone {
     TResult? Function(_UpdateAddress value)? updateAddress,
     TResult? Function(_UpdateService value)? updateService,
     TResult? Function(_CreateOrder value)? createOrder,
+    TResult? Function(_CloseSelectable value)? closeSelectable,
+    TResult? Function(_ChangeSelectable value)? changeSelectable,
+    TResult? Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult? Function(_UpdateCash value)? updateCash,
   }) {
     return updatePhone?.call(this);
   }
@@ -399,6 +470,10 @@ class _$_UpdatePhone implements _UpdatePhone {
     TResult Function(_UpdateAddress value)? updateAddress,
     TResult Function(_UpdateService value)? updateService,
     TResult Function(_CreateOrder value)? createOrder,
+    TResult Function(_CloseSelectable value)? closeSelectable,
+    TResult Function(_ChangeSelectable value)? changeSelectable,
+    TResult Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult Function(_UpdateCash value)? updateCash,
     required TResult orElse(),
   }) {
     if (updatePhone != null) {
@@ -489,6 +564,11 @@ class _$_UpdateAdditionalDetail implements _UpdateAdditionalDetail {
     required TResult Function(AddressDto? address) updateAddress,
     required TResult Function(Service service) updateService,
     required TResult Function() createOrder,
+    required TResult Function() closeSelectable,
+    required TResult Function() changeSelectable,
+    required TResult Function(Payment payment, String namePayment)
+        updatePaymentMethod,
+    required TResult Function(String cash) updateCash,
   }) {
     return updateAdditionalDetail(additionalDetail);
   }
@@ -502,6 +582,10 @@ class _$_UpdateAdditionalDetail implements _UpdateAdditionalDetail {
     TResult? Function(AddressDto? address)? updateAddress,
     TResult? Function(Service service)? updateService,
     TResult? Function()? createOrder,
+    TResult? Function()? closeSelectable,
+    TResult? Function()? changeSelectable,
+    TResult? Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult? Function(String cash)? updateCash,
   }) {
     return updateAdditionalDetail?.call(additionalDetail);
   }
@@ -515,6 +599,10 @@ class _$_UpdateAdditionalDetail implements _UpdateAdditionalDetail {
     TResult Function(AddressDto? address)? updateAddress,
     TResult Function(Service service)? updateService,
     TResult Function()? createOrder,
+    TResult Function()? closeSelectable,
+    TResult Function()? changeSelectable,
+    TResult Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult Function(String cash)? updateCash,
     required TResult orElse(),
   }) {
     if (updateAdditionalDetail != null) {
@@ -533,6 +621,10 @@ class _$_UpdateAdditionalDetail implements _UpdateAdditionalDetail {
     required TResult Function(_UpdateAddress value) updateAddress,
     required TResult Function(_UpdateService value) updateService,
     required TResult Function(_CreateOrder value) createOrder,
+    required TResult Function(_CloseSelectable value) closeSelectable,
+    required TResult Function(_ChangeSelectable value) changeSelectable,
+    required TResult Function(_UpdatePaymentMethod value) updatePaymentMethod,
+    required TResult Function(_UpdateCash value) updateCash,
   }) {
     return updateAdditionalDetail(this);
   }
@@ -546,6 +638,10 @@ class _$_UpdateAdditionalDetail implements _UpdateAdditionalDetail {
     TResult? Function(_UpdateAddress value)? updateAddress,
     TResult? Function(_UpdateService value)? updateService,
     TResult? Function(_CreateOrder value)? createOrder,
+    TResult? Function(_CloseSelectable value)? closeSelectable,
+    TResult? Function(_ChangeSelectable value)? changeSelectable,
+    TResult? Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult? Function(_UpdateCash value)? updateCash,
   }) {
     return updateAdditionalDetail?.call(this);
   }
@@ -559,6 +655,10 @@ class _$_UpdateAdditionalDetail implements _UpdateAdditionalDetail {
     TResult Function(_UpdateAddress value)? updateAddress,
     TResult Function(_UpdateService value)? updateService,
     TResult Function(_CreateOrder value)? createOrder,
+    TResult Function(_CloseSelectable value)? closeSelectable,
+    TResult Function(_ChangeSelectable value)? changeSelectable,
+    TResult Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult Function(_UpdateCash value)? updateCash,
     required TResult orElse(),
   }) {
     if (updateAdditionalDetail != null) {
@@ -662,6 +762,11 @@ class _$_UpdateAddress implements _UpdateAddress {
     required TResult Function(AddressDto? address) updateAddress,
     required TResult Function(Service service) updateService,
     required TResult Function() createOrder,
+    required TResult Function() closeSelectable,
+    required TResult Function() changeSelectable,
+    required TResult Function(Payment payment, String namePayment)
+        updatePaymentMethod,
+    required TResult Function(String cash) updateCash,
   }) {
     return updateAddress(address);
   }
@@ -675,6 +780,10 @@ class _$_UpdateAddress implements _UpdateAddress {
     TResult? Function(AddressDto? address)? updateAddress,
     TResult? Function(Service service)? updateService,
     TResult? Function()? createOrder,
+    TResult? Function()? closeSelectable,
+    TResult? Function()? changeSelectable,
+    TResult? Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult? Function(String cash)? updateCash,
   }) {
     return updateAddress?.call(address);
   }
@@ -688,6 +797,10 @@ class _$_UpdateAddress implements _UpdateAddress {
     TResult Function(AddressDto? address)? updateAddress,
     TResult Function(Service service)? updateService,
     TResult Function()? createOrder,
+    TResult Function()? closeSelectable,
+    TResult Function()? changeSelectable,
+    TResult Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult Function(String cash)? updateCash,
     required TResult orElse(),
   }) {
     if (updateAddress != null) {
@@ -706,6 +819,10 @@ class _$_UpdateAddress implements _UpdateAddress {
     required TResult Function(_UpdateAddress value) updateAddress,
     required TResult Function(_UpdateService value) updateService,
     required TResult Function(_CreateOrder value) createOrder,
+    required TResult Function(_CloseSelectable value) closeSelectable,
+    required TResult Function(_ChangeSelectable value) changeSelectable,
+    required TResult Function(_UpdatePaymentMethod value) updatePaymentMethod,
+    required TResult Function(_UpdateCash value) updateCash,
   }) {
     return updateAddress(this);
   }
@@ -719,6 +836,10 @@ class _$_UpdateAddress implements _UpdateAddress {
     TResult? Function(_UpdateAddress value)? updateAddress,
     TResult? Function(_UpdateService value)? updateService,
     TResult? Function(_CreateOrder value)? createOrder,
+    TResult? Function(_CloseSelectable value)? closeSelectable,
+    TResult? Function(_ChangeSelectable value)? changeSelectable,
+    TResult? Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult? Function(_UpdateCash value)? updateCash,
   }) {
     return updateAddress?.call(this);
   }
@@ -732,6 +853,10 @@ class _$_UpdateAddress implements _UpdateAddress {
     TResult Function(_UpdateAddress value)? updateAddress,
     TResult Function(_UpdateService value)? updateService,
     TResult Function(_CreateOrder value)? createOrder,
+    TResult Function(_CloseSelectable value)? closeSelectable,
+    TResult Function(_ChangeSelectable value)? changeSelectable,
+    TResult Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult Function(_UpdateCash value)? updateCash,
     required TResult orElse(),
   }) {
     if (updateAddress != null) {
@@ -830,6 +955,11 @@ class _$_UpdateService implements _UpdateService {
     required TResult Function(AddressDto? address) updateAddress,
     required TResult Function(Service service) updateService,
     required TResult Function() createOrder,
+    required TResult Function() closeSelectable,
+    required TResult Function() changeSelectable,
+    required TResult Function(Payment payment, String namePayment)
+        updatePaymentMethod,
+    required TResult Function(String cash) updateCash,
   }) {
     return updateService(service);
   }
@@ -843,6 +973,10 @@ class _$_UpdateService implements _UpdateService {
     TResult? Function(AddressDto? address)? updateAddress,
     TResult? Function(Service service)? updateService,
     TResult? Function()? createOrder,
+    TResult? Function()? closeSelectable,
+    TResult? Function()? changeSelectable,
+    TResult? Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult? Function(String cash)? updateCash,
   }) {
     return updateService?.call(service);
   }
@@ -856,6 +990,10 @@ class _$_UpdateService implements _UpdateService {
     TResult Function(AddressDto? address)? updateAddress,
     TResult Function(Service service)? updateService,
     TResult Function()? createOrder,
+    TResult Function()? closeSelectable,
+    TResult Function()? changeSelectable,
+    TResult Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult Function(String cash)? updateCash,
     required TResult orElse(),
   }) {
     if (updateService != null) {
@@ -874,6 +1012,10 @@ class _$_UpdateService implements _UpdateService {
     required TResult Function(_UpdateAddress value) updateAddress,
     required TResult Function(_UpdateService value) updateService,
     required TResult Function(_CreateOrder value) createOrder,
+    required TResult Function(_CloseSelectable value) closeSelectable,
+    required TResult Function(_ChangeSelectable value) changeSelectable,
+    required TResult Function(_UpdatePaymentMethod value) updatePaymentMethod,
+    required TResult Function(_UpdateCash value) updateCash,
   }) {
     return updateService(this);
   }
@@ -887,6 +1029,10 @@ class _$_UpdateService implements _UpdateService {
     TResult? Function(_UpdateAddress value)? updateAddress,
     TResult? Function(_UpdateService value)? updateService,
     TResult? Function(_CreateOrder value)? createOrder,
+    TResult? Function(_CloseSelectable value)? closeSelectable,
+    TResult? Function(_ChangeSelectable value)? changeSelectable,
+    TResult? Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult? Function(_UpdateCash value)? updateCash,
   }) {
     return updateService?.call(this);
   }
@@ -900,6 +1046,10 @@ class _$_UpdateService implements _UpdateService {
     TResult Function(_UpdateAddress value)? updateAddress,
     TResult Function(_UpdateService value)? updateService,
     TResult Function(_CreateOrder value)? createOrder,
+    TResult Function(_CloseSelectable value)? closeSelectable,
+    TResult Function(_ChangeSelectable value)? changeSelectable,
+    TResult Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult Function(_UpdateCash value)? updateCash,
     required TResult orElse(),
   }) {
     if (updateService != null) {
@@ -962,6 +1112,11 @@ class _$_CreateOrder implements _CreateOrder {
     required TResult Function(AddressDto? address) updateAddress,
     required TResult Function(Service service) updateService,
     required TResult Function() createOrder,
+    required TResult Function() closeSelectable,
+    required TResult Function() changeSelectable,
+    required TResult Function(Payment payment, String namePayment)
+        updatePaymentMethod,
+    required TResult Function(String cash) updateCash,
   }) {
     return createOrder();
   }
@@ -975,6 +1130,10 @@ class _$_CreateOrder implements _CreateOrder {
     TResult? Function(AddressDto? address)? updateAddress,
     TResult? Function(Service service)? updateService,
     TResult? Function()? createOrder,
+    TResult? Function()? closeSelectable,
+    TResult? Function()? changeSelectable,
+    TResult? Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult? Function(String cash)? updateCash,
   }) {
     return createOrder?.call();
   }
@@ -988,6 +1147,10 @@ class _$_CreateOrder implements _CreateOrder {
     TResult Function(AddressDto? address)? updateAddress,
     TResult Function(Service service)? updateService,
     TResult Function()? createOrder,
+    TResult Function()? closeSelectable,
+    TResult Function()? changeSelectable,
+    TResult Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult Function(String cash)? updateCash,
     required TResult orElse(),
   }) {
     if (createOrder != null) {
@@ -1006,6 +1169,10 @@ class _$_CreateOrder implements _CreateOrder {
     required TResult Function(_UpdateAddress value) updateAddress,
     required TResult Function(_UpdateService value) updateService,
     required TResult Function(_CreateOrder value) createOrder,
+    required TResult Function(_CloseSelectable value) closeSelectable,
+    required TResult Function(_ChangeSelectable value) changeSelectable,
+    required TResult Function(_UpdatePaymentMethod value) updatePaymentMethod,
+    required TResult Function(_UpdateCash value) updateCash,
   }) {
     return createOrder(this);
   }
@@ -1019,6 +1186,10 @@ class _$_CreateOrder implements _CreateOrder {
     TResult? Function(_UpdateAddress value)? updateAddress,
     TResult? Function(_UpdateService value)? updateService,
     TResult? Function(_CreateOrder value)? createOrder,
+    TResult? Function(_CloseSelectable value)? closeSelectable,
+    TResult? Function(_ChangeSelectable value)? changeSelectable,
+    TResult? Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult? Function(_UpdateCash value)? updateCash,
   }) {
     return createOrder?.call(this);
   }
@@ -1032,6 +1203,10 @@ class _$_CreateOrder implements _CreateOrder {
     TResult Function(_UpdateAddress value)? updateAddress,
     TResult Function(_UpdateService value)? updateService,
     TResult Function(_CreateOrder value)? createOrder,
+    TResult Function(_CloseSelectable value)? closeSelectable,
+    TResult Function(_ChangeSelectable value)? changeSelectable,
+    TResult Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult Function(_UpdateCash value)? updateCash,
     required TResult orElse(),
   }) {
     if (createOrder != null) {
@@ -1046,10 +1221,704 @@ abstract class _CreateOrder implements DeliveryOrderEvent {
 }
 
 /// @nodoc
+abstract class _$$_CloseSelectableCopyWith<$Res> {
+  factory _$$_CloseSelectableCopyWith(
+          _$_CloseSelectable value, $Res Function(_$_CloseSelectable) then) =
+      __$$_CloseSelectableCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_CloseSelectableCopyWithImpl<$Res>
+    extends _$DeliveryOrderEventCopyWithImpl<$Res, _$_CloseSelectable>
+    implements _$$_CloseSelectableCopyWith<$Res> {
+  __$$_CloseSelectableCopyWithImpl(
+      _$_CloseSelectable _value, $Res Function(_$_CloseSelectable) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_CloseSelectable implements _CloseSelectable {
+  const _$_CloseSelectable();
+
+  @override
+  String toString() {
+    return 'DeliveryOrderEvent.closeSelectable()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_CloseSelectable);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String contactName) updateName,
+    required TResult Function(String contactPhone) updatePhone,
+    required TResult Function(String additionalDetail) updateAdditionalDetail,
+    required TResult Function(AddressDto? address) updateAddress,
+    required TResult Function(Service service) updateService,
+    required TResult Function() createOrder,
+    required TResult Function() closeSelectable,
+    required TResult Function() changeSelectable,
+    required TResult Function(Payment payment, String namePayment)
+        updatePaymentMethod,
+    required TResult Function(String cash) updateCash,
+  }) {
+    return closeSelectable();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String contactName)? updateName,
+    TResult? Function(String contactPhone)? updatePhone,
+    TResult? Function(String additionalDetail)? updateAdditionalDetail,
+    TResult? Function(AddressDto? address)? updateAddress,
+    TResult? Function(Service service)? updateService,
+    TResult? Function()? createOrder,
+    TResult? Function()? closeSelectable,
+    TResult? Function()? changeSelectable,
+    TResult? Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult? Function(String cash)? updateCash,
+  }) {
+    return closeSelectable?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String contactName)? updateName,
+    TResult Function(String contactPhone)? updatePhone,
+    TResult Function(String additionalDetail)? updateAdditionalDetail,
+    TResult Function(AddressDto? address)? updateAddress,
+    TResult Function(Service service)? updateService,
+    TResult Function()? createOrder,
+    TResult Function()? closeSelectable,
+    TResult Function()? changeSelectable,
+    TResult Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult Function(String cash)? updateCash,
+    required TResult orElse(),
+  }) {
+    if (closeSelectable != null) {
+      return closeSelectable();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UpdateName value) updateName,
+    required TResult Function(_UpdatePhone value) updatePhone,
+    required TResult Function(_UpdateAdditionalDetail value)
+        updateAdditionalDetail,
+    required TResult Function(_UpdateAddress value) updateAddress,
+    required TResult Function(_UpdateService value) updateService,
+    required TResult Function(_CreateOrder value) createOrder,
+    required TResult Function(_CloseSelectable value) closeSelectable,
+    required TResult Function(_ChangeSelectable value) changeSelectable,
+    required TResult Function(_UpdatePaymentMethod value) updatePaymentMethod,
+    required TResult Function(_UpdateCash value) updateCash,
+  }) {
+    return closeSelectable(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UpdateName value)? updateName,
+    TResult? Function(_UpdatePhone value)? updatePhone,
+    TResult? Function(_UpdateAdditionalDetail value)? updateAdditionalDetail,
+    TResult? Function(_UpdateAddress value)? updateAddress,
+    TResult? Function(_UpdateService value)? updateService,
+    TResult? Function(_CreateOrder value)? createOrder,
+    TResult? Function(_CloseSelectable value)? closeSelectable,
+    TResult? Function(_ChangeSelectable value)? changeSelectable,
+    TResult? Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult? Function(_UpdateCash value)? updateCash,
+  }) {
+    return closeSelectable?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UpdateName value)? updateName,
+    TResult Function(_UpdatePhone value)? updatePhone,
+    TResult Function(_UpdateAdditionalDetail value)? updateAdditionalDetail,
+    TResult Function(_UpdateAddress value)? updateAddress,
+    TResult Function(_UpdateService value)? updateService,
+    TResult Function(_CreateOrder value)? createOrder,
+    TResult Function(_CloseSelectable value)? closeSelectable,
+    TResult Function(_ChangeSelectable value)? changeSelectable,
+    TResult Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult Function(_UpdateCash value)? updateCash,
+    required TResult orElse(),
+  }) {
+    if (closeSelectable != null) {
+      return closeSelectable(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CloseSelectable implements DeliveryOrderEvent {
+  const factory _CloseSelectable() = _$_CloseSelectable;
+}
+
+/// @nodoc
+abstract class _$$_ChangeSelectableCopyWith<$Res> {
+  factory _$$_ChangeSelectableCopyWith(
+          _$_ChangeSelectable value, $Res Function(_$_ChangeSelectable) then) =
+      __$$_ChangeSelectableCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_ChangeSelectableCopyWithImpl<$Res>
+    extends _$DeliveryOrderEventCopyWithImpl<$Res, _$_ChangeSelectable>
+    implements _$$_ChangeSelectableCopyWith<$Res> {
+  __$$_ChangeSelectableCopyWithImpl(
+      _$_ChangeSelectable _value, $Res Function(_$_ChangeSelectable) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_ChangeSelectable implements _ChangeSelectable {
+  const _$_ChangeSelectable();
+
+  @override
+  String toString() {
+    return 'DeliveryOrderEvent.changeSelectable()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ChangeSelectable);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String contactName) updateName,
+    required TResult Function(String contactPhone) updatePhone,
+    required TResult Function(String additionalDetail) updateAdditionalDetail,
+    required TResult Function(AddressDto? address) updateAddress,
+    required TResult Function(Service service) updateService,
+    required TResult Function() createOrder,
+    required TResult Function() closeSelectable,
+    required TResult Function() changeSelectable,
+    required TResult Function(Payment payment, String namePayment)
+        updatePaymentMethod,
+    required TResult Function(String cash) updateCash,
+  }) {
+    return changeSelectable();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String contactName)? updateName,
+    TResult? Function(String contactPhone)? updatePhone,
+    TResult? Function(String additionalDetail)? updateAdditionalDetail,
+    TResult? Function(AddressDto? address)? updateAddress,
+    TResult? Function(Service service)? updateService,
+    TResult? Function()? createOrder,
+    TResult? Function()? closeSelectable,
+    TResult? Function()? changeSelectable,
+    TResult? Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult? Function(String cash)? updateCash,
+  }) {
+    return changeSelectable?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String contactName)? updateName,
+    TResult Function(String contactPhone)? updatePhone,
+    TResult Function(String additionalDetail)? updateAdditionalDetail,
+    TResult Function(AddressDto? address)? updateAddress,
+    TResult Function(Service service)? updateService,
+    TResult Function()? createOrder,
+    TResult Function()? closeSelectable,
+    TResult Function()? changeSelectable,
+    TResult Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult Function(String cash)? updateCash,
+    required TResult orElse(),
+  }) {
+    if (changeSelectable != null) {
+      return changeSelectable();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UpdateName value) updateName,
+    required TResult Function(_UpdatePhone value) updatePhone,
+    required TResult Function(_UpdateAdditionalDetail value)
+        updateAdditionalDetail,
+    required TResult Function(_UpdateAddress value) updateAddress,
+    required TResult Function(_UpdateService value) updateService,
+    required TResult Function(_CreateOrder value) createOrder,
+    required TResult Function(_CloseSelectable value) closeSelectable,
+    required TResult Function(_ChangeSelectable value) changeSelectable,
+    required TResult Function(_UpdatePaymentMethod value) updatePaymentMethod,
+    required TResult Function(_UpdateCash value) updateCash,
+  }) {
+    return changeSelectable(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UpdateName value)? updateName,
+    TResult? Function(_UpdatePhone value)? updatePhone,
+    TResult? Function(_UpdateAdditionalDetail value)? updateAdditionalDetail,
+    TResult? Function(_UpdateAddress value)? updateAddress,
+    TResult? Function(_UpdateService value)? updateService,
+    TResult? Function(_CreateOrder value)? createOrder,
+    TResult? Function(_CloseSelectable value)? closeSelectable,
+    TResult? Function(_ChangeSelectable value)? changeSelectable,
+    TResult? Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult? Function(_UpdateCash value)? updateCash,
+  }) {
+    return changeSelectable?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UpdateName value)? updateName,
+    TResult Function(_UpdatePhone value)? updatePhone,
+    TResult Function(_UpdateAdditionalDetail value)? updateAdditionalDetail,
+    TResult Function(_UpdateAddress value)? updateAddress,
+    TResult Function(_UpdateService value)? updateService,
+    TResult Function(_CreateOrder value)? createOrder,
+    TResult Function(_CloseSelectable value)? closeSelectable,
+    TResult Function(_ChangeSelectable value)? changeSelectable,
+    TResult Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult Function(_UpdateCash value)? updateCash,
+    required TResult orElse(),
+  }) {
+    if (changeSelectable != null) {
+      return changeSelectable(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeSelectable implements DeliveryOrderEvent {
+  const factory _ChangeSelectable() = _$_ChangeSelectable;
+}
+
+/// @nodoc
+abstract class _$$_UpdatePaymentMethodCopyWith<$Res> {
+  factory _$$_UpdatePaymentMethodCopyWith(_$_UpdatePaymentMethod value,
+          $Res Function(_$_UpdatePaymentMethod) then) =
+      __$$_UpdatePaymentMethodCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Payment payment, String namePayment});
+
+  $PaymentCopyWith<$Res> get payment;
+}
+
+/// @nodoc
+class __$$_UpdatePaymentMethodCopyWithImpl<$Res>
+    extends _$DeliveryOrderEventCopyWithImpl<$Res, _$_UpdatePaymentMethod>
+    implements _$$_UpdatePaymentMethodCopyWith<$Res> {
+  __$$_UpdatePaymentMethodCopyWithImpl(_$_UpdatePaymentMethod _value,
+      $Res Function(_$_UpdatePaymentMethod) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? payment = null,
+    Object? namePayment = null,
+  }) {
+    return _then(_$_UpdatePaymentMethod(
+      null == payment
+          ? _value.payment
+          : payment // ignore: cast_nullable_to_non_nullable
+              as Payment,
+      null == namePayment
+          ? _value.namePayment
+          : namePayment // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentCopyWith<$Res> get payment {
+    return $PaymentCopyWith<$Res>(_value.payment, (value) {
+      return _then(_value.copyWith(payment: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_UpdatePaymentMethod implements _UpdatePaymentMethod {
+  const _$_UpdatePaymentMethod(this.payment, this.namePayment);
+
+  @override
+  final Payment payment;
+  @override
+  final String namePayment;
+
+  @override
+  String toString() {
+    return 'DeliveryOrderEvent.updatePaymentMethod(payment: $payment, namePayment: $namePayment)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdatePaymentMethod &&
+            (identical(other.payment, payment) || other.payment == payment) &&
+            (identical(other.namePayment, namePayment) ||
+                other.namePayment == namePayment));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, payment, namePayment);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UpdatePaymentMethodCopyWith<_$_UpdatePaymentMethod> get copyWith =>
+      __$$_UpdatePaymentMethodCopyWithImpl<_$_UpdatePaymentMethod>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String contactName) updateName,
+    required TResult Function(String contactPhone) updatePhone,
+    required TResult Function(String additionalDetail) updateAdditionalDetail,
+    required TResult Function(AddressDto? address) updateAddress,
+    required TResult Function(Service service) updateService,
+    required TResult Function() createOrder,
+    required TResult Function() closeSelectable,
+    required TResult Function() changeSelectable,
+    required TResult Function(Payment payment, String namePayment)
+        updatePaymentMethod,
+    required TResult Function(String cash) updateCash,
+  }) {
+    return updatePaymentMethod(payment, namePayment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String contactName)? updateName,
+    TResult? Function(String contactPhone)? updatePhone,
+    TResult? Function(String additionalDetail)? updateAdditionalDetail,
+    TResult? Function(AddressDto? address)? updateAddress,
+    TResult? Function(Service service)? updateService,
+    TResult? Function()? createOrder,
+    TResult? Function()? closeSelectable,
+    TResult? Function()? changeSelectable,
+    TResult? Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult? Function(String cash)? updateCash,
+  }) {
+    return updatePaymentMethod?.call(payment, namePayment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String contactName)? updateName,
+    TResult Function(String contactPhone)? updatePhone,
+    TResult Function(String additionalDetail)? updateAdditionalDetail,
+    TResult Function(AddressDto? address)? updateAddress,
+    TResult Function(Service service)? updateService,
+    TResult Function()? createOrder,
+    TResult Function()? closeSelectable,
+    TResult Function()? changeSelectable,
+    TResult Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult Function(String cash)? updateCash,
+    required TResult orElse(),
+  }) {
+    if (updatePaymentMethod != null) {
+      return updatePaymentMethod(payment, namePayment);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UpdateName value) updateName,
+    required TResult Function(_UpdatePhone value) updatePhone,
+    required TResult Function(_UpdateAdditionalDetail value)
+        updateAdditionalDetail,
+    required TResult Function(_UpdateAddress value) updateAddress,
+    required TResult Function(_UpdateService value) updateService,
+    required TResult Function(_CreateOrder value) createOrder,
+    required TResult Function(_CloseSelectable value) closeSelectable,
+    required TResult Function(_ChangeSelectable value) changeSelectable,
+    required TResult Function(_UpdatePaymentMethod value) updatePaymentMethod,
+    required TResult Function(_UpdateCash value) updateCash,
+  }) {
+    return updatePaymentMethod(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UpdateName value)? updateName,
+    TResult? Function(_UpdatePhone value)? updatePhone,
+    TResult? Function(_UpdateAdditionalDetail value)? updateAdditionalDetail,
+    TResult? Function(_UpdateAddress value)? updateAddress,
+    TResult? Function(_UpdateService value)? updateService,
+    TResult? Function(_CreateOrder value)? createOrder,
+    TResult? Function(_CloseSelectable value)? closeSelectable,
+    TResult? Function(_ChangeSelectable value)? changeSelectable,
+    TResult? Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult? Function(_UpdateCash value)? updateCash,
+  }) {
+    return updatePaymentMethod?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UpdateName value)? updateName,
+    TResult Function(_UpdatePhone value)? updatePhone,
+    TResult Function(_UpdateAdditionalDetail value)? updateAdditionalDetail,
+    TResult Function(_UpdateAddress value)? updateAddress,
+    TResult Function(_UpdateService value)? updateService,
+    TResult Function(_CreateOrder value)? createOrder,
+    TResult Function(_CloseSelectable value)? closeSelectable,
+    TResult Function(_ChangeSelectable value)? changeSelectable,
+    TResult Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult Function(_UpdateCash value)? updateCash,
+    required TResult orElse(),
+  }) {
+    if (updatePaymentMethod != null) {
+      return updatePaymentMethod(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdatePaymentMethod implements DeliveryOrderEvent {
+  const factory _UpdatePaymentMethod(
+      final Payment payment, final String namePayment) = _$_UpdatePaymentMethod;
+
+  Payment get payment;
+  String get namePayment;
+  @JsonKey(ignore: true)
+  _$$_UpdatePaymentMethodCopyWith<_$_UpdatePaymentMethod> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UpdateCashCopyWith<$Res> {
+  factory _$$_UpdateCashCopyWith(
+          _$_UpdateCash value, $Res Function(_$_UpdateCash) then) =
+      __$$_UpdateCashCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String cash});
+}
+
+/// @nodoc
+class __$$_UpdateCashCopyWithImpl<$Res>
+    extends _$DeliveryOrderEventCopyWithImpl<$Res, _$_UpdateCash>
+    implements _$$_UpdateCashCopyWith<$Res> {
+  __$$_UpdateCashCopyWithImpl(
+      _$_UpdateCash _value, $Res Function(_$_UpdateCash) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? cash = null,
+  }) {
+    return _then(_$_UpdateCash(
+      null == cash
+          ? _value.cash
+          : cash // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateCash implements _UpdateCash {
+  const _$_UpdateCash(this.cash);
+
+  @override
+  final String cash;
+
+  @override
+  String toString() {
+    return 'DeliveryOrderEvent.updateCash(cash: $cash)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdateCash &&
+            (identical(other.cash, cash) || other.cash == cash));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, cash);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UpdateCashCopyWith<_$_UpdateCash> get copyWith =>
+      __$$_UpdateCashCopyWithImpl<_$_UpdateCash>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String contactName) updateName,
+    required TResult Function(String contactPhone) updatePhone,
+    required TResult Function(String additionalDetail) updateAdditionalDetail,
+    required TResult Function(AddressDto? address) updateAddress,
+    required TResult Function(Service service) updateService,
+    required TResult Function() createOrder,
+    required TResult Function() closeSelectable,
+    required TResult Function() changeSelectable,
+    required TResult Function(Payment payment, String namePayment)
+        updatePaymentMethod,
+    required TResult Function(String cash) updateCash,
+  }) {
+    return updateCash(cash);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String contactName)? updateName,
+    TResult? Function(String contactPhone)? updatePhone,
+    TResult? Function(String additionalDetail)? updateAdditionalDetail,
+    TResult? Function(AddressDto? address)? updateAddress,
+    TResult? Function(Service service)? updateService,
+    TResult? Function()? createOrder,
+    TResult? Function()? closeSelectable,
+    TResult? Function()? changeSelectable,
+    TResult? Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult? Function(String cash)? updateCash,
+  }) {
+    return updateCash?.call(cash);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String contactName)? updateName,
+    TResult Function(String contactPhone)? updatePhone,
+    TResult Function(String additionalDetail)? updateAdditionalDetail,
+    TResult Function(AddressDto? address)? updateAddress,
+    TResult Function(Service service)? updateService,
+    TResult Function()? createOrder,
+    TResult Function()? closeSelectable,
+    TResult Function()? changeSelectable,
+    TResult Function(Payment payment, String namePayment)? updatePaymentMethod,
+    TResult Function(String cash)? updateCash,
+    required TResult orElse(),
+  }) {
+    if (updateCash != null) {
+      return updateCash(cash);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UpdateName value) updateName,
+    required TResult Function(_UpdatePhone value) updatePhone,
+    required TResult Function(_UpdateAdditionalDetail value)
+        updateAdditionalDetail,
+    required TResult Function(_UpdateAddress value) updateAddress,
+    required TResult Function(_UpdateService value) updateService,
+    required TResult Function(_CreateOrder value) createOrder,
+    required TResult Function(_CloseSelectable value) closeSelectable,
+    required TResult Function(_ChangeSelectable value) changeSelectable,
+    required TResult Function(_UpdatePaymentMethod value) updatePaymentMethod,
+    required TResult Function(_UpdateCash value) updateCash,
+  }) {
+    return updateCash(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UpdateName value)? updateName,
+    TResult? Function(_UpdatePhone value)? updatePhone,
+    TResult? Function(_UpdateAdditionalDetail value)? updateAdditionalDetail,
+    TResult? Function(_UpdateAddress value)? updateAddress,
+    TResult? Function(_UpdateService value)? updateService,
+    TResult? Function(_CreateOrder value)? createOrder,
+    TResult? Function(_CloseSelectable value)? closeSelectable,
+    TResult? Function(_ChangeSelectable value)? changeSelectable,
+    TResult? Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult? Function(_UpdateCash value)? updateCash,
+  }) {
+    return updateCash?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UpdateName value)? updateName,
+    TResult Function(_UpdatePhone value)? updatePhone,
+    TResult Function(_UpdateAdditionalDetail value)? updateAdditionalDetail,
+    TResult Function(_UpdateAddress value)? updateAddress,
+    TResult Function(_UpdateService value)? updateService,
+    TResult Function(_CreateOrder value)? createOrder,
+    TResult Function(_CloseSelectable value)? closeSelectable,
+    TResult Function(_ChangeSelectable value)? changeSelectable,
+    TResult Function(_UpdatePaymentMethod value)? updatePaymentMethod,
+    TResult Function(_UpdateCash value)? updateCash,
+    required TResult orElse(),
+  }) {
+    if (updateCash != null) {
+      return updateCash(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateCash implements DeliveryOrderEvent {
+  const factory _UpdateCash(final String cash) = _$_UpdateCash;
+
+  String get cash;
+  @JsonKey(ignore: true)
+  _$$_UpdateCashCopyWith<_$_UpdateCash> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$DeliveryOrderState {
   Option<AddressDto> get address => throw _privateConstructorUsedError;
+  PaymentMethod get paymentMethod => throw _privateConstructorUsedError;
   String get contactName => throw _privateConstructorUsedError;
   String get contactPhone => throw _privateConstructorUsedError;
+  bool get isSelectableExpanded => throw _privateConstructorUsedError;
   Map<String, String> get additionalDetail =>
       throw _privateConstructorUsedError;
   Service get service => throw _privateConstructorUsedError;
@@ -1067,11 +1936,14 @@ abstract class $DeliveryOrderStateCopyWith<$Res> {
   @useResult
   $Res call(
       {Option<AddressDto> address,
+      PaymentMethod paymentMethod,
       String contactName,
       String contactPhone,
+      bool isSelectableExpanded,
       Map<String, String> additionalDetail,
       Service service});
 
+  $PaymentMethodCopyWith<$Res> get paymentMethod;
   $ServiceCopyWith<$Res> get service;
 }
 
@@ -1089,8 +1961,10 @@ class _$DeliveryOrderStateCopyWithImpl<$Res, $Val extends DeliveryOrderState>
   @override
   $Res call({
     Object? address = null,
+    Object? paymentMethod = null,
     Object? contactName = null,
     Object? contactPhone = null,
+    Object? isSelectableExpanded = null,
     Object? additionalDetail = null,
     Object? service = null,
   }) {
@@ -1099,6 +1973,10 @@ class _$DeliveryOrderStateCopyWithImpl<$Res, $Val extends DeliveryOrderState>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as Option<AddressDto>,
+      paymentMethod: null == paymentMethod
+          ? _value.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as PaymentMethod,
       contactName: null == contactName
           ? _value.contactName
           : contactName // ignore: cast_nullable_to_non_nullable
@@ -1107,6 +1985,10 @@ class _$DeliveryOrderStateCopyWithImpl<$Res, $Val extends DeliveryOrderState>
           ? _value.contactPhone
           : contactPhone // ignore: cast_nullable_to_non_nullable
               as String,
+      isSelectableExpanded: null == isSelectableExpanded
+          ? _value.isSelectableExpanded
+          : isSelectableExpanded // ignore: cast_nullable_to_non_nullable
+              as bool,
       additionalDetail: null == additionalDetail
           ? _value.additionalDetail
           : additionalDetail // ignore: cast_nullable_to_non_nullable
@@ -1116,6 +1998,14 @@ class _$DeliveryOrderStateCopyWithImpl<$Res, $Val extends DeliveryOrderState>
           : service // ignore: cast_nullable_to_non_nullable
               as Service,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentMethodCopyWith<$Res> get paymentMethod {
+    return $PaymentMethodCopyWith<$Res>(_value.paymentMethod, (value) {
+      return _then(_value.copyWith(paymentMethod: value) as $Val);
+    });
   }
 
   @override
@@ -1137,11 +2027,15 @@ abstract class _$$_DeliveryOrderStateCopyWith<$Res>
   @useResult
   $Res call(
       {Option<AddressDto> address,
+      PaymentMethod paymentMethod,
       String contactName,
       String contactPhone,
+      bool isSelectableExpanded,
       Map<String, String> additionalDetail,
       Service service});
 
+  @override
+  $PaymentMethodCopyWith<$Res> get paymentMethod;
   @override
   $ServiceCopyWith<$Res> get service;
 }
@@ -1158,8 +2052,10 @@ class __$$_DeliveryOrderStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? address = null,
+    Object? paymentMethod = null,
     Object? contactName = null,
     Object? contactPhone = null,
+    Object? isSelectableExpanded = null,
     Object? additionalDetail = null,
     Object? service = null,
   }) {
@@ -1168,6 +2064,10 @@ class __$$_DeliveryOrderStateCopyWithImpl<$Res>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as Option<AddressDto>,
+      paymentMethod: null == paymentMethod
+          ? _value.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as PaymentMethod,
       contactName: null == contactName
           ? _value.contactName
           : contactName // ignore: cast_nullable_to_non_nullable
@@ -1176,6 +2076,10 @@ class __$$_DeliveryOrderStateCopyWithImpl<$Res>
           ? _value.contactPhone
           : contactPhone // ignore: cast_nullable_to_non_nullable
               as String,
+      isSelectableExpanded: null == isSelectableExpanded
+          ? _value.isSelectableExpanded
+          : isSelectableExpanded // ignore: cast_nullable_to_non_nullable
+              as bool,
       additionalDetail: null == additionalDetail
           ? _value._additionalDetail
           : additionalDetail // ignore: cast_nullable_to_non_nullable
@@ -1193,8 +2097,10 @@ class __$$_DeliveryOrderStateCopyWithImpl<$Res>
 class _$_DeliveryOrderState implements _DeliveryOrderState {
   const _$_DeliveryOrderState(
       {required this.address,
+      required this.paymentMethod,
       this.contactName = '',
       this.contactPhone = '',
+      this.isSelectableExpanded = false,
       final Map<String, String> additionalDetail = const {},
       this.service = const Service.takeaway()})
       : _additionalDetail = additionalDetail;
@@ -1202,11 +2108,16 @@ class _$_DeliveryOrderState implements _DeliveryOrderState {
   @override
   final Option<AddressDto> address;
   @override
+  final PaymentMethod paymentMethod;
+  @override
   @JsonKey()
   final String contactName;
   @override
   @JsonKey()
   final String contactPhone;
+  @override
+  @JsonKey()
+  final bool isSelectableExpanded;
   final Map<String, String> _additionalDetail;
   @override
   @JsonKey()
@@ -1222,7 +2133,7 @@ class _$_DeliveryOrderState implements _DeliveryOrderState {
 
   @override
   String toString() {
-    return 'DeliveryOrderState(address: $address, contactName: $contactName, contactPhone: $contactPhone, additionalDetail: $additionalDetail, service: $service)';
+    return 'DeliveryOrderState(address: $address, paymentMethod: $paymentMethod, contactName: $contactName, contactPhone: $contactPhone, isSelectableExpanded: $isSelectableExpanded, additionalDetail: $additionalDetail, service: $service)';
   }
 
   @override
@@ -1231,10 +2142,14 @@ class _$_DeliveryOrderState implements _DeliveryOrderState {
         (other.runtimeType == runtimeType &&
             other is _$_DeliveryOrderState &&
             (identical(other.address, address) || other.address == address) &&
+            (identical(other.paymentMethod, paymentMethod) ||
+                other.paymentMethod == paymentMethod) &&
             (identical(other.contactName, contactName) ||
                 other.contactName == contactName) &&
             (identical(other.contactPhone, contactPhone) ||
                 other.contactPhone == contactPhone) &&
+            (identical(other.isSelectableExpanded, isSelectableExpanded) ||
+                other.isSelectableExpanded == isSelectableExpanded) &&
             const DeepCollectionEquality()
                 .equals(other._additionalDetail, _additionalDetail) &&
             (identical(other.service, service) || other.service == service));
@@ -1244,8 +2159,10 @@ class _$_DeliveryOrderState implements _DeliveryOrderState {
   int get hashCode => Object.hash(
       runtimeType,
       address,
+      paymentMethod,
       contactName,
       contactPhone,
+      isSelectableExpanded,
       const DeepCollectionEquality().hash(_additionalDetail),
       service);
 
@@ -1260,17 +2177,23 @@ class _$_DeliveryOrderState implements _DeliveryOrderState {
 abstract class _DeliveryOrderState implements DeliveryOrderState {
   const factory _DeliveryOrderState(
       {required final Option<AddressDto> address,
+      required final PaymentMethod paymentMethod,
       final String contactName,
       final String contactPhone,
+      final bool isSelectableExpanded,
       final Map<String, String> additionalDetail,
       final Service service}) = _$_DeliveryOrderState;
 
   @override
   Option<AddressDto> get address;
   @override
+  PaymentMethod get paymentMethod;
+  @override
   String get contactName;
   @override
   String get contactPhone;
+  @override
+  bool get isSelectableExpanded;
   @override
   Map<String, String> get additionalDetail;
   @override
@@ -1544,4 +2467,186 @@ class _$_Delivery extends _Delivery {
 abstract class _Delivery extends Service {
   const factory _Delivery() = _$_Delivery;
   const _Delivery._() : super._();
+}
+
+/// @nodoc
+mixin _$PaymentMethod {
+  Option<Payment> get method => throw _privateConstructorUsedError;
+  String get paymentMethod => throw _privateConstructorUsedError;
+  double get cash => throw _privateConstructorUsedError;
+  bool get isInit => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $PaymentMethodCopyWith<PaymentMethod> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentMethodCopyWith<$Res> {
+  factory $PaymentMethodCopyWith(
+          PaymentMethod value, $Res Function(PaymentMethod) then) =
+      _$PaymentMethodCopyWithImpl<$Res, PaymentMethod>;
+  @useResult
+  $Res call(
+      {Option<Payment> method, String paymentMethod, double cash, bool isInit});
+}
+
+/// @nodoc
+class _$PaymentMethodCopyWithImpl<$Res, $Val extends PaymentMethod>
+    implements $PaymentMethodCopyWith<$Res> {
+  _$PaymentMethodCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? method = null,
+    Object? paymentMethod = null,
+    Object? cash = null,
+    Object? isInit = null,
+  }) {
+    return _then(_value.copyWith(
+      method: null == method
+          ? _value.method
+          : method // ignore: cast_nullable_to_non_nullable
+              as Option<Payment>,
+      paymentMethod: null == paymentMethod
+          ? _value.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as String,
+      cash: null == cash
+          ? _value.cash
+          : cash // ignore: cast_nullable_to_non_nullable
+              as double,
+      isInit: null == isInit
+          ? _value.isInit
+          : isInit // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_PaymentMethodCopyWith<$Res>
+    implements $PaymentMethodCopyWith<$Res> {
+  factory _$$_PaymentMethodCopyWith(
+          _$_PaymentMethod value, $Res Function(_$_PaymentMethod) then) =
+      __$$_PaymentMethodCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Option<Payment> method, String paymentMethod, double cash, bool isInit});
+}
+
+/// @nodoc
+class __$$_PaymentMethodCopyWithImpl<$Res>
+    extends _$PaymentMethodCopyWithImpl<$Res, _$_PaymentMethod>
+    implements _$$_PaymentMethodCopyWith<$Res> {
+  __$$_PaymentMethodCopyWithImpl(
+      _$_PaymentMethod _value, $Res Function(_$_PaymentMethod) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? method = null,
+    Object? paymentMethod = null,
+    Object? cash = null,
+    Object? isInit = null,
+  }) {
+    return _then(_$_PaymentMethod(
+      method: null == method
+          ? _value.method
+          : method // ignore: cast_nullable_to_non_nullable
+              as Option<Payment>,
+      paymentMethod: null == paymentMethod
+          ? _value.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as String,
+      cash: null == cash
+          ? _value.cash
+          : cash // ignore: cast_nullable_to_non_nullable
+              as double,
+      isInit: null == isInit
+          ? _value.isInit
+          : isInit // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_PaymentMethod extends _PaymentMethod {
+  const _$_PaymentMethod(
+      {required this.method,
+      this.paymentMethod = '',
+      this.cash = 0,
+      this.isInit = true})
+      : super._();
+
+  @override
+  final Option<Payment> method;
+  @override
+  @JsonKey()
+  final String paymentMethod;
+  @override
+  @JsonKey()
+  final double cash;
+  @override
+  @JsonKey()
+  final bool isInit;
+
+  @override
+  String toString() {
+    return 'PaymentMethod(method: $method, paymentMethod: $paymentMethod, cash: $cash, isInit: $isInit)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentMethod &&
+            (identical(other.method, method) || other.method == method) &&
+            (identical(other.paymentMethod, paymentMethod) ||
+                other.paymentMethod == paymentMethod) &&
+            (identical(other.cash, cash) || other.cash == cash) &&
+            (identical(other.isInit, isInit) || other.isInit == isInit));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, method, paymentMethod, cash, isInit);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PaymentMethodCopyWith<_$_PaymentMethod> get copyWith =>
+      __$$_PaymentMethodCopyWithImpl<_$_PaymentMethod>(this, _$identity);
+}
+
+abstract class _PaymentMethod extends PaymentMethod {
+  const factory _PaymentMethod(
+      {required final Option<Payment> method,
+      final String paymentMethod,
+      final double cash,
+      final bool isInit}) = _$_PaymentMethod;
+  const _PaymentMethod._() : super._();
+
+  @override
+  Option<Payment> get method;
+  @override
+  String get paymentMethod;
+  @override
+  double get cash;
+  @override
+  bool get isInit;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PaymentMethodCopyWith<_$_PaymentMethod> get copyWith =>
+      throw _privateConstructorUsedError;
 }

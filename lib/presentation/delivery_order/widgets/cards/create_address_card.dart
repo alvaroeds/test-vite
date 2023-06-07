@@ -8,8 +8,8 @@ import 'package:pedido_listo_web/presentation/delivery_order/widgets/inputs/inpu
 import 'package:pedido_listo_web/presentation/delivery_order/widgets/cards/mixin_style.dart';
 import 'package:pedido_listo_web/resources/utils/fonts.dart';
 
-class NewDirectionCard extends StatelessWidget with CardStyle {
-  const NewDirectionCard({super.key});
+class CreateAddressCard extends StatelessWidget with CardStyle {
+  const CreateAddressCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +22,7 @@ class NewDirectionCard extends StatelessWidget with CardStyle {
       },
       child: Container(
           padding: cardPadding,
+          margin: cardMargin,
           decoration: cardStyle,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

@@ -12,6 +12,7 @@ class FooterDelivery extends StatelessWidget {
 
   void _confirmOrder(BuildContext context) {
     final bloc = context.read<DeliveryOrderBloc>();
+
     void showError(String message) {
       showSnackBar(message, context, icon: Icons.error_outline);
     }
@@ -24,6 +25,23 @@ class FooterDelivery extends StatelessWidget {
     }
     if (bloc.state.service.isDelivery && bloc.state.address.isNone()) {
       return showError('Seleccione o ingrese una dirección');
+    }
+    if (bloc.state.paymentMethod.method.isNone()) {
+      return showError('Seleccione un método de pago');
+    }
+    if (bloc.state.paymentMethod.isCash) {
+      if (bloc.state.paymentMethod.isInit) {
+        return showError('Ingrese el monto a pagar');
+      }
+
+      final total = bloc.shoppingCartDto.totalCost +
+          (bloc.state.address.isNone()
+              ? 0.0
+              : bloc.establishmentDto.deliveryCost);
+
+      if (bloc.state.paymentMethod.cash < total) {
+        return showError('Monto inválido');
+      }
     }
 
     context
