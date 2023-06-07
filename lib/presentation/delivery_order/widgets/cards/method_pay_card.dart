@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pedido_listo_web/presentation/delivery_order/bloc/delivery_order_bloc.dart';
 
 import 'package:pedido_listo_web/presentation/delivery_order/widgets/cards/mixin_style.dart';
 import 'package:pedido_listo_web/resources/utils/extensions.dart';
@@ -10,7 +8,7 @@ class MethodPayCards extends StatelessWidget with CardStyle {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.read<DeliveryOrderBloc>();
+    // final bloc = context.read<DeliveryOrderBloc>();
     return Container(
         padding: cardPadding,
         decoration: cardStyle,
@@ -32,17 +30,13 @@ class MethodPayCards extends StatelessWidget with CardStyle {
                 SelectableOption(
                   text: 'Yape',
                   icon: const Icon(Icons.monetization_on),
-                  onTap: () {
-                    print('Seleccionaste Yape');
-                  },
+                  onTap: () {},
                 ),
                 const SizedBox(height: 10),
                 SelectableOption(
                   text: 'Efectivo',
                   icon: const Icon(Icons.money),
-                  onTap: () {
-                    print('Seleccionaste Efectivo');
-                  },
+                  onTap: () {},
                 ),
                 const SizedBox(height: 20),
                 const Icon(Icons.arrow_upward),
