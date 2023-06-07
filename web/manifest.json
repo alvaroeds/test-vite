@@ -5,7 +5,7 @@
     "display": "standalone",
     "background_color": "#f9f9f9",
     "theme_color": "#00ac69",
-    "description": "Client web Pedido Listo",
+    "description": "Crea tu menu digital",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
