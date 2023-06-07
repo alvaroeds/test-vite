@@ -8,8 +8,10 @@ class ElevatedButtonApp extends StatelessWidget {
   final String title;
   final TextStyle? style;
   final void Function()? onPressed;
+  final Widget? icon;
   const ElevatedButtonApp(
       {required this.title,
+      this.icon,
       this.width,
       this.height,
       this.style,
@@ -21,15 +23,16 @@ class ElevatedButtonApp extends StatelessWidget {
     return SizedBox(
       width: width,
       height: height,
-      child: ElevatedButton(
+      child: ElevatedButton.icon(
         style: ElevatedButton.styleFrom(
           backgroundColor: context.primaryColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
         ),
+        icon: icon ?? const SizedBox.shrink(),
         onPressed: onPressed,
-        child: Text(
+        label: Text(
           title,
           style: style ??
               GoogleFonts.poppins(

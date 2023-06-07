@@ -97,13 +97,12 @@ class _HomeViewState extends State<HomeView>
                           controller: tabController,
                           categories: categories,
                           currentTab: state.index,
-                          onTap: (index) {
-                            context
-                                .read<TabHomeCubit>()
-                                .changeIndex(currentIndex == index ? 0 : index);
-                          },
+                          onTap: (index) => context
+                              .read<TabHomeCubit>()
+                              .changeIndex(currentIndex == index ? 0 : index),
                         ),
                       )),
+                  const SliverToBoxAdapter(child: SizedBox(height: 18)),
                   SliverList(
                       delegate: SliverChildBuilderDelegate((context, index) {
                     final selectIndex =

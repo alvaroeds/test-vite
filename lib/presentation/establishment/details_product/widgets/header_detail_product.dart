@@ -23,7 +23,7 @@ class HeaderDetailProduct extends StatelessWidget {
 
 //* min and max extent for the Header
 const maxHeight = 300.0;
-const minHeight = 123.0;
+const minHeight = 100.0;
 
 class DelegateDetailProductHeader extends SliverPersistentHeaderDelegate {
   DelegateDetailProductHeader({

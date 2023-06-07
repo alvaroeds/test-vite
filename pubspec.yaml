@@ -60,6 +60,7 @@ dependencies:
   flash: ^3.0.5+1
   flutter_blurhash: ^0.7.0
   flutter_native_splash: ^2.3.0
+  flutter_svg: ^2.0.6
 
   flutter_localizations:
     sdk: flutter
@@ -82,3 +83,5 @@ flutter:
 
   assets:
     - assets/
+    - assets/png/
+    - assets/svg/

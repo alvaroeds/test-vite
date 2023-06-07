@@ -36,7 +36,7 @@ class DetailsShareButton extends StatelessWidget {
             alignment: Alignment.center,
             padding: const EdgeInsets.fromLTRB(6, 8, 6, 8),
             child: Icon(
-              Icons.share,
+              Icons.share_outlined,
               color: context.primaryColor,
             ),
           )),

@@ -21,6 +21,7 @@ class CustomTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // constraints: const BoxConstraints(maxHeight: 30),
       width: widthTag,
       decoration: _decoration(),
       alignment: Alignment.center,

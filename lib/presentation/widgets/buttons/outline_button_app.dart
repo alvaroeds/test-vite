@@ -8,12 +8,14 @@ class OutlineButtonApp extends StatelessWidget {
   final double borderWith;
   final Color? primaryColor;
   final TextStyle? style;
+  final Widget? icon;
   final void Function()? onPressed;
   final String title;
   const OutlineButtonApp(
       {required this.title,
       this.width = 1.0,
       this.height,
+      this.icon,
       this.borderWith = 1.0,
       super.key,
       this.onPressed,
@@ -25,8 +27,9 @@ class OutlineButtonApp extends StatelessWidget {
     return SizedBox(
         width: width,
         height: height,
-        child: OutlinedButton(
+        child: OutlinedButton.icon(
           onPressed: onPressed,
+          icon: icon ?? const SizedBox.shrink(),
           style: OutlinedButton.styleFrom(
             side: BorderSide(
               width: borderWith,
@@ -36,7 +39,7 @@ class OutlineButtonApp extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
           ),
-          child: Text(
+          label: Text(
             title,
             style: style ??
                 GoogleFonts.poppins(

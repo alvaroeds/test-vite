@@ -5,11 +5,11 @@ mixin CardStyle {
   BoxDecoration get cardStyle => BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
-            color: Color.fromRGBO(0, 0, 0, 0.1),
-            blurRadius: 23,
-            offset: Offset(0, 4),
+            color: const Color(0xFF8F8F8F).withOpacity(0.15),
+            blurRadius: 17,
+            offset: const Offset(0, 4),
           )
         ],
       );

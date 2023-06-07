@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pedido_listo_web/const/resource.dart';
 import 'package:pedido_listo_web/features/user/domain/dto/address_dto.dart';
 import 'package:pedido_listo_web/presentation/app/bloc/app_cache_bloc.dart';
 import 'package:pedido_listo_web/presentation/delivery_order/bloc/delivery_order_bloc.dart';
 import 'package:pedido_listo_web/presentation/delivery_order/widgets/cards/mixin_style.dart';
 import 'package:pedido_listo_web/presentation/delivery_order/widgets/inputs/input_additional_detail.dart';
-import 'package:pedido_listo_web/resources/theme/colors_app.dart';
 import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
 import 'package:pedido_listo_web/resources/utils/extensions.dart';
 
@@ -68,11 +68,7 @@ class AddressTile extends StatelessWidget {
           contentPadding: EdgeInsets.zero,
           minLeadingWidth: 0,
           onLongPress: () {},
-          leading: const Icon(
-            Icons.location_on_outlined,
-            size: 26,
-            color: ColorsApp.textColor,
-          ),
+          leading: R.ASSETS_SVG_LOCATION_MARKER_SVG.toSvg(),
           titleTextStyle: context.currentStyle.bodyMedium?.copyWith(
             fontWeight: FontWeight.bold,
           ),

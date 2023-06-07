@@ -2,12 +2,13 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pedido_listo_web/const/resource.dart';
 import 'package:pedido_listo_web/presentation/delivery_order/bloc/delivery_order_bloc.dart';
 import 'package:pedido_listo_web/presentation/delivery_order/widgets/forms/delivery_section.dart';
 import 'package:pedido_listo_web/presentation/delivery_order/widgets/cards/take_away_card.dart';
 import 'package:pedido_listo_web/presentation/widgets/buttons/elevated_button_app.dart';
 import 'package:pedido_listo_web/presentation/widgets/buttons/outline_button_app.dart';
-import 'package:pedido_listo_web/resources/utils/fonts.dart';
+import 'package:pedido_listo_web/resources/utils/extensions.dart';
 
 class FormServicesType extends StatelessWidget {
   const FormServicesType({super.key});
@@ -72,8 +73,14 @@ class _ServicesTab extends StatelessWidget {
     void onSelect() => context
         .read<DeliveryOrderBloc>()
         .add(DeliveryOrderEvent.updateService(service));
+    final color = isSelected ? Colors.white : Colors.black;
+    final icon = service.when(
+      takeaway: () => R.ASSETS_SVG_PEDIDO_SVG.toSvg(color: color),
+      delivery: () => R.ASSETS_SVG_DELIVERY_SVG.toSvg(color: color),
+    );
     return isSelected
         ? ElevatedButtonApp(
+            icon: icon,
             title: name,
             width: buttonWidth,
             height: 50,
@@ -83,6 +90,7 @@ class _ServicesTab extends StatelessWidget {
           )
         : OutlineButtonApp(
             title: name,
+            icon: icon,
             width: buttonWidth,
             borderWith: 02,
             height: 50,

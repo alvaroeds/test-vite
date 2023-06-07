@@ -17,7 +17,7 @@
       ]
     },
     {
-      "name": "Launch staging",
+      "name": "Launch staging LOCAL",
       "request": "launch",
       "type": "dart",
       "program": "lib/main_staging.dart",
@@ -30,10 +30,27 @@
         "-d",
         "chrome",
         "--web-port",
-        "8008"
+        "8010"
+      ]
+    },
+    {
+      "name": "Launch staging RED",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_staging.dart",
+      "args": [
+        "--flavor",
+        "staging",
+        "--target",
+        "lib/main_staging.dart",
+        "--web-renderer canvaskit",
+        "-d",
+        "chrome",
+        "--web-port",
+        "8010",
 
-        /*         "--web-hostname",
-        "192.168.1.15" */
+        "--web-hostname",
+        "192.168.1.15"
       ]
     },
     {

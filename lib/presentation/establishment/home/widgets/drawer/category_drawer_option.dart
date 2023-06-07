@@ -23,7 +23,7 @@ class CategoryDrawerOption extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: EdgeInsets.fromLTRB(14, 15, 34, isSelected ? 10 : 15),
+        padding: EdgeInsets.fromLTRB(14, 10.5, 34, isSelected ? 0 : 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -40,7 +40,10 @@ class CategoryDrawerOption extends StatelessWidget {
                 color: isSelected ? _selectedColor : const Color(0xff878F9B),
               ),
             ),
-            if (isSelected) const Divider(color: _selectedColor, thickness: 2)
+            if (isSelected) ...[
+              const SizedBox(height: 9.5),
+              const Divider(color: _selectedColor, thickness: 2, height: 2)
+            ]
           ],
         ),
       ),

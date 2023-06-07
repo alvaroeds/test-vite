@@ -56,7 +56,7 @@ class DrawerEstablishment extends StatelessWidget {
                 color: Color(0xFFE1E3E6), // Color de la línea
                 thickness: 2,
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 20),
               if (categories.length == 1)
                 CategoryDrawerOption(
                   name: categories.first.name,

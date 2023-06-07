@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pedido_listo_web/const/resource.dart';
 import 'package:pedido_listo_web/presentation/app/bloc/app_cache_bloc.dart';
-import 'package:pedido_listo_web/resources/utils/fonts.dart';
+import 'package:pedido_listo_web/resources/utils/extensions.dart';
 
 class InputAddressField extends StatelessWidget {
   const InputAddressField({super.key});
@@ -31,7 +32,9 @@ class InputAddressField extends StatelessWidget {
           hintStyle: context.currentStyle.bodyMedium?.copyWith(
             fontSize: 14,
           ),
-          prefixIcon: const Icon(Icons.location_on_outlined),
+          prefixIcon: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 16, 0, 16),
+              child: R.ASSETS_SVG_LOCATION_MARKER_SVG.toSvg()),
           hintText: 'Ingrese su dirección acá',
         ),
         onSubmitted: (value) {
