@@ -12,7 +12,6 @@ class FooterDelivery extends StatelessWidget {
 
   void _confirmOrder(BuildContext context) {
     final bloc = context.read<DeliveryOrderBloc>();
-
     void showError(String message) {
       showSnackBar(message, context, icon: Icons.error_outline);
     }
