@@ -3,41 +3,52 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
 
 class OutlineButtonApp extends StatelessWidget {
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
+  final double borderWith;
+  final Color? primaryColor;
+  final TextStyle? style;
+  final Widget? icon;
   final void Function()? onPressed;
   final String title;
   const OutlineButtonApp(
-      {required this.width,
-      required this.height,
-      required this.title,
+      {required this.title,
+      this.width = 1.0,
+      this.height,
+      this.icon,
+      this.borderWith = 1.0,
       super.key,
-      this.onPressed});
+      this.onPressed,
+      this.primaryColor,
+      this.style});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
         width: width,
         height: height,
-        child: OutlinedButton(
+        child: OutlinedButton.icon(
           onPressed: onPressed,
+          icon: icon ?? const SizedBox.shrink(),
           style: OutlinedButton.styleFrom(
             side: BorderSide(
-              color: context.primaryColor,
+              width: borderWith,
+              color: primaryColor ?? context.primaryColor,
             ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ),
           ),
-          child: Text(
+          label: Text(
             title,
-            style: GoogleFonts.poppins(
-              textStyle: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-                color: context.primaryColor,
-              ),
-            ),
+            style: style ??
+                GoogleFonts.poppins(
+                  textStyle: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                    color: context.primaryColor,
+                  ),
+                ),
           ),
         ));
   }

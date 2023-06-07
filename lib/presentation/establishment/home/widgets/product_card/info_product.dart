@@ -42,15 +42,17 @@ class InfoProduct extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: context.primaryColor,
                     borderRadius: BorderRadius.circular(7)),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 11, vertical: 1),
+                padding: const EdgeInsets.symmetric(horizontal: 11),
                 alignment: Alignment.topCenter,
-                child: Text(amount.toString(),
-                    style: GoogleFonts.manrope(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                    )),
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 1),
+                  child: Text(amount.toString(),
+                      style: GoogleFonts.manrope(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                      )),
+                ),
               ),
               const SizedBox(width: 4),
             ],

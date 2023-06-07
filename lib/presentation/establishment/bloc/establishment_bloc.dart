@@ -13,19 +13,35 @@ class EstablishmentBloc extends Bloc<EstablishmentEvent, EstablishmentState> {
   final IEstablishmentRepository repository;
 
   EstablishmentBloc(this.repository) : super(const _Initial()) {
-    on<EstablishmentEvent>(
+    on<_Started>((event, emit) async {
+      state.maybeWhen(
+        hasData: (establishment) {
+          if (establishment.idUrl != event.name) {
+            add(EstablishmentEvent.streamCall(StreamAction.open, event.name));
+          }
+        },
+        orElse: () {
+          add(EstablishmentEvent.streamCall(StreamAction.open, event.name));
+        },
+      );
+    });
+    on<_StreamCall>(
       (event, emit) async {
-        emit(const EstablishmentState.initial());
-        if (event is _Started) {
-          await emit.forEach(
-            repository.getEstablishment(event.name),
-            onData: (data) {
-              return data.fold(
-                EstablishmentState.isError,
-                EstablishmentState.hasData,
-              );
-            },
-          );
+        switch (event.action) {
+          case StreamAction.open:
+            emit(const EstablishmentState.initial());
+            await emit.forEach(
+              repository.getEstablishment(event.name),
+              onData: (data) {
+                return data.fold(
+                  EstablishmentState.isError,
+                  EstablishmentState.hasData,
+                );
+              },
+            );
+            break;
+          case StreamAction.close:
+            emit(const EstablishmentState.initial());
         }
       },
       transformer: restartable(),

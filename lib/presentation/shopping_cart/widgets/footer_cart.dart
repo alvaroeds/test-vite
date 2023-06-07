@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pedido_listo_web/presentation/establishment/bloc/establishment_bloc.dart';
 import 'package:pedido_listo_web/presentation/shopping_cart/bloc/shopping_car_bloc.dart';
+import 'package:pedido_listo_web/resources/router/pedido_listo_routes.dart';
 import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
 
 class FooterCart extends StatelessWidget {
@@ -17,7 +20,16 @@ class FooterCart extends StatelessWidget {
         return Container(
           height: 84,
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-          color: Colors.white,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0xFF6B7380).withOpacity(0.1),
+                blurRadius: 24,
+                offset: const Offset(0, -4),
+              ),
+            ],
+          ),
           child: Row(
             children: [
               if (totalCost == 0)
@@ -43,7 +55,16 @@ class FooterCart extends StatelessWidget {
                 const Spacer(),
                 _ButtonMain(
                   'Continuar',
-                  () {},
+                  () {
+                    context.read<EstablishmentBloc>().state.whenOrNull(
+                      hasData: (establishment) {
+                        context.goNamed(RouterDeleveryOrder.name,
+                            pathParameters: {
+                              RouterEstablishment.firtsPath: establishment.idUrl
+                            });
+                      },
+                    );
+                  },
                 )
               ],
             ],

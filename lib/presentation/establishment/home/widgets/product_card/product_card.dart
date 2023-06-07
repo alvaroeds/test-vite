@@ -30,41 +30,45 @@ class ProductCard extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0xFF6B7380).withOpacity(0.1),
+              blurRadius: 24,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
         width: width,
         padding: const EdgeInsets.symmetric(
             horizontal: _horizontalpadding, vertical: 5),
-        child: Material(
-          elevation: 8,
-          borderRadius: BorderRadius.circular(_borderRadius),
-          shadowColor: Colors.black45,
-          child: Container(
-            clipBehavior: Clip.antiAlias,
-            // height: context.isMobile ? cardHeightMobile : cardHeightLarge,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(_borderRadius),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            child: Stack(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 4,
-                      child: InfoProduct(product: product, amount: amount),
-                    ),
-                    const SizedBox(width: 12),
-                    Align(child: ImageProduct(images: product.images)),
-                  ],
-                ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  child: PriceProduct(product: product),
-                ),
-              ],
-            ),
+        child: Container(
+          clipBehavior: Clip.antiAlias,
+          // height: context.isMobile ? cardHeightMobile : cardHeightLarge,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(_borderRadius),
+          ),
+          padding: const EdgeInsets.fromLTRB(15, 10, 10, 10),
+          child: Stack(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    flex: 4,
+                    child: InfoProduct(product: product, amount: amount),
+                  ),
+                  const SizedBox(width: 12),
+                  Align(child: ImageProduct(images: product.images)),
+                ],
+              ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                child: PriceProduct(product: product),
+              ),
+            ],
           ),
         ),
       ),

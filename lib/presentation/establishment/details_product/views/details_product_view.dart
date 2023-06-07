@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pedido_listo_web/features/establishment/domain/modifiers.dart';
 import 'package:pedido_listo_web/features/establishment/domain/product_dto.dart';
-import 'package:pedido_listo_web/presentation/app/bloc/cart_cache_bloc.dart';
+import 'package:pedido_listo_web/presentation/app/bloc/app_cache_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/bloc/establishment_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/details_product/bloc/details_product_bloc.dart';
+import 'package:pedido_listo_web/presentation/establishment/details_product/widgets/footer/product_footer.dart';
 import 'package:pedido_listo_web/presentation/establishment/details_product/widgets/widgets.dart';
 import 'package:pedido_listo_web/presentation/landing/widgets/show_snack_bar.dart';
 import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
@@ -49,20 +50,17 @@ class DetailsProductView extends StatelessWidget {
                 ...multipleSelections.map((multiple) =>
                     MultipleSelectionSection(multipleSelection: multiple)),
                 const CommentSection(),
-                BlocBuilder<DetailsProductBloc, DetailsProductState>(
-                  builder: (context, state) {
-                    return ButtonsSection(
-                      totalPrice: (state.getExtrasTotalPrice(choosesForAmount,
-                                  oneSelections, multipleSelections) +
-                              product.priceWithDiscount) *
-                          state.productQuantity,
-                      onPressed: _addToCard,
-                    );
-                  },
-                ),
               ],
             ))
           ],
+        ),
+        bottomNavigationBar: ProductFooter(
+          addToCard: _addToCard,
+          onBuildFinalPrice: (state) =>
+              (state.getExtrasTotalPrice(
+                      choosesForAmount, oneSelections, multipleSelections) +
+                  product.priceWithDiscount) *
+              state.productQuantity,
         ),
       ),
     );

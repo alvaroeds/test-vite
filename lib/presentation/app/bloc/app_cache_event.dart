@@ -1,4 +1,4 @@
-part of 'cart_cache_bloc.dart';
+part of 'app_cache_bloc.dart';
 
 @freezed
 class AppCacheEvent with _$AppCacheEvent {
@@ -7,6 +7,10 @@ class AppCacheEvent with _$AppCacheEvent {
   const factory AppCacheEvent.loadCart(String? urlId) = _LoadCart;
   const factory AppCacheEvent.updateCart(ShoppingCartDto shoppingCartDto) =
       _UpdateCart;
+
+  const factory AppCacheEvent.saveUser(
+      {required String name, required String phone}) = _SaveUser;
+  const factory AppCacheEvent.createAddress(String address) = _CreateAddress;
 
   const factory AppCacheEvent.createItem(
     DetailsProductState detail, {

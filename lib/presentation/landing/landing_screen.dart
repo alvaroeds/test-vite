@@ -34,51 +34,53 @@ class _LandingScreenState extends State<LandingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      endDrawer: (context.screenWidth < 1040)
-          ? Drawer(
-              child: HeaderOnDrawer(
-              whatIsTap: () => moveToItem(1),
-              benefitsTap: () => moveToItem(2),
-              whyChooseTap: () => moveToItem(3),
-            ))
-          : null,
-      body: Stack(
-        children: [
-          const Positioned.fill(
-              child: DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Color(0xffE0FFF3),
-                  Color(0xffFFFFFF),
-                  Color(0xffFFFFFF),
-                ],
-              ),
-            ),
-          )),
-          Positioned.fill(
-            child: SafeArea(
-                child: CustomScrollView(
-              controller: controller,
-              slivers: [
-                LandingHeader(
-                  whatIsTap: () => moveToItem(1),
-                  benefitsTap: () => moveToItem(2),
-                  whyChooseTap: () => moveToItem(3),
+    return SafeArea(
+      child: Scaffold(
+        endDrawer: (context.screenWidth < 1040)
+            ? Drawer(
+                child: HeaderOnDrawer(
+                whatIsTap: () => moveToItem(1),
+                benefitsTap: () => moveToItem(2),
+                whyChooseTap: () => moveToItem(3),
+              ))
+            : null,
+        body: Stack(
+          children: [
+            const Positioned.fill(
+                child: DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color(0xffE0FFF3),
+                    Color(0xffFFFFFF),
+                    Color(0xffFFFFFF),
+                  ],
                 ),
-                const CreateAccountLandingView(),
-                const AboutPedidoListoView(),
-                const BenefitsLandingview(),
-                const WhyChooseUs(),
-                const StarSellingLandingView(),
-                const KnowMoreBlocPage(),
-              ],
+              ),
             )),
-          ),
-        ],
+            Positioned.fill(
+              child: SafeArea(
+                  child: CustomScrollView(
+                controller: controller,
+                slivers: [
+                  LandingHeader(
+                    whatIsTap: () => moveToItem(1),
+                    benefitsTap: () => moveToItem(2),
+                    whyChooseTap: () => moveToItem(3),
+                  ),
+                  const CreateAccountLandingView(),
+                  const AboutPedidoListoView(),
+                  const BenefitsLandingview(),
+                  const WhyChooseUs(),
+                  const StarSellingLandingView(),
+                  const KnowMoreBlocPage(),
+                ],
+              )),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -16,6 +16,7 @@ class ShoppingCartDto with _$ShoppingCartDto {
   int get totalItem =>
       items.fold(0, (previousValue, element) => previousValue + element.amount);
 
+  bool get isItemsEmpty => totalItem == 0;
   double get totalCost => items.fold(
       0,
       (previousValue, element) =>
@@ -51,6 +52,8 @@ class ItemCart with _$ItemCart {
 
   double get totalCostWithDiscount =>
       (product.priceWithDiscount + modifiersTotalCost) * amount;
+
+  double get totalCostForUnit => product.priceWithDiscount + modifiersTotalCost;
 
   double get totalCost => (product.price + modifiersTotalCost) * amount;
 

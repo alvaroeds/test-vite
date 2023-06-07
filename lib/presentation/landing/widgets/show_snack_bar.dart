@@ -25,7 +25,7 @@ void showSnackBar(
           borderRadius: BorderRadius.all(Radius.circular(8)),
         ),
         margin: const EdgeInsets.symmetric(
-            vertical: kToolbarHeight + 8, horizontal: 16),
+            vertical: kToolbarHeight, horizontal: 16),
         // borderRadius: const BorderRadius.all(Radius.circular(8)),
         forwardAnimationCurve: Curves.easeOutBack,
         reverseAnimationCurve: Curves.slowMiddle,

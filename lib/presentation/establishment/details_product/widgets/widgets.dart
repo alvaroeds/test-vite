@@ -17,4 +17,3 @@ export 'comment_section/comment_box.dart';
 export 'comment_section/comment_section.dart';
 export 'buttons_section.dart/add_cart_button.dart';
 export 'buttons_section.dart/duplicate_remove_button.dart';
-export 'buttons_section.dart/buttons_section.dart';

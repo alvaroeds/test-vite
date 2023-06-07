@@ -10,7 +10,8 @@ class ThemeApp {
         //? title category
         displayMedium: GoogleFonts.poppins().getStyle(weight: FontWeight.bold),
 
-        bodyMedium: GoogleFonts.nunitoSans(),
+        bodyMedium:
+            GoogleFonts.nunitoSans(color: ColorsApp.textColor, fontSize: 14),
         //? title products.
         displaySmall:
             GoogleFonts.manrope().getStyle(color: const Color(0xff717171)),
@@ -25,7 +26,7 @@ class ThemeApp {
   //* ThemeData Light
   static ThemeData get light => ThemeData.light().copyWith(
       useMaterial3: true,
-      textTheme: textThemeLight,
+      //  textTheme: textThemeLight,
       primaryColor: ColorsApp.primaryColorLight,
       scaffoldBackgroundColor: ColorsApp.primaryBackgroundLight,
       colorScheme: ColorScheme.fromSeed(

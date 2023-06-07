@@ -7,18 +7,20 @@ import 'package:pedido_listo_web/resources/injections/repository_injection.dart'
 import 'package:pedido_listo_web/resources/injections/repository_providers.dart';
 import 'package:pedido_listo_web/resources/router/config_router.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() {
+  bootstrap(() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    final firebase = await FirebaseInjection.getInstance();
+    final router = ConfigRouter.dev();
 
-  final firebase = await FirebaseInjection.getInstance();
+    final injection = await StagingInjection.getInstance(firebase);
 
-  final router = ConfigRouter.dev();
-
-  final injection = await StagingInjection.getInstance(firebase);
-
-  await bootstrap(() => PedidoListoApp(
-        router: router,
-        blocProviders: BlocProvidersInjection.list(),
-        repositoryProviders: RepositoryProvidersInjection.list(injection),
-      ));
+    return PedidoListoApp(
+      router: router,
+      blocProviders: BlocProvidersInjection.list(
+        await injection.userRepository.getUser(),
+      ),
+      repositoryProviders: RepositoryProvidersInjection.list(injection),
+    );
+  });
 }

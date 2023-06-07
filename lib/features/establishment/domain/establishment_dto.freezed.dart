@@ -28,6 +28,12 @@ mixin _$EstablishmentDto {
   String get bannerUrl => throw _privateConstructorUsedError;
   @JsonKey(name: 'profile_image')
   String get profileImage => throw _privateConstructorUsedError;
+  @JsonKey(name: 'delevery_cost')
+  double get deliveryCost => throw _privateConstructorUsedError;
+  @JsonKey(name: 'local_direction')
+  String get localDirection => throw _privateConstructorUsedError;
+  @JsonKey(name: 'whatsapp_number')
+  String get whatsappNumber => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'social_network')
   List<SocialNetworkDto> get socialNetwork =>
@@ -54,6 +60,9 @@ abstract class $EstablishmentDtoCopyWith<$Res> {
       @JsonKey(name: 'id_url') String idUrl,
       @JsonKey(name: 'banner_url') String bannerUrl,
       @JsonKey(name: 'profile_image') String profileImage,
+      @JsonKey(name: 'delevery_cost') double deliveryCost,
+      @JsonKey(name: 'local_direction') String localDirection,
+      @JsonKey(name: 'whatsapp_number') String whatsappNumber,
       String description,
       @JsonKey(name: 'social_network') List<SocialNetworkDto> socialNetwork,
       Modifiers modifiers,
@@ -82,6 +91,9 @@ class _$EstablishmentDtoCopyWithImpl<$Res, $Val extends EstablishmentDto>
     Object? idUrl = null,
     Object? bannerUrl = null,
     Object? profileImage = null,
+    Object? deliveryCost = null,
+    Object? localDirection = null,
+    Object? whatsappNumber = null,
     Object? description = null,
     Object? socialNetwork = null,
     Object? modifiers = null,
@@ -107,6 +119,18 @@ class _$EstablishmentDtoCopyWithImpl<$Res, $Val extends EstablishmentDto>
       profileImage: null == profileImage
           ? _value.profileImage
           : profileImage // ignore: cast_nullable_to_non_nullable
+              as String,
+      deliveryCost: null == deliveryCost
+          ? _value.deliveryCost
+          : deliveryCost // ignore: cast_nullable_to_non_nullable
+              as double,
+      localDirection: null == localDirection
+          ? _value.localDirection
+          : localDirection // ignore: cast_nullable_to_non_nullable
+              as String,
+      whatsappNumber: null == whatsappNumber
+          ? _value.whatsappNumber
+          : whatsappNumber // ignore: cast_nullable_to_non_nullable
               as String,
       description: null == description
           ? _value.description
@@ -158,6 +182,9 @@ abstract class _$$_EstablishmentDtoCopyWith<$Res>
       @JsonKey(name: 'id_url') String idUrl,
       @JsonKey(name: 'banner_url') String bannerUrl,
       @JsonKey(name: 'profile_image') String profileImage,
+      @JsonKey(name: 'delevery_cost') double deliveryCost,
+      @JsonKey(name: 'local_direction') String localDirection,
+      @JsonKey(name: 'whatsapp_number') String whatsappNumber,
       String description,
       @JsonKey(name: 'social_network') List<SocialNetworkDto> socialNetwork,
       Modifiers modifiers,
@@ -186,6 +213,9 @@ class __$$_EstablishmentDtoCopyWithImpl<$Res>
     Object? idUrl = null,
     Object? bannerUrl = null,
     Object? profileImage = null,
+    Object? deliveryCost = null,
+    Object? localDirection = null,
+    Object? whatsappNumber = null,
     Object? description = null,
     Object? socialNetwork = null,
     Object? modifiers = null,
@@ -211,6 +241,18 @@ class __$$_EstablishmentDtoCopyWithImpl<$Res>
       profileImage: null == profileImage
           ? _value.profileImage
           : profileImage // ignore: cast_nullable_to_non_nullable
+              as String,
+      deliveryCost: null == deliveryCost
+          ? _value.deliveryCost
+          : deliveryCost // ignore: cast_nullable_to_non_nullable
+              as double,
+      localDirection: null == localDirection
+          ? _value.localDirection
+          : localDirection // ignore: cast_nullable_to_non_nullable
+              as String,
+      whatsappNumber: null == whatsappNumber
+          ? _value.whatsappNumber
+          : whatsappNumber // ignore: cast_nullable_to_non_nullable
               as String,
       description: null == description
           ? _value.description
@@ -241,6 +283,9 @@ class _$_EstablishmentDto extends _EstablishmentDto {
       @JsonKey(name: 'id_url') required this.idUrl,
       @JsonKey(name: 'banner_url') required this.bannerUrl,
       @JsonKey(name: 'profile_image') required this.profileImage,
+      @JsonKey(name: 'delevery_cost') this.deliveryCost = 0,
+      @JsonKey(name: 'local_direction') this.localDirection = '',
+      @JsonKey(name: 'whatsapp_number') this.whatsappNumber = '',
       this.description = '',
       @JsonKey(name: 'social_network')
       final List<SocialNetworkDto> socialNetwork = const [],
@@ -268,6 +313,15 @@ class _$_EstablishmentDto extends _EstablishmentDto {
   @JsonKey(name: 'profile_image')
   final String profileImage;
   @override
+  @JsonKey(name: 'delevery_cost')
+  final double deliveryCost;
+  @override
+  @JsonKey(name: 'local_direction')
+  final String localDirection;
+  @override
+  @JsonKey(name: 'whatsapp_number')
+  final String whatsappNumber;
+  @override
   @JsonKey()
   final String description;
   final List<SocialNetworkDto> _socialNetwork;
@@ -293,7 +347,7 @@ class _$_EstablishmentDto extends _EstablishmentDto {
 
   @override
   String toString() {
-    return 'EstablishmentDto(name: $name, schedule: $schedule, idUrl: $idUrl, bannerUrl: $bannerUrl, profileImage: $profileImage, description: $description, socialNetwork: $socialNetwork, modifiers: $modifiers, categories: $categories)';
+    return 'EstablishmentDto(name: $name, schedule: $schedule, idUrl: $idUrl, bannerUrl: $bannerUrl, profileImage: $profileImage, deliveryCost: $deliveryCost, localDirection: $localDirection, whatsappNumber: $whatsappNumber, description: $description, socialNetwork: $socialNetwork, modifiers: $modifiers, categories: $categories)';
   }
 
   @override
@@ -309,6 +363,12 @@ class _$_EstablishmentDto extends _EstablishmentDto {
                 other.bannerUrl == bannerUrl) &&
             (identical(other.profileImage, profileImage) ||
                 other.profileImage == profileImage) &&
+            (identical(other.deliveryCost, deliveryCost) ||
+                other.deliveryCost == deliveryCost) &&
+            (identical(other.localDirection, localDirection) ||
+                other.localDirection == localDirection) &&
+            (identical(other.whatsappNumber, whatsappNumber) ||
+                other.whatsappNumber == whatsappNumber) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             const DeepCollectionEquality()
@@ -328,6 +388,9 @@ class _$_EstablishmentDto extends _EstablishmentDto {
       idUrl,
       bannerUrl,
       profileImage,
+      deliveryCost,
+      localDirection,
+      whatsappNumber,
       description,
       const DeepCollectionEquality().hash(_socialNetwork),
       modifiers,
@@ -354,6 +417,9 @@ abstract class _EstablishmentDto extends EstablishmentDto {
       @JsonKey(name: 'id_url') required final String idUrl,
       @JsonKey(name: 'banner_url') required final String bannerUrl,
       @JsonKey(name: 'profile_image') required final String profileImage,
+      @JsonKey(name: 'delevery_cost') final double deliveryCost,
+      @JsonKey(name: 'local_direction') final String localDirection,
+      @JsonKey(name: 'whatsapp_number') final String whatsappNumber,
       final String description,
       @JsonKey(name: 'social_network')
       final List<SocialNetworkDto> socialNetwork,
@@ -378,6 +444,15 @@ abstract class _EstablishmentDto extends EstablishmentDto {
   @override
   @JsonKey(name: 'profile_image')
   String get profileImage;
+  @override
+  @JsonKey(name: 'delevery_cost')
+  double get deliveryCost;
+  @override
+  @JsonKey(name: 'local_direction')
+  String get localDirection;
+  @override
+  @JsonKey(name: 'whatsapp_number')
+  String get whatsappNumber;
   @override
   String get description;
   @override

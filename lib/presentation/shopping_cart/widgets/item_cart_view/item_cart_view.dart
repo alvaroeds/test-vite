@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pedido_listo_web/const/resource.dart';
 import 'package:pedido_listo_web/features/shopping_cart/domain/shopping_car_dto.dart';
 import 'package:pedido_listo_web/presentation/shopping_cart/widgets/item_cart_view/discount_product_tag.dart';
 import 'package:pedido_listo_web/presentation/shopping_cart/widgets/item_cart_view/modifiers_list.dart';
@@ -21,7 +22,7 @@ class ItemCardView extends StatelessWidget {
         width: double.maxFinite,
         constraints: const BoxConstraints(minHeight: 150),
         decoration: const BoxDecoration(
-          border: Border(top: BorderSide(color: Color(0xFFE1E3E6))),
+          border: Border(bottom: BorderSide(color: Color(0xFFE1E3E6))),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -29,11 +30,14 @@ class ItemCardView extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 6),
-              child: ColoredBox(
-                color: const Color(0xFFE1E3E6),
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: const Color(0xFFE1E3E6),
+                  borderRadius: BorderRadius.circular(6),
+                ),
                 child: ClipRRect(
                   borderRadius:
-                      BorderRadius.circular(5), // Igual que el valor anterior
+                      BorderRadius.circular(6), // Igual que el valor anterior
                   child: Image.network(
                     item.product.images.first,
                     fit: BoxFit.cover,
@@ -43,7 +47,7 @@ class ItemCardView extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 14),
+            const SizedBox(width: 10),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -89,7 +93,7 @@ class ItemCardView extends StatelessWidget {
                             ),
                           ),
                           if (item.product.discount > 0) ...[
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 6),
                             Text(
                               item.totalCost.formattedPrice,
                               style: GoogleFonts.manrope(
@@ -159,14 +163,13 @@ class IconButtonDelete extends StatelessWidget {
   final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-        onTap: onTap,
-        customBorder: const CircleBorder(),
-        child: const Icon(
-          Icons.delete,
-          size: 24,
-          color: Color(0xffA5ABB4),
-        ));
+    return Padding(
+      padding: const EdgeInsets.only(left: 2),
+      child: InkWell(
+          onTap: onTap,
+          customBorder: const CircleBorder(),
+          child: R.ASSETS_SVG_DELETE_2_SVG.toSvg()),
+    );
   }
 }
 

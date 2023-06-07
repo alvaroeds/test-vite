@@ -16,43 +16,48 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$EstablishmentEvent {
+  String? get name => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? name) started,
-    required TResult Function() closed,
+    required TResult Function(StreamAction action, String? name) streamCall,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? name)? started,
-    TResult? Function()? closed,
+    TResult? Function(StreamAction action, String? name)? streamCall,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? name)? started,
-    TResult Function()? closed,
+    TResult Function(StreamAction action, String? name)? streamCall,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_Closed value) closed,
+    required TResult Function(_StreamCall value) streamCall,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_Closed value)? closed,
+    TResult? Function(_StreamCall value)? streamCall,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Closed value)? closed,
+    TResult Function(_StreamCall value)? streamCall,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $EstablishmentEventCopyWith<EstablishmentEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,6 +66,8 @@ abstract class $EstablishmentEventCopyWith<$Res> {
   factory $EstablishmentEventCopyWith(
           EstablishmentEvent value, $Res Function(EstablishmentEvent) then) =
       _$EstablishmentEventCopyWithImpl<$Res, EstablishmentEvent>;
+  @useResult
+  $Res call({String? name});
 }
 
 /// @nodoc
@@ -72,13 +79,28 @@ class _$EstablishmentEventCopyWithImpl<$Res, $Val extends EstablishmentEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = freezed,
+  }) {
+    return _then(_value.copyWith(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
+abstract class _$$_StartedCopyWith<$Res>
+    implements $EstablishmentEventCopyWith<$Res> {
   factory _$$_StartedCopyWith(
           _$_Started value, $Res Function(_$_Started) then) =
       __$$_StartedCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({String? name});
 }
@@ -138,7 +160,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? name) started,
-    required TResult Function() closed,
+    required TResult Function(StreamAction action, String? name) streamCall,
   }) {
     return started(name);
   }
@@ -147,7 +169,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? name)? started,
-    TResult? Function()? closed,
+    TResult? Function(StreamAction action, String? name)? streamCall,
   }) {
     return started?.call(name);
   }
@@ -156,7 +178,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? name)? started,
-    TResult Function()? closed,
+    TResult Function(StreamAction action, String? name)? streamCall,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -169,7 +191,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_Closed value) closed,
+    required TResult Function(_StreamCall value) streamCall,
   }) {
     return started(this);
   }
@@ -178,7 +200,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_Closed value)? closed,
+    TResult? Function(_StreamCall value)? streamCall,
   }) {
     return started?.call(this);
   }
@@ -187,7 +209,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Closed value)? closed,
+    TResult Function(_StreamCall value)? streamCall,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -200,72 +222,112 @@ class _$_Started implements _Started {
 abstract class _Started implements EstablishmentEvent {
   const factory _Started(final String? name) = _$_Started;
 
+  @override
   String? get name;
+  @override
   @JsonKey(ignore: true)
   _$$_StartedCopyWith<_$_Started> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ClosedCopyWith<$Res> {
-  factory _$$_ClosedCopyWith(_$_Closed value, $Res Function(_$_Closed) then) =
-      __$$_ClosedCopyWithImpl<$Res>;
+abstract class _$$_StreamCallCopyWith<$Res>
+    implements $EstablishmentEventCopyWith<$Res> {
+  factory _$$_StreamCallCopyWith(
+          _$_StreamCall value, $Res Function(_$_StreamCall) then) =
+      __$$_StreamCallCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({StreamAction action, String? name});
 }
 
 /// @nodoc
-class __$$_ClosedCopyWithImpl<$Res>
-    extends _$EstablishmentEventCopyWithImpl<$Res, _$_Closed>
-    implements _$$_ClosedCopyWith<$Res> {
-  __$$_ClosedCopyWithImpl(_$_Closed _value, $Res Function(_$_Closed) _then)
+class __$$_StreamCallCopyWithImpl<$Res>
+    extends _$EstablishmentEventCopyWithImpl<$Res, _$_StreamCall>
+    implements _$$_StreamCallCopyWith<$Res> {
+  __$$_StreamCallCopyWithImpl(
+      _$_StreamCall _value, $Res Function(_$_StreamCall) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? action = null,
+    Object? name = freezed,
+  }) {
+    return _then(_$_StreamCall(
+      null == action
+          ? _value.action
+          : action // ignore: cast_nullable_to_non_nullable
+              as StreamAction,
+      freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_Closed implements _Closed {
-  const _$_Closed();
+class _$_StreamCall implements _StreamCall {
+  const _$_StreamCall(this.action, this.name);
+
+  @override
+  final StreamAction action;
+  @override
+  final String? name;
 
   @override
   String toString() {
-    return 'EstablishmentEvent.closed()';
+    return 'EstablishmentEvent.streamCall(action: $action, name: $name)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Closed);
+        (other.runtimeType == runtimeType &&
+            other is _$_StreamCall &&
+            (identical(other.action, action) || other.action == action) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, action, name);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_StreamCallCopyWith<_$_StreamCall> get copyWith =>
+      __$$_StreamCallCopyWithImpl<_$_StreamCall>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? name) started,
-    required TResult Function() closed,
+    required TResult Function(StreamAction action, String? name) streamCall,
   }) {
-    return closed();
+    return streamCall(action, name);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? name)? started,
-    TResult? Function()? closed,
+    TResult? Function(StreamAction action, String? name)? streamCall,
   }) {
-    return closed?.call();
+    return streamCall?.call(action, name);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? name)? started,
-    TResult Function()? closed,
+    TResult Function(StreamAction action, String? name)? streamCall,
     required TResult orElse(),
   }) {
-    if (closed != null) {
-      return closed();
+    if (streamCall != null) {
+      return streamCall(action, name);
     }
     return orElse();
   }
@@ -274,36 +336,45 @@ class _$_Closed implements _Closed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_Closed value) closed,
+    required TResult Function(_StreamCall value) streamCall,
   }) {
-    return closed(this);
+    return streamCall(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_Closed value)? closed,
+    TResult? Function(_StreamCall value)? streamCall,
   }) {
-    return closed?.call(this);
+    return streamCall?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Closed value)? closed,
+    TResult Function(_StreamCall value)? streamCall,
     required TResult orElse(),
   }) {
-    if (closed != null) {
-      return closed(this);
+    if (streamCall != null) {
+      return streamCall(this);
     }
     return orElse();
   }
 }
 
-abstract class _Closed implements EstablishmentEvent {
-  const factory _Closed() = _$_Closed;
+abstract class _StreamCall implements EstablishmentEvent {
+  const factory _StreamCall(final StreamAction action, final String? name) =
+      _$_StreamCall;
+
+  StreamAction get action;
+  @override
+  String? get name;
+  @override
+  @JsonKey(ignore: true)
+  _$$_StreamCallCopyWith<_$_StreamCall> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -389,8 +460,8 @@ class __$$_InitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$_Initial extends _Initial {
+  const _$_Initial() : super._();
 
   @override
   String toString() {
@@ -475,8 +546,9 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements EstablishmentState {
+abstract class _Initial extends EstablishmentState {
   const factory _Initial() = _$_Initial;
+  const _Initial._() : super._();
 }
 
 /// @nodoc
@@ -520,8 +592,8 @@ class __$$_DataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Data implements _Data {
-  const _$_Data(this.establishment);
+class _$_Data extends _Data {
+  const _$_Data(this.establishment) : super._();
 
   @override
   final EstablishmentDto establishment;
@@ -618,8 +690,9 @@ class _$_Data implements _Data {
   }
 }
 
-abstract class _Data implements EstablishmentState {
+abstract class _Data extends EstablishmentState {
   const factory _Data(final EstablishmentDto establishment) = _$_Data;
+  const _Data._() : super._();
 
   EstablishmentDto get establishment;
   @JsonKey(ignore: true)
@@ -667,8 +740,8 @@ class __$$_ErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Error implements _Error {
-  const _$_Error(this.failure);
+class _$_Error extends _Error {
+  const _$_Error(this.failure) : super._();
 
   @override
   final GlobalFailure<dynamic> failure;
@@ -764,8 +837,9 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements EstablishmentState {
+abstract class _Error extends EstablishmentState {
   const factory _Error(final GlobalFailure<dynamic> failure) = _$_Error;
+  const _Error._() : super._();
 
   GlobalFailure<dynamic> get failure;
   @JsonKey(ignore: true)

@@ -17,6 +17,9 @@ class EstablishmentDto with _$EstablishmentDto {
     @JsonKey(name: 'id_url') required String idUrl,
     @JsonKey(name: 'banner_url') required String bannerUrl,
     @JsonKey(name: 'profile_image') required String profileImage,
+    @JsonKey(name: 'delevery_cost') @Default(0) double deliveryCost,
+    @JsonKey(name: 'local_direction') @Default('') String localDirection,
+    @JsonKey(name: 'whatsapp_number') @Default('') String whatsappNumber,
     @Default('') String description,
     @JsonKey(name: 'social_network')
     @Default([])

@@ -2,6 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pedido_listo_web/features/contact/application/send_email.dart';
 import 'package:pedido_listo_web/features/shopping_cart/application/load_cart.dart';
 import 'package:pedido_listo_web/features/shopping_cart/application/save_cart.dart';
+import 'package:pedido_listo_web/features/user/application/load_user.dart';
+import 'package:pedido_listo_web/features/user/application/save_user.dart';
 import 'package:pedido_listo_web/resources/injections/repository_injection.dart';
 
 import 'package:pedido_listo_web/features/establishment/domain/interface_establishment.dart';
@@ -21,6 +23,12 @@ class RepositoryProvidersInjection {
         ),
         RepositoryProvider<SaveCartUseCase>(
           create: (context) => SaveCartUseCase(injection.cartRepository),
+        ),
+        RepositoryProvider<LoadUserUseCase>(
+          create: (context) => LoadUserUseCase(injection.userRepository),
+        ),
+        RepositoryProvider<SaveUserUseCase>(
+          create: (context) => SaveUserUseCase(injection.userRepository),
         ),
       ];
 }
