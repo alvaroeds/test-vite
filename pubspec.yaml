@@ -53,7 +53,7 @@ dependencies:
   #=============================>
   # Widgets
   #=============================>
-  cupertino_icons: ^1.0.5
+  # cupertino_icons: ^1.0.5
   font_awesome_flutter: ^10.4.0
   shimmer: ^3.0.0
   built_collection: ^5.1.1

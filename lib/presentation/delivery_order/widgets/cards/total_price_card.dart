@@ -107,7 +107,7 @@ class _TextCard extends StatelessWidget {
           text: TextSpan(
             text: 'Costo Total:  ',
             style: context.currentStyle.bodyMedium
-                ?.copyWith(fontWeight: FontWeight.bold, fontSize: 16),
+                ?.copyWith(fontWeight: FontWeight.bold, fontSize: 14),
             children: <TextSpan>[
               TextSpan(
                 text: (bloc.shoppingCartDto.totalCost + deliveryCost)
