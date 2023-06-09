@@ -30,7 +30,8 @@
         "-d",
         "chrome",
         "--web-port",
-        "8040"
+        "8040",
+        "--dart-define-from-file=config.json"
       ]
     },
     {
