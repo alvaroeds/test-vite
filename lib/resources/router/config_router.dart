@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pedido_listo_web/resources/router/pedido_listo_routes.dart';
-
+import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:universal_html/html.dart' as html;
 
 class ConfigRouter {
@@ -66,7 +66,7 @@ class ConfigRouter {
     List<GoRoute> routes = const <GoRoute>[],
     ChangeNotifier? changeNotifier,
   }) {
-    //usePathUrlStrategy();
+    usePathUrlStrategy();
     //* remove hash
     return GoRouter(
       refreshListenable: changeNotifier,

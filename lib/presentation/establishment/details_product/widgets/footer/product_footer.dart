@@ -17,6 +17,13 @@ class ProductFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DetailsProductBloc, DetailsProductState>(
+      buildWhen: (previous, current) =>
+          (previous.getExtrasTotalPrice() + productPrice) *
+                  previous.productQuantity !=
+              (current.getExtrasTotalPrice() + productPrice) *
+                  current.productQuantity ||
+          previous.isAllModifiersFormValid != current.isAllModifiersFormValid ||
+          previous.isCommentNotValid != current.isCommentNotValid,
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.fromLTRB(22, 8, 22, 12),
