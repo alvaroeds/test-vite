@@ -18,7 +18,7 @@ class CustomOptionInfo extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        SelectableText(
           name,
           style: context.getModifierContent(isDisabled: isDisabled)?.getStyle(
                 weight: FontWeight.bold,

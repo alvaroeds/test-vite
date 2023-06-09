@@ -13,7 +13,7 @@ class InputCashField extends StatelessWidget {
     final payment = context.select<DeliveryOrderBloc, PaymentMethod>(
         (bloc) => bloc.state.paymentMethod);
     if (!payment.isCash) return const SizedBox.shrink();
-    final hasError = bloc.shoppingCartDto.totalCost > payment.cash;
+    final hasError = bloc.state.shoppingCartDto.totalCost > payment.cash;
     final color = hasError && !payment.isInit
         ? const Color(0xffF00000)
         : context.primaryColor;
@@ -108,12 +108,18 @@ class InputCashField extends StatelessWidget {
                       style: context.interBold2Title?.copyWith(
                           fontSize: 12, fontWeight: FontWeight.w400)),
                   const SizedBox(width: 10),
-                  Text(
-                      'S./ ${(payment.cash - bloc.shoppingCartDto.totalCost).toStringAsFixed(2)}',
-                      style: context.interBold2Title?.copyWith(
-                          color: color,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12)),
+                  Builder(builder: (context) {
+                    final totalFinalCost =
+                        context.select<DeliveryOrderBloc, double>(
+                            (bloc) => bloc.state.totalFinalCost);
+
+                    return Text(
+                        'S./ ${(payment.cash - totalFinalCost).toStringAsFixed(2)}',
+                        style: context.interBold2Title?.copyWith(
+                            color: color,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12));
+                  }),
                 ],
               )
           ]

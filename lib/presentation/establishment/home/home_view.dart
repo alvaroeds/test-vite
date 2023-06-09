@@ -122,7 +122,7 @@ class _HomeViewState extends State<HomeView>
                       category: categories[selectIndex],
                     );
                   }, childCount: currentIndex == 0 ? categories.length : 1)),
-                  const SliverToBoxAdapter(child: SizedBox(height: 60))
+                  //const SliverToBoxAdapter(child: SizedBox(height: 60))
                 ],
                 const SliverFooter()
               ],

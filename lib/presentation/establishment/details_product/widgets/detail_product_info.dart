@@ -25,7 +25,7 @@ class DetailProductInfo extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                  child: Text(
+                  child: SelectableText(
                 product.name,
                 style: context.interBold2Title?.copyWith(fontSize: 30),
               )),
@@ -38,7 +38,7 @@ class DetailProductInfo extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 20),
-          Text(
+          SelectableText(
             product.description,
             style: GoogleFonts.inter(
               fontWeight: FontWeight.w400,

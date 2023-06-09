@@ -56,7 +56,7 @@ class InfoProduct extends StatelessWidget {
               ),
               const SizedBox(width: 4),
             ],
-            Text(product.name,
+            SelectableText(product.name,
                 style: GoogleFonts.manrope(
                   color: Colors.black,
                   fontSize: 14,

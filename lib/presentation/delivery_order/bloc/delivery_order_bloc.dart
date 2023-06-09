@@ -9,22 +9,23 @@ import 'package:pedido_listo_web/features/establishment/domain/establishment_dto
 import 'package:pedido_listo_web/features/shopping_cart/domain/shopping_car_dto.dart';
 import 'package:pedido_listo_web/features/user/domain/dto/address_dto.dart';
 import 'package:pedido_listo_web/features/user/domain/dto/user_dto.dart';
-
 part 'delivery_order_event.dart';
 part 'delivery_order_state.dart';
 part 'delivery_order_bloc.freezed.dart';
 
 class DeliveryOrderBloc extends Bloc<DeliveryOrderEvent, DeliveryOrderState> {
-  final ShoppingCartDto shoppingCartDto;
-  final EstablishmentDto establishmentDto;
+  final MakeOrderUseCase _makeOrderUseCase;
 
-  DeliveryOrderBloc({
-    required this.shoppingCartDto,
-    required this.establishmentDto,
+  DeliveryOrderBloc(
+    this._makeOrderUseCase, {
+    required ShoppingCartDto shoppingCartDto,
+    required EstablishmentDto establishmentDto,
     required UserDto userDto,
   }) : super(DeliveryOrderState(
           contactName: userDto.name,
           contactPhone: userDto.phone,
+          establishmentDto: establishmentDto,
+          shoppingCartDto: shoppingCartDto,
           paymentMethod: PaymentMethod.initial(),
           address: optionOf(userDto.addresses.firstOrNull),
         )) {
@@ -98,7 +99,7 @@ class DeliveryOrderBloc extends Bloc<DeliveryOrderEvent, DeliveryOrderState> {
     _CreateOrder event,
     Emitter<DeliveryOrderState> emit,
   ) {
-    MakeOrderUseCase.execute(shoppingCartDto, establishmentDto,
+    _makeOrderUseCase.execute(state.shoppingCartDto, state.establishmentDto,
         contactName: state.contactName,
         contactPhone: state.contactPhone,
         paymentMethod: state.paymentMethod.paymentMethod,

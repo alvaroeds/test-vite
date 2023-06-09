@@ -60,18 +60,18 @@ class DetailList extends StatelessWidget with CardStyle {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.read<DeliveryOrderBloc>();
+    final state = context.read<DeliveryOrderBloc>().state;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
       child: Column(
         children: [
-          ...bloc.shoppingCartDto.items.map((item) => DetailTile(
+          ...state.shoppingCartDto.items.map((item) => DetailTile(
                 description: 'x${item.amount} ${item.product.name}',
-                price: item.totalCost,
+                price: item.totalCostWithDiscount,
               )),
           _DeliveryCost(
-            builder: (context, deliveryCost) {
+            builder: (totalFinalCost, deliveryCost) {
               return DetailTile(
                 description: 'Costo de entrega',
                 price: deliveryCost,
@@ -79,13 +79,13 @@ class DetailList extends StatelessWidget with CardStyle {
             },
           ),
           _DeliveryCost(
-            builder: (context, deliveryCost) {
+            builder: (totalFinalCost, deliveryCost) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 child: DetailTile(
                   isBold: true,
                   description: 'Costo Total',
-                  price: bloc.shoppingCartDto.totalCost + deliveryCost,
+                  price: totalFinalCost,
                 ),
               );
             },
@@ -101,9 +101,8 @@ class _TextCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.read<DeliveryOrderBloc>();
     return _DeliveryCost(
-      builder: (context, deliveryCost) {
+      builder: (totalFinalCost, _) {
         return RichText(
           text: TextSpan(
             text: 'Costo Total:  ',
@@ -111,8 +110,7 @@ class _TextCard extends StatelessWidget {
                 ?.copyWith(fontWeight: FontWeight.bold, fontSize: 14),
             children: <TextSpan>[
               TextSpan(
-                text: (bloc.shoppingCartDto.totalCost + deliveryCost)
-                    .formattedPrice,
+                text: totalFinalCost.formattedPrice,
                 style: TextStyle(
                   color: context.primaryColor,
                 ),
@@ -156,20 +154,19 @@ class DetailTile extends StatelessWidget {
 }
 
 class _DeliveryCost extends StatelessWidget {
-  final Widget Function(BuildContext context, double deliveryCost) builder;
+  final Widget Function(double totalFinalCost, double deliveryCost) builder;
   const _DeliveryCost({required this.builder});
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.read<DeliveryOrderBloc>();
-    return BlocSelector<DeliveryOrderBloc, DeliveryOrderState, double>(
+    return BlocSelector<DeliveryOrderBloc, DeliveryOrderState,
+        (double, double)>(
       selector: (state) {
-        return state.service.when(
-          takeaway: () => 0,
-          delivery: () => bloc.establishmentDto.deliveryCost,
-        );
+        return (state.totalFinalCost, state.establishmentDto.deliveryCost);
       },
-      builder: builder,
+      builder: (context, state) {
+        return builder(state.$1, state.$2);
+      },
     );
   }
 }

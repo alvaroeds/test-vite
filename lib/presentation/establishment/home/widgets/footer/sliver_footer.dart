@@ -10,7 +10,7 @@ class SliverFooter extends StatelessWidget {
       child: Align(
         alignment: Alignment.bottomCenter,
         child: Padding(
-          padding: EdgeInsets.all(12),
+          padding: EdgeInsets.only(bottom: 110),
           child: Text(
             'De Pedido Listo con 💚 para el Mundo.',
             textAlign: TextAlign.center,

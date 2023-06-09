@@ -11,35 +11,33 @@ class FooterDelivery extends StatelessWidget {
   const FooterDelivery({super.key});
 
   void _confirmOrder(BuildContext context) {
-    final bloc = context.read<DeliveryOrderBloc>();
+    final state = context.read<DeliveryOrderBloc>().state;
     void showError(String message) {
       showSnackBar(message, context, icon: Icons.error_outline);
     }
 
-    if (bloc.state.contactName.isEmpty) {
+    if (state.contactName.isEmpty) {
       return showError('Ingrese su nombre');
     }
-    if (bloc.state.contactPhone.isEmpty) {
+    if (state.contactPhone.isEmpty) {
       return showError('Ingrese su número de telefono');
     }
-    if (bloc.state.service.isDelivery && bloc.state.address.isNone()) {
+    if (state.service.isDelivery && state.address.isNone()) {
       return showError('Seleccione o ingrese una dirección');
     }
-    if (bloc.state.paymentMethod.method.isNone() &&
-        bloc.establishmentDto.paymentMethods.isNotEmpty) {
+    if (state.paymentMethod.method.isNone() &&
+        state.establishmentDto.paymentMethods.isNotEmpty) {
       return showError('Seleccione un método de pago');
     }
-    if (bloc.state.paymentMethod.isCash) {
-      if (bloc.state.paymentMethod.isInit) {
+    if (state.paymentMethod.isCash) {
+      if (state.paymentMethod.isInit) {
         return showError('Ingrese el monto a pagar');
       }
 
-      final total = bloc.shoppingCartDto.totalCost +
-          (bloc.state.address.isNone()
-              ? 0.0
-              : bloc.establishmentDto.deliveryCost);
+      final total = state.shoppingCartDto.totalCost +
+          (state.address.isNone() ? 0.0 : state.establishmentDto.deliveryCost);
 
-      if (bloc.state.paymentMethod.cash < total) {
+      if (state.paymentMethod.cash < total) {
         return showError('Monto inválido');
       }
     }

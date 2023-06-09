@@ -8,6 +8,15 @@ import 'package:pedido_listo_web/presentation/delivery_order/widgets/inputs/inpu
 import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
 import 'package:pedido_listo_web/resources/utils/extensions.dart';
 
+extension Paymentln10 on Payment {
+  String toText(BuildContext context) => when(
+      cash: () => 'Pago en Efectivo',
+      creditCard: () => 'Tarjeta de crédito',
+      debitCard: () => 'Tarjeta de débito',
+      bankTransfer: () => 'Transferencia',
+      newMethod: (method) => method);
+}
+
 class MethodPayCards extends StatelessWidget with CardStyle {
   const MethodPayCards({super.key});
 
@@ -64,16 +73,15 @@ class SelectablePayment extends StatelessWidget {
                 SelectableTitle(
                     isExpanded: isSelectableExpanded,
                     iSelected: paymentMethod.method.isSome(),
-                    text: paymentMethod.method.fold(
-                        () => 'Método de pago',
-                        (e) => isSelectableExpanded
-                            ? 'Método de pago'
-                            : e.toText(context)),
+                    text: paymentMethod.method
+                        .fold(() => 'Método de pago', (e) => e.toText(context)),
                     onTap: () {
                       bloc.add(const DeliveryOrderEvent.changeSelectable());
                     }),
                 if (isSelectableExpanded)
-                  ...bloc.establishmentDto.paymentMethods
+                  ...bloc.state.establishmentDto.paymentMethods
+                      .where((element) => paymentMethod.method
+                          .fold(() => true, (pay) => element != pay))
                       .map((pay) => SelectableOption(
                             text: pay.toText(context),
                             onTap: () {
@@ -86,15 +94,6 @@ class SelectablePayment extends StatelessWidget {
       },
     );
   }
-}
-
-extension Paymentln10 on Payment {
-  String toText(BuildContext context) => when(
-      cash: () => 'Pago en Efectivo',
-      creditCard: () => 'Tarjeta de crédito',
-      debitCard: () => 'Tarjeta de débito',
-      bankTransfer: () => 'Transferencia',
-      newMethod: (method) => method);
 }
 
 class SelectableTitle extends StatelessWidget {
@@ -123,7 +122,7 @@ class SelectableTitle extends StatelessWidget {
               style: context.interBold1Title?.copyWith(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: iSelected && !isExpanded
+                  color: iSelected
                       ? context.primaryColor
                       : const Color(0xff878F9B)),
             ),

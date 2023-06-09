@@ -1916,6 +1916,8 @@ abstract class _UpdateCash implements DeliveryOrderEvent {
 mixin _$DeliveryOrderState {
   Option<AddressDto> get address => throw _privateConstructorUsedError;
   PaymentMethod get paymentMethod => throw _privateConstructorUsedError;
+  ShoppingCartDto get shoppingCartDto => throw _privateConstructorUsedError;
+  EstablishmentDto get establishmentDto => throw _privateConstructorUsedError;
   String get contactName => throw _privateConstructorUsedError;
   String get contactPhone => throw _privateConstructorUsedError;
   bool get isSelectableExpanded => throw _privateConstructorUsedError;
@@ -1937,6 +1939,8 @@ abstract class $DeliveryOrderStateCopyWith<$Res> {
   $Res call(
       {Option<AddressDto> address,
       PaymentMethod paymentMethod,
+      ShoppingCartDto shoppingCartDto,
+      EstablishmentDto establishmentDto,
       String contactName,
       String contactPhone,
       bool isSelectableExpanded,
@@ -1944,6 +1948,8 @@ abstract class $DeliveryOrderStateCopyWith<$Res> {
       Service service});
 
   $PaymentMethodCopyWith<$Res> get paymentMethod;
+  $ShoppingCartDtoCopyWith<$Res> get shoppingCartDto;
+  $EstablishmentDtoCopyWith<$Res> get establishmentDto;
   $ServiceCopyWith<$Res> get service;
 }
 
@@ -1962,6 +1968,8 @@ class _$DeliveryOrderStateCopyWithImpl<$Res, $Val extends DeliveryOrderState>
   $Res call({
     Object? address = null,
     Object? paymentMethod = null,
+    Object? shoppingCartDto = null,
+    Object? establishmentDto = null,
     Object? contactName = null,
     Object? contactPhone = null,
     Object? isSelectableExpanded = null,
@@ -1977,6 +1985,14 @@ class _$DeliveryOrderStateCopyWithImpl<$Res, $Val extends DeliveryOrderState>
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
               as PaymentMethod,
+      shoppingCartDto: null == shoppingCartDto
+          ? _value.shoppingCartDto
+          : shoppingCartDto // ignore: cast_nullable_to_non_nullable
+              as ShoppingCartDto,
+      establishmentDto: null == establishmentDto
+          ? _value.establishmentDto
+          : establishmentDto // ignore: cast_nullable_to_non_nullable
+              as EstablishmentDto,
       contactName: null == contactName
           ? _value.contactName
           : contactName // ignore: cast_nullable_to_non_nullable
@@ -2010,6 +2026,22 @@ class _$DeliveryOrderStateCopyWithImpl<$Res, $Val extends DeliveryOrderState>
 
   @override
   @pragma('vm:prefer-inline')
+  $ShoppingCartDtoCopyWith<$Res> get shoppingCartDto {
+    return $ShoppingCartDtoCopyWith<$Res>(_value.shoppingCartDto, (value) {
+      return _then(_value.copyWith(shoppingCartDto: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EstablishmentDtoCopyWith<$Res> get establishmentDto {
+    return $EstablishmentDtoCopyWith<$Res>(_value.establishmentDto, (value) {
+      return _then(_value.copyWith(establishmentDto: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
   $ServiceCopyWith<$Res> get service {
     return $ServiceCopyWith<$Res>(_value.service, (value) {
       return _then(_value.copyWith(service: value) as $Val);
@@ -2028,6 +2060,8 @@ abstract class _$$_DeliveryOrderStateCopyWith<$Res>
   $Res call(
       {Option<AddressDto> address,
       PaymentMethod paymentMethod,
+      ShoppingCartDto shoppingCartDto,
+      EstablishmentDto establishmentDto,
       String contactName,
       String contactPhone,
       bool isSelectableExpanded,
@@ -2036,6 +2070,10 @@ abstract class _$$_DeliveryOrderStateCopyWith<$Res>
 
   @override
   $PaymentMethodCopyWith<$Res> get paymentMethod;
+  @override
+  $ShoppingCartDtoCopyWith<$Res> get shoppingCartDto;
+  @override
+  $EstablishmentDtoCopyWith<$Res> get establishmentDto;
   @override
   $ServiceCopyWith<$Res> get service;
 }
@@ -2053,6 +2091,8 @@ class __$$_DeliveryOrderStateCopyWithImpl<$Res>
   $Res call({
     Object? address = null,
     Object? paymentMethod = null,
+    Object? shoppingCartDto = null,
+    Object? establishmentDto = null,
     Object? contactName = null,
     Object? contactPhone = null,
     Object? isSelectableExpanded = null,
@@ -2068,6 +2108,14 @@ class __$$_DeliveryOrderStateCopyWithImpl<$Res>
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
               as PaymentMethod,
+      shoppingCartDto: null == shoppingCartDto
+          ? _value.shoppingCartDto
+          : shoppingCartDto // ignore: cast_nullable_to_non_nullable
+              as ShoppingCartDto,
+      establishmentDto: null == establishmentDto
+          ? _value.establishmentDto
+          : establishmentDto // ignore: cast_nullable_to_non_nullable
+              as EstablishmentDto,
       contactName: null == contactName
           ? _value.contactName
           : contactName // ignore: cast_nullable_to_non_nullable
@@ -2094,21 +2142,28 @@ class __$$_DeliveryOrderStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DeliveryOrderState implements _DeliveryOrderState {
+class _$_DeliveryOrderState extends _DeliveryOrderState {
   const _$_DeliveryOrderState(
       {required this.address,
       required this.paymentMethod,
+      required this.shoppingCartDto,
+      required this.establishmentDto,
       this.contactName = '',
       this.contactPhone = '',
       this.isSelectableExpanded = false,
       final Map<String, String> additionalDetail = const {},
       this.service = const Service.takeaway()})
-      : _additionalDetail = additionalDetail;
+      : _additionalDetail = additionalDetail,
+        super._();
 
   @override
   final Option<AddressDto> address;
   @override
   final PaymentMethod paymentMethod;
+  @override
+  final ShoppingCartDto shoppingCartDto;
+  @override
+  final EstablishmentDto establishmentDto;
   @override
   @JsonKey()
   final String contactName;
@@ -2133,7 +2188,7 @@ class _$_DeliveryOrderState implements _DeliveryOrderState {
 
   @override
   String toString() {
-    return 'DeliveryOrderState(address: $address, paymentMethod: $paymentMethod, contactName: $contactName, contactPhone: $contactPhone, isSelectableExpanded: $isSelectableExpanded, additionalDetail: $additionalDetail, service: $service)';
+    return 'DeliveryOrderState(address: $address, paymentMethod: $paymentMethod, shoppingCartDto: $shoppingCartDto, establishmentDto: $establishmentDto, contactName: $contactName, contactPhone: $contactPhone, isSelectableExpanded: $isSelectableExpanded, additionalDetail: $additionalDetail, service: $service)';
   }
 
   @override
@@ -2144,6 +2199,10 @@ class _$_DeliveryOrderState implements _DeliveryOrderState {
             (identical(other.address, address) || other.address == address) &&
             (identical(other.paymentMethod, paymentMethod) ||
                 other.paymentMethod == paymentMethod) &&
+            (identical(other.shoppingCartDto, shoppingCartDto) ||
+                other.shoppingCartDto == shoppingCartDto) &&
+            (identical(other.establishmentDto, establishmentDto) ||
+                other.establishmentDto == establishmentDto) &&
             (identical(other.contactName, contactName) ||
                 other.contactName == contactName) &&
             (identical(other.contactPhone, contactPhone) ||
@@ -2160,6 +2219,8 @@ class _$_DeliveryOrderState implements _DeliveryOrderState {
       runtimeType,
       address,
       paymentMethod,
+      shoppingCartDto,
+      establishmentDto,
       contactName,
       contactPhone,
       isSelectableExpanded,
@@ -2174,20 +2235,27 @@ class _$_DeliveryOrderState implements _DeliveryOrderState {
           this, _$identity);
 }
 
-abstract class _DeliveryOrderState implements DeliveryOrderState {
+abstract class _DeliveryOrderState extends DeliveryOrderState {
   const factory _DeliveryOrderState(
       {required final Option<AddressDto> address,
       required final PaymentMethod paymentMethod,
+      required final ShoppingCartDto shoppingCartDto,
+      required final EstablishmentDto establishmentDto,
       final String contactName,
       final String contactPhone,
       final bool isSelectableExpanded,
       final Map<String, String> additionalDetail,
       final Service service}) = _$_DeliveryOrderState;
+  const _DeliveryOrderState._() : super._();
 
   @override
   Option<AddressDto> get address;
   @override
   PaymentMethod get paymentMethod;
+  @override
+  ShoppingCartDto get shoppingCartDto;
+  @override
+  EstablishmentDto get establishmentDto;
   @override
   String get contactName;
   @override

@@ -5,12 +5,23 @@ class DeliveryOrderState with _$DeliveryOrderState {
   const factory DeliveryOrderState({
     required Option<AddressDto> address,
     required PaymentMethod paymentMethod,
+    required ShoppingCartDto shoppingCartDto,
+    required EstablishmentDto establishmentDto,
     @Default('') String contactName,
     @Default('') String contactPhone,
     @Default(false) bool isSelectableExpanded,
     @Default({}) Map<String, String> additionalDetail,
     @Default(Service.takeaway()) Service service,
   }) = _DeliveryOrderState;
+
+  const DeliveryOrderState._();
+
+  double get totalFinalCost => shoppingCartDto.totalCost + deliveryCost;
+
+  double get deliveryCost => service.when(
+        takeaway: () => 0,
+        delivery: () => establishmentDto.deliveryCost,
+      );
 }
 
 @freezed

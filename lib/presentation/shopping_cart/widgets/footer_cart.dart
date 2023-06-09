@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -17,58 +19,66 @@ class FooterCart extends StatelessWidget {
         return state.shoppingCart.totalCost;
       },
       builder: (context, totalCost) {
-        return Container(
-          height: 84,
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: const Color(0xFF6B7380).withOpacity(0.1),
-                blurRadius: 24,
-                offset: const Offset(0, -4),
+        final width = MediaQuery.of(context).size.width;
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: 84,
+              constraints: BoxConstraints(maxWidth: min(800, width)),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFF6B7380).withOpacity(0.1),
+                    blurRadius: 24,
+                    offset: const Offset(0, -4),
+                  ),
+                ],
               ),
-            ],
-          ),
-          child: Row(
-            children: [
-              if (totalCost == 0)
-                _ButtonMain(
-                  'Volver',
-                  () => Navigator.pop(context),
-                )
-              else ...[
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const _TextFooter(
-                      'Sub-Total',
-                      16,
+              child: Row(
+                children: [
+                  if (totalCost == 0)
+                    _ButtonMain(
+                      'Volver',
+                      () => Navigator.pop(context),
+                    )
+                  else ...[
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const _TextFooter(
+                          'Sub-Total',
+                          16,
+                        ),
+                        _TextFooter(
+                          'S/.${totalCost.toStringAsFixed(2)}',
+                          24,
+                        ),
+                      ],
                     ),
-                    _TextFooter(
-                      'S/.${totalCost.toStringAsFixed(2)}',
-                      24,
-                    ),
-                  ],
-                ),
-                const Spacer(),
-                _ButtonMain(
-                  'Continuar',
-                  () {
-                    context.read<EstablishmentBloc>().state.whenOrNull(
-                      hasData: (establishment) {
-                        context.goNamed(RouterDeleveryOrder.name,
-                            pathParameters: {
-                              RouterEstablishment.firtsPath: establishment.idUrl
-                            });
+                    const Spacer(),
+                    _ButtonMain(
+                      'Continuar',
+                      () {
+                        context.read<EstablishmentBloc>().state.whenOrNull(
+                          hasData: (establishment) {
+                            context.goNamed(RouterDeleveryOrder.name,
+                                pathParameters: {
+                                  RouterEstablishment.firtsPath:
+                                      establishment.idUrl
+                                });
+                          },
+                        );
                       },
-                    );
-                  },
-                )
-              ],
-            ],
-          ),
+                    )
+                  ],
+                ],
+              ),
+            ),
+          ],
         );
       },
     );

@@ -20,22 +20,33 @@ class DataView extends StatelessWidget {
 
         bloc.add(const DeliveryOrderEvent.closeSelectable());
       },
-      child: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          const SizedBox(height: 20),
-          const TitleFormContact(),
-          const FormContactUser(),
-          const SizedBox(height: 10),
-          const FormServicesType(),
-          const TotalPriceCard(),
-          if (bloc.establishmentDto.paymentMethods.isNotEmpty)
-            const MethodPayCards(),
-          const SizedBox(height: 64),
-          const PrivacityText(),
-          const SizedBox(height: 20),
-          const FooterDelivery()
-        ],
+      child: SingleChildScrollView(
+        child: Container(
+          width: double.infinity,
+          alignment: Alignment.center,
+          child: Container(
+            constraints: const BoxConstraints(
+              maxWidth: 800,
+            ),
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                const SizedBox(height: 20),
+                const TitleFormContact(),
+                const FormContactUser(),
+                const SizedBox(height: 10),
+                const FormServicesType(),
+                const TotalPriceCard(),
+                if (bloc.state.establishmentDto.paymentMethods.isNotEmpty)
+                  const MethodPayCards(),
+                const SizedBox(height: 64),
+                const PrivacityText(),
+                const SizedBox(height: 20),
+                const FooterDelivery()
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

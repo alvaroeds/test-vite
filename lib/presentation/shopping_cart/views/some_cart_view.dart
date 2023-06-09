@@ -22,25 +22,30 @@ class SomeCartView extends StatelessWidget {
         if (state.shoppingCart.items.isEmpty) {
           return const EmptyCartView();
         }
-        return ListView(
-          physics: const ClampingScrollPhysics(),
-          children: shoppingCart.items.map(
-            (item) {
-              return ItemCardView(
-                item,
-                onAdd: () {
-                  context.read<ShoppingCartBloc>().add(
-                        ShoppingCartEvent.addAmount(item.uuid),
-                      );
+        return Center(
+          child: Container(
+            constraints: const BoxConstraints(maxWidth: 800),
+            child: ListView(
+              physics: const ClampingScrollPhysics(),
+              children: shoppingCart.items.map(
+                (item) {
+                  return ItemCardView(
+                    item,
+                    onAdd: () {
+                      context.read<ShoppingCartBloc>().add(
+                            ShoppingCartEvent.addAmount(item.uuid),
+                          );
+                    },
+                    onRemove: () {
+                      context.read<ShoppingCartBloc>().add(
+                            ShoppingCartEvent.removeAmount(item.uuid),
+                          );
+                    },
+                  );
                 },
-                onRemove: () {
-                  context.read<ShoppingCartBloc>().add(
-                        ShoppingCartEvent.removeAmount(item.uuid),
-                      );
-                },
-              );
-            },
-          ).toList(),
+              ).toList(),
+            ),
+          ),
         );
       },
     );

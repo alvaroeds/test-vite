@@ -36,7 +36,7 @@ class FormServicesType extends StatelessWidget {
                     isSelected: service.isTakeaway,
                     name: 'Para llevar',
                     service: const Service.takeaway()),
-                const SizedBox(width: 10),
+                const SizedBox(width: 8),
                 _ServicesTab(
                     isSelected: service.isDelivery,
                     name: 'Delivery',
@@ -68,7 +68,7 @@ class _ServicesTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width * 0.42;
+    final width = MediaQuery.of(context).size.width * 0.445;
     final buttonWidth = min(width, 188.5);
     void onSelect() => context
         .read<DeliveryOrderBloc>()

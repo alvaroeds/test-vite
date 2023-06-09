@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pedido_listo_web/features/establishment/domain/modifiers.dart';
 import 'package:pedido_listo_web/features/establishment/domain/product_dto.dart';
 import 'package:pedido_listo_web/presentation/app/bloc/app_cache_bloc.dart';
@@ -107,7 +108,9 @@ class DetailsProductView extends StatelessWidget {
             ));
       },
     );
-    Navigator.of(context).pop();
+
+    GoRouter.of(context).pop();
+
     showSnackBar('Se añadió con éxito al carrito', context,
         icon: Icons.fastfood, color: context.primaryColor);
   }

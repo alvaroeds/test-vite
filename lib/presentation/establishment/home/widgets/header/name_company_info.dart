@@ -31,21 +31,24 @@ class NameCompanyInfo extends StatelessWidget {
       // mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(
+        SelectableText(
           name,
+          minLines: 1,
+          maxLines: 2,
           style: context.defaultTitle?.getStyle(
             size: titleSize,
             color: Colors.white,
           ),
-          overflow: TextOverflow.ellipsis,
+          //  overflow: TextOverflow.ellipsis,
         ),
-        Text(
-          description,
+        SelectableText(
+          description, minLines: 1,
+          maxLines: 2,
           style: context.defaultSubtitle?.getStyle(
             size: subtitleSize,
             color: Colors.white,
           ),
-          overflow: TextOverflow.ellipsis,
+          //  overflow: TextOverflow.ellipsis,
         ),
       ],
     );
