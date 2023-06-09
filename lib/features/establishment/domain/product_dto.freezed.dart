@@ -540,7 +540,7 @@ class _$_CategoriesDto extends _CategoriesDto {
       required this.state,
       this.uuid = '',
       @JsonKey(name: CategoriesDto.ProductField)
-      final List<ProductDto> products = const []})
+          final List<ProductDto> products = const []})
       : _products = products,
         super._();
 
@@ -604,7 +604,7 @@ abstract class _CategoriesDto extends CategoriesDto {
       required final String state,
       final String uuid,
       @JsonKey(name: CategoriesDto.ProductField)
-      final List<ProductDto> products}) = _$_CategoriesDto;
+          final List<ProductDto> products}) = _$_CategoriesDto;
   const _CategoriesDto._() : super._();
 
   factory _CategoriesDto.fromJson(Map<String, dynamic> json) =

@@ -56,9 +56,12 @@ class CommentLength extends StatelessWidget {
             children: [
               Text('$length',
                   style: textStyle?.copyWith(
-                    color: length > 100 ? Colors.red : null,
+                    color: length > DetailsProductState.maxCommentLength
+                        ? Colors.red
+                        : null,
                   )),
-              Text('/100', style: textStyle),
+              Text('/${DetailsProductState.maxCommentLength}',
+                  style: textStyle),
             ],
           ),
         );

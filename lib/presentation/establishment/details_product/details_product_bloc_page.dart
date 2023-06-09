@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pedido_listo_web/features/establishment/domain/modifiers.dart';
 import 'package:pedido_listo_web/presentation/establishment/bloc/establishment_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/details_product/views/details_product_view.dart';
 import 'package:pedido_listo_web/presentation/widgets/loading_view.dart';
@@ -43,17 +44,18 @@ class DetailsProductPage extends StatelessWidget {
                 final foundProduct = establishment.findProduct(uuid);
 
                 return foundProduct.fold(
-                  LoadingView.new,
-                  (product) => DetailsProductView(
-                    product: product,
-                    choosesForAmount: product.getChooseForAmountList(
-                        establishment.modifiers.chooseForAmount),
-                    oneSelections: product.getOneSelectionList(
-                        establishment.modifiers.oneSelection),
-                    multipleSelections: product.getMultipleSelectionList(
-                        establishment.modifiers.multipleSelection),
-                  ),
-                );
+                    LoadingView.new,
+                    (product) => DetailsProductView(
+                          product: product,
+                          modifiers: Modifiers(
+                            chooseForAmount: product.getChooseForAmountList(
+                                establishment.modifiers.chooseForAmount),
+                            oneSelection: product.getOneSelectionList(
+                                establishment.modifiers.oneSelection),
+                            multipleSelection: product.getMultipleSelectionList(
+                                establishment.modifiers.multipleSelection),
+                          ),
+                        ));
               },
               orElse: LoadingView.new);
         },

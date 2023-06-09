@@ -2,8 +2,10 @@ part of 'details_product_bloc.dart';
 
 @freezed
 class DetailsProductState with _$DetailsProductState {
+  static const int maxCommentLength = 100;
   const factory DetailsProductState({
     required String comment,
+    required Modifiers modifiers,
     required int productQuantity,
     //required ProductDto product,
     required Map<String, int> extrasAmountByModifier,
@@ -12,6 +14,27 @@ class DetailsProductState with _$DetailsProductState {
   }) = _DetailsProductState;
 
   const DetailsProductState._();
+
+  bool get isCommentNotValid => comment.length > maxCommentLength;
+
+  bool get isAllModifiersFormValid {
+    final isReadyChoosesForAmount = modifiers.chooseForAmount.every((element) {
+      return element.isValid(getCurrentAmountFromModifier(element));
+    });
+
+    final isReadyOneSelections = modifiers.oneSelection.every(
+      (element) => getOptionSelectedFromModifier(element.uuid).isSome(),
+    );
+
+    final isReadyMultipleSelections =
+        modifiers.multipleSelection.every((element) {
+      return element.isValid(getCurrentAmountFromMultiple(element));
+    });
+
+    return isReadyChoosesForAmount &&
+        isReadyOneSelections &&
+        isReadyMultipleSelections;
+  }
 
   Option<int> getAmountFromExtra(String uuid) =>
       optionOf(extrasAmountByModifier[uuid]);
@@ -33,12 +56,8 @@ class DetailsProductState with _$DetailsProductState {
   bool isSelectedOption(String modifierUuid, String optionUuid) =>
       multipleSelected[modifierUuid]?.contains(optionUuid) ?? false;
 
-  double getExtrasTotalPrice(
-    List<ChooseForAmount> choosesForAmount,
-    List<OneSelection> oneSelections,
-    List<MultipleSelection> multipleSelections,
-  ) {
-    final extrasTotalPrice = choosesForAmount.fold<double>(
+  double getExtrasTotalPrice() {
+    final extrasTotalPrice = modifiers.chooseForAmount.fold<double>(
       0,
       (value, element) =>
           value +
@@ -54,7 +73,7 @@ class DetailsProductState with _$DetailsProductState {
           ),
     );
 
-    final oneSelectionsTotalPrice = oneSelections.fold<double>(
+    final oneSelectionsTotalPrice = modifiers.oneSelection.fold<double>(
       0,
       (value, modifier) =>
           value +
@@ -70,7 +89,8 @@ class DetailsProductState with _$DetailsProductState {
           ),
     );
 
-    final multipleSelectionsTotalPrice = multipleSelections.fold<double>(
+    final multipleSelectionsTotalPrice =
+        modifiers.multipleSelection.fold<double>(
       0,
       (value, chooseForMultiple) =>
           value +
@@ -88,8 +108,10 @@ class DetailsProductState with _$DetailsProductState {
         multipleSelectionsTotalPrice;
   }
 
-  factory DetailsProductState.initial() => const DetailsProductState(
+  factory DetailsProductState.initial(Modifiers modifiers) =>
+      DetailsProductState(
         comment: '',
+        modifiers: modifiers,
         extrasAmountByModifier: {},
         productQuantity: 1,
         optionSelectedByModifier: {},

@@ -13,7 +13,10 @@ part 'details_product_bloc.freezed.dart';
 class DetailsProductBloc
     extends Bloc<DetailsProductEvent, DetailsProductState> {
   final ProductDto product;
-  DetailsProductBloc(this.product) : super(DetailsProductState.initial()) {
+  DetailsProductBloc(
+    this.product, {
+    required Modifiers modifiers,
+  }) : super(DetailsProductState.initial(modifiers)) {
     on<_IncreaseAmount>((event, emit) {
       final amount =
           state.getAmountFromExtra(event.extra.uuid).getOrElse(() => 0);

@@ -1312,6 +1312,7 @@ abstract class _DecreaseProductQuantity implements DetailsProductEvent {
 /// @nodoc
 mixin _$DetailsProductState {
   String get comment => throw _privateConstructorUsedError;
+  Modifiers get modifiers => throw _privateConstructorUsedError;
   int get productQuantity =>
       throw _privateConstructorUsedError; //required ProductDto product,
   Map<String, int> get extrasAmountByModifier =>
@@ -1334,10 +1335,13 @@ abstract class $DetailsProductStateCopyWith<$Res> {
   @useResult
   $Res call(
       {String comment,
+      Modifiers modifiers,
       int productQuantity,
       Map<String, int> extrasAmountByModifier,
       Map<String, Option<String>> optionSelectedByModifier,
       Map<String, List<String>> multipleSelected});
+
+  $ModifiersCopyWith<$Res> get modifiers;
 }
 
 /// @nodoc
@@ -1354,6 +1358,7 @@ class _$DetailsProductStateCopyWithImpl<$Res, $Val extends DetailsProductState>
   @override
   $Res call({
     Object? comment = null,
+    Object? modifiers = null,
     Object? productQuantity = null,
     Object? extrasAmountByModifier = null,
     Object? optionSelectedByModifier = null,
@@ -1364,6 +1369,10 @@ class _$DetailsProductStateCopyWithImpl<$Res, $Val extends DetailsProductState>
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as String,
+      modifiers: null == modifiers
+          ? _value.modifiers
+          : modifiers // ignore: cast_nullable_to_non_nullable
+              as Modifiers,
       productQuantity: null == productQuantity
           ? _value.productQuantity
           : productQuantity // ignore: cast_nullable_to_non_nullable
@@ -1382,6 +1391,14 @@ class _$DetailsProductStateCopyWithImpl<$Res, $Val extends DetailsProductState>
               as Map<String, List<String>>,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ModifiersCopyWith<$Res> get modifiers {
+    return $ModifiersCopyWith<$Res>(_value.modifiers, (value) {
+      return _then(_value.copyWith(modifiers: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -1394,10 +1411,14 @@ abstract class _$$_DetailsProductStateCopyWith<$Res>
   @useResult
   $Res call(
       {String comment,
+      Modifiers modifiers,
       int productQuantity,
       Map<String, int> extrasAmountByModifier,
       Map<String, Option<String>> optionSelectedByModifier,
       Map<String, List<String>> multipleSelected});
+
+  @override
+  $ModifiersCopyWith<$Res> get modifiers;
 }
 
 /// @nodoc
@@ -1412,6 +1433,7 @@ class __$$_DetailsProductStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? comment = null,
+    Object? modifiers = null,
     Object? productQuantity = null,
     Object? extrasAmountByModifier = null,
     Object? optionSelectedByModifier = null,
@@ -1422,6 +1444,10 @@ class __$$_DetailsProductStateCopyWithImpl<$Res>
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as String,
+      modifiers: null == modifiers
+          ? _value.modifiers
+          : modifiers // ignore: cast_nullable_to_non_nullable
+              as Modifiers,
       productQuantity: null == productQuantity
           ? _value.productQuantity
           : productQuantity // ignore: cast_nullable_to_non_nullable
@@ -1447,6 +1473,7 @@ class __$$_DetailsProductStateCopyWithImpl<$Res>
 class _$_DetailsProductState extends _DetailsProductState {
   const _$_DetailsProductState(
       {required this.comment,
+      required this.modifiers,
       required this.productQuantity,
       required final Map<String, int> extrasAmountByModifier,
       required final Map<String, Option<String>> optionSelectedByModifier,
@@ -1458,6 +1485,8 @@ class _$_DetailsProductState extends _DetailsProductState {
 
   @override
   final String comment;
+  @override
+  final Modifiers modifiers;
   @override
   final int productQuantity;
 //required ProductDto product,
@@ -1490,7 +1519,7 @@ class _$_DetailsProductState extends _DetailsProductState {
 
   @override
   String toString() {
-    return 'DetailsProductState(comment: $comment, productQuantity: $productQuantity, extrasAmountByModifier: $extrasAmountByModifier, optionSelectedByModifier: $optionSelectedByModifier, multipleSelected: $multipleSelected)';
+    return 'DetailsProductState(comment: $comment, modifiers: $modifiers, productQuantity: $productQuantity, extrasAmountByModifier: $extrasAmountByModifier, optionSelectedByModifier: $optionSelectedByModifier, multipleSelected: $multipleSelected)';
   }
 
   @override
@@ -1499,6 +1528,8 @@ class _$_DetailsProductState extends _DetailsProductState {
         (other.runtimeType == runtimeType &&
             other is _$_DetailsProductState &&
             (identical(other.comment, comment) || other.comment == comment) &&
+            (identical(other.modifiers, modifiers) ||
+                other.modifiers == modifiers) &&
             (identical(other.productQuantity, productQuantity) ||
                 other.productQuantity == productQuantity) &&
             const DeepCollectionEquality().equals(
@@ -1513,6 +1544,7 @@ class _$_DetailsProductState extends _DetailsProductState {
   int get hashCode => Object.hash(
       runtimeType,
       comment,
+      modifiers,
       productQuantity,
       const DeepCollectionEquality().hash(_extrasAmountByModifier),
       const DeepCollectionEquality().hash(_optionSelectedByModifier),
@@ -1529,6 +1561,7 @@ class _$_DetailsProductState extends _DetailsProductState {
 abstract class _DetailsProductState extends DetailsProductState {
   const factory _DetailsProductState(
           {required final String comment,
+          required final Modifiers modifiers,
           required final int productQuantity,
           required final Map<String, int> extrasAmountByModifier,
           required final Map<String, Option<String>> optionSelectedByModifier,
@@ -1538,6 +1571,8 @@ abstract class _DetailsProductState extends DetailsProductState {
 
   @override
   String get comment;
+  @override
+  Modifiers get modifiers;
   @override
   int get productQuantity;
   @override //required ProductDto product,

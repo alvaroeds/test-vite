@@ -35,6 +35,8 @@ class ConfigRouter {
         ? Uri.parse(html.window.location.href).subDomain
         : const None<String?>();
 
+    GoRouter.optionURLReflectsImperativeAPIs = true;
+
     return ConfigRouter._(
       ConfigRouter.getGoRouter(
         routes: [

@@ -59,19 +59,26 @@ abstract class $EstablishmentDtoCopyWith<$Res> {
   $Res call(
       {String name,
       Schedule schedule,
-      @JsonKey(name: 'id_url') String idUrl,
-      @JsonKey(name: 'banner_url') String bannerUrl,
-      @JsonKey(name: 'profile_image') String profileImage,
+      @JsonKey(name: 'id_url')
+          String idUrl,
+      @JsonKey(name: 'banner_url')
+          String bannerUrl,
+      @JsonKey(name: 'profile_image')
+          String profileImage,
       @JsonKey(name: 'payment_methods', defaultValue: <String>[])
-      List<String> paymentMethodsTypes,
-      @JsonKey(name: 'delevery_cost') double deliveryCost,
-      @JsonKey(name: 'local_direction') String localDirection,
-      @JsonKey(name: 'whatsapp_number') String whatsappNumber,
+          List<String> paymentMethodsTypes,
+      @JsonKey(name: 'delevery_cost')
+          double deliveryCost,
+      @JsonKey(name: 'local_direction')
+          String localDirection,
+      @JsonKey(name: 'whatsapp_number')
+          String whatsappNumber,
       String description,
-      @JsonKey(name: 'social_network') List<SocialNetworkDto> socialNetwork,
+      @JsonKey(name: 'social_network')
+          List<SocialNetworkDto> socialNetwork,
       Modifiers modifiers,
       @JsonKey(name: EstablishmentDto.CategoriesField)
-      List<CategoriesDto> categories});
+          List<CategoriesDto> categories});
 
   $ScheduleCopyWith<$Res> get schedule;
   $ModifiersCopyWith<$Res> get modifiers;
@@ -188,19 +195,26 @@ abstract class _$$_EstablishmentDtoCopyWith<$Res>
   $Res call(
       {String name,
       Schedule schedule,
-      @JsonKey(name: 'id_url') String idUrl,
-      @JsonKey(name: 'banner_url') String bannerUrl,
-      @JsonKey(name: 'profile_image') String profileImage,
+      @JsonKey(name: 'id_url')
+          String idUrl,
+      @JsonKey(name: 'banner_url')
+          String bannerUrl,
+      @JsonKey(name: 'profile_image')
+          String profileImage,
       @JsonKey(name: 'payment_methods', defaultValue: <String>[])
-      List<String> paymentMethodsTypes,
-      @JsonKey(name: 'delevery_cost') double deliveryCost,
-      @JsonKey(name: 'local_direction') String localDirection,
-      @JsonKey(name: 'whatsapp_number') String whatsappNumber,
+          List<String> paymentMethodsTypes,
+      @JsonKey(name: 'delevery_cost')
+          double deliveryCost,
+      @JsonKey(name: 'local_direction')
+          String localDirection,
+      @JsonKey(name: 'whatsapp_number')
+          String whatsappNumber,
       String description,
-      @JsonKey(name: 'social_network') List<SocialNetworkDto> socialNetwork,
+      @JsonKey(name: 'social_network')
+          List<SocialNetworkDto> socialNetwork,
       Modifiers modifiers,
       @JsonKey(name: EstablishmentDto.CategoriesField)
-      List<CategoriesDto> categories});
+          List<CategoriesDto> categories});
 
   @override
   $ScheduleCopyWith<$Res> get schedule;
@@ -296,20 +310,26 @@ class _$_EstablishmentDto extends _EstablishmentDto {
   _$_EstablishmentDto(
       {required this.name,
       required this.schedule,
-      @JsonKey(name: 'id_url') required this.idUrl,
-      @JsonKey(name: 'banner_url') required this.bannerUrl,
-      @JsonKey(name: 'profile_image') required this.profileImage,
+      @JsonKey(name: 'id_url')
+          required this.idUrl,
+      @JsonKey(name: 'banner_url')
+          required this.bannerUrl,
+      @JsonKey(name: 'profile_image')
+          required this.profileImage,
       @JsonKey(name: 'payment_methods', defaultValue: <String>[])
-      required final List<String> paymentMethodsTypes,
-      @JsonKey(name: 'delevery_cost') this.deliveryCost = 0,
-      @JsonKey(name: 'local_direction') this.localDirection = '',
-      @JsonKey(name: 'whatsapp_number') this.whatsappNumber = '',
+          required final List<String> paymentMethodsTypes,
+      @JsonKey(name: 'delevery_cost')
+          this.deliveryCost = 0,
+      @JsonKey(name: 'local_direction')
+          this.localDirection = '',
+      @JsonKey(name: 'whatsapp_number')
+          this.whatsappNumber = '',
       this.description = '',
       @JsonKey(name: 'social_network')
-      final List<SocialNetworkDto> socialNetwork = const [],
+          final List<SocialNetworkDto> socialNetwork = const [],
       this.modifiers = const Modifiers(),
       @JsonKey(name: EstablishmentDto.CategoriesField)
-      final List<CategoriesDto> categories = const []})
+          final List<CategoriesDto> categories = const []})
       : _paymentMethodsTypes = paymentMethodsTypes,
         _socialNetwork = socialNetwork,
         _categories = categories,
@@ -446,20 +466,26 @@ abstract class _EstablishmentDto extends EstablishmentDto {
   factory _EstablishmentDto(
       {required final String name,
       required final Schedule schedule,
-      @JsonKey(name: 'id_url') required final String idUrl,
-      @JsonKey(name: 'banner_url') required final String bannerUrl,
-      @JsonKey(name: 'profile_image') required final String profileImage,
+      @JsonKey(name: 'id_url')
+          required final String idUrl,
+      @JsonKey(name: 'banner_url')
+          required final String bannerUrl,
+      @JsonKey(name: 'profile_image')
+          required final String profileImage,
       @JsonKey(name: 'payment_methods', defaultValue: <String>[])
-      required final List<String> paymentMethodsTypes,
-      @JsonKey(name: 'delevery_cost') final double deliveryCost,
-      @JsonKey(name: 'local_direction') final String localDirection,
-      @JsonKey(name: 'whatsapp_number') final String whatsappNumber,
+          required final List<String> paymentMethodsTypes,
+      @JsonKey(name: 'delevery_cost')
+          final double deliveryCost,
+      @JsonKey(name: 'local_direction')
+          final String localDirection,
+      @JsonKey(name: 'whatsapp_number')
+          final String whatsappNumber,
       final String description,
       @JsonKey(name: 'social_network')
-      final List<SocialNetworkDto> socialNetwork,
+          final List<SocialNetworkDto> socialNetwork,
       final Modifiers modifiers,
       @JsonKey(name: EstablishmentDto.CategoriesField)
-      final List<CategoriesDto> categories}) = _$_EstablishmentDto;
+          final List<CategoriesDto> categories}) = _$_EstablishmentDto;
   _EstablishmentDto._() : super._();
 
   factory _EstablishmentDto.fromJson(Map<String, dynamic> json) =

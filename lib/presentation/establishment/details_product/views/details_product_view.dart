@@ -9,26 +9,23 @@ import 'package:pedido_listo_web/presentation/establishment/details_product/bloc
 import 'package:pedido_listo_web/presentation/establishment/details_product/widgets/footer/product_footer.dart';
 import 'package:pedido_listo_web/presentation/establishment/details_product/widgets/widgets.dart';
 import 'package:pedido_listo_web/presentation/landing/widgets/show_snack_bar.dart';
+import 'package:pedido_listo_web/resources/router/pedido_listo_routes.dart';
 import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
 
 class DetailsProductView extends StatelessWidget {
   const DetailsProductView({
     required this.product,
-    required this.choosesForAmount,
-    required this.oneSelections,
-    required this.multipleSelections,
+    required this.modifiers,
     super.key,
   });
 
   final ProductDto product;
-  final List<ChooseForAmount> choosesForAmount;
-  final List<OneSelection> oneSelections;
-  final List<MultipleSelection> multipleSelections;
+  final Modifiers modifiers;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => DetailsProductBloc(product),
+      create: (context) => DetailsProductBloc(product, modifiers: modifiers),
       child: Scaffold(
         body: CustomScrollView(
           slivers: [
@@ -44,11 +41,11 @@ class DetailsProductView extends StatelessWidget {
             SliverList(
                 delegate: SliverChildListDelegate(
               [
-                ...choosesForAmount.map((choose) =>
+                ...modifiers.chooseForAmount.map((choose) =>
                     ChooseForAmountSection(chooseForAmount: choose)),
-                ...oneSelections
+                ...modifiers.oneSelection
                     .map((one) => OneSelectionSection(oneSelection: one)),
-                ...multipleSelections.map((multiple) =>
+                ...modifiers.multipleSelection.map((multiple) =>
                     MultipleSelectionSection(multipleSelection: multiple)),
                 const CommentSection(),
               ],
@@ -57,11 +54,7 @@ class DetailsProductView extends StatelessWidget {
         ),
         bottomNavigationBar: ProductFooter(
           addToCard: _addToCard,
-          onBuildFinalPrice: (state) =>
-              (state.getExtrasTotalPrice(
-                      choosesForAmount, oneSelections, multipleSelections) +
-                  product.priceWithDiscount) *
-              state.productQuantity,
+          productPrice: product.priceWithDiscount,
         ),
       ),
     );
@@ -69,29 +62,15 @@ class DetailsProductView extends StatelessWidget {
 
   void _addToCard(BuildContext context) {
     final state = context.read<DetailsProductBloc>().state;
-    final isReadyChoosesForAmount = choosesForAmount.every((element) {
-      final currentAmount = state.getCurrentAmountFromModifier(element);
-      return element.isValid(currentAmount);
-    });
 
-    final isReadyOneSelections = oneSelections.every(
-      (element) => state.getOptionSelectedFromModifier(element.uuid).isSome(),
-    );
-
-    final isReadyMultipleSelections = multipleSelections.every((element) {
-      final currentAmount = state.getCurrentAmountFromMultiple(element);
-      return element.isValid(currentAmount);
-    });
-
-    if (state.comment.length > 100) {
+    if (state.isCommentNotValid) {
       return showSnackBar(
-          'El comentario no puede tener más de 100 caracteres', context,
+          'El comentario no puede tener más de ${DetailsProductState.maxCommentLength} carácteres',
+          context,
           icon: Icons.chat);
     }
 
-    if (!isReadyChoosesForAmount ||
-        !isReadyOneSelections ||
-        !isReadyMultipleSelections) {
+    if (!state.isAllModifiersFormValid) {
       return showSnackBar(
           'Debes seleccionar las opciones obligatorias', context,
           icon: Icons.error);
@@ -102,14 +81,15 @@ class DetailsProductView extends StatelessWidget {
               state,
               product: product,
               establishmentUuid: establishment.idUrl,
-              choosesForAmount: choosesForAmount,
-              oneSelections: oneSelections,
-              multipleSelections: multipleSelections,
+              choosesForAmount: modifiers.chooseForAmount,
+              oneSelections: modifiers.oneSelection,
+              multipleSelections: modifiers.multipleSelection,
             ));
+        context.replaceNamed(RouterCart.name, pathParameters: {
+          RouterEstablishment.firtsPath: establishment.idUrl
+        });
       },
     );
-
-    GoRouter.of(context).pop();
 
     showSnackBar('Se añadió con éxito al carrito', context,
         icon: Icons.fastfood, color: context.primaryColor);

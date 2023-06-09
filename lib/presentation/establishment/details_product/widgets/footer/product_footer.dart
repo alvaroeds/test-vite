@@ -5,12 +5,12 @@ import 'package:pedido_listo_web/presentation/establishment/details_product/widg
 import 'package:pedido_listo_web/presentation/establishment/details_product/widgets/buttons_section.dart/duplicate_remove_button.dart';
 
 class ProductFooter extends StatelessWidget {
-  final double Function(DetailsProductState state) onBuildFinalPrice;
   final void Function(BuildContext context) addToCard;
+  final double productPrice;
 
   const ProductFooter({
-    required this.onBuildFinalPrice,
     required this.addToCard,
+    required this.productPrice,
     super.key,
   });
 
@@ -26,7 +26,10 @@ class ProductFooter extends StatelessWidget {
               const SizedBox(width: 10),
               Expanded(
                   child: AddCartButton(
-                totalPrice: onBuildFinalPrice(state),
+                isEnable:
+                    state.isAllModifiersFormValid && !state.isCommentNotValid,
+                totalPrice: (state.getExtrasTotalPrice() + productPrice) *
+                    state.productQuantity,
                 onPressed: () => addToCard(context),
               )),
             ],
