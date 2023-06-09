@@ -15,7 +15,9 @@ class PaymentSection {
 
   String get changeText => cash == 0
       ? ''
-      : '\n\nMonto a recibir: S./$cashString\nCambio: S./$change';
+      : '''
+\n\nMonto a recibir:  S/.$cashString
+Cambio:               S/.$change''';
 
   String get cashString => cash.toStringAsFixed(2);
 

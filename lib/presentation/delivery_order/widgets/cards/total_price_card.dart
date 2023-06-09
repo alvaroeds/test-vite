@@ -162,7 +162,7 @@ class _DeliveryCost extends StatelessWidget {
     return BlocSelector<DeliveryOrderBloc, DeliveryOrderState,
         (double, double)>(
       selector: (state) {
-        return (state.totalFinalCost, state.establishmentDto.deliveryCost);
+        return (state.totalFinalCost, state.deliveryCost);
       },
       builder: (context, state) {
         return builder(state.$1, state.$2);

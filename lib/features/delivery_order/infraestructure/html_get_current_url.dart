@@ -14,7 +14,7 @@ IGetCurrentUrl getCurrentUrl = (String idUrl) {
   final subDomain = uri.subDomain;
 
   return subDomain.fold(() {
-    if (uri.toString().contains('#')) return '${uri.host}/#/$idUrl';
+    if (uri.toString().contains('#')) return '$idUrl.${uri.host}';
 
     return '${uri.host}/$idUrl';
   }, (_) {

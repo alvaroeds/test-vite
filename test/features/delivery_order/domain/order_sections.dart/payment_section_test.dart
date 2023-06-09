@@ -16,13 +16,13 @@ void main() {
     const expectText = '''
 *Método de pago: Pago en Efectivo*
 
-Monto a recibir: S./100.00
-Cambio: S./30.00''';
+Monto a recibir:  S/.100.00
+Cambio:               S/.30.00''';
 
     expect(text, expectText);
   });
 
-  test('payment section method Cash', () {
+  test('payment section other method ', () {
     final paymentSection = PaymentSection(
       deliveryCost: 5,
       cartTotalCost: 65,
