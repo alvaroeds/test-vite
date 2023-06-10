@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pedido_listo_web/resources/router/pedido_listo_routes.dart';
-import 'package:flutter_web_plugins/url_strategy.dart';
+// import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:universal_html/html.dart' as html;
 
 class ConfigRouter {
@@ -37,24 +37,21 @@ class ConfigRouter {
 
     GoRouter.optionURLReflectsImperativeAPIs = true;
 
+    final routerEstablishment =
+        RouterEstablishment.getGoRoute(subDomain: subDomain, routes: [
+      RouterProduct.getGoRoute(subDomain: subDomain),
+      RouterCart.getGoRoute(subDomain: subDomain),
+      RouterDeleveryOrder.getGoRoute(subDomain: subDomain),
+    ]);
+
     return ConfigRouter._(
       ConfigRouter.getGoRouter(
         routes: [
-          if (subDomain.isSome())
-            RouterEstablishment.getGoRoute(subDomain: subDomain, routes: [
-              RouterProduct.getGoRoute(subDomain: subDomain),
-              RouterCart.getGoRoute(subDomain: subDomain),
-              RouterDeleveryOrder.getGoRoute(subDomain: subDomain),
-            ]),
+          if (subDomain.isSome()) routerEstablishment,
           RouterHome.getGoRoute(
             subDomain: subDomain,
             routes: [
-              if (subDomain.isNone())
-                RouterEstablishment.getGoRoute(subDomain: subDomain, routes: [
-                  RouterProduct.getGoRoute(subDomain: subDomain),
-                  RouterCart.getGoRoute(subDomain: subDomain),
-                  RouterDeleveryOrder.getGoRoute(subDomain: subDomain),
-                ]),
+              if (subDomain.isNone()) routerEstablishment,
             ],
           ),
         ],
@@ -66,7 +63,7 @@ class ConfigRouter {
     List<GoRoute> routes = const <GoRoute>[],
     ChangeNotifier? changeNotifier,
   }) {
-    usePathUrlStrategy();
+    // usePathUrlStrategy();
     //* remove hash
     return GoRouter(
       refreshListenable: changeNotifier,

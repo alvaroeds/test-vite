@@ -23,13 +23,17 @@ class KnowMoreBlocPage extends StatelessWidget {
           );
         });
       },
-      child: BlocSelector<KnowMoreBloc, KnowMoreState, _ViewModel>(
-        selector: _ViewModel.fromStore,
+      child: BlocSelector<KnowMoreBloc, KnowMoreState,
+          (bool, Option<ContactResult>)>(
+        selector: (state) =>
+            (state.isSubmitting, state.contactFailureOrSuccessOption),
         builder: (context, vm) {
           return KnowMoreView(
-            key: vm.contactFailureOrSuccessOption.fold(() => null,
-                (a) => a.whenOrNull(succes: (_) => Key(_.toString()))),
-            isSubmitting: vm.isSubmitting,
+            key: vm.$2.fold(
+                () => null,
+                (result) =>
+                    result.whenOrNull(succes: (_) => Key(_.toString()))),
+            isSubmitting: vm.$1,
             sendContactEmail: (email) => context
                 .read<KnowMoreBloc>()
                 .add(SendContactEmail(email: email)),
@@ -38,34 +42,4 @@ class KnowMoreBlocPage extends StatelessWidget {
       ),
     );
   }
-}
-
-@immutable
-class _ViewModel {
-  final bool isSubmitting;
-
-  final Option<ContactResult> contactFailureOrSuccessOption;
-
-  const _ViewModel({
-    required this.isSubmitting,
-    required this.contactFailureOrSuccessOption,
-  });
-
-  factory _ViewModel.fromStore(KnowMoreState state) {
-    return _ViewModel(
-      isSubmitting: state.isSubmitting,
-      contactFailureOrSuccessOption: state.contactFailureOrSuccessOption,
-    );
-  }
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is _ViewModel &&
-          runtimeType == other.runtimeType &&
-          isSubmitting == other.isSubmitting &&
-          contactFailureOrSuccessOption == other.contactFailureOrSuccessOption;
-  @override
-  int get hashCode =>
-      contactFailureOrSuccessOption.hashCode ^ isSubmitting.hashCode;
 }
