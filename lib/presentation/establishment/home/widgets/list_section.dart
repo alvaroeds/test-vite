@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pedido_listo_web/features/establishment/domain/product_dto.dart';
 import 'package:pedido_listo_web/presentation/app/bloc/app_cache_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/home/widgets/product_card/product_card.dart';
@@ -28,13 +29,14 @@ class ListSection extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(14, 0, 0, 0),
               child: Text(category.name,
-                  style: context.defaultTitle?.getStyle(
-                      size: 20,
+                  style: GoogleFonts.poppins(
+                      fontSize: 20,
                       color: const Color(0xff565C66),
-                      weight: FontWeight.bold)),
+                      fontWeight: FontWeight.bold)),
             ),
             Container(
               margin: const EdgeInsets.symmetric(vertical: 15),
+              color: Colors.white,
               child: Wrap(
                 children: [
                   ...category.products.map(

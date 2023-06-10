@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pedido_listo_web/features/establishment/domain/product_dto.dart';
 import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
 import 'package:pedido_listo_web/resources/utils/extensions.dart';
@@ -90,7 +91,8 @@ class _Tab extends StatelessWidget {
       height: 30,
       child: Text(
         name,
-        style: context.interBold1Title?.getStyle(size: 16, color: colorDefault),
+        style: GoogleFonts.inter(
+            fontSize: 16, color: colorDefault, fontWeight: FontWeight.bold),
       ),
     );
   }

@@ -34,35 +34,38 @@ class InfoProduct extends StatelessWidget {
           ),
           const SizedBox(height: 8),
         ],
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (amount > 0) ...[
-              Container(
-                decoration: BoxDecoration(
-                    color: context.primaryColor,
-                    borderRadius: BorderRadius.circular(7)),
-                padding: const EdgeInsets.symmetric(horizontal: 11),
-                alignment: Alignment.topCenter,
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 1),
+        SizedBox(
+          height: 19,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (amount > 0) ...[
+                Container(
+                  height: 16,
+                  decoration: BoxDecoration(
+                      color: context.primaryColor,
+                      borderRadius: BorderRadius.circular(7)),
+                  padding: const EdgeInsets.symmetric(horizontal: 11),
+                  alignment: Alignment.center,
                   child: Text(amount.toString(),
                       style: GoogleFonts.manrope(
+                        height: 0.95,
                         color: Colors.white,
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                       )),
                 ),
-              ),
-              const SizedBox(width: 4),
+                const SizedBox(width: 4),
+              ],
+              Text(product.name,
+                  style: GoogleFonts.manrope(
+                    color: const Color(0xFF565C66),
+                    fontSize: 14,
+                    height: 0.95,
+                    fontWeight: FontWeight.w600,
+                  )),
             ],
-            SelectableText(product.name,
-                style: GoogleFonts.manrope(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                )),
-          ],
+          ),
         ),
         const SizedBox(height: 4),
         Text(
@@ -70,6 +73,7 @@ class InfoProduct extends StatelessWidget {
           style: GoogleFonts.manrope(
             color: const Color(0xff878F9B),
             fontWeight: FontWeight.w500,
+            fontSize: 12,
           ),
           maxLines: 2,
           overflow: TextOverflow.ellipsis,

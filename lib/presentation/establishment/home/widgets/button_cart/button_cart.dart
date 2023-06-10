@@ -41,10 +41,10 @@ class ButtonCart extends StatelessWidget {
                   },
                 );
               },
-              child: Padding(
+              child: Container(
+                height: 54,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 28,
-                  vertical: 14,
                 ),
                 child: Row(
                   children: [
@@ -59,9 +59,10 @@ class ButtonCart extends StatelessWidget {
                         )),
                     const Spacer(),
                     Container(
+                      height: 32,
                       decoration: _decoration(),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 3.5, horizontal: 6),
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.symmetric(horizontal: 6),
                       child: Text(cart.totalCost.formattedPrice,
                           style: GoogleFonts.manrope(
                             fontWeight: FontWeight.w700,

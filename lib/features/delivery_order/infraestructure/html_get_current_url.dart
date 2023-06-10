@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:pedido_listo_web/features/delivery_order/domain/interface_delivery.dart';
+import 'package:pedido_listo_web/features/delivery_order/domain/interfaces_delivery.dart';
 import 'package:pedido_listo_web/resources/router/config_router.dart';
 
 import 'package:universal_html/html.dart' as html;

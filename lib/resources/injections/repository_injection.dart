@@ -1,8 +1,9 @@
 import 'package:pedido_listo_web/features/contact/domain/interface_contact_repository.dart';
 import 'package:pedido_listo_web/features/contact/infraestructure/firebase_contact_repository.dart';
 import 'package:pedido_listo_web/features/contact/infraestructure/mock_contact_repository.dart';
-import 'package:pedido_listo_web/features/delivery_order/domain/interface_delivery.dart';
+import 'package:pedido_listo_web/features/delivery_order/domain/interfaces_delivery.dart';
 import 'package:pedido_listo_web/features/delivery_order/infraestructure/html_get_current_url.dart';
+import 'package:pedido_listo_web/features/delivery_order/infraestructure/launch_order_url.dart';
 import 'package:pedido_listo_web/features/establishment/domain/interface_establishment.dart';
 import 'package:pedido_listo_web/features/establishment/infraestructure/firestore_establishment_repository.dart';
 import 'package:pedido_listo_web/features/establishment/infraestructure/mock_establishment_repository.dart';
@@ -20,9 +21,12 @@ class RepositoryInjection {
   final InterfaceCartRepository cartRepository;
   final InterfaceUserRepository userRepository;
   final IGetCurrentUrl getCurrentUrl;
+  final ILaunchOrderUrl launchOrderUrl;
+
   RepositoryInjection({
     required this.cartRepository,
     required this.establishmentRepository,
+    required this.launchOrderUrl,
     required this.getCurrentUrl,
     required this.contactRepository,
     required this.userRepository,
@@ -45,6 +49,7 @@ class DevInjection {
       getCurrentUrl: getCurrentUrl,
       userRepository: userRepository,
       contactRepository: contactRepository,
+      launchOrderUrl: launchOrderUrl,
       establishmentRepository: establishmentRepository,
     );
   }
@@ -66,6 +71,7 @@ class StagingInjection {
       cartRepository: cartRepository,
       getCurrentUrl: getCurrentUrl,
       userRepository: userRepository,
+      launchOrderUrl: launchOrderUrl,
       contactRepository: contactRepository,
       establishmentRepository: establishmentRepository,
     );
