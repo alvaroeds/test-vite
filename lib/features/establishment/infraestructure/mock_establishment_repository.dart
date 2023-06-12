@@ -34,7 +34,6 @@ class MockEstablishmentRepository implements IEstablishmentRepository {
 
   @override
   Future<Either<Unit, Unit>> redirectOn404() {
-    // TODO: implement redirectOn404
     throw UnimplementedError();
   }
 }
