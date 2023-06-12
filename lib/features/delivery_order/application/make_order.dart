@@ -1,17 +1,18 @@
 import 'package:dartz/dartz.dart';
 import 'package:pedido_listo_web/features/delivery_order/domain/interfaces_delivery.dart';
-import 'package:pedido_listo_web/features/delivery_order/domain/order_template_entity.dart';
+import 'package:pedido_listo_web/features/delivery_order/domain/summary_dto.dart';
 import 'package:pedido_listo_web/features/establishment/domain/establishment_dto.dart';
 
 import 'package:pedido_listo_web/features/shopping_cart/domain/shopping_car_dto.dart';
 
 class MakeOrderUseCase {
   final IGetCurrentUrl _getCurrentUrl;
-  final ILaunchOrderUrl _launchDeliveryOrderUrl;
 
-  const MakeOrderUseCase(this._getCurrentUrl, this._launchDeliveryOrderUrl);
+  final IOrderSummaryRepository _orderSummaryRepository;
 
-  Future<Either<Unit, Unit>> execute(
+  const MakeOrderUseCase(this._getCurrentUrl, this._orderSummaryRepository);
+
+  Future<RespondOnSave> execute(
     ShoppingCartDto cart,
     EstablishmentDto establishment, {
     required String contactName,
@@ -21,21 +22,54 @@ class MakeOrderUseCase {
     required String paymentMethod,
     required double cash,
   }) async {
-    final orderTemplate = OrderTemplateEntity.build(
-      currentUrl: _getCurrentUrl(establishment.idUrl),
-      contactName: contactName,
-      contactPhone: contactPhone,
-      address: address,
-      additionalDetail: additionalDetail,
-      paymentMethod: paymentMethod,
-      cash: cash,
-      totalCostOfShoppingCart: cart.totalCost,
-      deliveryCost: establishment.deliveryCost,
-      cartItems: cart.items,
+    final currentDate = DateTime.now();
+
+    final summaryDto = SummaryDto(
+      additionalAddressDetail: additionalDetail,
+      establishmentId: establishment.id.toString(),
+      nroOrder: currentDate.millisecondsSinceEpoch.toString(),
+      cashOfClient: cash,
+      costOfProducts: cart.totalCost,
+      deliveryCost: address.fold(() => 0, (a) => establishment.deliveryCost),
+      clientPhone: contactPhone,
+      clientName: contactName,
+      deliveryDate: currentDate,
+      deliveryDateOnMilliseconds: currentDate.millisecondsSinceEpoch,
+      establishmentAddress: establishment.localDirection,
+      establishmentHost: _getCurrentUrl(establishment.idUrl),
+      addressOfDelivery: address.fold(() => null, (a) => a),
+      methodOfPayment: paymentMethod,
+      summaryOfProducts: cart.items
+          .map((item) => SummaryProduct(
+                  name: item.product.name,
+                  price: item.product.price,
+                  quantity: item.quantity,
+                  comment: item.comment,
+                  image: item.product.images.firstOrNull,
+                  modifiers: [
+                    ...item.extrasFood.map((modifier) => SummaryModifier(
+                          name: modifier.extraFood.name,
+                          quantity: modifier.quantity,
+                          price: modifier.extraFood.price,
+                        )),
+                    ...item.optionsFoodOneSelection
+                        .map((modifier) => SummaryModifier(
+                              name: modifier.optionFood.name,
+                              quantity: 1,
+                              price: modifier.optionFood.price,
+                            )),
+                    ...item.optionsFoodForMultiple
+                        .map((modifier) => SummaryModifier(
+                              name: modifier.optionFood.name,
+                              quantity: 1,
+                              price: modifier.optionFood.price,
+                            )),
+                  ]))
+          .toList(),
     );
 
-    final url = orderTemplate.generateUrl(establishment.whatsappNumber);
+    //  final url = orderTemplate.generateUrl(establishment.whatsappNumber);
 
-    return _launchDeliveryOrderUrl(url);
+    return _orderSummaryRepository.saveOrderSummary(summaryDto);
   }
 }

@@ -28,6 +28,8 @@ class PreferencesUserRepository implements InterfaceUserRepository {
 
   @override
   Future<void> saveUser(UserDto user) {
-    return sharedPreferences.setString(USER_KEY, json.encode(user.toJson()));
+    final encode = json.encode(user.toJson());
+
+    return sharedPreferences.setString(USER_KEY, encode);
   }
 }

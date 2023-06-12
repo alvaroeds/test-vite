@@ -7,4 +7,6 @@ import 'package:values_object_and_failures_base/values_object_and_failures_base.
 abstract interface class IEstablishmentRepository {
   Stream<Either<GlobalFailure<dynamic>, EstablishmentDto>> getEstablishment(
       String? name);
+
+  void redirectOn404();
 }

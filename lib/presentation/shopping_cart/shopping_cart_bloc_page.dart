@@ -23,7 +23,7 @@ class ShoppingCartBlocPage extends StatelessWidget {
         }
 
         return BlocProvider(
-          key: Key(cartCache.uuid),
+          key: Key(cartCache.urlId),
           create: (context) => ShoppingCartBloc(cartCache),
           child: ScaffoldCart(
             child: BlocConsumer<ShoppingCartBloc, ShoppingCartState>(

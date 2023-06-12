@@ -10,5 +10,5 @@ ILaunchOrderUrl launchOrderUrl = (url) async {
 
   final res = await launchUrl(uri);
 
-  return res ? left(unit) : right(unit);
+  return res ? right(unit) : left(unit);
 };

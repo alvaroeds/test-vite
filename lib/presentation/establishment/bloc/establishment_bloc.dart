@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:pedido_listo_web/features/establishment/application/redirect_on_404.dart';
 import 'package:pedido_listo_web/features/establishment/domain/establishment_dto.dart';
 import 'package:pedido_listo_web/features/establishment/domain/interface_establishment.dart';
 import 'package:values_object_and_failures_base/values_object_and_failures_base.dart';
@@ -11,8 +12,10 @@ part 'establishment_bloc.freezed.dart';
 
 class EstablishmentBloc extends Bloc<EstablishmentEvent, EstablishmentState> {
   final IEstablishmentRepository repository;
+  final RedirectOn404UseCase redirectOn404;
 
-  EstablishmentBloc(this.repository) : super(const _Initial()) {
+  EstablishmentBloc(this.repository, this.redirectOn404)
+      : super(const _Initial()) {
     on<_Started>((event, emit) async {
       state.maybeWhen(
         hasData: (establishment) {
@@ -24,6 +27,9 @@ class EstablishmentBloc extends Bloc<EstablishmentEvent, EstablishmentState> {
           add(EstablishmentEvent.streamCall(StreamAction.open, event.name));
         },
       );
+    });
+    on<_RedirectOn404>((event, emit) async {
+      redirectOn404();
     });
     on<_StreamCall>(
       (event, emit) async {

@@ -5,7 +5,7 @@ import 'package:pedido_listo_web/features/delivery_order/domain/order_sections.d
 import 'package:pedido_listo_web/features/delivery_order/domain/order_sections.dart/footer_order.dart';
 import 'package:pedido_listo_web/features/delivery_order/domain/order_sections.dart/header_order.dart';
 import 'package:pedido_listo_web/features/delivery_order/domain/order_sections.dart/payment_section.dart';
-import 'package:pedido_listo_web/features/shopping_cart/domain/shopping_car_dto.dart';
+import 'package:pedido_listo_web/features/delivery_order/domain/summary_dto.dart';
 
 class OrderTemplateEntity {
   final HeaderOrder _headerOrder;
@@ -34,7 +34,7 @@ class OrderTemplateEntity {
     required double cash,
     required double totalCostOfShoppingCart,
     required double deliveryCost,
-    required List<ItemCart> cartItems,
+    required List<SummaryProduct> cartItems,
   }) {
     final headerOrder = HeaderOrder.now(currentUrl);
 

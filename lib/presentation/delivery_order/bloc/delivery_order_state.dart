@@ -7,6 +7,9 @@ class DeliveryOrderState with _$DeliveryOrderState {
     required PaymentMethod paymentMethod,
     required ShoppingCartDto shoppingCartDto,
     required EstablishmentDto establishmentDto,
+    required bool isSubmitting,
+    required Option<Either<GlobalFailure<dynamic>, String>>
+        deliveryOrderFailureOrSuccessOption,
     @Default('') String contactName,
     @Default('') String contactPhone,
     @Default(false) bool isSelectableExpanded,
@@ -39,7 +42,7 @@ class Service with _$Service {
 class PaymentMethod with _$PaymentMethod {
   const factory PaymentMethod({
     required Option<Payment> method,
-    @Default('') String paymentMethod,
+    @Default('') String name,
     @Default(0) double cash,
     @Default(true) bool isInit,
   }) = _PaymentMethod;

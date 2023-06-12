@@ -67,7 +67,7 @@ class DetailList extends StatelessWidget with CardStyle {
       child: Column(
         children: [
           ...state.shoppingCartDto.items.map((item) => DetailTile(
-                description: 'x${item.amount} ${item.product.name}',
+                description: 'x${item.quantity} ${item.product.name}',
                 price: item.totalCostWithDiscount,
               )),
           _DeliveryCost(

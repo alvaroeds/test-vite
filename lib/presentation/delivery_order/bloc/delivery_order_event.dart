@@ -10,6 +10,9 @@ class DeliveryOrderEvent with _$DeliveryOrderEvent {
       String additionalDetail) = _UpdateAdditionalDetail;
   const factory DeliveryOrderEvent.updateAddress(AddressDto? address) =
       _UpdateAddress;
+  const factory DeliveryOrderEvent.changeCurrentAddress(String address) =
+      _ChangeCurrentAddress;
+
   const factory DeliveryOrderEvent.updateService(Service service) =
       _UpdateService;
 

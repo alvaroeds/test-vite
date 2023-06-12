@@ -8,13 +8,13 @@ part 'shopping_car_dto.g.dart';
 @freezed
 class ShoppingCartDto with _$ShoppingCartDto {
   factory ShoppingCartDto({
-    required String uuid,
+    required String urlId,
     @Default([]) List<ItemCart> items,
   }) = _ShoppingCartDto;
   const ShoppingCartDto._();
 
-  int get totalItem =>
-      items.fold(0, (previousValue, element) => previousValue + element.amount);
+  int get totalItem => items.fold(
+      0, (previousValue, element) => previousValue + element.quantity);
 
   bool get isItemsEmpty => totalItem == 0;
   double get totalCost => items.fold(
@@ -31,7 +31,7 @@ class ItemCart with _$ItemCart {
   const factory ItemCart({
     required ProductDto product,
     required String uuid,
-    required int amount,
+    required int quantity,
     @Default('') String comment,
     @Default([]) List<AmountExtraFood> extrasFood,
     @Default([]) List<AmountOptionFood> optionsFoodOneSelection,
@@ -51,11 +51,11 @@ class ItemCart with _$ItemCart {
       optionsFoodForMultiple.length;
 
   double get totalCostWithDiscount =>
-      (product.priceWithDiscount + modifiersTotalCost) * amount;
+      (product.priceWithDiscount + modifiersTotalCost) * quantity;
 
   double get totalCostForUnit => product.priceWithDiscount + modifiersTotalCost;
 
-  double get totalCost => (product.price + modifiersTotalCost) * amount;
+  double get totalCost => (product.price + modifiersTotalCost) * quantity;
 
   double get modifiersTotalCost =>
       extrasFood.fold<double>(
@@ -74,12 +74,12 @@ class AmountExtraFood with _$AmountExtraFood {
   const factory AmountExtraFood({
     required ExtraFood extraFood,
     required String uuidModifier,
-    required int amount,
+    required int quantity,
   }) = _AmountExtraFood;
 
   const AmountExtraFood._();
 
-  double get totalCost => extraFood.price * amount;
+  double get totalCost => extraFood.price * quantity;
 
   factory AmountExtraFood.fromJson(Map<String, dynamic> json) =>
       _$AmountExtraFoodFromJson(json);

@@ -25,8 +25,17 @@ class EstablishmentBlocPage extends StatelessWidget {
         return state.maybeWhen(isError: (_) => true, orElse: () => false);
       },
       listener: (context, state) {
-        // Si no encuentra lo regresa
-        state.whenOrNull(isError: (_) => context.goNamed(RouterHome.name));
+        state.whenOrNull(
+            isError: (failure) => failure.whenOrNull(
+                  serverError: (failure) {
+                    if (subDomainIsNone) {
+                      state.whenOrNull(
+                          isError: (_) => context.goNamed(RouterHome.name));
+                    } else if (failure == 404) {
+                      bloc.add(const EstablishmentEvent.redirectOn404());
+                    }
+                  },
+                ));
       },
       builder: (context, state) {
         return CycleWrapper(

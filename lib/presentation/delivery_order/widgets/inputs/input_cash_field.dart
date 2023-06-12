@@ -37,7 +37,7 @@ class InputCashField extends StatelessWidget {
               Expanded(
                 flex: 212,
                 child: Text(
-                  '¿Cuanto va a pagar?',
+                  '¿Con cuánto va a pagar?',
                   style: context.interBold1Title
                       ?.copyWith(fontSize: 14, fontWeight: FontWeight.w400),
                 ),

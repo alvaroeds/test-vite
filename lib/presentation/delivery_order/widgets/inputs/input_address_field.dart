@@ -20,6 +20,9 @@ class InputAddressField extends StatelessWidget {
         maxLength: 150,
         textCapitalization: TextCapitalization.sentences,
         textInputAction: TextInputAction.done,
+        onChanged: (value) {
+          //   context.read<DeliveryOrderBloc>().add(DeliveryOrderEvent.changeCurrentAddress(value));
+        },
         decoration: InputDecoration(
           filled: true,
           isDense: false,

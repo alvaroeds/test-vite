@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pedido_listo_web/const/resource.dart';
+import 'package:pedido_listo_web/presentation/app/bloc/app_cache_bloc.dart';
 import 'package:pedido_listo_web/presentation/delivery_order/bloc/delivery_order_bloc.dart';
 import 'package:pedido_listo_web/presentation/landing/widgets/show_snack_bar.dart';
+import 'package:pedido_listo_web/resources/router/pedido_listo_routes.dart';
 import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
-import 'package:pedido_listo_web/resources/utils/extensions.dart';
 
 class FooterDelivery extends StatelessWidget {
   const FooterDelivery({super.key});
@@ -50,24 +51,63 @@ class FooterDelivery extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    return SizedBox(
-      height: 64,
-      width: width * 410 / 428,
-      child: FloatingActionButton.extended(
-        icon: R.ASSETS_SVG_WHATSAPP_SVG.toSvg(),
-        backgroundColor: context.primaryColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        onPressed: () => _confirmOrder(context),
-        label: Text(
-          ' Hacer pedido',
-          style: GoogleFonts.inter(
-              textStyle: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w500,
-            color: Colors.white,
-          )),
-        ),
-      ),
+    return BlocConsumer<DeliveryOrderBloc, DeliveryOrderState>(
+      listenWhen: (previous, current) =>
+          previous.deliveryOrderFailureOrSuccessOption !=
+          current.deliveryOrderFailureOrSuccessOption,
+      listener: (context, state) {
+        state.deliveryOrderFailureOrSuccessOption.forEach((a) {
+          a.fold(
+            (l) =>
+                showSnackBar(l.toString(), context, icon: Icons.error_outline),
+            (nroOrder) {
+              final urlId = state.establishmentDto.idUrl;
+
+              context.read<AppCacheBloc>()
+                ..add(AppCacheEvent.clearCart(urlId, nroOrder))
+                ..add(AppCacheEvent.addOrder(nroOrder));
+
+              GoRouter.of(context).pushReplacementNamed(
+                RouterSummaryOrder.name,
+                pathParameters: {
+                  RouterEstablishment.firtsPath: urlId,
+                  RouterSummaryOrder.nroOrder: nroOrder,
+                },
+              );
+            },
+          );
+        });
+      },
+      buildWhen: (previous, current) =>
+          previous.isSubmitting != current.isSubmitting,
+      builder: (context, state) {
+        return SizedBox(
+          height: 64,
+          width: width * 410 / 428,
+          child: FloatingActionButton.extended(
+            icon: state.isSubmitting
+                ? const CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                  )
+                : null, // R.ASSETS_SVG_WHATSAPP_SVG.toSvg(),
+            backgroundColor: context.primaryColor,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            onPressed: () => _confirmOrder(context),
+            label: state.isSubmitting
+                ? const SizedBox.shrink()
+                : Text(
+                    ' Hacer pedido',
+                    style: GoogleFonts.inter(
+                        textStyle: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                    )),
+                  ),
+          ),
+        );
+      },
     );
   }
 }

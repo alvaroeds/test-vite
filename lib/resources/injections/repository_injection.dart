@@ -2,8 +2,10 @@ import 'package:pedido_listo_web/features/contact/domain/interface_contact_repos
 import 'package:pedido_listo_web/features/contact/infraestructure/firebase_contact_repository.dart';
 import 'package:pedido_listo_web/features/contact/infraestructure/mock_contact_repository.dart';
 import 'package:pedido_listo_web/features/delivery_order/domain/interfaces_delivery.dart';
+import 'package:pedido_listo_web/features/delivery_order/infraestructure/firestore_order_summary.dart';
 import 'package:pedido_listo_web/features/delivery_order/infraestructure/html_get_current_url.dart';
 import 'package:pedido_listo_web/features/delivery_order/infraestructure/launch_order_url.dart';
+import 'package:pedido_listo_web/features/delivery_order/infraestructure/mock_order_summary.dart';
 import 'package:pedido_listo_web/features/establishment/domain/interface_establishment.dart';
 import 'package:pedido_listo_web/features/establishment/infraestructure/firestore_establishment_repository.dart';
 import 'package:pedido_listo_web/features/establishment/infraestructure/mock_establishment_repository.dart';
@@ -20,6 +22,7 @@ class RepositoryInjection {
   final InterfaceContactRepository contactRepository;
   final InterfaceCartRepository cartRepository;
   final InterfaceUserRepository userRepository;
+  final IOrderSummaryRepository orderSummaryRepository;
   final IGetCurrentUrl getCurrentUrl;
   final ILaunchOrderUrl launchOrderUrl;
 
@@ -28,6 +31,7 @@ class RepositoryInjection {
     required this.establishmentRepository,
     required this.launchOrderUrl,
     required this.getCurrentUrl,
+    required this.orderSummaryRepository,
     required this.contactRepository,
     required this.userRepository,
   });
@@ -40,6 +44,7 @@ class DevInjection {
     final sharedPreferences = await SharedPreferences.getInstance();
 
     final establishmentRepository = MockEstablishmentRepository();
+    final orderSummaryRepository = MockOrderSummaryRepository();
     const contactRepository = MockContactRepository();
     final cartRepository = PreferencesCartRepository(sharedPreferences);
     final userRepository = PreferencesUserRepository(sharedPreferences);
@@ -47,6 +52,7 @@ class DevInjection {
     return RepositoryInjection(
       cartRepository: cartRepository,
       getCurrentUrl: getCurrentUrl,
+      orderSummaryRepository: orderSummaryRepository,
       userRepository: userRepository,
       contactRepository: contactRepository,
       launchOrderUrl: launchOrderUrl,
@@ -62,14 +68,16 @@ class StagingInjection {
       FirebaseInjection firebase) async {
     final sharedPreferences = await SharedPreferences.getInstance();
 
-    final establishmentRepository = FirestoreEstablishmentRepository(firebase);
     final contactRepository = FirebaseContactRepository(firebase);
+    final orderSummaryRepository = FirestoreOrderSummaryRepository(firebase);
+    final establishmentRepository = FirestoreEstablishmentRepository(firebase);
     final cartRepository = PreferencesCartRepository(sharedPreferences);
     final userRepository = PreferencesUserRepository(sharedPreferences);
 
     return RepositoryInjection(
       cartRepository: cartRepository,
       getCurrentUrl: getCurrentUrl,
+      orderSummaryRepository: orderSummaryRepository,
       userRepository: userRepository,
       launchOrderUrl: launchOrderUrl,
       contactRepository: contactRepository,

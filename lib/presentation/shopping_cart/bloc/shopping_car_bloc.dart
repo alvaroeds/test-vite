@@ -33,7 +33,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         shoppingCart: state.shoppingCart.copyWith(
       items: state.shoppingCart.items.map((e) {
         if (e.uuid == event.uuid) {
-          return e.copyWith(amount: e.amount + 1);
+          return e.copyWith(quantity: e.quantity + 1);
         }
         return e;
       }).toList(),
@@ -49,11 +49,11 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
       items: state.shoppingCart.items
           .map((e) {
             if (e.uuid == event.uuid) {
-              return e.copyWith(amount: e.amount - 1);
+              return e.copyWith(quantity: e.quantity - 1);
             }
             return e;
           })
-          .where((element) => element.amount > 0)
+          .where((element) => element.quantity > 0)
           .toList(),
     )));
   }

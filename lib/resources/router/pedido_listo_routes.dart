@@ -9,6 +9,7 @@ import 'package:pedido_listo_web/presentation/establishment/bloc/establishment_b
 import 'package:pedido_listo_web/presentation/establishment/details_product/details_product_bloc_page.dart';
 import 'package:pedido_listo_web/presentation/establishment/establishment_bloc_page.dart';
 import 'package:pedido_listo_web/presentation/landing/landing_screen.dart';
+import 'package:pedido_listo_web/presentation/order_summary/order_summary_bloc_page.dart';
 import 'package:pedido_listo_web/presentation/shopping_cart/shopping_cart_bloc_page.dart';
 import 'package:pedido_listo_web/resources/router/config_router.dart';
 import 'package:pedido_listo_web/resources/utils/extensions.dart';
@@ -147,6 +148,44 @@ class RouterDeleveryOrder {
 
           return ConfigRouter.fadeRoute(
             child: DeleveryDataBlocpage(urlId: urlId!),
+            state: state,
+          );
+        },
+      );
+}
+
+class RouterSummaryOrder {
+  static const name = 'summaryOrder';
+  static const nroOrder = 'nroOrder';
+  static const firtsPath = 'resumen';
+
+  static GoRoute getGoRoute({
+    required Option<String?> subDomain,
+    List<RouteBase> routes = const <RouteBase>[],
+  }) =>
+      GoRoute(
+        name: name,
+        path: '$firtsPath/:$nroOrder',
+        redirect: (context, state) {
+          final urlId = subDomain.getOrElse(state.idUrl);
+
+          final pathBack = subDomain.isSome() ? '' : '/$urlId';
+
+          final nroOder = state.pathParameters[nroOrder];
+
+          if (nroOder == null) return pathBack;
+
+          if (nroOder.isEmpty) return pathBack;
+
+          return null;
+        },
+        pageBuilder: (context, state) {
+          final urlId = subDomain.getOrElse(state.idUrl);
+
+          final nroOder = state.pathParameters[nroOrder].toString();
+
+          return ConfigRouter.fadeRoute(
+            child: OrderSummaryBlocPage(urlId: urlId!, nroOrder: nroOder),
             state: state,
           );
         },

@@ -41,6 +41,29 @@ class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
           events.debounceTime(const Duration(milliseconds: 1200)), mappper);
     });
     on<_CreateAddress>(_createAddress);
+    on<_AddOrder>(_addOrder);
+    on<_RemoveOrder>(_removeOrder);
+  }
+
+  FutureOr<void> _removeOrder(_RemoveOrder event, Emitter<AppCacheState> emit) {
+    final user = state.user.copyWith(ordersAvailables: [
+      ...state.user.ordersAvailables
+          .where((element) => element != event.nroOrder),
+    ]);
+
+    emit(state.copyWith(user: user));
+
+    return _saveUserUseCase.execute(user);
+  }
+
+  FutureOr<void> _addOrder(_AddOrder event, Emitter<AppCacheState> emit) {
+    final user = state.user.copyWith(ordersAvailables: [
+      ...state.user.ordersAvailables,
+      event.nroOrder,
+    ]);
+    emit(state.copyWith(user: user));
+
+    return _saveUserUseCase.execute(user);
   }
 
   FutureOr<void> _loadCart(_LoadCart event, Emitter<AppCacheState> emit) async {
@@ -53,7 +76,7 @@ class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
     emit(state.copyWith(cartCache: {
       ...state.cartCache,
       event.urlId!: result.fold(
-        () => ShoppingCartDto(uuid: event.urlId!),
+        () => ShoppingCartDto(urlId: event.urlId!),
         (shoppingCartDto) => shoppingCartDto,
       )
     }));
@@ -64,7 +87,7 @@ class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
     final item = ItemCart(
       product: event.product,
       uuid: Uuid().generateV4(),
-      amount: event.detail.productQuantity,
+      quantity: event.detail.productQuantity,
       comment: event.detail.comment,
       extrasFood: event.choosesForAmount
           .map((modifier) => modifier.extras
@@ -73,7 +96,7 @@ class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
                 return amount != null && amount > 0;
               })
               .map((extra) => AmountExtraFood(
-                  amount: event.detail.extrasAmountByModifier[extra.uuid]!,
+                  quantity: event.detail.extrasAmountByModifier[extra.uuid]!,
                   uuidModifier: modifier.uuid,
                   extraFood: extra))
               .toList())
@@ -107,7 +130,7 @@ class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
     final shoppingCartDto = optionOf(state.cartCache[event.establishmentUuid])
         .map((cart) => cart.copyWith(items: [...cart.items, item]))
         .getOrElse(() => ShoppingCartDto(
-              uuid: event.establishmentUuid,
+              urlId: event.establishmentUuid,
               items: [item],
             ));
 
@@ -123,13 +146,21 @@ class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
       _UpdateCart event, Emitter<AppCacheState> emit) async {
     emit(state.copyWith(cartCache: {
       ...state.cartCache,
-      event.shoppingCartDto.uuid: event.shoppingCartDto
+      event.shoppingCartDto.urlId: event.shoppingCartDto
     }));
 
     await _saveCartUseCase.execute(event.shoppingCartDto);
   }
 
-  FutureOr<void> _clearCart(_ClearCart event, Emitter<AppCacheState> emit) {}
+  FutureOr<void> _clearCart(_ClearCart event, Emitter<AppCacheState> emit) {
+    final cart = ShoppingCartDto(urlId: event.urlId);
+
+    emit(state.copyWith(
+        isRedirectToSummary: true,
+        cartCache: {...state.cartCache, event.urlId: cart}));
+
+    _saveCartUseCase.execute(cart);
+  }
 
   FutureOr<void> _saveUser(_SaveUser event, Emitter<AppCacheState> emit) {
     final user = state.user.copyWith(name: event.name, phone: event.phone);

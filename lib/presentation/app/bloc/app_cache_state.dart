@@ -5,6 +5,7 @@ class AppCacheState with _$AppCacheState {
   const factory AppCacheState({
     required UserDto user,
     @Default({}) Map<String, ShoppingCartDto> cartCache,
+    @Default(false) bool isRedirectToSummary,
   }) = _AppCacheState;
 
   const AppCacheState._();
@@ -17,7 +18,7 @@ class AppCacheState with _$AppCacheState {
     return cart.items.fold(
         0,
         (previousValue, element) => element.product.uuid == product.uuid
-            ? previousValue + element.amount
+            ? previousValue + element.quantity
             : previousValue);
   }
 }

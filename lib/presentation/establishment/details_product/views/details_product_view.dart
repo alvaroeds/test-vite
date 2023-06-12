@@ -9,7 +9,6 @@ import 'package:pedido_listo_web/presentation/establishment/details_product/bloc
 import 'package:pedido_listo_web/presentation/establishment/details_product/widgets/footer/product_footer.dart';
 import 'package:pedido_listo_web/presentation/establishment/details_product/widgets/widgets.dart';
 import 'package:pedido_listo_web/presentation/landing/widgets/show_snack_bar.dart';
-import 'package:pedido_listo_web/resources/router/pedido_listo_routes.dart';
 import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
 
 class DetailsProductView extends StatelessWidget {
@@ -85,9 +84,8 @@ class DetailsProductView extends StatelessWidget {
               oneSelections: modifiers.oneSelection,
               multipleSelections: modifiers.multipleSelection,
             ));
-        context.replaceNamed(RouterCart.name, pathParameters: {
-          RouterEstablishment.firtsPath: establishment.idUrl
-        });
+
+        context.pop();
       },
     );
 

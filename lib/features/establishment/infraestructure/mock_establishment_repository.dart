@@ -31,6 +31,12 @@ class MockEstablishmentRepository implements IEstablishmentRepository {
               left(GlobalFailure.fromException(error, stackTrace)),
         );
   }
+
+  @override
+  Future<Either<Unit, Unit>> redirectOn404() {
+    // TODO: implement redirectOn404
+    throw UnimplementedError();
+  }
 }
 
 final mockCategories = [

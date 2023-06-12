@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pedido_listo_web/features/contact/application/send_email.dart';
+import 'package:pedido_listo_web/features/establishment/application/redirect_on_404.dart';
 import 'package:pedido_listo_web/features/establishment/domain/interface_establishment.dart';
 import 'package:pedido_listo_web/features/shopping_cart/application/load_cart.dart';
 import 'package:pedido_listo_web/features/shopping_cart/application/save_cart.dart';
@@ -15,8 +16,9 @@ class BlocProvidersInjection {
             create: (context) =>
                 KnowMoreBloc(context.read<SendContactEmailUseCase>())),
         BlocProvider<EstablishmentBloc>(
-            create: (context) =>
-                EstablishmentBloc(context.read<IEstablishmentRepository>())),
+            create: (context) => EstablishmentBloc(
+                context.read<IEstablishmentRepository>(),
+                context.read<RedirectOn404UseCase>())),
         BlocProvider<AppCacheBloc>(
             //  lazy: false,
             create: (context) => AppCacheBloc(

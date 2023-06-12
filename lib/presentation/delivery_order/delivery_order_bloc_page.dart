@@ -23,7 +23,11 @@ class DeleveryDataBlocpage extends StatelessWidget {
 
     return BlocConsumer<AppCacheBloc, AppCacheState>(
       listener: (context, cacheState) {
-        final isCartEmpty = cacheState.cartCache[urlId]?.totalItem == 0;
+        if (cacheState.isRedirectToSummary) return;
+
+        final cartCache = cacheState.cartCache[urlId];
+
+        final isCartEmpty = cartCache?.totalItem == 0;
 
         if (isCartEmpty) goShoppingCart();
       },

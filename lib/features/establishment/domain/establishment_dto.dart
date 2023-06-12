@@ -20,6 +20,7 @@ class EstablishmentDto with _$EstablishmentDto {
     @JsonKey(name: 'profile_image') required String profileImage,
     @JsonKey(name: 'payment_methods', defaultValue: <String>[])
     required List<String> paymentMethodsTypes,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? id,
     @JsonKey(name: 'delevery_cost') @Default(0) double deliveryCost,
     @JsonKey(name: 'local_direction') @Default('') String localDirection,
     @JsonKey(name: 'whatsapp_number') @Default('') String whatsappNumber,

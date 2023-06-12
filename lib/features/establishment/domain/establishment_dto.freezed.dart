@@ -30,6 +30,8 @@ mixin _$EstablishmentDto {
   String get profileImage => throw _privateConstructorUsedError;
   @JsonKey(name: 'payment_methods', defaultValue: <String>[])
   List<String> get paymentMethodsTypes => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'delevery_cost')
   double get deliveryCost => throw _privateConstructorUsedError;
   @JsonKey(name: 'local_direction')
@@ -64,6 +66,7 @@ abstract class $EstablishmentDtoCopyWith<$Res> {
       @JsonKey(name: 'profile_image') String profileImage,
       @JsonKey(name: 'payment_methods', defaultValue: <String>[])
       List<String> paymentMethodsTypes,
+      @JsonKey(includeFromJson: false, includeToJson: false) String? id,
       @JsonKey(name: 'delevery_cost') double deliveryCost,
       @JsonKey(name: 'local_direction') String localDirection,
       @JsonKey(name: 'whatsapp_number') String whatsappNumber,
@@ -96,6 +99,7 @@ class _$EstablishmentDtoCopyWithImpl<$Res, $Val extends EstablishmentDto>
     Object? bannerUrl = null,
     Object? profileImage = null,
     Object? paymentMethodsTypes = null,
+    Object? id = freezed,
     Object? deliveryCost = null,
     Object? localDirection = null,
     Object? whatsappNumber = null,
@@ -129,6 +133,10 @@ class _$EstablishmentDtoCopyWithImpl<$Res, $Val extends EstablishmentDto>
           ? _value.paymentMethodsTypes
           : paymentMethodsTypes // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       deliveryCost: null == deliveryCost
           ? _value.deliveryCost
           : deliveryCost // ignore: cast_nullable_to_non_nullable
@@ -193,6 +201,7 @@ abstract class _$$_EstablishmentDtoCopyWith<$Res>
       @JsonKey(name: 'profile_image') String profileImage,
       @JsonKey(name: 'payment_methods', defaultValue: <String>[])
       List<String> paymentMethodsTypes,
+      @JsonKey(includeFromJson: false, includeToJson: false) String? id,
       @JsonKey(name: 'delevery_cost') double deliveryCost,
       @JsonKey(name: 'local_direction') String localDirection,
       @JsonKey(name: 'whatsapp_number') String whatsappNumber,
@@ -225,6 +234,7 @@ class __$$_EstablishmentDtoCopyWithImpl<$Res>
     Object? bannerUrl = null,
     Object? profileImage = null,
     Object? paymentMethodsTypes = null,
+    Object? id = freezed,
     Object? deliveryCost = null,
     Object? localDirection = null,
     Object? whatsappNumber = null,
@@ -258,6 +268,10 @@ class __$$_EstablishmentDtoCopyWithImpl<$Res>
           ? _value._paymentMethodsTypes
           : paymentMethodsTypes // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       deliveryCost: null == deliveryCost
           ? _value.deliveryCost
           : deliveryCost // ignore: cast_nullable_to_non_nullable
@@ -301,6 +315,7 @@ class _$_EstablishmentDto extends _EstablishmentDto {
       @JsonKey(name: 'profile_image') required this.profileImage,
       @JsonKey(name: 'payment_methods', defaultValue: <String>[])
       required final List<String> paymentMethodsTypes,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.id,
       @JsonKey(name: 'delevery_cost') this.deliveryCost = 0,
       @JsonKey(name: 'local_direction') this.localDirection = '',
       @JsonKey(name: 'whatsapp_number') this.whatsappNumber = '',
@@ -342,6 +357,9 @@ class _$_EstablishmentDto extends _EstablishmentDto {
   }
 
   @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final String? id;
+  @override
   @JsonKey(name: 'delevery_cost')
   final double deliveryCost;
   @override
@@ -376,7 +394,7 @@ class _$_EstablishmentDto extends _EstablishmentDto {
 
   @override
   String toString() {
-    return 'EstablishmentDto(name: $name, schedule: $schedule, idUrl: $idUrl, bannerUrl: $bannerUrl, profileImage: $profileImage, paymentMethodsTypes: $paymentMethodsTypes, deliveryCost: $deliveryCost, localDirection: $localDirection, whatsappNumber: $whatsappNumber, description: $description, socialNetwork: $socialNetwork, modifiers: $modifiers, categories: $categories)';
+    return 'EstablishmentDto(name: $name, schedule: $schedule, idUrl: $idUrl, bannerUrl: $bannerUrl, profileImage: $profileImage, paymentMethodsTypes: $paymentMethodsTypes, id: $id, deliveryCost: $deliveryCost, localDirection: $localDirection, whatsappNumber: $whatsappNumber, description: $description, socialNetwork: $socialNetwork, modifiers: $modifiers, categories: $categories)';
   }
 
   @override
@@ -394,6 +412,7 @@ class _$_EstablishmentDto extends _EstablishmentDto {
                 other.profileImage == profileImage) &&
             const DeepCollectionEquality()
                 .equals(other._paymentMethodsTypes, _paymentMethodsTypes) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.deliveryCost, deliveryCost) ||
                 other.deliveryCost == deliveryCost) &&
             (identical(other.localDirection, localDirection) ||
@@ -420,6 +439,7 @@ class _$_EstablishmentDto extends _EstablishmentDto {
       bannerUrl,
       profileImage,
       const DeepCollectionEquality().hash(_paymentMethodsTypes),
+      id,
       deliveryCost,
       localDirection,
       whatsappNumber,
@@ -451,6 +471,7 @@ abstract class _EstablishmentDto extends EstablishmentDto {
       @JsonKey(name: 'profile_image') required final String profileImage,
       @JsonKey(name: 'payment_methods', defaultValue: <String>[])
       required final List<String> paymentMethodsTypes,
+      @JsonKey(includeFromJson: false, includeToJson: false) final String? id,
       @JsonKey(name: 'delevery_cost') final double deliveryCost,
       @JsonKey(name: 'local_direction') final String localDirection,
       @JsonKey(name: 'whatsapp_number') final String whatsappNumber,
@@ -481,6 +502,9 @@ abstract class _EstablishmentDto extends EstablishmentDto {
   @override
   @JsonKey(name: 'payment_methods', defaultValue: <String>[])
   List<String> get paymentMethodsTypes;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get id;
   @override
   @JsonKey(name: 'delevery_cost')
   double get deliveryCost;

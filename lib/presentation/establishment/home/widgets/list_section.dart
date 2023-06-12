@@ -21,41 +21,42 @@ class ListSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-        color: context.currentTheme.scaffoldBackgroundColor,
-        // padding: const EdgeInsets.all(6),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(14, 0, 0, 0),
-              child: Text(category.name,
-                  style: GoogleFonts.poppins(
-                      fontSize: 20,
-                      color: const Color(0xff565C66),
-                      fontWeight: FontWeight.bold)),
+      color: context.currentTheme.scaffoldBackgroundColor,
+      // padding: const EdgeInsets.all(6),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(14, 0, 0, 0),
+            child: Text(category.name,
+                style: GoogleFonts.poppins(
+                    fontSize: 20,
+                    color: const Color(0xff565C66),
+                    fontWeight: FontWeight.bold)),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 15),
+            color: Colors.white,
+            child: Wrap(
+              children: [
+                ...category.products.map(
+                  (product) => BlocSelector<AppCacheBloc, AppCacheState, int>(
+                    selector: (state) => state.getAmountProduct(product, idUrl),
+                    builder: (context, amount) {
+                      return ProductCard(
+                        key: Key(product.uuid),
+                        amount: amount,
+                        onTap: () => onTapProduct(product.uuid),
+                        product: product,
+                      );
+                    },
+                  ),
+                )
+              ],
             ),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 15),
-              color: Colors.white,
-              child: Wrap(
-                children: [
-                  ...category.products.map(
-                    (product) => BlocSelector<AppCacheBloc, AppCacheState, int>(
-                      selector: (state) =>
-                          state.getAmountProduct(product, idUrl),
-                      builder: (context, amount) {
-                        return ProductCard(
-                          amount: amount,
-                          onTap: () => onTapProduct(product.uuid),
-                          product: product,
-                        );
-                      },
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
-        ));
+          )
+        ],
+      ),
+    );
   }
 }

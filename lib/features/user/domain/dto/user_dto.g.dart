@@ -14,6 +14,10 @@ _$_UserDto _$$_UserDtoFromJson(Map<String, dynamic> json) => _$_UserDto(
               ?.map((e) => AddressDto.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const <AddressDto>[],
+      ordersAvailables: (json['ordersAvailables'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const <String>[],
     );
 
 Map<String, dynamic> _$$_UserDtoToJson(_$_UserDto instance) =>
@@ -22,4 +26,5 @@ Map<String, dynamic> _$$_UserDtoToJson(_$_UserDto instance) =>
       'name': instance.name,
       'phone': instance.phone,
       'addresses': instance.addresses,
+      'ordersAvailables': instance.ordersAvailables,
     };

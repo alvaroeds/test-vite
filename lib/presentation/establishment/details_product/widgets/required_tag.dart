@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pedido_listo_web/presentation/establishment/home/widgets/widgets.dart';
 import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
 
-const _primaryColor = Color(0xff878F9B);
+const _primaryColor = Color.fromARGB(255, 255, 30, 0);
 const _secondaryColor = Color(0xffF5F5F5);
 
 class RequiredTag extends StatelessWidget {
@@ -20,7 +20,7 @@ class RequiredTag extends StatelessWidget {
         ),
         primaryColor: _primaryColor,
         secondaryColor: _secondaryColor,
-        child: Text('Obligatorio',
+        child: Text('Necesario',
             style: GoogleFonts.redHatDisplay(
               color: _primaryColor,
               fontSize: 14,

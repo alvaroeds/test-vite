@@ -9,25 +9,33 @@ class CommentBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      child: TextField(
-        minLines: 1,
-        maxLines: 6,
-        onChanged: (value) {
-          context
-              .read<DetailsProductBloc>()
-              .add(DetailsProductEvent.changeComment(value));
+      child: BlocSelector<DetailsProductBloc, DetailsProductState, String>(
+        selector: (state) {
+          return state.comment;
         },
-        decoration: InputDecoration(
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(18),
-                borderSide: const BorderSide(
-                  color: Color(0xff6B7380),
+        builder: (context, comment) {
+          return TextFormField(
+            initialValue: comment,
+            minLines: 1,
+            maxLines: 6,
+            onChanged: (value) {
+              context
+                  .read<DetailsProductBloc>()
+                  .add(DetailsProductEvent.changeComment(value));
+            },
+            decoration: InputDecoration(
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(18),
+                    borderSide: const BorderSide(
+                      color: Color(0xff6B7380),
+                    )),
+                hintText: 'Escribe las instruccions que necesites.',
+                hintStyle: context.currentStyle.bodySmall?.getStyle(
+                  color: const Color(0xffA5A3A9),
+                  size: 14,
                 )),
-            hintText: 'Escribe las instruccions que necesites.',
-            hintStyle: context.currentStyle.bodySmall?.getStyle(
-              color: const Color(0xffA5A3A9),
-              size: 14,
-            )),
+          );
+        },
       ),
     );
   }

@@ -9,6 +9,7 @@ import 'package:pedido_listo_web/features/establishment/domain/establishment_dto
 import 'package:pedido_listo_web/features/shopping_cart/domain/shopping_car_dto.dart';
 import 'package:pedido_listo_web/features/user/domain/dto/address_dto.dart';
 import 'package:pedido_listo_web/features/user/domain/dto/user_dto.dart';
+import 'package:values_object_and_failures_base/values_object_and_failures_base.dart';
 part 'delivery_order_event.dart';
 part 'delivery_order_state.dart';
 part 'delivery_order_bloc.freezed.dart';
@@ -27,6 +28,8 @@ class DeliveryOrderBloc extends Bloc<DeliveryOrderEvent, DeliveryOrderState> {
           establishmentDto: establishmentDto,
           shoppingCartDto: shoppingCartDto,
           paymentMethod: PaymentMethod.initial(),
+          deliveryOrderFailureOrSuccessOption: const None(),
+          isSubmitting: false,
           address: optionOf(userDto.addresses.firstOrNull),
         )) {
     on<_UpdateName>(_updateContactName);
@@ -39,6 +42,12 @@ class DeliveryOrderBloc extends Bloc<DeliveryOrderEvent, DeliveryOrderState> {
     on<_ChangeSelectable>(_changeSelectable);
     on<_CloseSelectable>(_closeSelectable);
     on<_UpdateCash>(_updateCash);
+    on<_ChangeCurrentAddress>(_changeCurrentAddress);
+  }
+
+  FutureOr<void> _changeCurrentAddress(
+      _ChangeCurrentAddress event, Emitter<DeliveryOrderState> emit) {
+    emit(state.copyWith(address: optionOf(AddressDto.create(event.address))));
   }
 
   FutureOr<void> _changeSelectable(
@@ -56,7 +65,9 @@ class DeliveryOrderBloc extends Bloc<DeliveryOrderEvent, DeliveryOrderState> {
     emit(state.copyWith(
         isSelectableExpanded: false,
         paymentMethod: state.paymentMethod.copyWith(
-            method: some(event.payment), paymentMethod: event.namePayment)));
+          method: some(event.payment),
+          name: event.namePayment,
+        )));
   }
 
   FutureOr<void> _updateContactPhone(
@@ -98,11 +109,19 @@ class DeliveryOrderBloc extends Bloc<DeliveryOrderEvent, DeliveryOrderState> {
   FutureOr<void> _createOrder(
     _CreateOrder event,
     Emitter<DeliveryOrderState> emit,
-  ) {
-    _makeOrderUseCase.execute(state.shoppingCartDto, state.establishmentDto,
+  ) async {
+    if (state.isSubmitting) return;
+
+    emit(state.copyWith(
+      isSubmitting: true,
+      deliveryOrderFailureOrSuccessOption: none(),
+    ));
+
+    final respond = await _makeOrderUseCase.execute(
+        state.shoppingCartDto, state.establishmentDto,
         contactName: state.contactName,
         contactPhone: state.contactPhone,
-        paymentMethod: state.paymentMethod.paymentMethod,
+        paymentMethod: state.paymentMethod.name,
         cash: state.paymentMethod.isCash ? state.paymentMethod.cash : 0,
         address: state.service.isTakeaway
             ? none()
@@ -110,12 +129,19 @@ class DeliveryOrderBloc extends Bloc<DeliveryOrderEvent, DeliveryOrderState> {
         additionalDetail: state.additionalDetail[
                 state.address.map((a) => a.uuid).getOrElse(() => '')] ??
             '');
+
+    emit(state.copyWith(
+      isSubmitting: respond.isRight(),
+      deliveryOrderFailureOrSuccessOption: some(respond),
+    ));
   }
 
   FutureOr<void> _updateCash(
       _UpdateCash event, Emitter<DeliveryOrderState> emit) {
     emit(state.copyWith(
-        paymentMethod: state.paymentMethod
-            .copyWith(cash: double.tryParse(event.cash) ?? 0, isInit: false)));
+        paymentMethod: state.paymentMethod.copyWith(
+      cash: double.tryParse(event.cash) ?? 0,
+      isInit: false,
+    )));
   }
 }

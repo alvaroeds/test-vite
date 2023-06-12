@@ -119,7 +119,7 @@ class ItemCardView extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            if (item.amount == 1)
+                            if (item.quantity == 1)
                               IconButtonDelete(
                                 onTap: onRemove,
                               )
@@ -134,7 +134,7 @@ class ItemCardView extends StatelessWidget {
                                   const EdgeInsets.symmetric(horizontal: 6),
                               constraints: const BoxConstraints(minWidth: 20),
                               child: Text(
-                                item.amount.toString(),
+                                item.quantity.toString(),
                                 style: GoogleFonts.manrope(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,

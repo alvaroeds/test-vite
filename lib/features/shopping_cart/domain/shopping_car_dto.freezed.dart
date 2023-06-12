@@ -20,7 +20,7 @@ ShoppingCartDto _$ShoppingCartDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ShoppingCartDto {
-  String get uuid => throw _privateConstructorUsedError;
+  String get urlId => throw _privateConstructorUsedError;
   List<ItemCart> get items => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +35,7 @@ abstract class $ShoppingCartDtoCopyWith<$Res> {
           ShoppingCartDto value, $Res Function(ShoppingCartDto) then) =
       _$ShoppingCartDtoCopyWithImpl<$Res, ShoppingCartDto>;
   @useResult
-  $Res call({String uuid, List<ItemCart> items});
+  $Res call({String urlId, List<ItemCart> items});
 }
 
 /// @nodoc
@@ -51,13 +51,13 @@ class _$ShoppingCartDtoCopyWithImpl<$Res, $Val extends ShoppingCartDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? uuid = null,
+    Object? urlId = null,
     Object? items = null,
   }) {
     return _then(_value.copyWith(
-      uuid: null == uuid
-          ? _value.uuid
-          : uuid // ignore: cast_nullable_to_non_nullable
+      urlId: null == urlId
+          ? _value.urlId
+          : urlId // ignore: cast_nullable_to_non_nullable
               as String,
       items: null == items
           ? _value.items
@@ -75,7 +75,7 @@ abstract class _$$_ShoppingCartDtoCopyWith<$Res>
       __$$_ShoppingCartDtoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String uuid, List<ItemCart> items});
+  $Res call({String urlId, List<ItemCart> items});
 }
 
 /// @nodoc
@@ -89,13 +89,13 @@ class __$$_ShoppingCartDtoCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? uuid = null,
+    Object? urlId = null,
     Object? items = null,
   }) {
     return _then(_$_ShoppingCartDto(
-      uuid: null == uuid
-          ? _value.uuid
-          : uuid // ignore: cast_nullable_to_non_nullable
+      urlId: null == urlId
+          ? _value.urlId
+          : urlId // ignore: cast_nullable_to_non_nullable
               as String,
       items: null == items
           ? _value._items
@@ -109,7 +109,7 @@ class __$$_ShoppingCartDtoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ShoppingCartDto extends _ShoppingCartDto {
   _$_ShoppingCartDto(
-      {required this.uuid, final List<ItemCart> items = const []})
+      {required this.urlId, final List<ItemCart> items = const []})
       : _items = items,
         super._();
 
@@ -117,7 +117,7 @@ class _$_ShoppingCartDto extends _ShoppingCartDto {
       _$$_ShoppingCartDtoFromJson(json);
 
   @override
-  final String uuid;
+  final String urlId;
   final List<ItemCart> _items;
   @override
   @JsonKey()
@@ -129,7 +129,7 @@ class _$_ShoppingCartDto extends _ShoppingCartDto {
 
   @override
   String toString() {
-    return 'ShoppingCartDto(uuid: $uuid, items: $items)';
+    return 'ShoppingCartDto(urlId: $urlId, items: $items)';
   }
 
   @override
@@ -137,14 +137,14 @@ class _$_ShoppingCartDto extends _ShoppingCartDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ShoppingCartDto &&
-            (identical(other.uuid, uuid) || other.uuid == uuid) &&
+            (identical(other.urlId, urlId) || other.urlId == urlId) &&
             const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, uuid, const DeepCollectionEquality().hash(_items));
+      runtimeType, urlId, const DeepCollectionEquality().hash(_items));
 
   @JsonKey(ignore: true)
   @override
@@ -162,7 +162,7 @@ class _$_ShoppingCartDto extends _ShoppingCartDto {
 
 abstract class _ShoppingCartDto extends ShoppingCartDto {
   factory _ShoppingCartDto(
-      {required final String uuid,
+      {required final String urlId,
       final List<ItemCart> items}) = _$_ShoppingCartDto;
   _ShoppingCartDto._() : super._();
 
@@ -170,7 +170,7 @@ abstract class _ShoppingCartDto extends ShoppingCartDto {
       _$_ShoppingCartDto.fromJson;
 
   @override
-  String get uuid;
+  String get urlId;
   @override
   List<ItemCart> get items;
   @override
@@ -187,7 +187,7 @@ ItemCart _$ItemCartFromJson(Map<String, dynamic> json) {
 mixin _$ItemCart {
   ProductDto get product => throw _privateConstructorUsedError;
   String get uuid => throw _privateConstructorUsedError;
-  int get amount => throw _privateConstructorUsedError;
+  int get quantity => throw _privateConstructorUsedError;
   String get comment => throw _privateConstructorUsedError;
   List<AmountExtraFood> get extrasFood => throw _privateConstructorUsedError;
   List<AmountOptionFood> get optionsFoodOneSelection =>
@@ -209,7 +209,7 @@ abstract class $ItemCartCopyWith<$Res> {
   $Res call(
       {ProductDto product,
       String uuid,
-      int amount,
+      int quantity,
       String comment,
       List<AmountExtraFood> extrasFood,
       List<AmountOptionFood> optionsFoodOneSelection,
@@ -233,7 +233,7 @@ class _$ItemCartCopyWithImpl<$Res, $Val extends ItemCart>
   $Res call({
     Object? product = null,
     Object? uuid = null,
-    Object? amount = null,
+    Object? quantity = null,
     Object? comment = null,
     Object? extrasFood = null,
     Object? optionsFoodOneSelection = null,
@@ -248,9 +248,9 @@ class _$ItemCartCopyWithImpl<$Res, $Val extends ItemCart>
           ? _value.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
               as int,
       comment: null == comment
           ? _value.comment
@@ -290,7 +290,7 @@ abstract class _$$_ItemCarCopyWith<$Res> implements $ItemCartCopyWith<$Res> {
   $Res call(
       {ProductDto product,
       String uuid,
-      int amount,
+      int quantity,
       String comment,
       List<AmountExtraFood> extrasFood,
       List<AmountOptionFood> optionsFoodOneSelection,
@@ -312,7 +312,7 @@ class __$$_ItemCarCopyWithImpl<$Res>
   $Res call({
     Object? product = null,
     Object? uuid = null,
-    Object? amount = null,
+    Object? quantity = null,
     Object? comment = null,
     Object? extrasFood = null,
     Object? optionsFoodOneSelection = null,
@@ -327,9 +327,9 @@ class __$$_ItemCarCopyWithImpl<$Res>
           ? _value.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
               as int,
       comment: null == comment
           ? _value.comment
@@ -357,7 +357,7 @@ class _$_ItemCar extends _ItemCar {
   const _$_ItemCar(
       {required this.product,
       required this.uuid,
-      required this.amount,
+      required this.quantity,
       this.comment = '',
       final List<AmountExtraFood> extrasFood = const [],
       final List<AmountOptionFood> optionsFoodOneSelection = const [],
@@ -375,7 +375,7 @@ class _$_ItemCar extends _ItemCar {
   @override
   final String uuid;
   @override
-  final int amount;
+  final int quantity;
   @override
   @JsonKey()
   final String comment;
@@ -410,7 +410,7 @@ class _$_ItemCar extends _ItemCar {
 
   @override
   String toString() {
-    return 'ItemCart(product: $product, uuid: $uuid, amount: $amount, comment: $comment, extrasFood: $extrasFood, optionsFoodOneSelection: $optionsFoodOneSelection, optionsFoodForMultiple: $optionsFoodForMultiple)';
+    return 'ItemCart(product: $product, uuid: $uuid, quantity: $quantity, comment: $comment, extrasFood: $extrasFood, optionsFoodOneSelection: $optionsFoodOneSelection, optionsFoodForMultiple: $optionsFoodForMultiple)';
   }
 
   @override
@@ -420,7 +420,8 @@ class _$_ItemCar extends _ItemCar {
             other is _$_ItemCar &&
             (identical(other.product, product) || other.product == product) &&
             (identical(other.uuid, uuid) || other.uuid == uuid) &&
-            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity) &&
             (identical(other.comment, comment) || other.comment == comment) &&
             const DeepCollectionEquality()
                 .equals(other._extrasFood, _extrasFood) &&
@@ -436,7 +437,7 @@ class _$_ItemCar extends _ItemCar {
       runtimeType,
       product,
       uuid,
-      amount,
+      quantity,
       comment,
       const DeepCollectionEquality().hash(_extrasFood),
       const DeepCollectionEquality().hash(_optionsFoodOneSelection),
@@ -460,7 +461,7 @@ abstract class _ItemCar extends ItemCart {
   const factory _ItemCar(
       {required final ProductDto product,
       required final String uuid,
-      required final int amount,
+      required final int quantity,
       final String comment,
       final List<AmountExtraFood> extrasFood,
       final List<AmountOptionFood> optionsFoodOneSelection,
@@ -474,7 +475,7 @@ abstract class _ItemCar extends ItemCart {
   @override
   String get uuid;
   @override
-  int get amount;
+  int get quantity;
   @override
   String get comment;
   @override
@@ -497,7 +498,7 @@ AmountExtraFood _$AmountExtraFoodFromJson(Map<String, dynamic> json) {
 mixin _$AmountExtraFood {
   ExtraFood get extraFood => throw _privateConstructorUsedError;
   String get uuidModifier => throw _privateConstructorUsedError;
-  int get amount => throw _privateConstructorUsedError;
+  int get quantity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -511,7 +512,7 @@ abstract class $AmountExtraFoodCopyWith<$Res> {
           AmountExtraFood value, $Res Function(AmountExtraFood) then) =
       _$AmountExtraFoodCopyWithImpl<$Res, AmountExtraFood>;
   @useResult
-  $Res call({ExtraFood extraFood, String uuidModifier, int amount});
+  $Res call({ExtraFood extraFood, String uuidModifier, int quantity});
 
   $ExtraFoodCopyWith<$Res> get extraFood;
 }
@@ -531,7 +532,7 @@ class _$AmountExtraFoodCopyWithImpl<$Res, $Val extends AmountExtraFood>
   $Res call({
     Object? extraFood = null,
     Object? uuidModifier = null,
-    Object? amount = null,
+    Object? quantity = null,
   }) {
     return _then(_value.copyWith(
       extraFood: null == extraFood
@@ -542,9 +543,9 @@ class _$AmountExtraFoodCopyWithImpl<$Res, $Val extends AmountExtraFood>
           ? _value.uuidModifier
           : uuidModifier // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -566,7 +567,7 @@ abstract class _$$_AmountExtraFoodCopyWith<$Res>
       __$$_AmountExtraFoodCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ExtraFood extraFood, String uuidModifier, int amount});
+  $Res call({ExtraFood extraFood, String uuidModifier, int quantity});
 
   @override
   $ExtraFoodCopyWith<$Res> get extraFood;
@@ -585,7 +586,7 @@ class __$$_AmountExtraFoodCopyWithImpl<$Res>
   $Res call({
     Object? extraFood = null,
     Object? uuidModifier = null,
-    Object? amount = null,
+    Object? quantity = null,
   }) {
     return _then(_$_AmountExtraFood(
       extraFood: null == extraFood
@@ -596,9 +597,9 @@ class __$$_AmountExtraFoodCopyWithImpl<$Res>
           ? _value.uuidModifier
           : uuidModifier // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -610,7 +611,7 @@ class _$_AmountExtraFood extends _AmountExtraFood {
   const _$_AmountExtraFood(
       {required this.extraFood,
       required this.uuidModifier,
-      required this.amount})
+      required this.quantity})
       : super._();
 
   factory _$_AmountExtraFood.fromJson(Map<String, dynamic> json) =>
@@ -621,11 +622,11 @@ class _$_AmountExtraFood extends _AmountExtraFood {
   @override
   final String uuidModifier;
   @override
-  final int amount;
+  final int quantity;
 
   @override
   String toString() {
-    return 'AmountExtraFood(extraFood: $extraFood, uuidModifier: $uuidModifier, amount: $amount)';
+    return 'AmountExtraFood(extraFood: $extraFood, uuidModifier: $uuidModifier, quantity: $quantity)';
   }
 
   @override
@@ -637,12 +638,14 @@ class _$_AmountExtraFood extends _AmountExtraFood {
                 other.extraFood == extraFood) &&
             (identical(other.uuidModifier, uuidModifier) ||
                 other.uuidModifier == uuidModifier) &&
-            (identical(other.amount, amount) || other.amount == amount));
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, extraFood, uuidModifier, amount);
+  int get hashCode =>
+      Object.hash(runtimeType, extraFood, uuidModifier, quantity);
 
   @JsonKey(ignore: true)
   @override
@@ -662,7 +665,7 @@ abstract class _AmountExtraFood extends AmountExtraFood {
   const factory _AmountExtraFood(
       {required final ExtraFood extraFood,
       required final String uuidModifier,
-      required final int amount}) = _$_AmountExtraFood;
+      required final int quantity}) = _$_AmountExtraFood;
   const _AmountExtraFood._() : super._();
 
   factory _AmountExtraFood.fromJson(Map<String, dynamic> json) =
@@ -673,7 +676,7 @@ abstract class _AmountExtraFood extends AmountExtraFood {
   @override
   String get uuidModifier;
   @override
-  int get amount;
+  int get quantity;
   @override
   @JsonKey(ignore: true)
   _$$_AmountExtraFoodCopyWith<_$_AmountExtraFood> get copyWith =>

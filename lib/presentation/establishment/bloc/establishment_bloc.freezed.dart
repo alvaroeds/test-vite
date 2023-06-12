@@ -16,23 +16,25 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$EstablishmentEvent {
-  String? get name => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? name) started,
     required TResult Function(StreamAction action, String? name) streamCall,
+    required TResult Function() redirectOn404,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? name)? started,
     TResult? Function(StreamAction action, String? name)? streamCall,
+    TResult? Function()? redirectOn404,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? name)? started,
     TResult Function(StreamAction action, String? name)? streamCall,
+    TResult Function()? redirectOn404,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -40,24 +42,23 @@ mixin _$EstablishmentEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_StreamCall value) streamCall,
+    required TResult Function(_RedirectOn404 value) redirectOn404,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_StreamCall value)? streamCall,
+    TResult? Function(_RedirectOn404 value)? redirectOn404,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_StreamCall value)? streamCall,
+    TResult Function(_RedirectOn404 value)? redirectOn404,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $EstablishmentEventCopyWith<EstablishmentEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -66,8 +67,6 @@ abstract class $EstablishmentEventCopyWith<$Res> {
   factory $EstablishmentEventCopyWith(
           EstablishmentEvent value, $Res Function(EstablishmentEvent) then) =
       _$EstablishmentEventCopyWithImpl<$Res, EstablishmentEvent>;
-  @useResult
-  $Res call({String? name});
 }
 
 /// @nodoc
@@ -79,28 +78,13 @@ class _$EstablishmentEventCopyWithImpl<$Res, $Val extends EstablishmentEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = freezed,
-  }) {
-    return _then(_value.copyWith(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res>
-    implements $EstablishmentEventCopyWith<$Res> {
+abstract class _$$_StartedCopyWith<$Res> {
   factory _$$_StartedCopyWith(
           _$_Started value, $Res Function(_$_Started) then) =
       __$$_StartedCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String? name});
 }
@@ -161,6 +145,7 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function(String? name) started,
     required TResult Function(StreamAction action, String? name) streamCall,
+    required TResult Function() redirectOn404,
   }) {
     return started(name);
   }
@@ -170,6 +155,7 @@ class _$_Started implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? name)? started,
     TResult? Function(StreamAction action, String? name)? streamCall,
+    TResult? Function()? redirectOn404,
   }) {
     return started?.call(name);
   }
@@ -179,6 +165,7 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? name)? started,
     TResult Function(StreamAction action, String? name)? streamCall,
+    TResult Function()? redirectOn404,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -192,6 +179,7 @@ class _$_Started implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_StreamCall value) streamCall,
+    required TResult Function(_RedirectOn404 value) redirectOn404,
   }) {
     return started(this);
   }
@@ -201,6 +189,7 @@ class _$_Started implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_StreamCall value)? streamCall,
+    TResult? Function(_RedirectOn404 value)? redirectOn404,
   }) {
     return started?.call(this);
   }
@@ -210,6 +199,7 @@ class _$_Started implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_StreamCall value)? streamCall,
+    TResult Function(_RedirectOn404 value)? redirectOn404,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -222,21 +212,17 @@ class _$_Started implements _Started {
 abstract class _Started implements EstablishmentEvent {
   const factory _Started(final String? name) = _$_Started;
 
-  @override
   String? get name;
-  @override
   @JsonKey(ignore: true)
   _$$_StartedCopyWith<_$_Started> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_StreamCallCopyWith<$Res>
-    implements $EstablishmentEventCopyWith<$Res> {
+abstract class _$$_StreamCallCopyWith<$Res> {
   factory _$$_StreamCallCopyWith(
           _$_StreamCall value, $Res Function(_$_StreamCall) then) =
       __$$_StreamCallCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({StreamAction action, String? name});
 }
@@ -306,6 +292,7 @@ class _$_StreamCall implements _StreamCall {
   TResult when<TResult extends Object?>({
     required TResult Function(String? name) started,
     required TResult Function(StreamAction action, String? name) streamCall,
+    required TResult Function() redirectOn404,
   }) {
     return streamCall(action, name);
   }
@@ -315,6 +302,7 @@ class _$_StreamCall implements _StreamCall {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? name)? started,
     TResult? Function(StreamAction action, String? name)? streamCall,
+    TResult? Function()? redirectOn404,
   }) {
     return streamCall?.call(action, name);
   }
@@ -324,6 +312,7 @@ class _$_StreamCall implements _StreamCall {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? name)? started,
     TResult Function(StreamAction action, String? name)? streamCall,
+    TResult Function()? redirectOn404,
     required TResult orElse(),
   }) {
     if (streamCall != null) {
@@ -337,6 +326,7 @@ class _$_StreamCall implements _StreamCall {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_StreamCall value) streamCall,
+    required TResult Function(_RedirectOn404 value) redirectOn404,
   }) {
     return streamCall(this);
   }
@@ -346,6 +336,7 @@ class _$_StreamCall implements _StreamCall {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_StreamCall value)? streamCall,
+    TResult? Function(_RedirectOn404 value)? redirectOn404,
   }) {
     return streamCall?.call(this);
   }
@@ -355,6 +346,7 @@ class _$_StreamCall implements _StreamCall {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_StreamCall value)? streamCall,
+    TResult Function(_RedirectOn404 value)? redirectOn404,
     required TResult orElse(),
   }) {
     if (streamCall != null) {
@@ -369,12 +361,118 @@ abstract class _StreamCall implements EstablishmentEvent {
       _$_StreamCall;
 
   StreamAction get action;
-  @override
   String? get name;
-  @override
   @JsonKey(ignore: true)
   _$$_StreamCallCopyWith<_$_StreamCall> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_RedirectOn404CopyWith<$Res> {
+  factory _$$_RedirectOn404CopyWith(
+          _$_RedirectOn404 value, $Res Function(_$_RedirectOn404) then) =
+      __$$_RedirectOn404CopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_RedirectOn404CopyWithImpl<$Res>
+    extends _$EstablishmentEventCopyWithImpl<$Res, _$_RedirectOn404>
+    implements _$$_RedirectOn404CopyWith<$Res> {
+  __$$_RedirectOn404CopyWithImpl(
+      _$_RedirectOn404 _value, $Res Function(_$_RedirectOn404) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_RedirectOn404 implements _RedirectOn404 {
+  const _$_RedirectOn404();
+
+  @override
+  String toString() {
+    return 'EstablishmentEvent.redirectOn404()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_RedirectOn404);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? name) started,
+    required TResult Function(StreamAction action, String? name) streamCall,
+    required TResult Function() redirectOn404,
+  }) {
+    return redirectOn404();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? name)? started,
+    TResult? Function(StreamAction action, String? name)? streamCall,
+    TResult? Function()? redirectOn404,
+  }) {
+    return redirectOn404?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? name)? started,
+    TResult Function(StreamAction action, String? name)? streamCall,
+    TResult Function()? redirectOn404,
+    required TResult orElse(),
+  }) {
+    if (redirectOn404 != null) {
+      return redirectOn404();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_StreamCall value) streamCall,
+    required TResult Function(_RedirectOn404 value) redirectOn404,
+  }) {
+    return redirectOn404(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_StreamCall value)? streamCall,
+    TResult? Function(_RedirectOn404 value)? redirectOn404,
+  }) {
+    return redirectOn404?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_StreamCall value)? streamCall,
+    TResult Function(_RedirectOn404 value)? redirectOn404,
+    required TResult orElse(),
+  }) {
+    if (redirectOn404 != null) {
+      return redirectOn404(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RedirectOn404 implements EstablishmentEvent {
+  const factory _RedirectOn404() = _$_RedirectOn404;
 }
 
 /// @nodoc

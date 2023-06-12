@@ -24,6 +24,7 @@ mixin _$UserDto {
   String get name => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   List<AddressDto> get addresses => throw _privateConstructorUsedError;
+  List<String> get ordersAvailables => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,11 @@ abstract class $UserDtoCopyWith<$Res> {
       _$UserDtoCopyWithImpl<$Res, UserDto>;
   @useResult
   $Res call(
-      {String uuid, String name, String phone, List<AddressDto> addresses});
+      {String uuid,
+      String name,
+      String phone,
+      List<AddressDto> addresses,
+      List<String> ordersAvailables});
 }
 
 /// @nodoc
@@ -56,6 +61,7 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
     Object? name = null,
     Object? phone = null,
     Object? addresses = null,
+    Object? ordersAvailables = null,
   }) {
     return _then(_value.copyWith(
       uuid: null == uuid
@@ -74,6 +80,10 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
           ? _value.addresses
           : addresses // ignore: cast_nullable_to_non_nullable
               as List<AddressDto>,
+      ordersAvailables: null == ordersAvailables
+          ? _value.ordersAvailables
+          : ordersAvailables // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -86,7 +96,11 @@ abstract class _$$_UserDtoCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String uuid, String name, String phone, List<AddressDto> addresses});
+      {String uuid,
+      String name,
+      String phone,
+      List<AddressDto> addresses,
+      List<String> ordersAvailables});
 }
 
 /// @nodoc
@@ -103,6 +117,7 @@ class __$$_UserDtoCopyWithImpl<$Res>
     Object? name = null,
     Object? phone = null,
     Object? addresses = null,
+    Object? ordersAvailables = null,
   }) {
     return _then(_$_UserDto(
       uuid: null == uuid
@@ -121,6 +136,10 @@ class __$$_UserDtoCopyWithImpl<$Res>
           ? _value._addresses
           : addresses // ignore: cast_nullable_to_non_nullable
               as List<AddressDto>,
+      ordersAvailables: null == ordersAvailables
+          ? _value._ordersAvailables
+          : ordersAvailables // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -132,8 +151,10 @@ class _$_UserDto implements _UserDto {
       {required this.uuid,
       this.name = '',
       this.phone = '',
-      final List<AddressDto> addresses = const <AddressDto>[]})
-      : _addresses = addresses;
+      final List<AddressDto> addresses = const <AddressDto>[],
+      final List<String> ordersAvailables = const <String>[]})
+      : _addresses = addresses,
+        _ordersAvailables = ordersAvailables;
 
   factory _$_UserDto.fromJson(Map<String, dynamic> json) =>
       _$$_UserDtoFromJson(json);
@@ -155,9 +176,19 @@ class _$_UserDto implements _UserDto {
     return EqualUnmodifiableListView(_addresses);
   }
 
+  final List<String> _ordersAvailables;
+  @override
+  @JsonKey()
+  List<String> get ordersAvailables {
+    if (_ordersAvailables is EqualUnmodifiableListView)
+      return _ordersAvailables;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_ordersAvailables);
+  }
+
   @override
   String toString() {
-    return 'UserDto(uuid: $uuid, name: $name, phone: $phone, addresses: $addresses)';
+    return 'UserDto(uuid: $uuid, name: $name, phone: $phone, addresses: $addresses, ordersAvailables: $ordersAvailables)';
   }
 
   @override
@@ -169,13 +200,20 @@ class _$_UserDto implements _UserDto {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             const DeepCollectionEquality()
-                .equals(other._addresses, _addresses));
+                .equals(other._addresses, _addresses) &&
+            const DeepCollectionEquality()
+                .equals(other._ordersAvailables, _ordersAvailables));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, uuid, name, phone,
-      const DeepCollectionEquality().hash(_addresses));
+  int get hashCode => Object.hash(
+      runtimeType,
+      uuid,
+      name,
+      phone,
+      const DeepCollectionEquality().hash(_addresses),
+      const DeepCollectionEquality().hash(_ordersAvailables));
 
   @JsonKey(ignore: true)
   @override
@@ -196,7 +234,8 @@ abstract class _UserDto implements UserDto {
       {required final String uuid,
       final String name,
       final String phone,
-      final List<AddressDto> addresses}) = _$_UserDto;
+      final List<AddressDto> addresses,
+      final List<String> ordersAvailables}) = _$_UserDto;
 
   factory _UserDto.fromJson(Map<String, dynamic> json) = _$_UserDto.fromJson;
 
@@ -208,6 +247,8 @@ abstract class _UserDto implements UserDto {
   String get phone;
   @override
   List<AddressDto> get addresses;
+  @override
+  List<String> get ordersAvailables;
   @override
   @JsonKey(ignore: true)
   _$$_UserDtoCopyWith<_$_UserDto> get copyWith =>

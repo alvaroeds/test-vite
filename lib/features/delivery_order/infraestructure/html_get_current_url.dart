@@ -5,9 +5,7 @@ import 'package:pedido_listo_web/resources/router/config_router.dart';
 import 'package:universal_html/html.dart' as html;
 
 IGetCurrentUrl getCurrentUrl = (String idUrl) {
-  if (!kIsWeb) {
-    return 'Pedido listo App';
-  }
+  if (!kIsWeb) return 'Pedido listo App';
 
   final uri = Uri.parse(html.window.location.href);
 

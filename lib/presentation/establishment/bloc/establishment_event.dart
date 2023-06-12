@@ -6,6 +6,7 @@ class EstablishmentEvent with _$EstablishmentEvent {
   const factory EstablishmentEvent.streamCall(
       StreamAction action, String? name) = _StreamCall;
 
+  const factory EstablishmentEvent.redirectOn404() = _RedirectOn404;
   factory EstablishmentEvent.closeStream() =>
       const EstablishmentEvent.streamCall(StreamAction.close, null);
 }

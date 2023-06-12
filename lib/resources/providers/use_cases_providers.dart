@@ -1,6 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pedido_listo_web/features/contact/application/send_email.dart';
+import 'package:pedido_listo_web/features/delivery_order/application/load_order.dart';
 import 'package:pedido_listo_web/features/delivery_order/application/make_order.dart';
+import 'package:pedido_listo_web/features/delivery_order/application/send_order.dart';
+import 'package:pedido_listo_web/features/establishment/application/redirect_on_404.dart';
 import 'package:pedido_listo_web/features/shopping_cart/application/load_cart.dart';
 import 'package:pedido_listo_web/features/shopping_cart/application/save_cart.dart';
 import 'package:pedido_listo_web/features/user/application/load_user.dart';
@@ -37,8 +40,19 @@ class RepositoryProvidersInjection {
         RepositoryProvider<MakeOrderUseCase>(
           create: (context) => MakeOrderUseCase(
             injection.getCurrentUrl,
-            injection.launchOrderUrl,
+            injection.orderSummaryRepository,
           ),
+        ),
+        RepositoryProvider<LoadOrderUseCase>(
+          create: (context) =>
+              LoadOrderUseCase(injection.orderSummaryRepository),
+        ),
+        RepositoryProvider<SendOrderUseCase>(
+          create: (context) => SendOrderUseCase(injection.launchOrderUrl),
+        ),
+        RepositoryProvider<RedirectOn404UseCase>(
+          create: (context) =>
+              RedirectOn404UseCase(injection.establishmentRepository),
         ),
       ];
 }

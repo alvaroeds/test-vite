@@ -19,19 +19,17 @@ class PreferencesCartRepository implements InterfaceCartRepository {
   Future<Option<ShoppingCartDto>> loadCart(String uuid) async {
     final dataString = sharedPreferences.getString(uuid);
 
-    return optionOf(dataString).map((dataString) {
-      final data = json.decode(dataString);
+    return optionOf(dataString).map((value) {
+      final data = json.decode(value) as Map<String, dynamic>;
 
-      final shoppingCartDto =
-          ShoppingCartDto.fromJson(data as Map<String, dynamic>);
-
-      return shoppingCartDto;
+      return ShoppingCartDto.fromJson(data);
     });
   }
 
   @override
   Future<bool> saveCart(ShoppingCartDto shoppingCartDto) async {
-    return sharedPreferences.setString(
-        shoppingCartDto.uuid, json.encode(shoppingCartDto.toJson()));
+    final encode = json.encode(shoppingCartDto.toJson());
+
+    return sharedPreferences.setString(shoppingCartDto.urlId, encode);
   }
 }

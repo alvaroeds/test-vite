@@ -25,7 +25,7 @@ class _ModifierListState extends State<ModifierList> {
         ),
         if (isExpanded) ...[
           ...widget.item.extrasFood.map(
-            (extra) => _TextTile('+${extra.amount} ${extra.extraFood.name}'),
+            (extra) => _TextTile('+${extra.quantity} ${extra.extraFood.name}'),
           ),
           ...widget.item.optionsFoodOneSelection.map(
             (extra) => _TextTile('+1 ${extra.optionFood.name}'),
@@ -36,7 +36,7 @@ class _ModifierListState extends State<ModifierList> {
         ] else ...[
           if (widget.item.extrasFood.isNotEmpty)
             _TextTile(
-                '+${widget.item.extrasFood.first.amount} ${widget.item.extrasFood.first.extraFood.name}')
+                '+${widget.item.extrasFood.first.quantity} ${widget.item.extrasFood.first.extraFood.name}')
           else if (widget.item.optionsFoodOneSelection.isNotEmpty)
             _TextTile(
                 '+1 ${widget.item.optionsFoodOneSelection.first.optionFood.name}')
