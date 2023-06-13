@@ -16,7 +16,7 @@ class ContactInfoSection {
         () => 'Para llevar',
         (_) => 'Domicilio',
       );
-  String get _contactDirection => address.fold(
+  String get _contactAddress => address.fold(
         () => '',
         (address) => '\nDirección: ${address.trim()}',
       );
@@ -30,10 +30,18 @@ class ContactInfoSection {
   String get _name => name.trim();
 
   String buildText() {
-    return '''
-*Tipo de servicio: $_serviceText*
-
-Nombre: $_name
-Teléfono: $_phone$_contactDirection$_additionalDetail''';
+    final text = template
+        .replaceAll('[TIPO_DE_SERVICIO]', _serviceText)
+        .replaceAll('[NAME]', _name)
+        .replaceAll('[PHONE]', _phone)
+        .replaceAll('[DIRECCION]', _contactAddress)
+        .replaceAll('[ADICIONAL]', _additionalDetail);
+    return text;
   }
+
+  static const template = '''
+*Tipo de servicio: [TIPO_DE_SERVICIO]*
+
+Nombre: [NAME]
+Teléfono: [PHONE][DIRECCION][ADICIONAL]''';
 }

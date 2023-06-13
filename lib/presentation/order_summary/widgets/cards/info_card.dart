@@ -33,14 +33,14 @@ class InfoCard extends StatelessWidget with CardStyle {
             const SizedBox(height: 8),
             _TextTile(
               summaryDto.addressOfDelivery!,
-              R.ASSETS_SVG_LOCATION_MARKER_SVG
-                  .toSvg(color: context.primaryColor, height: 28),
+              R.ASSETS_SVG_LOCATION_GREEN_SVG
+                  .toSvg(color: context.primaryColor),
             )
           ],
           const SizedBox(height: 8),
           _TextTile(
             'Al telefono +51 ${summaryDto.clientPhone}',
-            R.ASSETS_SVG_SHOP_SVG.toSvg(color: context.primaryColor),
+            R.ASSETS_SVG_USER_GREEN_SVG.toSvg(color: context.primaryColor),
           ),
         ],
       ),

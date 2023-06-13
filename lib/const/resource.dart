@@ -26,6 +26,9 @@ class R {
   /// ![preview](file:///Users/fardcrex/Documents/Flutter proyects/pedido-listo-client/assets/png/bag.png)
   static const String ASSETS_PNG_BAG_PNG = 'assets/png/bag.png';
 
+  /// ![preview](file:///Users/fardcrex/Documents/Flutter proyects/pedido-listo-client/assets/svg/alert.svg)
+  static const String ASSETS_SVG_ALERT_SVG = 'assets/svg/alert.svg';
+
   /// ![preview](file:///Users/fardcrex/Documents/Flutter proyects/pedido-listo-client/assets/svg/cart.svg)
   static const String ASSETS_SVG_CART_SVG = 'assets/svg/cart.svg';
 
@@ -50,11 +53,18 @@ class R {
   static const String ASSETS_SVG_LOCATION_MARKER_SVG =
       'assets/svg/location-marker.svg';
 
+  /// ![preview](file:///Users/fardcrex/Documents/Flutter proyects/pedido-listo-client/assets/svg/location_green.svg)
+  static const String ASSETS_SVG_LOCATION_GREEN_SVG =
+      'assets/svg/location_green.svg';
+
   /// ![preview](file:///Users/fardcrex/Documents/Flutter proyects/pedido-listo-client/assets/svg/pedido.svg)
   static const String ASSETS_SVG_PEDIDO_SVG = 'assets/svg/pedido.svg';
 
   /// ![preview](file:///Users/fardcrex/Documents/Flutter proyects/pedido-listo-client/assets/svg/shop.svg)
   static const String ASSETS_SVG_SHOP_SVG = 'assets/svg/shop.svg';
+
+  /// ![preview](file:///Users/fardcrex/Documents/Flutter proyects/pedido-listo-client/assets/svg/user_green.svg)
+  static const String ASSETS_SVG_USER_GREEN_SVG = 'assets/svg/user_green.svg';
 
   /// ![preview](file:///Users/fardcrex/Documents/Flutter proyects/pedido-listo-client/assets/svg/whatsapp.svg)
   static const String ASSETS_SVG_WHATSAPP_SVG = 'assets/svg/whatsapp.svg';

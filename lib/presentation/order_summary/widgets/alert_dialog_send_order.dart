@@ -6,7 +6,6 @@ import 'package:pedido_listo_web/presentation/app/bloc/app_cache_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/bloc/establishment_bloc.dart';
 import 'package:pedido_listo_web/presentation/order_summary/bloc/order_summary_bloc.dart';
 import 'package:pedido_listo_web/presentation/widgets/buttons/elevated_button_app.dart';
-import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
 import 'package:pedido_listo_web/resources/utils/extensions.dart';
 
 class AlertDialogSendOrder extends StatelessWidget {
@@ -79,11 +78,7 @@ class AlertDialogSendOrder extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              Icon(
-                Icons.error_outline, // Icono de "exclamation" en Flutter
-                color: context.primaryColor, // Color del icono
-                size: 80, // Tamaño del icono
-              ),
+              R.ASSETS_SVG_ALERT_SVG.toSvg(),
               const SizedBox(height: 20),
               Text(
                 'Enviar confirmación por\nwhatsapp',

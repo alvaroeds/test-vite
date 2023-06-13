@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pedido_listo_web/presentation/order_summary/widgets/footer_summary.dart';
 import 'package:pedido_listo_web/presentation/order_summary/widgets/header_summary.dart';
 
 class ScaffoldSummary extends StatelessWidget {
@@ -16,6 +17,8 @@ class ScaffoldSummary extends StatelessWidget {
           Navigator.pop(context);
         }),
         //  bottomNavigationBar: const FooterCart(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: const FooterSummary(),
       ),
     );
   }

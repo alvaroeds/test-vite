@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pedido_listo_web/features/contact/application/send_email.dart';
+import 'package:pedido_listo_web/features/delivery_order/application/ask_about_order.dart';
 import 'package:pedido_listo_web/features/delivery_order/application/load_order.dart';
 import 'package:pedido_listo_web/features/delivery_order/application/make_order.dart';
 import 'package:pedido_listo_web/features/delivery_order/application/send_order.dart';
@@ -53,6 +54,9 @@ class RepositoryProvidersInjection {
         RepositoryProvider<RedirectOn404UseCase>(
           create: (context) =>
               RedirectOn404UseCase(injection.establishmentRepository),
+        ),
+        RepositoryProvider<AskAboutOrderUseCase>(
+          create: (context) => AskAboutOrderUseCase(injection.launchOrderUrl),
         ),
       ];
 }

@@ -1,10 +1,4 @@
-import 'package:intl/intl.dart';
-
-extension DateFormats on DateTime {
-  String get dateFormat => DateFormat('dd/MM/yyyy').format(this);
-
-  String get timeFormat => DateFormat('hh:mm a').format(this).toLowerCase();
-}
+import 'package:pedido_listo_web/features/delivery_order/domain/extions.dart';
 
 class HeaderOrder {
   final DateTime _createdAt;

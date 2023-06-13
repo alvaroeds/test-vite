@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:pedido_listo_web/presentation/delivery_order/bloc/delivery_order_bloc.dart';
 
 part 'summary_dto.freezed.dart';
 part 'summary_dto.g.dart';
@@ -34,6 +35,10 @@ class SummaryDto with _$SummaryDto {
 
   bool get isPayWithCash => cashOfClient > 0;
 
+  Service get service => (addressOfDelivery ?? '').isNotEmpty
+      ? const Service.delivery()
+      : const Service.takeaway();
+
   Map<String, dynamic> convertToJson() => {
         ...toJson(),
         'summaryOfProducts':
@@ -53,6 +58,8 @@ class SummaryProduct with _$SummaryProduct {
   }) = SsummaryProduct;
 
   const SummaryProduct._();
+
+  double get totalCost => priceWithModifiers * quantity;
 
   double get priceWithModifiers =>
       price +
@@ -75,6 +82,10 @@ class SummaryModifier with _$SummaryModifier {
     required int quantity,
     required double price,
   }) = _SummaryModifier;
+
+  const SummaryModifier._();
+
+  double get totalCost => price * quantity;
 
   factory SummaryModifier.fromJson(Map<String, dynamic> json) =>
       _$SummaryModifierFromJson(json);

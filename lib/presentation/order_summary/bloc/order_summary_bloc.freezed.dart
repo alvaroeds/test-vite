@@ -20,18 +20,21 @@ mixin _$OrderSummaryEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String whatsappNumber) sendOrder,
+    required TResult Function(String whatsappNumber) askAboutOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String whatsappNumber)? sendOrder,
+    TResult? Function(String whatsappNumber)? askAboutOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String whatsappNumber)? sendOrder,
+    TResult Function(String whatsappNumber)? askAboutOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$OrderSummaryEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_SendOrder value) sendOrder,
+    required TResult Function(_AskAboutOrder value) askAboutOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_SendOrder value)? sendOrder,
+    TResult? Function(_AskAboutOrder value)? askAboutOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_SendOrder value)? sendOrder,
+    TResult Function(_AskAboutOrder value)? askAboutOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,6 +119,7 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String whatsappNumber) sendOrder,
+    required TResult Function(String whatsappNumber) askAboutOrder,
   }) {
     return started();
   }
@@ -122,6 +129,7 @@ class _$_Started implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String whatsappNumber)? sendOrder,
+    TResult? Function(String whatsappNumber)? askAboutOrder,
   }) {
     return started?.call();
   }
@@ -131,6 +139,7 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String whatsappNumber)? sendOrder,
+    TResult Function(String whatsappNumber)? askAboutOrder,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -144,6 +153,7 @@ class _$_Started implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_SendOrder value) sendOrder,
+    required TResult Function(_AskAboutOrder value) askAboutOrder,
   }) {
     return started(this);
   }
@@ -153,6 +163,7 @@ class _$_Started implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_SendOrder value)? sendOrder,
+    TResult? Function(_AskAboutOrder value)? askAboutOrder,
   }) {
     return started?.call(this);
   }
@@ -162,6 +173,7 @@ class _$_Started implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_SendOrder value)? sendOrder,
+    TResult Function(_AskAboutOrder value)? askAboutOrder,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -242,6 +254,7 @@ class _$_SendOrder implements _SendOrder {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String whatsappNumber) sendOrder,
+    required TResult Function(String whatsappNumber) askAboutOrder,
   }) {
     return sendOrder(whatsappNumber);
   }
@@ -251,6 +264,7 @@ class _$_SendOrder implements _SendOrder {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String whatsappNumber)? sendOrder,
+    TResult? Function(String whatsappNumber)? askAboutOrder,
   }) {
     return sendOrder?.call(whatsappNumber);
   }
@@ -260,6 +274,7 @@ class _$_SendOrder implements _SendOrder {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String whatsappNumber)? sendOrder,
+    TResult Function(String whatsappNumber)? askAboutOrder,
     required TResult orElse(),
   }) {
     if (sendOrder != null) {
@@ -273,6 +288,7 @@ class _$_SendOrder implements _SendOrder {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_SendOrder value) sendOrder,
+    required TResult Function(_AskAboutOrder value) askAboutOrder,
   }) {
     return sendOrder(this);
   }
@@ -282,6 +298,7 @@ class _$_SendOrder implements _SendOrder {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_SendOrder value)? sendOrder,
+    TResult? Function(_AskAboutOrder value)? askAboutOrder,
   }) {
     return sendOrder?.call(this);
   }
@@ -291,6 +308,7 @@ class _$_SendOrder implements _SendOrder {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_SendOrder value)? sendOrder,
+    TResult Function(_AskAboutOrder value)? askAboutOrder,
     required TResult orElse(),
   }) {
     if (sendOrder != null) {
@@ -306,6 +324,146 @@ abstract class _SendOrder implements OrderSummaryEvent {
   String get whatsappNumber;
   @JsonKey(ignore: true)
   _$$_SendOrderCopyWith<_$_SendOrder> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_AskAboutOrderCopyWith<$Res> {
+  factory _$$_AskAboutOrderCopyWith(
+          _$_AskAboutOrder value, $Res Function(_$_AskAboutOrder) then) =
+      __$$_AskAboutOrderCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String whatsappNumber});
+}
+
+/// @nodoc
+class __$$_AskAboutOrderCopyWithImpl<$Res>
+    extends _$OrderSummaryEventCopyWithImpl<$Res, _$_AskAboutOrder>
+    implements _$$_AskAboutOrderCopyWith<$Res> {
+  __$$_AskAboutOrderCopyWithImpl(
+      _$_AskAboutOrder _value, $Res Function(_$_AskAboutOrder) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? whatsappNumber = null,
+  }) {
+    return _then(_$_AskAboutOrder(
+      null == whatsappNumber
+          ? _value.whatsappNumber
+          : whatsappNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AskAboutOrder implements _AskAboutOrder {
+  const _$_AskAboutOrder(this.whatsappNumber);
+
+  @override
+  final String whatsappNumber;
+
+  @override
+  String toString() {
+    return 'OrderSummaryEvent.askAboutOrder(whatsappNumber: $whatsappNumber)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AskAboutOrder &&
+            (identical(other.whatsappNumber, whatsappNumber) ||
+                other.whatsappNumber == whatsappNumber));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, whatsappNumber);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AskAboutOrderCopyWith<_$_AskAboutOrder> get copyWith =>
+      __$$_AskAboutOrderCopyWithImpl<_$_AskAboutOrder>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String whatsappNumber) sendOrder,
+    required TResult Function(String whatsappNumber) askAboutOrder,
+  }) {
+    return askAboutOrder(whatsappNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String whatsappNumber)? sendOrder,
+    TResult? Function(String whatsappNumber)? askAboutOrder,
+  }) {
+    return askAboutOrder?.call(whatsappNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String whatsappNumber)? sendOrder,
+    TResult Function(String whatsappNumber)? askAboutOrder,
+    required TResult orElse(),
+  }) {
+    if (askAboutOrder != null) {
+      return askAboutOrder(whatsappNumber);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_SendOrder value) sendOrder,
+    required TResult Function(_AskAboutOrder value) askAboutOrder,
+  }) {
+    return askAboutOrder(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_SendOrder value)? sendOrder,
+    TResult? Function(_AskAboutOrder value)? askAboutOrder,
+  }) {
+    return askAboutOrder?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_SendOrder value)? sendOrder,
+    TResult Function(_AskAboutOrder value)? askAboutOrder,
+    required TResult orElse(),
+  }) {
+    if (askAboutOrder != null) {
+      return askAboutOrder(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AskAboutOrder implements OrderSummaryEvent {
+  const factory _AskAboutOrder(final String whatsappNumber) = _$_AskAboutOrder;
+
+  String get whatsappNumber;
+  @JsonKey(ignore: true)
+  _$$_AskAboutOrderCopyWith<_$_AskAboutOrder> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

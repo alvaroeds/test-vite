@@ -24,8 +24,7 @@ void main() {
 Nombre: $name
 Teléfono: $phone
 Dirección: $address
-$additionalDetail
-''';
+$additionalDetail''';
 
     expect(text, expectText);
   });
@@ -43,8 +42,7 @@ $additionalDetail
 *Tipo de servicio: Para llevar*
 
 Nombre: $name
-Teléfono: $phone
-''';
+Teléfono: $phone''';
 
     expect(text, expectText);
   });
@@ -63,8 +61,7 @@ Teléfono: $phone
 
 Nombre: $name
 Teléfono: $phone
-Dirección: $address
-''';
+Dirección: $address''';
 
     expect(text, expectText);
   });
@@ -84,8 +81,7 @@ Dirección: $address
 Nombre: $name
 Teléfono: $phone
 Dirección: $address
-$additionalDetail
-''';
+$additionalDetail''';
 
     expect(text, expectText);
   });

@@ -46,10 +46,10 @@ class FirestoreEstablishmentRepository implements IEstablishmentRepository {
     final uri = Uri.parse(html.window.location.href);
 
     uri.subDomain.forEach((subDomain) {
-      final newUrl = uri.toString().replaceFirst(
-            '$subDomain.',
-            '',
-          );
+      final newUrl = uri.host.replaceFirst(
+        '$subDomain.',
+        '',
+      );
       html.window.location.href = newUrl;
     });
   }

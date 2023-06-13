@@ -4,7 +4,6 @@ import 'package:pedido_listo_web/const/resource.dart';
 import 'package:pedido_listo_web/features/delivery_order/domain/summary_dto.dart';
 
 import 'package:pedido_listo_web/presentation/order_summary/widgets/cards/mixin_style.dart';
-import 'package:pedido_listo_web/resources/theme/extensions/color_theme.dart';
 import 'package:pedido_listo_web/resources/utils/extensions.dart';
 
 class CostSummaryCard extends StatefulWidget {
@@ -17,7 +16,8 @@ class CostSummaryCard extends StatefulWidget {
 }
 
 class _CostSummaryCardState extends State<CostSummaryCard> with CardStyle {
-  bool isShowDeatails = true;
+  bool isShowDeatails = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,7 +32,7 @@ class _CostSummaryCardState extends State<CostSummaryCard> with CardStyle {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                R.ASSETS_SVG_CURRENCY_DOLLAR_SVG.toSvg(width: 22),
+                R.ASSETS_SVG_CURRENCY_DOLLAR_SVG.toSvg(width: 25),
                 const SizedBox(width: 4),
                 Expanded(
                     child: _TextHeader(widget.summaryDto.totalCost,
@@ -41,7 +41,6 @@ class _CostSummaryCardState extends State<CostSummaryCard> with CardStyle {
                     isShowDeatails
                         ? Icons.keyboard_arrow_up
                         : Icons.keyboard_arrow_down,
-                    color: context.primaryColor,
                     size: 30)
               ],
             ),

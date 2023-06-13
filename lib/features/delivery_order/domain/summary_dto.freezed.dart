@@ -840,9 +840,10 @@ class __$$_SummaryModifierCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SummaryModifier implements _SummaryModifier {
+class _$_SummaryModifier extends _SummaryModifier {
   const _$_SummaryModifier(
-      {required this.name, required this.quantity, required this.price});
+      {required this.name, required this.quantity, required this.price})
+      : super._();
 
   factory _$_SummaryModifier.fromJson(Map<String, dynamic> json) =>
       _$$_SummaryModifierFromJson(json);
@@ -888,11 +889,12 @@ class _$_SummaryModifier implements _SummaryModifier {
   }
 }
 
-abstract class _SummaryModifier implements SummaryModifier {
+abstract class _SummaryModifier extends SummaryModifier {
   const factory _SummaryModifier(
       {required final String name,
       required final int quantity,
       required final double price}) = _$_SummaryModifier;
+  const _SummaryModifier._() : super._();
 
   factory _SummaryModifier.fromJson(Map<String, dynamic> json) =
       _$_SummaryModifier.fromJson;

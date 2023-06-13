@@ -68,8 +68,6 @@ class MakeOrderUseCase {
           .toList(),
     );
 
-    //  final url = orderTemplate.generateUrl(establishment.whatsappNumber);
-
     return _orderSummaryRepository.saveOrderSummary(summaryDto);
   }
 }

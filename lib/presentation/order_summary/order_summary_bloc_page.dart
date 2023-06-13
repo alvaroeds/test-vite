@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pedido_listo_web/features/delivery_order/application/ask_about_order.dart';
 import 'package:pedido_listo_web/features/delivery_order/application/load_order.dart';
 import 'package:pedido_listo_web/features/delivery_order/application/send_order.dart';
 import 'package:pedido_listo_web/presentation/app/bloc/app_cache_bloc.dart';
 import 'package:pedido_listo_web/presentation/establishment/bloc/establishment_bloc.dart';
 import 'package:pedido_listo_web/presentation/order_summary/bloc/order_summary_bloc.dart';
 import 'package:pedido_listo_web/presentation/order_summary/views/data_view.dart';
+import 'package:pedido_listo_web/presentation/order_summary/views/error_view.dart';
+import 'package:pedido_listo_web/presentation/order_summary/views/loading_view.dart';
 import 'package:pedido_listo_web/presentation/order_summary/widgets/alert_dialog_send_order.dart';
 import 'package:pedido_listo_web/presentation/order_summary/widgets/scaffold_summary.dart';
 import 'package:pedido_listo_web/presentation/widgets/loading_view.dart';
@@ -30,6 +33,7 @@ class OrderSummaryBlocPage extends StatelessWidget {
                 create: (context) => OrderSummaryBloc(
                   context.read<LoadOrderUseCase>(),
                   context.read<SendOrderUseCase>(),
+                  context.read<AskAboutOrderUseCase>(),
                   nroOrder: nroOrder,
                   id: establishment.id.toString(),
                 ),
@@ -57,10 +61,10 @@ class OrderSummaryBlocPage extends StatelessWidget {
                       selector: (state) => state.statusLoad,
                       builder: (context, status) {
                         return status.when(
-                            loading: LoadingView.new,
-                            hasData: DataView.new,
-                            error: (failure) =>
-                                Center(child: Text(failure.toString())));
+                          loading: SummaryLoadingView.new,
+                          hasData: DataView.new,
+                          error: SummaryErrorView.new,
+                        );
                       },
                     ),
                   ),
