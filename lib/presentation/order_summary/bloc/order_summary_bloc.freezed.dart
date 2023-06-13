@@ -624,21 +624,21 @@ mixin _$StatusLoad {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(SummaryDto summary) hasData,
+    required TResult Function(SummaryDto summary) data,
     required TResult Function(GlobalFailure<dynamic> failure) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(SummaryDto summary)? hasData,
+    TResult? Function(SummaryDto summary)? data,
     TResult? Function(GlobalFailure<dynamic> failure)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(SummaryDto summary)? hasData,
+    TResult Function(SummaryDto summary)? data,
     TResult Function(GlobalFailure<dynamic> failure)? error,
     required TResult orElse(),
   }) =>
@@ -646,21 +646,21 @@ mixin _$StatusLoad {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_HasData value) hasData,
+    required TResult Function(_HasData value) data,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_HasData value)? hasData,
+    TResult? Function(_HasData value)? data,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_HasData value)? hasData,
+    TResult Function(_HasData value)? data,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -702,8 +702,8 @@ class __$$_LoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$_Loading extends _Loading {
+  const _$_Loading() : super._();
 
   @override
   String toString() {
@@ -723,7 +723,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(SummaryDto summary) hasData,
+    required TResult Function(SummaryDto summary) data,
     required TResult Function(GlobalFailure<dynamic> failure) error,
   }) {
     return loading();
@@ -733,7 +733,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(SummaryDto summary)? hasData,
+    TResult? Function(SummaryDto summary)? data,
     TResult? Function(GlobalFailure<dynamic> failure)? error,
   }) {
     return loading?.call();
@@ -743,7 +743,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(SummaryDto summary)? hasData,
+    TResult Function(SummaryDto summary)? data,
     TResult Function(GlobalFailure<dynamic> failure)? error,
     required TResult orElse(),
   }) {
@@ -757,7 +757,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_HasData value) hasData,
+    required TResult Function(_HasData value) data,
     required TResult Function(_Error value) error,
   }) {
     return loading(this);
@@ -767,7 +767,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_HasData value)? hasData,
+    TResult? Function(_HasData value)? data,
     TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
@@ -777,7 +777,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_HasData value)? hasData,
+    TResult Function(_HasData value)? data,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -788,8 +788,9 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements StatusLoad {
+abstract class _Loading extends StatusLoad {
   const factory _Loading() = _$_Loading;
+  const _Loading._() : super._();
 }
 
 /// @nodoc
@@ -834,15 +835,15 @@ class __$$_HasDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_HasData implements _HasData {
-  const _$_HasData(this.summary);
+class _$_HasData extends _HasData {
+  const _$_HasData(this.summary) : super._();
 
   @override
   final SummaryDto summary;
 
   @override
   String toString() {
-    return 'StatusLoad.hasData(summary: $summary)';
+    return 'StatusLoad.data(summary: $summary)';
   }
 
   @override
@@ -866,32 +867,32 @@ class _$_HasData implements _HasData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(SummaryDto summary) hasData,
+    required TResult Function(SummaryDto summary) data,
     required TResult Function(GlobalFailure<dynamic> failure) error,
   }) {
-    return hasData(summary);
+    return data(summary);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(SummaryDto summary)? hasData,
+    TResult? Function(SummaryDto summary)? data,
     TResult? Function(GlobalFailure<dynamic> failure)? error,
   }) {
-    return hasData?.call(summary);
+    return data?.call(summary);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(SummaryDto summary)? hasData,
+    TResult Function(SummaryDto summary)? data,
     TResult Function(GlobalFailure<dynamic> failure)? error,
     required TResult orElse(),
   }) {
-    if (hasData != null) {
-      return hasData(summary);
+    if (data != null) {
+      return data(summary);
     }
     return orElse();
   }
@@ -900,39 +901,40 @@ class _$_HasData implements _HasData {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_HasData value) hasData,
+    required TResult Function(_HasData value) data,
     required TResult Function(_Error value) error,
   }) {
-    return hasData(this);
+    return data(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_HasData value)? hasData,
+    TResult? Function(_HasData value)? data,
     TResult? Function(_Error value)? error,
   }) {
-    return hasData?.call(this);
+    return data?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_HasData value)? hasData,
+    TResult Function(_HasData value)? data,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
-    if (hasData != null) {
-      return hasData(this);
+    if (data != null) {
+      return data(this);
     }
     return orElse();
   }
 }
 
-abstract class _HasData implements StatusLoad {
+abstract class _HasData extends StatusLoad {
   const factory _HasData(final SummaryDto summary) = _$_HasData;
+  const _HasData._() : super._();
 
   SummaryDto get summary;
   @JsonKey(ignore: true)
@@ -981,8 +983,8 @@ class __$$_ErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Error implements _Error {
-  const _$_Error(this.failure);
+class _$_Error extends _Error {
+  const _$_Error(this.failure) : super._();
 
   @override
   final GlobalFailure<dynamic> failure;
@@ -1013,7 +1015,7 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(SummaryDto summary) hasData,
+    required TResult Function(SummaryDto summary) data,
     required TResult Function(GlobalFailure<dynamic> failure) error,
   }) {
     return error(failure);
@@ -1023,7 +1025,7 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(SummaryDto summary)? hasData,
+    TResult? Function(SummaryDto summary)? data,
     TResult? Function(GlobalFailure<dynamic> failure)? error,
   }) {
     return error?.call(failure);
@@ -1033,7 +1035,7 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(SummaryDto summary)? hasData,
+    TResult Function(SummaryDto summary)? data,
     TResult Function(GlobalFailure<dynamic> failure)? error,
     required TResult orElse(),
   }) {
@@ -1047,7 +1049,7 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_HasData value) hasData,
+    required TResult Function(_HasData value) data,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -1057,7 +1059,7 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_HasData value)? hasData,
+    TResult? Function(_HasData value)? data,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -1067,7 +1069,7 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_HasData value)? hasData,
+    TResult Function(_HasData value)? data,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1078,8 +1080,9 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements StatusLoad {
+abstract class _Error extends StatusLoad {
   const factory _Error(final GlobalFailure<dynamic> failure) = _$_Error;
+  const _Error._() : super._();
 
   GlobalFailure<dynamic> get failure;
   @JsonKey(ignore: true)

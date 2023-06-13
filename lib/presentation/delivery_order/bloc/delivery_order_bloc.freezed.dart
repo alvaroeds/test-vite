@@ -2176,7 +2176,7 @@ mixin _$DeliveryOrderState {
   ShoppingCartDto get shoppingCartDto => throw _privateConstructorUsedError;
   EstablishmentDto get establishmentDto => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
-  Option<Either<GlobalFailure<dynamic>, String>>
+  Option<Either<GlobalFailure<dynamic>, SummaryDto>>
       get deliveryOrderFailureOrSuccessOption =>
           throw _privateConstructorUsedError;
   String get contactName => throw _privateConstructorUsedError;
@@ -2203,7 +2203,7 @@ abstract class $DeliveryOrderStateCopyWith<$Res> {
       ShoppingCartDto shoppingCartDto,
       EstablishmentDto establishmentDto,
       bool isSubmitting,
-      Option<Either<GlobalFailure<dynamic>, String>>
+      Option<Either<GlobalFailure<dynamic>, SummaryDto>>
           deliveryOrderFailureOrSuccessOption,
       String contactName,
       String contactPhone,
@@ -2267,7 +2267,7 @@ class _$DeliveryOrderStateCopyWithImpl<$Res, $Val extends DeliveryOrderState>
               deliveryOrderFailureOrSuccessOption
           ? _value.deliveryOrderFailureOrSuccessOption
           : deliveryOrderFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<GlobalFailure<dynamic>, String>>,
+              as Option<Either<GlobalFailure<dynamic>, SummaryDto>>,
       contactName: null == contactName
           ? _value.contactName
           : contactName // ignore: cast_nullable_to_non_nullable
@@ -2338,7 +2338,7 @@ abstract class _$$_DeliveryOrderStateCopyWith<$Res>
       ShoppingCartDto shoppingCartDto,
       EstablishmentDto establishmentDto,
       bool isSubmitting,
-      Option<Either<GlobalFailure<dynamic>, String>>
+      Option<Either<GlobalFailure<dynamic>, SummaryDto>>
           deliveryOrderFailureOrSuccessOption,
       String contactName,
       String contactPhone,
@@ -2404,7 +2404,7 @@ class __$$_DeliveryOrderStateCopyWithImpl<$Res>
               deliveryOrderFailureOrSuccessOption
           ? _value.deliveryOrderFailureOrSuccessOption
           : deliveryOrderFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<GlobalFailure<dynamic>, String>>,
+              as Option<Either<GlobalFailure<dynamic>, SummaryDto>>,
       contactName: null == contactName
           ? _value.contactName
           : contactName // ignore: cast_nullable_to_non_nullable
@@ -2458,7 +2458,7 @@ class _$_DeliveryOrderState extends _DeliveryOrderState {
   @override
   final bool isSubmitting;
   @override
-  final Option<Either<GlobalFailure<dynamic>, String>>
+  final Option<Either<GlobalFailure<dynamic>, SummaryDto>>
       deliveryOrderFailureOrSuccessOption;
   @override
   @JsonKey()
@@ -2546,7 +2546,7 @@ abstract class _DeliveryOrderState extends DeliveryOrderState {
       required final ShoppingCartDto shoppingCartDto,
       required final EstablishmentDto establishmentDto,
       required final bool isSubmitting,
-      required final Option<Either<GlobalFailure<dynamic>, String>>
+      required final Option<Either<GlobalFailure<dynamic>, SummaryDto>>
           deliveryOrderFailureOrSuccessOption,
       final String contactName,
       final String contactPhone,
@@ -2566,7 +2566,7 @@ abstract class _DeliveryOrderState extends DeliveryOrderState {
   @override
   bool get isSubmitting;
   @override
-  Option<Either<GlobalFailure<dynamic>, String>>
+  Option<Either<GlobalFailure<dynamic>, SummaryDto>>
       get deliveryOrderFailureOrSuccessOption;
   @override
   String get contactName;

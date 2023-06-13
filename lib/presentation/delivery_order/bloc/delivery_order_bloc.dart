@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pedido_listo_web/features/delivery_order/domain/payment.dart';
 import 'package:pedido_listo_web/features/delivery_order/application/make_order.dart';
+import 'package:pedido_listo_web/features/delivery_order/domain/summary_dto.dart';
 import 'package:pedido_listo_web/features/establishment/domain/establishment_dto.dart';
 import 'package:pedido_listo_web/features/shopping_cart/domain/shopping_car_dto.dart';
 import 'package:pedido_listo_web/features/user/domain/dto/address_dto.dart';

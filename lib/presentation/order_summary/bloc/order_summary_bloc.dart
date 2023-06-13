@@ -23,10 +23,14 @@ class OrderSummaryBloc extends Bloc<OrderSummaryEvent, OrderSummaryState> {
   OrderSummaryBloc(
     this._loadOrderUseCase,
     this._sendOrderUseCase,
-    this._askAboutOrderUseCase, {
+    this._askAboutOrderUseCase,
+    Option<SummaryDto> summaryCache, {
     required this.id,
     required this.nroOrder,
-  }) : super(OrderSummaryState.initial()) {
+  }) : super(summaryCache.fold(
+          OrderSummaryState.initial,
+          OrderSummaryState.fromCache,
+        )) {
     on<_Started>(_onStarted);
     on<_SendOrder>(_onSendOrder);
     on<_AskAboutOrder>(_onAskAboutOrder);
@@ -40,15 +44,17 @@ class OrderSummaryBloc extends Bloc<OrderSummaryEvent, OrderSummaryState> {
       nroOrder: nroOrder,
     );
 
-    final status = res.fold(StatusLoad.error, StatusLoad.hasData);
+    final status = res.fold(StatusLoad.error, StatusLoad.data);
 
     emit(state.copyWith(statusLoad: status));
   }
 
   FutureOr<void> _onSendOrder(
-      _SendOrder event, Emitter<OrderSummaryState> emit) async {
+    _SendOrder event,
+    Emitter<OrderSummaryState> emit,
+  ) async {
     await state.statusLoad.whenOrNull(
-      hasData: (summary) async {
+      data: (summary) async {
         emit(state.copyWith(statusSend: none()));
 
         final res = await _sendOrderUseCase.execute(summary,
@@ -64,7 +70,7 @@ class OrderSummaryBloc extends Bloc<OrderSummaryEvent, OrderSummaryState> {
     Emitter<OrderSummaryState> emit,
   ) {
     state.statusLoad.whenOrNull(
-      hasData: (summary) async {
+      data: (summary) async {
         await _askAboutOrderUseCase.execute(
           summary,
           whatsappNumber: event.whatsappNumber,

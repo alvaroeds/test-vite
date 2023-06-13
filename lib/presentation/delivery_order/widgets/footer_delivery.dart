@@ -60,18 +60,19 @@ class FooterDelivery extends StatelessWidget {
           a.fold(
             (l) =>
                 showSnackBar(l.toString(), context, icon: Icons.error_outline),
-            (nroOrder) {
+            (summary) {
               final urlId = state.establishmentDto.idUrl;
 
               context.read<AppCacheBloc>()
-                ..add(AppCacheEvent.clearCart(urlId, nroOrder))
-                ..add(AppCacheEvent.addOrder(nroOrder));
+                ..add(AppCacheEvent.updateCurrentSummary(summary: summary))
+                ..add(AppCacheEvent.addOrder(summary.nroOrder))
+                ..add(AppCacheEvent.clearCart(urlId));
 
               GoRouter.of(context).pushReplacementNamed(
                 RouterSummaryOrder.name,
                 pathParameters: {
                   RouterEstablishment.firtsPath: urlId,
-                  RouterSummaryOrder.nroOrder: nroOrder,
+                  RouterSummaryOrder.nroOrder: summary.nroOrder,
                 },
               );
             },

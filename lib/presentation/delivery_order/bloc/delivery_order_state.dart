@@ -8,7 +8,7 @@ class DeliveryOrderState with _$DeliveryOrderState {
     required ShoppingCartDto shoppingCartDto,
     required EstablishmentDto establishmentDto,
     required bool isSubmitting,
-    required Option<Either<GlobalFailure<dynamic>, String>>
+    required Option<Either<GlobalFailure<dynamic>, SummaryDto>>
         deliveryOrderFailureOrSuccessOption,
     @Default('') String contactName,
     @Default('') String contactPhone,

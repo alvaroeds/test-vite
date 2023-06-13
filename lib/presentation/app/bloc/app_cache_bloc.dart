@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:pedido_listo_web/features/delivery_order/domain/summary_dto.dart';
 import 'package:pedido_listo_web/features/establishment/domain/modifiers.dart';
 import 'package:pedido_listo_web/features/establishment/domain/product_dto.dart';
 import 'package:pedido_listo_web/features/shopping_cart/application/load_cart.dart';
@@ -28,7 +29,7 @@ class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
     this._loadCartUseCase,
     this._saveCartUseCase,
     this._saveUserUseCase,
-  ) : super(AppCacheState(user: userDto)) {
+  ) : super(AppCacheState.initial(userDto)) {
     on<_CreateItem>(_createItem);
     on<_UpdateCart>(_updateCart, transformer: (events, mappper) {
       return restartable<_UpdateCart>().call(
@@ -43,6 +44,12 @@ class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
     on<_CreateAddress>(_createAddress);
     on<_AddOrder>(_addOrder);
     on<_RemoveOrder>(_removeOrder);
+    on<_UpdateCurrentSummary>(_updateCurrentSummary);
+  }
+
+  FutureOr<void> _updateCurrentSummary(
+      _UpdateCurrentSummary event, Emitter<AppCacheState> emit) {
+    emit(state.copyWith(summary: optionOf(event.summary)));
   }
 
   FutureOr<void> _removeOrder(_RemoveOrder event, Emitter<AppCacheState> emit) {
@@ -134,7 +141,7 @@ class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
               items: [item],
             ));
 
-    emit(state.copyWith(cartCache: {
+    emit(state.copyWith(summary: const None(), cartCache: {
       ...state.cartCache,
       event.establishmentUuid: shoppingCartDto
     }));
@@ -155,9 +162,7 @@ class AppCacheBloc extends Bloc<AppCacheEvent, AppCacheState> {
   FutureOr<void> _clearCart(_ClearCart event, Emitter<AppCacheState> emit) {
     final cart = ShoppingCartDto(urlId: event.urlId);
 
-    emit(state.copyWith(
-        isRedirectToSummary: true,
-        cartCache: {...state.cartCache, event.urlId: cart}));
+    emit(state.copyWith(cartCache: {...state.cartCache, event.urlId: cart}));
 
     _saveCartUseCase.execute(cart);
   }

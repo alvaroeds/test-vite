@@ -12,7 +12,7 @@ class MakeOrderUseCase {
 
   const MakeOrderUseCase(this._getCurrentUrl, this._orderSummaryRepository);
 
-  Future<RespondOnSave> execute(
+  Future<RespondOnSaveUC> execute(
     ShoppingCartDto cart,
     EstablishmentDto establishment, {
     required String contactName,
@@ -21,7 +21,7 @@ class MakeOrderUseCase {
     required String additionalDetail,
     required String paymentMethod,
     required double cash,
-  }) async {
+  }) {
     final currentDate = DateTime.now();
 
     final summaryDto = SummaryDto(
@@ -68,6 +68,8 @@ class MakeOrderUseCase {
           .toList(),
     );
 
-    return _orderSummaryRepository.saveOrderSummary(summaryDto);
+    _orderSummaryRepository.saveOrderSummary(summaryDto);
+
+    return Future.value(right(summaryDto));
   }
 }

@@ -11,29 +11,39 @@ class FooterSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 800,
-      child: Row(
-        children: [
-          const Spacer(flex: 21),
-          Expanded(
-            flex: 386,
-            child: ElevatedButtonApp(
-              height: 50,
-              icon: R.ASSETS_SVG_WHATSAPP_SVG.toSvg(),
-              title: 'Consultar sobre mi pedido',
-              onPressed: () {
-                context.read<EstablishmentBloc>().state.whenOrNull(
-                    hasData: (establishment) => context
-                        .read<OrderSummaryBloc>()
-                        .add(OrderSummaryEvent.askAboutOrder(
-                            establishment.whatsappNumber)));
-              },
-            ),
+    return BlocSelector<OrderSummaryBloc, OrderSummaryState, bool>(
+      selector: (state) {
+        return state.statusLoad.hasData;
+      },
+      builder: (context, state) {
+        if (!state) {
+          return const SizedBox.shrink();
+        }
+        return SizedBox(
+          width: 800,
+          child: Row(
+            children: [
+              const Spacer(flex: 21),
+              Expanded(
+                flex: 386,
+                child: ElevatedButtonApp(
+                  height: 50,
+                  icon: R.ASSETS_SVG_WHATSAPP_SVG.toSvg(),
+                  title: 'Consultar sobre mi pedido',
+                  onPressed: () {
+                    context.read<EstablishmentBloc>().state.whenOrNull(
+                        hasData: (establishment) => context
+                            .read<OrderSummaryBloc>()
+                            .add(OrderSummaryEvent.askAboutOrder(
+                                establishment.whatsappNumber)));
+                  },
+                ),
+              ),
+              const Spacer(flex: 21),
+            ],
           ),
-          const Spacer(flex: 21),
-        ],
-      ),
+        );
+      },
     );
   }
 }

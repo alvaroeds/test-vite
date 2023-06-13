@@ -34,6 +34,7 @@ class OrderSummaryBlocPage extends StatelessWidget {
                   context.read<LoadOrderUseCase>(),
                   context.read<SendOrderUseCase>(),
                   context.read<AskAboutOrderUseCase>(),
+                  context.read<AppCacheBloc>().state.summary,
                   nroOrder: nroOrder,
                   id: establishment.id.toString(),
                 ),
@@ -42,12 +43,12 @@ class OrderSummaryBlocPage extends StatelessWidget {
                       previous.statusLoad != current.statusLoad,
                   listener: (context, state) {
                     state.statusLoad.whenOrNull(
-                      hasData: (_) {
-                        final ordersAvailables = context
-                            .read<AppCacheBloc>()
-                            .state
-                            .user
-                            .ordersAvailables;
+                      data: (summary) {
+                        final bloc = context.read<AppCacheBloc>();
+                        final ordersAvailables =
+                            bloc.state.user.ordersAvailables;
+                        bloc.add(AppCacheEvent.updateCurrentSummary(
+                            summary: summary));
 
                         if (ordersAvailables.contains(nroOrder)) {
                           return AlertDialogSendOrder.show(context);
@@ -61,8 +62,8 @@ class OrderSummaryBlocPage extends StatelessWidget {
                       selector: (state) => state.statusLoad,
                       builder: (context, status) {
                         return status.when(
+                          data: DataView.new,
                           loading: SummaryLoadingView.new,
-                          hasData: DataView.new,
                           error: SummaryErrorView.new,
                         );
                       },

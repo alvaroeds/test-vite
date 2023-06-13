@@ -135,13 +135,23 @@ class RouterDeleveryOrder {
         redirect: (context, state) {
           final urlId = subDomain.getOrElse(state.idUrl);
 
-          final cart = context.read<AppCacheBloc>().state.cartCache[urlId];
+          final cacheState = context.read<AppCacheBloc>().state;
 
-          if (cart == null) return null;
+          final cart = cacheState.cartCache[urlId];
+
+          if (cacheState.isRedirectToSummary) {
+            final urlId = subDomain.fold(state.idUrl, (_) => '');
+
+            return '/$urlId';
+          }
 
           final pathBack =
               '${subDomain.isSome() ? '' : '/$urlId'}/${RouterCart.firtsPath}';
-          return cart.isItemsEmpty ? pathBack : null;
+          final isCartEmpty = cart?.isItemsEmpty ?? true;
+
+          if (isCartEmpty) return pathBack;
+
+          return null;
         },
         pageBuilder: (context, state) {
           final urlId = subDomain.getOrElse(state.idUrl);

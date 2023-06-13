@@ -3,8 +3,12 @@ part of 'app_cache_bloc.dart';
 @freezed
 class AppCacheEvent with _$AppCacheEvent {
   const factory AppCacheEvent.started() = _Started;
-  const factory AppCacheEvent.clearCart(String urlId, String nroOrder) =
-      _ClearCart;
+
+  const factory AppCacheEvent.updateCurrentSummary({SummaryDto? summary}) =
+      _UpdateCurrentSummary;
+
+  const factory AppCacheEvent.clearCart(String urlId) = _ClearCart;
+
   const factory AppCacheEvent.loadCart(String? urlId) = _LoadCart;
   const factory AppCacheEvent.updateCart(ShoppingCartDto shoppingCartDto) =
       _UpdateCart;

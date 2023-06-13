@@ -19,7 +19,8 @@ mixin _$AppCacheEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String urlId, String nroOrder) clearCart,
+    required TResult Function(SummaryDto? summary) updateCurrentSummary,
+    required TResult Function(String urlId) clearCart,
     required TResult Function(String? urlId) loadCart,
     required TResult Function(ShoppingCartDto shoppingCartDto) updateCart,
     required TResult Function(String name, String phone) saveUser,
@@ -39,7 +40,8 @@ mixin _$AppCacheEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String urlId, String nroOrder)? clearCart,
+    TResult? Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult? Function(String urlId)? clearCart,
     TResult? Function(String? urlId)? loadCart,
     TResult? Function(ShoppingCartDto shoppingCartDto)? updateCart,
     TResult? Function(String name, String phone)? saveUser,
@@ -59,7 +61,8 @@ mixin _$AppCacheEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String urlId, String nroOrder)? clearCart,
+    TResult Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult Function(String urlId)? clearCart,
     TResult Function(String? urlId)? loadCart,
     TResult Function(ShoppingCartDto shoppingCartDto)? updateCart,
     TResult Function(String name, String phone)? saveUser,
@@ -80,6 +83,7 @@ mixin _$AppCacheEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_UpdateCurrentSummary value) updateCurrentSummary,
     required TResult Function(_ClearCart value) clearCart,
     required TResult Function(_LoadCart value) loadCart,
     required TResult Function(_UpdateCart value) updateCart,
@@ -93,6 +97,7 @@ mixin _$AppCacheEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateCurrentSummary value)? updateCurrentSummary,
     TResult? Function(_ClearCart value)? clearCart,
     TResult? Function(_LoadCart value)? loadCart,
     TResult? Function(_UpdateCart value)? updateCart,
@@ -106,6 +111,7 @@ mixin _$AppCacheEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_UpdateCurrentSummary value)? updateCurrentSummary,
     TResult Function(_ClearCart value)? clearCart,
     TResult Function(_LoadCart value)? loadCart,
     TResult Function(_UpdateCart value)? updateCart,
@@ -175,7 +181,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String urlId, String nroOrder) clearCart,
+    required TResult Function(SummaryDto? summary) updateCurrentSummary,
+    required TResult Function(String urlId) clearCart,
     required TResult Function(String? urlId) loadCart,
     required TResult Function(ShoppingCartDto shoppingCartDto) updateCart,
     required TResult Function(String name, String phone) saveUser,
@@ -198,7 +205,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String urlId, String nroOrder)? clearCart,
+    TResult? Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult? Function(String urlId)? clearCart,
     TResult? Function(String? urlId)? loadCart,
     TResult? Function(ShoppingCartDto shoppingCartDto)? updateCart,
     TResult? Function(String name, String phone)? saveUser,
@@ -221,7 +229,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String urlId, String nroOrder)? clearCart,
+    TResult Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult Function(String urlId)? clearCart,
     TResult Function(String? urlId)? loadCart,
     TResult Function(ShoppingCartDto shoppingCartDto)? updateCart,
     TResult Function(String name, String phone)? saveUser,
@@ -248,6 +257,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_UpdateCurrentSummary value) updateCurrentSummary,
     required TResult Function(_ClearCart value) clearCart,
     required TResult Function(_LoadCart value) loadCart,
     required TResult Function(_UpdateCart value) updateCart,
@@ -264,6 +274,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateCurrentSummary value)? updateCurrentSummary,
     TResult? Function(_ClearCart value)? clearCart,
     TResult? Function(_LoadCart value)? loadCart,
     TResult? Function(_UpdateCart value)? updateCart,
@@ -280,6 +291,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_UpdateCurrentSummary value)? updateCurrentSummary,
     TResult Function(_ClearCart value)? clearCart,
     TResult Function(_LoadCart value)? loadCart,
     TResult Function(_UpdateCart value)? updateCart,
@@ -302,80 +314,87 @@ abstract class _Started implements AppCacheEvent {
 }
 
 /// @nodoc
-abstract class _$$_ClearCartCopyWith<$Res> {
-  factory _$$_ClearCartCopyWith(
-          _$_ClearCart value, $Res Function(_$_ClearCart) then) =
-      __$$_ClearCartCopyWithImpl<$Res>;
+abstract class _$$_UpdateCurrentSummaryCopyWith<$Res> {
+  factory _$$_UpdateCurrentSummaryCopyWith(_$_UpdateCurrentSummary value,
+          $Res Function(_$_UpdateCurrentSummary) then) =
+      __$$_UpdateCurrentSummaryCopyWithImpl<$Res>;
   @useResult
-  $Res call({String urlId, String nroOrder});
+  $Res call({SummaryDto? summary});
+
+  $SummaryDtoCopyWith<$Res>? get summary;
 }
 
 /// @nodoc
-class __$$_ClearCartCopyWithImpl<$Res>
-    extends _$AppCacheEventCopyWithImpl<$Res, _$_ClearCart>
-    implements _$$_ClearCartCopyWith<$Res> {
-  __$$_ClearCartCopyWithImpl(
-      _$_ClearCart _value, $Res Function(_$_ClearCart) _then)
+class __$$_UpdateCurrentSummaryCopyWithImpl<$Res>
+    extends _$AppCacheEventCopyWithImpl<$Res, _$_UpdateCurrentSummary>
+    implements _$$_UpdateCurrentSummaryCopyWith<$Res> {
+  __$$_UpdateCurrentSummaryCopyWithImpl(_$_UpdateCurrentSummary _value,
+      $Res Function(_$_UpdateCurrentSummary) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? urlId = null,
-    Object? nroOrder = null,
+    Object? summary = freezed,
   }) {
-    return _then(_$_ClearCart(
-      null == urlId
-          ? _value.urlId
-          : urlId // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == nroOrder
-          ? _value.nroOrder
-          : nroOrder // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_$_UpdateCurrentSummary(
+      summary: freezed == summary
+          ? _value.summary
+          : summary // ignore: cast_nullable_to_non_nullable
+              as SummaryDto?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SummaryDtoCopyWith<$Res>? get summary {
+    if (_value.summary == null) {
+      return null;
+    }
+
+    return $SummaryDtoCopyWith<$Res>(_value.summary!, (value) {
+      return _then(_value.copyWith(summary: value));
+    });
   }
 }
 
 /// @nodoc
 
-class _$_ClearCart implements _ClearCart {
-  const _$_ClearCart(this.urlId, this.nroOrder);
+class _$_UpdateCurrentSummary implements _UpdateCurrentSummary {
+  const _$_UpdateCurrentSummary({this.summary});
 
   @override
-  final String urlId;
-  @override
-  final String nroOrder;
+  final SummaryDto? summary;
 
   @override
   String toString() {
-    return 'AppCacheEvent.clearCart(urlId: $urlId, nroOrder: $nroOrder)';
+    return 'AppCacheEvent.updateCurrentSummary(summary: $summary)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClearCart &&
-            (identical(other.urlId, urlId) || other.urlId == urlId) &&
-            (identical(other.nroOrder, nroOrder) ||
-                other.nroOrder == nroOrder));
+            other is _$_UpdateCurrentSummary &&
+            (identical(other.summary, summary) || other.summary == summary));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, urlId, nroOrder);
+  int get hashCode => Object.hash(runtimeType, summary);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClearCartCopyWith<_$_ClearCart> get copyWith =>
-      __$$_ClearCartCopyWithImpl<_$_ClearCart>(this, _$identity);
+  _$$_UpdateCurrentSummaryCopyWith<_$_UpdateCurrentSummary> get copyWith =>
+      __$$_UpdateCurrentSummaryCopyWithImpl<_$_UpdateCurrentSummary>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String urlId, String nroOrder) clearCart,
+    required TResult Function(SummaryDto? summary) updateCurrentSummary,
+    required TResult Function(String urlId) clearCart,
     required TResult Function(String? urlId) loadCart,
     required TResult Function(ShoppingCartDto shoppingCartDto) updateCart,
     required TResult Function(String name, String phone) saveUser,
@@ -391,14 +410,15 @@ class _$_ClearCart implements _ClearCart {
             List<MultipleSelection> multipleSelections)
         createItem,
   }) {
-    return clearCart(urlId, nroOrder);
+    return updateCurrentSummary(summary);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String urlId, String nroOrder)? clearCart,
+    TResult? Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult? Function(String urlId)? clearCart,
     TResult? Function(String? urlId)? loadCart,
     TResult? Function(ShoppingCartDto shoppingCartDto)? updateCart,
     TResult? Function(String name, String phone)? saveUser,
@@ -414,14 +434,218 @@ class _$_ClearCart implements _ClearCart {
             List<MultipleSelection> multipleSelections)?
         createItem,
   }) {
-    return clearCart?.call(urlId, nroOrder);
+    return updateCurrentSummary?.call(summary);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String urlId, String nroOrder)? clearCart,
+    TResult Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult Function(String urlId)? clearCart,
+    TResult Function(String? urlId)? loadCart,
+    TResult Function(ShoppingCartDto shoppingCartDto)? updateCart,
+    TResult Function(String name, String phone)? saveUser,
+    TResult Function(String address)? createAddress,
+    TResult Function(String nroOrder)? addOrder,
+    TResult Function(String nroOrder)? removeOrder,
+    TResult Function(
+            DetailsProductState detail,
+            String establishmentUuid,
+            ProductDto product,
+            List<ChooseForAmount> choosesForAmount,
+            List<OneSelection> oneSelections,
+            List<MultipleSelection> multipleSelections)?
+        createItem,
+    required TResult orElse(),
+  }) {
+    if (updateCurrentSummary != null) {
+      return updateCurrentSummary(summary);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_UpdateCurrentSummary value) updateCurrentSummary,
+    required TResult Function(_ClearCart value) clearCart,
+    required TResult Function(_LoadCart value) loadCart,
+    required TResult Function(_UpdateCart value) updateCart,
+    required TResult Function(_SaveUser value) saveUser,
+    required TResult Function(_CreateAddress value) createAddress,
+    required TResult Function(_AddOrder value) addOrder,
+    required TResult Function(_RemoveOrder value) removeOrder,
+    required TResult Function(_CreateItem value) createItem,
+  }) {
+    return updateCurrentSummary(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateCurrentSummary value)? updateCurrentSummary,
+    TResult? Function(_ClearCart value)? clearCart,
+    TResult? Function(_LoadCart value)? loadCart,
+    TResult? Function(_UpdateCart value)? updateCart,
+    TResult? Function(_SaveUser value)? saveUser,
+    TResult? Function(_CreateAddress value)? createAddress,
+    TResult? Function(_AddOrder value)? addOrder,
+    TResult? Function(_RemoveOrder value)? removeOrder,
+    TResult? Function(_CreateItem value)? createItem,
+  }) {
+    return updateCurrentSummary?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_UpdateCurrentSummary value)? updateCurrentSummary,
+    TResult Function(_ClearCart value)? clearCart,
+    TResult Function(_LoadCart value)? loadCart,
+    TResult Function(_UpdateCart value)? updateCart,
+    TResult Function(_SaveUser value)? saveUser,
+    TResult Function(_CreateAddress value)? createAddress,
+    TResult Function(_AddOrder value)? addOrder,
+    TResult Function(_RemoveOrder value)? removeOrder,
+    TResult Function(_CreateItem value)? createItem,
+    required TResult orElse(),
+  }) {
+    if (updateCurrentSummary != null) {
+      return updateCurrentSummary(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateCurrentSummary implements AppCacheEvent {
+  const factory _UpdateCurrentSummary({final SummaryDto? summary}) =
+      _$_UpdateCurrentSummary;
+
+  SummaryDto? get summary;
+  @JsonKey(ignore: true)
+  _$$_UpdateCurrentSummaryCopyWith<_$_UpdateCurrentSummary> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ClearCartCopyWith<$Res> {
+  factory _$$_ClearCartCopyWith(
+          _$_ClearCart value, $Res Function(_$_ClearCart) then) =
+      __$$_ClearCartCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String urlId});
+}
+
+/// @nodoc
+class __$$_ClearCartCopyWithImpl<$Res>
+    extends _$AppCacheEventCopyWithImpl<$Res, _$_ClearCart>
+    implements _$$_ClearCartCopyWith<$Res> {
+  __$$_ClearCartCopyWithImpl(
+      _$_ClearCart _value, $Res Function(_$_ClearCart) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? urlId = null,
+  }) {
+    return _then(_$_ClearCart(
+      null == urlId
+          ? _value.urlId
+          : urlId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ClearCart implements _ClearCart {
+  const _$_ClearCart(this.urlId);
+
+  @override
+  final String urlId;
+
+  @override
+  String toString() {
+    return 'AppCacheEvent.clearCart(urlId: $urlId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ClearCart &&
+            (identical(other.urlId, urlId) || other.urlId == urlId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, urlId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ClearCartCopyWith<_$_ClearCart> get copyWith =>
+      __$$_ClearCartCopyWithImpl<_$_ClearCart>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(SummaryDto? summary) updateCurrentSummary,
+    required TResult Function(String urlId) clearCart,
+    required TResult Function(String? urlId) loadCart,
+    required TResult Function(ShoppingCartDto shoppingCartDto) updateCart,
+    required TResult Function(String name, String phone) saveUser,
+    required TResult Function(String address) createAddress,
+    required TResult Function(String nroOrder) addOrder,
+    required TResult Function(String nroOrder) removeOrder,
+    required TResult Function(
+            DetailsProductState detail,
+            String establishmentUuid,
+            ProductDto product,
+            List<ChooseForAmount> choosesForAmount,
+            List<OneSelection> oneSelections,
+            List<MultipleSelection> multipleSelections)
+        createItem,
+  }) {
+    return clearCart(urlId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult? Function(String urlId)? clearCart,
+    TResult? Function(String? urlId)? loadCart,
+    TResult? Function(ShoppingCartDto shoppingCartDto)? updateCart,
+    TResult? Function(String name, String phone)? saveUser,
+    TResult? Function(String address)? createAddress,
+    TResult? Function(String nroOrder)? addOrder,
+    TResult? Function(String nroOrder)? removeOrder,
+    TResult? Function(
+            DetailsProductState detail,
+            String establishmentUuid,
+            ProductDto product,
+            List<ChooseForAmount> choosesForAmount,
+            List<OneSelection> oneSelections,
+            List<MultipleSelection> multipleSelections)?
+        createItem,
+  }) {
+    return clearCart?.call(urlId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult Function(String urlId)? clearCart,
     TResult Function(String? urlId)? loadCart,
     TResult Function(ShoppingCartDto shoppingCartDto)? updateCart,
     TResult Function(String name, String phone)? saveUser,
@@ -439,7 +663,7 @@ class _$_ClearCart implements _ClearCart {
     required TResult orElse(),
   }) {
     if (clearCart != null) {
-      return clearCart(urlId, nroOrder);
+      return clearCart(urlId);
     }
     return orElse();
   }
@@ -448,6 +672,7 @@ class _$_ClearCart implements _ClearCart {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_UpdateCurrentSummary value) updateCurrentSummary,
     required TResult Function(_ClearCart value) clearCart,
     required TResult Function(_LoadCart value) loadCart,
     required TResult Function(_UpdateCart value) updateCart,
@@ -464,6 +689,7 @@ class _$_ClearCart implements _ClearCart {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateCurrentSummary value)? updateCurrentSummary,
     TResult? Function(_ClearCart value)? clearCart,
     TResult? Function(_LoadCart value)? loadCart,
     TResult? Function(_UpdateCart value)? updateCart,
@@ -480,6 +706,7 @@ class _$_ClearCart implements _ClearCart {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_UpdateCurrentSummary value)? updateCurrentSummary,
     TResult Function(_ClearCart value)? clearCart,
     TResult Function(_LoadCart value)? loadCart,
     TResult Function(_UpdateCart value)? updateCart,
@@ -498,11 +725,9 @@ class _$_ClearCart implements _ClearCart {
 }
 
 abstract class _ClearCart implements AppCacheEvent {
-  const factory _ClearCart(final String urlId, final String nroOrder) =
-      _$_ClearCart;
+  const factory _ClearCart(final String urlId) = _$_ClearCart;
 
   String get urlId;
-  String get nroOrder;
   @JsonKey(ignore: true)
   _$$_ClearCartCopyWith<_$_ClearCart> get copyWith =>
       throw _privateConstructorUsedError;
@@ -573,7 +798,8 @@ class _$_LoadCart implements _LoadCart {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String urlId, String nroOrder) clearCart,
+    required TResult Function(SummaryDto? summary) updateCurrentSummary,
+    required TResult Function(String urlId) clearCart,
     required TResult Function(String? urlId) loadCart,
     required TResult Function(ShoppingCartDto shoppingCartDto) updateCart,
     required TResult Function(String name, String phone) saveUser,
@@ -596,7 +822,8 @@ class _$_LoadCart implements _LoadCart {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String urlId, String nroOrder)? clearCart,
+    TResult? Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult? Function(String urlId)? clearCart,
     TResult? Function(String? urlId)? loadCart,
     TResult? Function(ShoppingCartDto shoppingCartDto)? updateCart,
     TResult? Function(String name, String phone)? saveUser,
@@ -619,7 +846,8 @@ class _$_LoadCart implements _LoadCart {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String urlId, String nroOrder)? clearCart,
+    TResult Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult Function(String urlId)? clearCart,
     TResult Function(String? urlId)? loadCart,
     TResult Function(ShoppingCartDto shoppingCartDto)? updateCart,
     TResult Function(String name, String phone)? saveUser,
@@ -646,6 +874,7 @@ class _$_LoadCart implements _LoadCart {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_UpdateCurrentSummary value) updateCurrentSummary,
     required TResult Function(_ClearCart value) clearCart,
     required TResult Function(_LoadCart value) loadCart,
     required TResult Function(_UpdateCart value) updateCart,
@@ -662,6 +891,7 @@ class _$_LoadCart implements _LoadCart {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateCurrentSummary value)? updateCurrentSummary,
     TResult? Function(_ClearCart value)? clearCart,
     TResult? Function(_LoadCart value)? loadCart,
     TResult? Function(_UpdateCart value)? updateCart,
@@ -678,6 +908,7 @@ class _$_LoadCart implements _LoadCart {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_UpdateCurrentSummary value)? updateCurrentSummary,
     TResult Function(_ClearCart value)? clearCart,
     TResult Function(_LoadCart value)? loadCart,
     TResult Function(_UpdateCart value)? updateCart,
@@ -780,7 +1011,8 @@ class _$_UpdateCart implements _UpdateCart {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String urlId, String nroOrder) clearCart,
+    required TResult Function(SummaryDto? summary) updateCurrentSummary,
+    required TResult Function(String urlId) clearCart,
     required TResult Function(String? urlId) loadCart,
     required TResult Function(ShoppingCartDto shoppingCartDto) updateCart,
     required TResult Function(String name, String phone) saveUser,
@@ -803,7 +1035,8 @@ class _$_UpdateCart implements _UpdateCart {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String urlId, String nroOrder)? clearCart,
+    TResult? Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult? Function(String urlId)? clearCart,
     TResult? Function(String? urlId)? loadCart,
     TResult? Function(ShoppingCartDto shoppingCartDto)? updateCart,
     TResult? Function(String name, String phone)? saveUser,
@@ -826,7 +1059,8 @@ class _$_UpdateCart implements _UpdateCart {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String urlId, String nroOrder)? clearCart,
+    TResult Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult Function(String urlId)? clearCart,
     TResult Function(String? urlId)? loadCart,
     TResult Function(ShoppingCartDto shoppingCartDto)? updateCart,
     TResult Function(String name, String phone)? saveUser,
@@ -853,6 +1087,7 @@ class _$_UpdateCart implements _UpdateCart {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_UpdateCurrentSummary value) updateCurrentSummary,
     required TResult Function(_ClearCart value) clearCart,
     required TResult Function(_LoadCart value) loadCart,
     required TResult Function(_UpdateCart value) updateCart,
@@ -869,6 +1104,7 @@ class _$_UpdateCart implements _UpdateCart {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateCurrentSummary value)? updateCurrentSummary,
     TResult? Function(_ClearCart value)? clearCart,
     TResult? Function(_LoadCart value)? loadCart,
     TResult? Function(_UpdateCart value)? updateCart,
@@ -885,6 +1121,7 @@ class _$_UpdateCart implements _UpdateCart {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_UpdateCurrentSummary value)? updateCurrentSummary,
     TResult Function(_ClearCart value)? clearCart,
     TResult Function(_LoadCart value)? loadCart,
     TResult Function(_UpdateCart value)? updateCart,
@@ -985,7 +1222,8 @@ class _$_SaveUser implements _SaveUser {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String urlId, String nroOrder) clearCart,
+    required TResult Function(SummaryDto? summary) updateCurrentSummary,
+    required TResult Function(String urlId) clearCart,
     required TResult Function(String? urlId) loadCart,
     required TResult Function(ShoppingCartDto shoppingCartDto) updateCart,
     required TResult Function(String name, String phone) saveUser,
@@ -1008,7 +1246,8 @@ class _$_SaveUser implements _SaveUser {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String urlId, String nroOrder)? clearCart,
+    TResult? Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult? Function(String urlId)? clearCart,
     TResult? Function(String? urlId)? loadCart,
     TResult? Function(ShoppingCartDto shoppingCartDto)? updateCart,
     TResult? Function(String name, String phone)? saveUser,
@@ -1031,7 +1270,8 @@ class _$_SaveUser implements _SaveUser {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String urlId, String nroOrder)? clearCart,
+    TResult Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult Function(String urlId)? clearCart,
     TResult Function(String? urlId)? loadCart,
     TResult Function(ShoppingCartDto shoppingCartDto)? updateCart,
     TResult Function(String name, String phone)? saveUser,
@@ -1058,6 +1298,7 @@ class _$_SaveUser implements _SaveUser {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_UpdateCurrentSummary value) updateCurrentSummary,
     required TResult Function(_ClearCart value) clearCart,
     required TResult Function(_LoadCart value) loadCart,
     required TResult Function(_UpdateCart value) updateCart,
@@ -1074,6 +1315,7 @@ class _$_SaveUser implements _SaveUser {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateCurrentSummary value)? updateCurrentSummary,
     TResult? Function(_ClearCart value)? clearCart,
     TResult? Function(_LoadCart value)? loadCart,
     TResult? Function(_UpdateCart value)? updateCart,
@@ -1090,6 +1332,7 @@ class _$_SaveUser implements _SaveUser {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_UpdateCurrentSummary value)? updateCurrentSummary,
     TResult Function(_ClearCart value)? clearCart,
     TResult Function(_LoadCart value)? loadCart,
     TResult Function(_UpdateCart value)? updateCart,
@@ -1183,7 +1426,8 @@ class _$_CreateAddress implements _CreateAddress {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String urlId, String nroOrder) clearCart,
+    required TResult Function(SummaryDto? summary) updateCurrentSummary,
+    required TResult Function(String urlId) clearCart,
     required TResult Function(String? urlId) loadCart,
     required TResult Function(ShoppingCartDto shoppingCartDto) updateCart,
     required TResult Function(String name, String phone) saveUser,
@@ -1206,7 +1450,8 @@ class _$_CreateAddress implements _CreateAddress {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String urlId, String nroOrder)? clearCart,
+    TResult? Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult? Function(String urlId)? clearCart,
     TResult? Function(String? urlId)? loadCart,
     TResult? Function(ShoppingCartDto shoppingCartDto)? updateCart,
     TResult? Function(String name, String phone)? saveUser,
@@ -1229,7 +1474,8 @@ class _$_CreateAddress implements _CreateAddress {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String urlId, String nroOrder)? clearCart,
+    TResult Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult Function(String urlId)? clearCart,
     TResult Function(String? urlId)? loadCart,
     TResult Function(ShoppingCartDto shoppingCartDto)? updateCart,
     TResult Function(String name, String phone)? saveUser,
@@ -1256,6 +1502,7 @@ class _$_CreateAddress implements _CreateAddress {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_UpdateCurrentSummary value) updateCurrentSummary,
     required TResult Function(_ClearCart value) clearCart,
     required TResult Function(_LoadCart value) loadCart,
     required TResult Function(_UpdateCart value) updateCart,
@@ -1272,6 +1519,7 @@ class _$_CreateAddress implements _CreateAddress {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateCurrentSummary value)? updateCurrentSummary,
     TResult? Function(_ClearCart value)? clearCart,
     TResult? Function(_LoadCart value)? loadCart,
     TResult? Function(_UpdateCart value)? updateCart,
@@ -1288,6 +1536,7 @@ class _$_CreateAddress implements _CreateAddress {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_UpdateCurrentSummary value)? updateCurrentSummary,
     TResult Function(_ClearCart value)? clearCart,
     TResult Function(_LoadCart value)? loadCart,
     TResult Function(_UpdateCart value)? updateCart,
@@ -1380,7 +1629,8 @@ class _$_AddOrder implements _AddOrder {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String urlId, String nroOrder) clearCart,
+    required TResult Function(SummaryDto? summary) updateCurrentSummary,
+    required TResult Function(String urlId) clearCart,
     required TResult Function(String? urlId) loadCart,
     required TResult Function(ShoppingCartDto shoppingCartDto) updateCart,
     required TResult Function(String name, String phone) saveUser,
@@ -1403,7 +1653,8 @@ class _$_AddOrder implements _AddOrder {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String urlId, String nroOrder)? clearCart,
+    TResult? Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult? Function(String urlId)? clearCart,
     TResult? Function(String? urlId)? loadCart,
     TResult? Function(ShoppingCartDto shoppingCartDto)? updateCart,
     TResult? Function(String name, String phone)? saveUser,
@@ -1426,7 +1677,8 @@ class _$_AddOrder implements _AddOrder {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String urlId, String nroOrder)? clearCart,
+    TResult Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult Function(String urlId)? clearCart,
     TResult Function(String? urlId)? loadCart,
     TResult Function(ShoppingCartDto shoppingCartDto)? updateCart,
     TResult Function(String name, String phone)? saveUser,
@@ -1453,6 +1705,7 @@ class _$_AddOrder implements _AddOrder {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_UpdateCurrentSummary value) updateCurrentSummary,
     required TResult Function(_ClearCart value) clearCart,
     required TResult Function(_LoadCart value) loadCart,
     required TResult Function(_UpdateCart value) updateCart,
@@ -1469,6 +1722,7 @@ class _$_AddOrder implements _AddOrder {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateCurrentSummary value)? updateCurrentSummary,
     TResult? Function(_ClearCart value)? clearCart,
     TResult? Function(_LoadCart value)? loadCart,
     TResult? Function(_UpdateCart value)? updateCart,
@@ -1485,6 +1739,7 @@ class _$_AddOrder implements _AddOrder {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_UpdateCurrentSummary value)? updateCurrentSummary,
     TResult Function(_ClearCart value)? clearCart,
     TResult Function(_LoadCart value)? loadCart,
     TResult Function(_UpdateCart value)? updateCart,
@@ -1577,7 +1832,8 @@ class _$_RemoveOrder implements _RemoveOrder {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String urlId, String nroOrder) clearCart,
+    required TResult Function(SummaryDto? summary) updateCurrentSummary,
+    required TResult Function(String urlId) clearCart,
     required TResult Function(String? urlId) loadCart,
     required TResult Function(ShoppingCartDto shoppingCartDto) updateCart,
     required TResult Function(String name, String phone) saveUser,
@@ -1600,7 +1856,8 @@ class _$_RemoveOrder implements _RemoveOrder {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String urlId, String nroOrder)? clearCart,
+    TResult? Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult? Function(String urlId)? clearCart,
     TResult? Function(String? urlId)? loadCart,
     TResult? Function(ShoppingCartDto shoppingCartDto)? updateCart,
     TResult? Function(String name, String phone)? saveUser,
@@ -1623,7 +1880,8 @@ class _$_RemoveOrder implements _RemoveOrder {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String urlId, String nroOrder)? clearCart,
+    TResult Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult Function(String urlId)? clearCart,
     TResult Function(String? urlId)? loadCart,
     TResult Function(ShoppingCartDto shoppingCartDto)? updateCart,
     TResult Function(String name, String phone)? saveUser,
@@ -1650,6 +1908,7 @@ class _$_RemoveOrder implements _RemoveOrder {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_UpdateCurrentSummary value) updateCurrentSummary,
     required TResult Function(_ClearCart value) clearCart,
     required TResult Function(_LoadCart value) loadCart,
     required TResult Function(_UpdateCart value) updateCart,
@@ -1666,6 +1925,7 @@ class _$_RemoveOrder implements _RemoveOrder {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateCurrentSummary value)? updateCurrentSummary,
     TResult? Function(_ClearCart value)? clearCart,
     TResult? Function(_LoadCart value)? loadCart,
     TResult? Function(_UpdateCart value)? updateCart,
@@ -1682,6 +1942,7 @@ class _$_RemoveOrder implements _RemoveOrder {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_UpdateCurrentSummary value)? updateCurrentSummary,
     TResult Function(_ClearCart value)? clearCart,
     TResult Function(_LoadCart value)? loadCart,
     TResult Function(_UpdateCart value)? updateCart,
@@ -1876,7 +2137,8 @@ class _$_CreateItem implements _CreateItem {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String urlId, String nroOrder) clearCart,
+    required TResult Function(SummaryDto? summary) updateCurrentSummary,
+    required TResult Function(String urlId) clearCart,
     required TResult Function(String? urlId) loadCart,
     required TResult Function(ShoppingCartDto shoppingCartDto) updateCart,
     required TResult Function(String name, String phone) saveUser,
@@ -1900,7 +2162,8 @@ class _$_CreateItem implements _CreateItem {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String urlId, String nroOrder)? clearCart,
+    TResult? Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult? Function(String urlId)? clearCart,
     TResult? Function(String? urlId)? loadCart,
     TResult? Function(ShoppingCartDto shoppingCartDto)? updateCart,
     TResult? Function(String name, String phone)? saveUser,
@@ -1924,7 +2187,8 @@ class _$_CreateItem implements _CreateItem {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String urlId, String nroOrder)? clearCart,
+    TResult Function(SummaryDto? summary)? updateCurrentSummary,
+    TResult Function(String urlId)? clearCart,
     TResult Function(String? urlId)? loadCart,
     TResult Function(ShoppingCartDto shoppingCartDto)? updateCart,
     TResult Function(String name, String phone)? saveUser,
@@ -1952,6 +2216,7 @@ class _$_CreateItem implements _CreateItem {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_UpdateCurrentSummary value) updateCurrentSummary,
     required TResult Function(_ClearCart value) clearCart,
     required TResult Function(_LoadCart value) loadCart,
     required TResult Function(_UpdateCart value) updateCart,
@@ -1968,6 +2233,7 @@ class _$_CreateItem implements _CreateItem {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_UpdateCurrentSummary value)? updateCurrentSummary,
     TResult? Function(_ClearCart value)? clearCart,
     TResult? Function(_LoadCart value)? loadCart,
     TResult? Function(_UpdateCart value)? updateCart,
@@ -1984,6 +2250,7 @@ class _$_CreateItem implements _CreateItem {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_UpdateCurrentSummary value)? updateCurrentSummary,
     TResult Function(_ClearCart value)? clearCart,
     TResult Function(_LoadCart value)? loadCart,
     TResult Function(_UpdateCart value)? updateCart,
@@ -2024,9 +2291,9 @@ abstract class _CreateItem implements AppCacheEvent {
 /// @nodoc
 mixin _$AppCacheState {
   UserDto get user => throw _privateConstructorUsedError;
+  Option<SummaryDto> get summary => throw _privateConstructorUsedError;
   Map<String, ShoppingCartDto> get cartCache =>
       throw _privateConstructorUsedError;
-  bool get isRedirectToSummary => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppCacheStateCopyWith<AppCacheState> get copyWith =>
@@ -2041,8 +2308,8 @@ abstract class $AppCacheStateCopyWith<$Res> {
   @useResult
   $Res call(
       {UserDto user,
-      Map<String, ShoppingCartDto> cartCache,
-      bool isRedirectToSummary});
+      Option<SummaryDto> summary,
+      Map<String, ShoppingCartDto> cartCache});
 
   $UserDtoCopyWith<$Res> get user;
 }
@@ -2061,22 +2328,22 @@ class _$AppCacheStateCopyWithImpl<$Res, $Val extends AppCacheState>
   @override
   $Res call({
     Object? user = null,
+    Object? summary = null,
     Object? cartCache = null,
-    Object? isRedirectToSummary = null,
   }) {
     return _then(_value.copyWith(
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserDto,
+      summary: null == summary
+          ? _value.summary
+          : summary // ignore: cast_nullable_to_non_nullable
+              as Option<SummaryDto>,
       cartCache: null == cartCache
           ? _value.cartCache
           : cartCache // ignore: cast_nullable_to_non_nullable
               as Map<String, ShoppingCartDto>,
-      isRedirectToSummary: null == isRedirectToSummary
-          ? _value.isRedirectToSummary
-          : isRedirectToSummary // ignore: cast_nullable_to_non_nullable
-              as bool,
     ) as $Val);
   }
 
@@ -2099,8 +2366,8 @@ abstract class _$$_AppCacheStateCopyWith<$Res>
   @useResult
   $Res call(
       {UserDto user,
-      Map<String, ShoppingCartDto> cartCache,
-      bool isRedirectToSummary});
+      Option<SummaryDto> summary,
+      Map<String, ShoppingCartDto> cartCache});
 
   @override
   $UserDtoCopyWith<$Res> get user;
@@ -2118,22 +2385,22 @@ class __$$_AppCacheStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? user = null,
+    Object? summary = null,
     Object? cartCache = null,
-    Object? isRedirectToSummary = null,
   }) {
     return _then(_$_AppCacheState(
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserDto,
+      summary: null == summary
+          ? _value.summary
+          : summary // ignore: cast_nullable_to_non_nullable
+              as Option<SummaryDto>,
       cartCache: null == cartCache
           ? _value._cartCache
           : cartCache // ignore: cast_nullable_to_non_nullable
               as Map<String, ShoppingCartDto>,
-      isRedirectToSummary: null == isRedirectToSummary
-          ? _value.isRedirectToSummary
-          : isRedirectToSummary // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -2143,13 +2410,15 @@ class __$$_AppCacheStateCopyWithImpl<$Res>
 class _$_AppCacheState extends _AppCacheState {
   const _$_AppCacheState(
       {required this.user,
-      final Map<String, ShoppingCartDto> cartCache = const {},
-      this.isRedirectToSummary = false})
+      required this.summary,
+      final Map<String, ShoppingCartDto> cartCache = const {}})
       : _cartCache = cartCache,
         super._();
 
   @override
   final UserDto user;
+  @override
+  final Option<SummaryDto> summary;
   final Map<String, ShoppingCartDto> _cartCache;
   @override
   @JsonKey()
@@ -2160,12 +2429,8 @@ class _$_AppCacheState extends _AppCacheState {
   }
 
   @override
-  @JsonKey()
-  final bool isRedirectToSummary;
-
-  @override
   String toString() {
-    return 'AppCacheState(user: $user, cartCache: $cartCache, isRedirectToSummary: $isRedirectToSummary)';
+    return 'AppCacheState(user: $user, summary: $summary, cartCache: $cartCache)';
   }
 
   @override
@@ -2174,15 +2439,14 @@ class _$_AppCacheState extends _AppCacheState {
         (other.runtimeType == runtimeType &&
             other is _$_AppCacheState &&
             (identical(other.user, user) || other.user == user) &&
+            (identical(other.summary, summary) || other.summary == summary) &&
             const DeepCollectionEquality()
-                .equals(other._cartCache, _cartCache) &&
-            (identical(other.isRedirectToSummary, isRedirectToSummary) ||
-                other.isRedirectToSummary == isRedirectToSummary));
+                .equals(other._cartCache, _cartCache));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user,
-      const DeepCollectionEquality().hash(_cartCache), isRedirectToSummary);
+  int get hashCode => Object.hash(runtimeType, user, summary,
+      const DeepCollectionEquality().hash(_cartCache));
 
   @JsonKey(ignore: true)
   @override
@@ -2194,16 +2458,16 @@ class _$_AppCacheState extends _AppCacheState {
 abstract class _AppCacheState extends AppCacheState {
   const factory _AppCacheState(
       {required final UserDto user,
-      final Map<String, ShoppingCartDto> cartCache,
-      final bool isRedirectToSummary}) = _$_AppCacheState;
+      required final Option<SummaryDto> summary,
+      final Map<String, ShoppingCartDto> cartCache}) = _$_AppCacheState;
   const _AppCacheState._() : super._();
 
   @override
   UserDto get user;
   @override
-  Map<String, ShoppingCartDto> get cartCache;
+  Option<SummaryDto> get summary;
   @override
-  bool get isRedirectToSummary;
+  Map<String, ShoppingCartDto> get cartCache;
   @override
   @JsonKey(ignore: true)
   _$$_AppCacheStateCopyWith<_$_AppCacheState> get copyWith =>

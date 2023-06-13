@@ -9,16 +9,23 @@ class ScaffoldSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: child,
-        backgroundColor: Colors.white,
-        appBar: AppBarSummary(onPressed: () {
-          Navigator.pop(context);
-        }),
-        //  bottomNavigationBar: const FooterCart(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: const FooterSummary(),
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.pop(context);
+        return false;
+      },
+      child: SafeArea(
+        child: Scaffold(
+          body: child,
+          backgroundColor: Colors.white,
+          appBar: AppBarSummary(onPressed: () {
+            Navigator.pop(context);
+          }),
+          //  bottomNavigationBar: const FooterCart(),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerFloat,
+          floatingActionButton: const FooterSummary(),
+        ),
       ),
     );
   }

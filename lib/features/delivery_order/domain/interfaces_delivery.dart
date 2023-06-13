@@ -17,4 +17,6 @@ abstract interface class IOrderSummaryRepository {
 
 typedef RespondOnSave = Either<GlobalFailure<dynamic>, String>;
 
+typedef RespondOnSaveUC = Either<GlobalFailure<dynamic>, SummaryDto>;
+
 typedef RespondOnLoad = Either<GlobalFailure<dynamic>, SummaryDto>;

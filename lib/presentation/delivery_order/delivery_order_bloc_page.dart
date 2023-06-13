@@ -27,7 +27,7 @@ class DeleveryDataBlocpage extends StatelessWidget {
 
         final cartCache = cacheState.cartCache[urlId];
 
-        final isCartEmpty = cartCache?.totalItem == 0;
+        final isCartEmpty = cartCache?.isItemsEmpty ?? true;
 
         if (isCartEmpty) goShoppingCart();
       },

@@ -49,13 +49,13 @@ class ConfigRouter {
     return ConfigRouter._(
       ConfigRouter.getGoRouter(
         routes: [
-          if (subDomain.isSome()) routerEstablishment,
-          RouterHome.getGoRoute(
-            subDomain: subDomain,
-            routes: [
-              if (subDomain.isNone()) routerEstablishment,
-            ],
-          ),
+          if (subDomain.isSome())
+            routerEstablishment
+          else
+            RouterHome.getGoRoute(
+              subDomain: subDomain,
+              routes: [routerEstablishment],
+            ),
         ],
       ),
     );
