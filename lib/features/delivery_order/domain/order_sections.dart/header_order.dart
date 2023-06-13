@@ -6,9 +6,6 @@ class HeaderOrder {
 
   HeaderOrder(this._createdAt, this._locationHref);
 
-  factory HeaderOrder.now(String locationHref) =>
-      HeaderOrder(DateTime.now(), locationHref);
-
   String get _horaDePedido => _createdAt.timeFormat;
 
   String get _fechaDePedido => _createdAt.dateFormat;

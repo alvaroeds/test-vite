@@ -36,7 +36,7 @@ class OrderTemplateEntity {
     required double deliveryCost,
     required List<SummaryProduct> cartItems,
   }) {
-    final headerOrder = HeaderOrder.now(currentUrl);
+    final headerOrder = HeaderOrder(DateTime.now(), currentUrl);
 
     final contactInfo = ContactInfoSection(
       name: contactName,
