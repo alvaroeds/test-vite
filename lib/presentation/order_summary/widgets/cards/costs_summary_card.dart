@@ -48,8 +48,8 @@ class _CostSummaryCardState extends State<CostSummaryCard> with CardStyle {
           if (isShowDeatails) ...[
             if (widget.summaryDto.isPayWithCash)
               _ChangeSection(
-                widget.summaryDto.totalCost,
-                widget.summaryDto.change,
+                cash: widget.summaryDto.cashOfClient,
+                change: widget.summaryDto.change,
               ),
             _DetailCostSection(
               deliveryCost: widget.summaryDto.deliveryCost,
@@ -98,10 +98,10 @@ class _TextHeader extends StatelessWidget {
 }
 
 class _ChangeSection extends StatelessWidget {
-  final double totalCost;
+  final double cash;
   final double change;
 
-  const _ChangeSection(this.totalCost, this.change);
+  const _ChangeSection({required this.cash, required this.change});
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +114,7 @@ class _ChangeSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Monto recibido', style: manrope),
-            Text(totalCost.formattedPrice, style: manrope),
+            Text(cash.formattedPrice, style: manrope),
           ],
         ),
         const SizedBox(height: 4),
